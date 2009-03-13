@@ -1,0 +1,85 @@
+#!/bin/bash
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# You can set your favourite wallpaper here if you don't want
+# to do it from your style.
+#
+# bsetbg -f ~/pictures/wallpaper.png
+#
+# This sets a black background
+
+#/usr/bin/bsetroot -solid black
+
+# This shows the fluxbox-splash-screen
+# fbsetbg -C /usr/share/fluxbox/splash.jpg
+
+# Other examples. Check man xset for details.
+#
+# Turn off beeps:
+# xset -b
+#
+# Increase the keyboard repeat-rate:
+# xset r rate 195 35
+#
+# Your own fonts-dir:
+# xset +fp /home/morgant/.font
+#
+# Your favourite mouse cursor:
+# xsetroot -cursor_name right_ptr
+#
+# Change your keymap:
+# xmodmap ~/.Xmodmap
+
+#change the mouse acceleration
+#xset m 4 2
+
+#set terminal geometry
+echo "`grep -v 'geometry' ~/.Xdefaults; echo "XTerm*geometry: $(let "x = $(xrandr | grep '*' | grep -E -o '[[:digit:]][[:digit:]][[:digit:]]+' | head -n 1)000000 / 12086330"; echo $x)x$(let "x = $(xrandr | grep '*' | grep -E -o '[[:digit:]][[:digit:]][[:digit:]]+' | head -n 2 | tail -n 1)000000 / 27675675"; echo $x)"`" > ~/.Xdefaults
+
+
+#modify the .fluxbox/init file so ": /blah/yadda/.fluxbox" is replaced with ": ~/.fluxbox" where that space is a tab
+echo "`sed -e 's:\:\s.*\.fluxbox:\:\t~/.fluxbox:g' ~/.fluxbox/init`" > ~/.fluxbox/init
+
+#modify ~/.fluxbox/lastwallpaper so /home/whatever/ is /home/$HOME/ 
+if [[ -e ~/.fluxbox/lastwallpaper ]]; then
+	echo "`sed -e "s:|.*\.fluxbox:|$HOME/.fluxbox:g" ~/.fluxbox/lastwallpaper`" > ~/.fluxbox/lastwallpaper
+	fbsetbg -l
+else
+	fbsetbg ~/.fluxbox/backgrounds/dev-urandom.jpg
+fi
+
+
+#make sure .Xdefaults gets loaded
+xrdb -merge ~/.Xdefaults
+
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+
+#assuming you have x11vnc this will attach vnc to your root display, only allow connections from localhost (which probably means you'll need to use ssh tunneling), and requires vnc authentication as well.
+#x11vnc -forever -localhost -rfbauth ~/.vnc/passwd&
+
+#assuming you have x11vnc this will attach vnc to your root display and only allow connections from localhost
+#x11vnc -forever -localhost&
+
+#this one is less secure since any host can connect (still having to
+#pass vnc authentication)
+#x11vnc -forever -rfbauth ~/.vnc/passwd&
+
+#synergy stuff
+#synergys&
+#synergyc <synergy server hostname or ip>&
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec /usr/bin/fluxbox
+# or if you want to keep a log:
+# exec /usr/bin/fluxbox -log ~/.fluxbox/log

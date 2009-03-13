@@ -1,0 +1,42 @@
+XTerm*color0: #000000
+XTerm*color1: #b21818
+XTerm*color2: #18b218
+XTerm*color3: #BE5F00
+XTerm*color4: #6D85BA
+XTerm*color5: #b218b2
+XTerm*color6: #18b2b2
+XTerm*color7: #b2b2b2
+XTerm*color8: #686868
+XTerm*color9: #FF5454
+XTerm*color10: #54FF54
+XTerm*color11: #FFFF54
+XTerm*color12: #4082FF
+XTerm*color13: #FF54FF
+XTerm*color14: #54FFFF
+XTerm*color15: #FFFFFF
+XTerm*background: black
+XTerm*foreground: white
+
+Vncviewer*grabKeyboard: true
+
+!these two have to do with terminal buffering.  the result is that programs that send a lot of text to the term (emerge) don't have to wait for it to show up before proceeding, speeding them up
+XTerm*jumpScroll: true
+XTerm*multiScroll: true
+
+!this should work for aterm as well
+XTerm*saveLines: 100000
+XTerm*scrollBar: false
+
+!XTerm*scrollTtyOutput: false
+!XTerm*scrollKey: true
+
+Aterm*loginShell: true
+Aterm*transparent: false
+!Aterm*tintingType: true
+!Aterm*tinting: #a07040
+Aterm*shading: 60
+!Aterm*title: The King of No Pants
+!Aterm*iconName: The King of No Pants
+Aterm*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+Aterm*visualBell: true
+XTerm*geometry: 84x27

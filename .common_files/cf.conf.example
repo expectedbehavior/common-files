@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# this is an example of ~/.common_files/cf.conf which is sourced at the end
+# of the .bashrc file and is a place to put user configuration directives
+
+
+#min seconds between notifications of new common files.
+#export CF_TIME_BETWEEN_NOTIFICATIONS=86400
+
+#min seconds between checking for new common files.
+#export CF_TIME_BETWEEN_UPDATES=86400
+
+#save history, asynchronously check for updates, and notify if updates were found on last check, with each command
+#export PROMPT_COMMAND="history -a; cf_date_check_for_updates; cf_date_check_notify"
+
+#if you're using the tarball, backup all files that would be overwritten by extracting the tarball.  this defaults to "true" if not set.  Backs them up in $HOME/.common_files/baskups/
+#export CF_TARBALL_BACKUP="true"
+
+#if you only want to keep a certain number of backups, set this value.  it will keep only this number of the most recent (by time stamp in the filename) backups.  if you don't set this value the default is 5.  to keep all backups set this to -1.  this only applies if you have CF_TARBALL_BACKUP set to "true".
+#export CF_BACKUP_COUNT=5
+
+# a hook to run after the default prompt command
+#cf_user_prompt_hook() {
+#    echo "bob"
+#}

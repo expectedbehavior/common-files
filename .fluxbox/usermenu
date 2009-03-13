@@ -1,0 +1,5 @@
+[submenu] (Custom User Menu)
+      [submenu] (User Styles)
+            [stylesdir] (~/.fluxbox/styles)
+      [end]
+[end]

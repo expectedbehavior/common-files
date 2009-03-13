@@ -1,0 +1,36 @@
+Mod1 Tab :NextWindow
+Mod1 F1 :Workspace 1
+Mod1 F2 :Workspace 2
+Mod1 F3 :Workspace 3
+Mod1 F4 :Workspace 4
+Mod1 F5 :Workspace 5
+Mod1 F6 :Workspace 6
+Mod1 F7 :Workspace 7
+Mod1 F8 :Workspace 8
+Mod1 F9 :Workspace 9
+Mod1 F10 :Workspace 10
+Mod1 F11 :Workspace 11
+Mod1 F12 :Workspace 12
+Control n :NextTab
+Escape AbortKeychain
+Control Mod1 Delete :Quit
+
+Control Mod1 m :MaximizeWindow
+Control Mod1 h :MaximizeVertical
+Control Mod1 w :MaximizeHorizontal
+Control Mod1 l :ExecCommand /usr/bin/xlock -mode blank || [[ "$?" != "127" ]] || xlock -mode blank
+
+Control Shift a :ExecCommand /usr/bin/aterm -sl 65000 -e bash -il || [[ "$?" != "127" ]] || xterm -e bash -il
+Control Shift e :ExecCommand /usr/bin/eclipse-2
+Control Shift m :ExecCommand /usr/bin/firefox
+Control Shift f :ExecCommand /usr/bin/firefox
+Control Shift s :ExecCommand /usr/bin/sunbird
+Control Shift t :ExecCommand /usr/bin/thunderbird || /usr/bin/mozilla-thunderbird
+Control Shift k :ExecCommand /usr/bin/xfe || [[ "$?" != "127" ]] || /usr/kde/3.2/bin/konqueror || [[ "$?" != "127" ]] || konqueror
+Control Shift x :ExecCommand /usr/bin/xmms
+Control Shift v :ExecCommand /usr/local/bin/velocity
+Control Shift g :ExecCommand /usr/bin/gaim
+
+Control Mod1 /:quit 
+Mod1 D :ToggleDecor
+None Print :ExecCommand /usr/bin/import -window root ~/screenshot_`date '+%Y-%m-%d--%H-%M-%S'`.jpeg
