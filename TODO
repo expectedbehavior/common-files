@@ -1,0 +1,1 @@
+* cfup still looks for an SVN repo instead of looking for Git
