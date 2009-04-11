@@ -1,0 +1,9 @@
+== Installation
+
+git clone git@github.com:expectedbehavior/common-files.git
+cp -fr common-files/* .
+
+== History Search
+
+This works by default on most *nix systems, but on OS X you'll need to change the mapping of the page up and page down
+keys. In terminal, change page down to '\033[6~' and page up to '\033[5~'.
