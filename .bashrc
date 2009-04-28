@@ -291,7 +291,7 @@ shopt -s dotglob
 if [[ "$TERM" != 'dumb'  ]] && [[ -n "$BASH" ]]; then
     PS1=''
     #don't modify titlebar on console
-    [[ "$TERM" != 'linux' ]] && PS1="${PS1}\[\e]2;\u@\H:\W\a"
+    [[ "$TERM" != 'linux' && "$TERM" != "eterm-color" ]] && PS1="${PS1}\[\e]2;\u@\H:\W\a"
 #    [[ "$TERM" != 'linux' ]] && PS1="${PS1}\[\e]2;\u@\H:\W -- <cmd_time>\a"
     if [[ "`/usr/bin/whoami`" = "root" ]]; then
 	#red hostname
