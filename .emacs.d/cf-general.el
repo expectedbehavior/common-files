@@ -38,6 +38,7 @@
 				("\\.html$" . html-mode)
 				("\\.php$" . php-mode)
 				("\\.js$" . js2-mode)
+				("\\.js.erb$" . js2-mode)
 			        ("\\.cl$" . lisp-mode)
 			        ("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode))
@@ -65,7 +66,11 @@
 (require 'linum)
 (load-file "~/.emacs.d/lisp/pastie.el")
 
-(global-linum-mode 1)
+(add-hook 'after-change-major-mode-hook 
+          '(lambda ()
+             (if (not (equal major-mode 'term-mode))
+                 (linum-mode 1))))
+
 
 (add-to-list 'load-path "~/.emacs.d/speedbar-0.14beta4")
 (add-to-list 'load-path "~/.emacs.d/eieio-0.17")
@@ -112,6 +117,7 @@
 
 
 (ido-mode t)
+
 
 
 ;;(if (file-readable-p "/home/gladisjd/tempo.el")
