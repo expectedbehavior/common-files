@@ -74,35 +74,14 @@
 
 
 ;; change term-mode prefix key from C-c to C-x
-;; (require 'term)
-;; (term-set-escape-char ?\C-x)
-
+;; also unmap M-x from going right to the shell so it behaves like emacs
+;; note (kdb "M-x") is the preferred way to speficy key stuff these days, apparently
 (add-hook 'term-mode-hook
           (lambda ()
-            (define-key term-raw-map (kbd "M-x") nil)
             (term-set-escape-char ?\C-x)
+            (define-key term-raw-map (kbd "M-x") nil)
             ))
-;;              (progn
- ;; ) 
-;;                     (local-unset-key (kbd "M-x"))
-;;                (define-key term-raw-map "\M-x" 'execute-extended-command)
-;;                     (define-key term-raw-escape-map [?\M-x] nil)
-;;                     (define-key (current-local-map) "\M-x" nil)
-;;                     (define-key term-mode-map "\M-x" nil)
 
-;;                     (local-unset-key ?\M-x)
-
-;; (add-hook 'term-load-hook
-;;           '(lambda ()
-;;              (progn ;; (term-set-escape-char ?\C-x)
-;; ;;                     (local-unset-key ?\M-x)
-;; ;;                     (local-unset-key "\M-x")
-;;                     (define-key term-mode-map "\M-x" nil)
-;; ;;                     (define-key (current-local-map) "\M-x" nil)
-;; ;;                     (define-key term-mode-map)
-;;                     )))
-
-;; (local-unset-key ?\M-x)
 
 
 ;;          (function 
