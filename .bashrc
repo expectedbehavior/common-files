@@ -181,7 +181,7 @@ cf_date_check_notify() {
 
 cf_get_latest_local_version() {
 	#get your current revision number
-	my_rev=`svn info $HOME 2> /dev/null | grep 'Revision: ' | awk '{print $2}'`
+	my_rev=`(cd $HOME && git log -1 --pretty=format:"%H %ad") 2> /dev/null`
 	if [[ "$my_rev" == "" ]]; then
 	    #couldn't get version from svn so we'll try .common_files/latest_revision.txt
 	    my_rev=`cat "$HOME/.common_files/.latest_revision"`
@@ -206,15 +206,18 @@ cf_check_for_updates() {
 ((
 #checking to see if you're up to date
 #make sure you have curl and svn
-if which svn curl &> /dev/null; then
+if which git curl &> /dev/null; then
     #get the latest revision number, this should just be an integer.
     latest=`curl -sL http://cf.telaranrhiod.com/files/common/latest_revision.txt`
     #make sure curl returned successfully
     if [[ "$?" == "0" ]]; then
 #	my_rev="`cf_get_latest_local_version`"
+cf_get_latest_local_version
 	my_rev=$CF_LOCAL_LATEST_VERSION
 	#check if you're up to date
-	if [[ "$latest" != "$my_rev" ]]; then 
+  latest_hash=`echo $latest | awk '{print $1}'`
+  my_hash=`echo $my_rev | awk '{print $1}'`
+	if [[ "$latest_hash" != "$my_hash" ]]; then 
 	    #if not, create the .out_of_date file with the appropriate message so next time you start a terminal we can alert you.
 	    echo "Not on latest revision of common_files.  Latest: $latest, yours: $my_rev" > $notification_message_path
 	else
