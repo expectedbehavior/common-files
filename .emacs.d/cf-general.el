@@ -66,11 +66,33 @@
 (require 'linum)
 (load-file "~/.emacs.d/lisp/pastie.el")
 
+
+;; turn line numbers on in all modes except term-mode
 (add-hook 'after-change-major-mode-hook 
           '(lambda ()
              (if (not (equal major-mode 'term-mode))
                  (linum-mode 1))))
 
+
+
+(defconst console-p (eq (symbol-value 'window-system) nil)
+  "Are we running in a console (non-X) environment?")
+
+;; highlight the current line unless we're running on the console
+(if (not console-p)
+    (progn (global-hl-line-mode 1)   ;; To customize the background color
+           (set-face-background 'hl-line "#222")))
+
+
+
+(defun local-hl-line-mode-off ()
+  (interactive)
+  (make-local-variable 'global-hl-line-mode)
+  (setq global-hl-line-mode nil))
+ 
+
+;; don't highlight the current line in eterm
+(add-hook 'term-mode-hook 'local-hl-line-mode-off)
 
 
 ;; change term-mode prefix key from C-c to C-x
@@ -82,13 +104,6 @@
             (define-key term-raw-map (kbd "M-x") nil)
             ))
 
-
-
-;;          (function 
-;;                  (progn ;; (if (not console-p) (hl-line-mode 1))
-
-
-;; (hl-line-mode 1)
 
 
 (add-to-list 'load-path "~/.emacs.d/speedbar-0.14beta4")
@@ -105,14 +120,6 @@
 
 (load-file "~/.emacs.d/lisp/php-mode.el")
 (require 'php-mode)
-
-
-(defconst console-p (eq (symbol-value 'window-system) nil)
-  "Are we running in a console (non-X) environment?")
-
-(if (not console-p)
-    (progn (global-hl-line-mode 1)   ;; To customize the background color
-           (set-face-background 'hl-line "#222")))
 
 
 (set-face-background 'flymake-errline "red4")
