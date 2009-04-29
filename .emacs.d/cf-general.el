@@ -67,12 +67,26 @@
 (load-file "~/.emacs.d/lisp/pastie.el")
 
 
+;; some stuff that seems like it should work to turn off linum in term-mode, but doesn't
+;; (global-linum-mode 1)
+
+;; (defun local-linum-mode-off ()
+;;   (interactive)
+;; ;;   (linum-mode nil)
+;; ;;   (make-local-variable 'global-linum-mode)
+;; ;;   (setq global-linum-mode nil)
+;;   (make-local-variable 'linum-mode)
+;;   (setq linum-mode nil)
+;;   )
+ 
+;; (add-hook 'term-mode-hook 'local-linum-mode-off)
+
+
 ;; turn line numbers on in all modes except term-mode
 (add-hook 'after-change-major-mode-hook 
           '(lambda ()
              (if (not (equal major-mode 'term-mode))
                  (linum-mode 1))))
-
 
 
 (defconst console-p (eq (symbol-value 'window-system) nil)
@@ -93,6 +107,7 @@
 
 ;; don't highlight the current line in eterm
 (add-hook 'term-mode-hook 'local-hl-line-mode-off)
+
 
 
 ;; change term-mode prefix key from C-c to C-x
