@@ -72,6 +72,46 @@
                  (linum-mode 1))))
 
 
+
+;; change term-mode prefix key from C-c to C-x
+;; (require 'term)
+;; (term-set-escape-char ?\C-x)
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (define-key term-raw-map (kbd "M-x") nil)
+            (term-set-escape-char ?\C-x)
+            ))
+;;              (progn
+ ;; ) 
+;;                     (local-unset-key (kbd "M-x"))
+;;                (define-key term-raw-map "\M-x" 'execute-extended-command)
+;;                     (define-key term-raw-escape-map [?\M-x] nil)
+;;                     (define-key (current-local-map) "\M-x" nil)
+;;                     (define-key term-mode-map "\M-x" nil)
+
+;;                     (local-unset-key ?\M-x)
+
+;; (add-hook 'term-load-hook
+;;           '(lambda ()
+;;              (progn ;; (term-set-escape-char ?\C-x)
+;; ;;                     (local-unset-key ?\M-x)
+;; ;;                     (local-unset-key "\M-x")
+;;                     (define-key term-mode-map "\M-x" nil)
+;; ;;                     (define-key (current-local-map) "\M-x" nil)
+;; ;;                     (define-key term-mode-map)
+;;                     )))
+
+;; (local-unset-key ?\M-x)
+
+
+;;          (function 
+;;                  (progn ;; (if (not console-p) (hl-line-mode 1))
+
+
+;; (hl-line-mode 1)
+
+
 (add-to-list 'load-path "~/.emacs.d/speedbar-0.14beta4")
 (add-to-list 'load-path "~/.emacs.d/eieio-0.17")
 (add-to-list 'load-path "~/.emacs.d/semantic-1.4.4")
