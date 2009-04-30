@@ -119,6 +119,8 @@
             (define-key term-raw-map (kbd "M-x") nil)
             ))
 
+(if (not (getenv "ESHELL"))
+    (setenv "ESHELL" (concat (getenv "HOME") "/.emacs.d/bash_wrapper")))
 
 
 (add-to-list 'load-path "~/.emacs.d/speedbar-0.14beta4")
