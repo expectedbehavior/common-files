@@ -117,8 +117,11 @@
           (lambda ()
             (term-set-escape-char ?\C-x)
             (define-key term-raw-map (kbd "M-x") nil)
+            (define-key term-raw-map (kbd "C-y") nil)
             ))
 
+(if (not (getenv "ESHELL"))
+    (setenv "ESHELL" (concat (getenv "HOME") "/.emacs.d/bash_wrapper")))
 
 
 (add-to-list 'load-path "~/.emacs.d/speedbar-0.14beta4")
@@ -512,8 +515,6 @@
 
 (fset 'send-to-scheme
    "\C-@\C-[\C-f\C-e\C-[w\C-xo\C-y\C-m\C-xo\C-e\C-[OC")
-
-
 
 (defun mac-toggle-max-window ()
   (interactive)
