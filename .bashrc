@@ -180,20 +180,21 @@ cf_date_check_notify() {
 }
 
 cf_get_latest_local_version() {
-	#get your current revision number
-	my_rev=`(cd $HOME && git log -1 --pretty=format:"%H %ad") 2> /dev/null`
-	if [[ "$my_rev" == "" ]]; then
-	    #couldn't get version from svn so we'll try .common_files/latest_revision.txt
-	    my_rev=`cat "$HOME/.common_files/.latest_revision"`
-	fi
-	if [[ "$my_rev" == "" ]]; then
-	    return 1
-	fi
-#	echo $my_rev
-	
-	CF_LOCAL_LATEST_VERSION=$my_rev
-
-	return 0
+    #get your current revision number
+    if which git &> /dev/null; then
+	      my_rev=`(cd $HOME && git log -1 --pretty=format:"%H %ad") 2> /dev/null`
+    fi	
+	  if [[ "$my_rev" == "" ]]; then
+	      #couldn't get version from svn so we'll try .common_files/latest_revision.txt
+	      my_rev=`cat "$HOME/.common_files/.latest_revision" 2> /dev/null`
+	  fi
+	  if [[ "$my_rev" == "" ]]; then
+	      return 1
+	  fi
+    
+	  CF_LOCAL_LATEST_VERSION=$my_rev
+    
+	  return 0
 }
 
 cf_get_latest_local_version
