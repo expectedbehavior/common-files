@@ -117,6 +117,7 @@
           (lambda ()
             (term-set-escape-char ?\C-x)
             (define-key term-raw-map (kbd "M-x") nil)
+            (define-key term-raw-map (kbd "C-y") nil)
             ))
 
 (if (not (getenv "ESHELL"))
