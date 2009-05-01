@@ -67,6 +67,14 @@
 (load-file "~/.emacs.d/lisp/pastie.el")
 
 
+;; make buffers that would have the same name be better named than default <n>
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq uniquify-separator "|")
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
+
+
 ;; some stuff that seems like it should work to turn off linum in term-mode, but doesn't
 ;; (global-linum-mode 1)
 
@@ -107,19 +115,22 @@
 
 ;; don't highlight the current line in eterm
 (add-hook 'term-mode-hook 'local-hl-line-mode-off)
-
-
+  
 
 ;; change term-mode prefix key from C-c to C-x
 ;; also unmap M-x from going right to the shell so it behaves like emacs
 ;; note (kdb "M-x") is the preferred way to speficy key stuff these days, apparently
-(add-hook 'term-mode-hook
-          (lambda ()
-            (term-set-escape-char ?\C-x)
-            (define-key term-raw-map (kbd "M-x") nil)
-            (define-key term-raw-map (kbd "C-y") nil)
-            ))
+(defun cf-set-term-char-mode-bindings ()
+  (interactive)
+  (term-set-escape-char ?\C-x)
+  (define-key term-raw-map (kbd "M-x") nil)
+  (define-key term-raw-map (kbd "C-y") (lambda () (interactive) (term-send-raw-string (current-kill 0))))
+  )
+(add-hook 'term-mode-hook 'cf-set-term-char-mode-bindings)
 
+
+;; our bash wrapper specifies the -il so bash will load all the appropriate files
+;; might want to change the CFs' bash files to explicitly load all the necessary file (once) but that's more work
 (if (not (getenv "ESHELL"))
     (setenv "ESHELL" (concat (getenv "HOME") "/.emacs.d/bash_wrapper")))
 
