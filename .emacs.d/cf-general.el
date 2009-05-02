@@ -125,6 +125,7 @@
   (term-set-escape-char ?\C-x)
   (define-key term-raw-map (kbd "M-x") nil)
   (define-key term-raw-map (kbd "C-y") 'term-paste)
+  (define-key term-raw-map (kbd "M-w") 'kill-ring-save)
   )
 (add-hook 'term-mode-hook 'cf-set-term-char-mode-bindings)
 
