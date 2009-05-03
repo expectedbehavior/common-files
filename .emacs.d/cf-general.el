@@ -124,6 +124,7 @@
   (interactive)
   (term-set-escape-char ?\C-x)
   (define-key term-raw-map (kbd "M-x") nil)
+  (define-key term-raw-map (kbd "C-c") 'term-send-raw)
   (define-key term-raw-map (kbd "C-y") 'term-paste)
   (define-key term-raw-map (kbd "M-w") 'kill-ring-save)
   )
