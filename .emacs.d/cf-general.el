@@ -90,6 +90,13 @@
  
 ;; (add-hook 'term-mode-hook 'local-linum-mode-off)
 
+;; make so you can do C-x k instead of C-x # when done editing with emacsclient
+(add-hook 'server-switch-hook 
+          (lambda ()
+            (when (current-local-map)
+              (use-local-map (copy-keymap (current-local-map))))
+            (local-set-key (kbd "C-x k") 'server-edit)))
+
 
 ;; turn line numbers on in all modes except term-mode
 (add-hook 'after-change-major-mode-hook 
