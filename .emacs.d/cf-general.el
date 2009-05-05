@@ -41,7 +41,8 @@
 				("\\.js.erb$" . js2-mode)
 			        ("\\.cl$" . lisp-mode)
 			        ("\\.tpl$" . html-mode)
-				("\\.rb$" . ruby-mode))
+				("\\.rb$" . ruby-mode)
+				("\\.gemspec$" . ruby-mode))
 			      auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
