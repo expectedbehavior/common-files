@@ -343,3 +343,5 @@ fi
 #last, but not least, source a configuration file so there's an easy place for users to make configuration changes from the default
 [ -f ~/.common_files/cf.conf ] && . ~/.common_files/cf.conf
 
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
