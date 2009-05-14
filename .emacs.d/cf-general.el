@@ -555,3 +555,17 @@
   (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
                                            nil
                                            'fullboth))) 
+
+
+
+(defun medium (&optional nosplit)
+  "Create a large window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "bitstream vera sans mono" 14)
+  (arrange-frame 170 45 nosplit))
+
+(defun presentation ()
+  "Create a giant font window suitable for doing live demos."
+  (interactive)
+  (arrange-frame 85 25 t)
+  (my-set-mac-font "bitstream vera sans mono" 24))
