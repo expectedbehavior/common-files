@@ -76,10 +76,11 @@ cfup() {
     fi
 
     if [[ "$CF_TARBALL_BACKUP" == "true" ]]; then
-	TEMPDIR=`mktemp -d` &&
+	TEMPDIR=`mktemp -d -t cf_backup_tmp.XXXXXXXXXXXXXX` &&
 	wget -O - http://cf.telaranrhiod.com/files/common/common_files.tbz2 | tar -xjov --no-same-permissions -C $TEMPDIR ./ &&
 	date="`date '+%Y-%m-%d--%H-%M-%S'`" &&
-	backup_path="$HOME/.common_files/backups/${date}--r${CF_RUNNING_VERSION}/" &&
+  version=`echo $CF_RUNNING_VERSION | awk '{print $1}'` &&
+	backup_path="$HOME/.common_files/backups/${date}--r${version}/" &&
 	mkdir -p $backup_path &&
 	echo "moving new files into place and backing up old files to $backup_path" &&
 	rsync -av -b --backup-dir=$backup_path $TEMPDIR/ ./ &&
