@@ -551,6 +551,34 @@
 
 
 
+
+(defun arrange-frame (w h &optional nosplit)
+  "Rearrange the current frame to a custom width and height and split unless prefix."
+  (let ((frame (selected-frame)))
+    (when (equal 'mac (framep frame))
+      (delete-other-windows)
+      (set-frame-position frame 5 25)
+      (set-frame-size frame w h)
+      (if (not nosplit)
+          (split-window-horizontally)))))
+
+(defun my-set-mac-font (name  size)
+  (interactive
+   (list (completing-read "font-name: "
+                          (mapcar (lambda (p) (list (car p) (car p)))
+                                  (x-font-family-list)) nil t)
+         (read-number "size: " 12)))
+  (set-face-attribute 'default nil
+                      :family name
+                      :slant  'normal
+                      :weight 'normal
+                      :width  'normal
+                      :height (* 10 size))
+  (frame-parameter nil 'font))
+
+
+
+
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
