@@ -10,12 +10,12 @@ load File.join(ENV['HOME'], '.railsrc') if $0 == 'irb' && ENV['RAILS_ENV']
 
 
 # load libraries
-# require 'rubygems'
-# require 'wirble'
+require 'rubygems'
+require 'wirble'
 
 # # start wirble (with color)
-# Wirble.init
-# #Wirble.colorize
+Wirble.init
+Wirble.colorize
  
 
 # require 'hirb'

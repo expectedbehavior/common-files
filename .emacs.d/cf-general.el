@@ -42,7 +42,9 @@
 			        ("\\.cl$" . lisp-mode)
 			        ("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
-				("\\.gemspec$" . ruby-mode))
+				("\\.gemspec$" . ruby-mode)
+        ("\\.sass$" . sass-mode)
+        ("\\.haml$" . haml-mode))
 			      auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -166,6 +168,11 @@
 (load-file "~/.emacs.d/lisp/php-mode.el")
 (require 'php-mode)
 
+(load-file "~/.emacs.d/haml/haml-mode.el")
+(require 'haml-mode)
+
+(load-file "~/.emacs.d/sass/sass-mode.el")
+(require 'sass-mode)
 
 (set-face-background 'flymake-errline "red4")
 (set-face-background 'flymake-warnline "dark slate blue")
