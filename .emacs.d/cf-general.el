@@ -151,6 +151,9 @@
 		      )))
 
 
+;; tell expansion to ignore ":" so you can use symbols nicely.  was nil
+(setq dabbrev-abbrev-skip-leading-regexp "[^ ]*[:*]")
+
 (add-to-list 'load-path "~/.emacs.d/speedbar-0.14beta4")
 (add-to-list 'load-path "~/.emacs.d/eieio-0.17")
 (add-to-list 'load-path "~/.emacs.d/semantic-1.4.4")
