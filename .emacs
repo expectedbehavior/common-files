@@ -33,3 +33,4 @@
 (load-file "~/.emacs.d/cf-general.el")
 
 (mac-toggle-max-window)
+(medium)
