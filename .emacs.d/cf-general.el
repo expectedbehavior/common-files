@@ -153,6 +153,16 @@
 		      )))
 
 
+
+(setq mac-option-modifier 'control)
+
+(global-set-key (kbd "C-M-<left>") 'windmove-left)          ; move to left windnow
+(global-set-key (kbd "C-M-<right>") 'windmove-right)        ; move to right window
+(global-set-key (kbd "C-M-<up>") 'windmove-up)              ; move to upper window
+(global-set-key (kbd "C-M-<down>") 'windmove-down)          ; move to downer window
+
+
+
 ;; tell expansion to ignore ":" so you can use symbols nicely.  was nil
 (setq dabbrev-abbrev-skip-leading-regexp "[^ ]*[:*]")
 
