@@ -145,13 +145,6 @@
     (setenv "ESHELL" (concat (getenv "HOME") "/.emacs.d/bash_wrapper")))
 
 
-(add-hook 'ruby-mode-hook 
-	  (function (lambda ()
-		      (local-set-key (kbd "<tab>") 'indent-according-to-mode)
-		      )))
-
-
-
 (setq mac-option-modifier 'control)
 
 (global-set-key (kbd "C-M-<left>") 'windmove-left)          ; move to left windnow
@@ -175,6 +168,13 @@
 
 (setq load-path (cons "~/.emacs.d/rails" load-path))
 (require 'rails)
+
+
+(add-hook 'ruby-mode-hook 
+	  (function (lambda ()
+		      (local-set-key (kbd "<tab>") 'indent-according-to-mode)
+		      )))
+
 
 (load-file "~/.emacs.d/lisp/php-mode.el")
 (require 'php-mode)
