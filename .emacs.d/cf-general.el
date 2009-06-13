@@ -145,10 +145,13 @@
     (setenv "ESHELL" (concat (getenv "HOME") "/.emacs.d/bash_wrapper")))
 
 
-(add-hook 'ruby-mode-hook 
-	  (function (lambda ()
-		      (local-set-key (kbd "<tab>") 'indent-according-to-mode)
-		      )))
+(setq mac-option-modifier 'control)
+
+(global-set-key (kbd "C-M-<left>") 'windmove-left)          ; move to left windnow
+(global-set-key (kbd "C-M-<right>") 'windmove-right)        ; move to right window
+(global-set-key (kbd "C-M-<up>") 'windmove-up)              ; move to upper window
+(global-set-key (kbd "C-M-<down>") 'windmove-down)          ; move to downer window
+
 
 
 ;; tell expansion to ignore ":" so you can use symbols nicely.  was nil
@@ -165,6 +168,13 @@
 
 (setq load-path (cons "~/.emacs.d/rails" load-path))
 (require 'rails)
+
+
+(add-hook 'ruby-mode-hook 
+	  (function (lambda ()
+		      (local-set-key (kbd "<tab>") 'indent-according-to-mode)
+		      )))
+
 
 (load-file "~/.emacs.d/lisp/php-mode.el")
 (require 'php-mode)
