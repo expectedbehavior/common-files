@@ -585,7 +585,7 @@
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "bitstream vera sans mono" 14)
+  (my-set-mac-font "inconsolata" 16)
   (arrange-frame 170 45 nosplit))
 
 (defun presentation ()
