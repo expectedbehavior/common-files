@@ -203,7 +203,7 @@
 
 
 (setq default-tab-width 2)
-(setq default-fill-column 120)
+(setq default-fill-column 12000)
 
 
 
