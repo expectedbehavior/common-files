@@ -602,7 +602,7 @@
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "Inconsolata" 16))
+  (my-set-mac-font "Inconsolata" 18))
 
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."
