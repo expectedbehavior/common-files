@@ -67,6 +67,8 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
 
 (require 'linum)
+(global-linum-mode 1)
+
 (load-file "~/.emacs.d/lisp/pastie.el")
 
 
@@ -602,7 +604,7 @@
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "Inconsolata" 18))
+ (my-set-mac-font "Inconsolata" 14))
 
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."

@@ -34,3 +34,4 @@
 
 (mac-toggle-max-window)
 (medium)
+(setq show-trailing-whitespace t)
