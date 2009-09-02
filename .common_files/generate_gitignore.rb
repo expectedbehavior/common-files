@@ -7,11 +7,6 @@ require 'rubygems'
 require 'grit'
 include Grit
 
-require 'ruby-debug'
-Debugger.start
-#debugger
-
-
 def common_files_repo
   Repo.new("~")
 end
@@ -33,32 +28,11 @@ end
 
 def ignore_lines_for_a_directory(git_dir, previous_dir = nil)
   return "" if git_dir == previous_dir
-  
-  subdirectories = find_directories_from_git_tree(git_dir)  
-  if subdirectories.empty?
-    #    debugger #if git_dir.name.nil?
-    tmp = <<-eos
-                #{git_dir.name}
-                #{git_dir.name}/*
-              eos
-    tmp.split("\n").map {|x| x.strip }.join("\n")
-    #        tmp.split("\n").map {|x| x.strip }.map {|x| "!#{x}" }.join("\n")
-  else
-    tmp =    <<-eos
-                   #{git_dir.name}
-                   #{git_dir.name}/*
-                eos
-    tmp = tmp.split("\n").map {|x| x.strip }.join("\n")
-
-    subdirectories.each do |subdir|
-      sublines = ignore_lines_for_a_directory(subdir, git_dir)
-      sublines_with_parent_dir_prepended = sublines.split("\n").map {|x| x.strip }.map {|x| "#{git_dir.name}/#{x}" }.join("\n")
-      tmp.concat sublines_with_parent_dir_prepended
-    end
-    #    debugger
-    #     tmp_with_negations_prepended = tmp.split("\n").map {|x| x.strip }.map {|x| "!#{x}" }.join("\n")
-    tmp #_with_negations_prepended
-  end 
+  tmp = <<-eos
+          #{git_dir.name}
+          #{git_dir.name}/**
+        eos
+  tmp.split("\n").map {|x| x.strip }.join("\n")
 end
 
 
