@@ -1,5 +1,7 @@
 # This file generates the correct .gitignore file for the common files, based on HEAD for your installed
-# repo. Just run it, and it'll work it out.
+# repo. Just run it, and it will print what should go into the .gitignore file.
+
+# Sample Command: ruby ~/.common_files/generate_gitignore.rb > ~/.gitignore
 
 require 'rubygems'
 require 'grit'
