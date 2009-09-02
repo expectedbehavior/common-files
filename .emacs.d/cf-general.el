@@ -39,10 +39,11 @@
 				("\\.php$" . php-mode)
 				("\\.js$" . js2-mode)
 				("\\.js.erb$" . js2-mode)
-			        ("\\.cl$" . lisp-mode)
-			        ("\\.tpl$" . html-mode)
+        ("\\.cl$" . lisp-mode)
+        ("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
-				("\\.gemspec$" . ruby-mode))
+				("\\.gemspec$" . ruby-mode)
+        ("\\.feature$" . cucumber-mode))         
 			      auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -63,6 +64,8 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/cucumber.el"))
+
 
 (require 'linum)
 (load-file "~/.emacs.d/lisp/pastie.el")
