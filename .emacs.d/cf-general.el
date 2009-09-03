@@ -39,12 +39,13 @@
 				("\\.php$" . php-mode)
 				("\\.js$" . js2-mode)
 				("\\.js.erb$" . js2-mode)
-			        ("\\.cl$" . lisp-mode)
-			        ("\\.tpl$" . html-mode)
+				("\\.cl$" . lisp-mode)
+				("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
 				("\\.gemspec$" . ruby-mode)
-        ("\\.sass$" . sass-mode)
-        ("\\.haml$" . haml-mode))
+				("\\.sass$" . sass-mode)
+				("\\.haml$" . haml-mode)
+				("\\.feature$" . cucumber-mode))         
 			      auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -65,6 +66,8 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/cucumber.el"))
+
 
 (require 'linum)
 (global-linum-mode 1)
@@ -605,7 +608,8 @@
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
- (my-set-mac-font "Inconsolata" 14))
+  (my-set-mac-font "inconsolata" 16)
+  (arrange-frame 170 45 nosplit))
 
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."
