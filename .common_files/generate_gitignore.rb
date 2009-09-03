@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
 
 # This file generates the correct .gitignore file for the common files, based on HEAD for your installed
-# repo. Just run it, and it will print what should go into the .gitignore file.
+# repo. Just run it, and it will print what should go into the .gitignore files.
+
+# The basic premise for functionality is:
+# 1) list all of the top-level directories of the common files in the top-level .gitignore 
+# 2) add exceptions for everything in those top-level directories by putting !* in the 
+#    .gitignore for each of those directories
+# 3) List the specific things that we still want to ignore in each of the subdirectory 
+#    .gitignore files
 
 # Sample Command: ruby ~/.common_files/generate_gitignore.rb
 
