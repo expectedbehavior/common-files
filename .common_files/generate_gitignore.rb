@@ -12,8 +12,12 @@ exceptions_to_the_exception = {
   ".common_files" => ["*svn", ".last_checked_date", ".out_of_date_last_notified_date", ".out_of_date_notification_message", "cf.conf"]
 }
 
+def common_files_path
+  File.expand_path("~")
+end
+
 def common_files_repo
-  Repo.new("~")
+  Repo.new(common_files_path)
 end
 
 def find_directories_from_git_tree(tree)
@@ -47,6 +51,8 @@ end
 # The Real Program
 #####
 
+
+raise "This script is only valid if run from the root of the common files. You ran it from #{Dir.pwd}" unless common_files_path == Dir.pwd
 
 File.open(".gitignore", "w+") do |f|
   f.puts disclaimer
