@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # This file generates the correct .gitignore file for the common files, based on HEAD for your installed
 # repo. Just run it, and it will print what should go into the .gitignore file.
 
