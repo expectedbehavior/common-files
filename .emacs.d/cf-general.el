@@ -66,6 +66,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/cucumber.el"))
 
+(require 'feature-mode)
 
 (require 'linum)
 (load-file "~/.emacs.d/lisp/pastie.el")
