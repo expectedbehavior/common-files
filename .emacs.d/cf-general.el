@@ -193,6 +193,9 @@
 (load-file "~/.emacs.d/sass/sass-mode.el")
 (require 'sass-mode)
 
+(load-file "~/.emacs.d/minimap/minimap.el")
+(require 'minimap)
+
 (set-face-background 'flymake-errline "red4")
 (set-face-background 'flymake-warnline "dark slate blue")
 
@@ -245,7 +248,7 @@
 ;;Keys that should be mapped to a particular function regardless of mode
 ;;should be set here.
 ;;
-(global-set-key "%" 'match-paren)
+;;(global-set-key "%" 'match-paren)
 (global-set-key "%" 'run-scheme)
 (global-set-key "!" 'shell)
 (global-set-key "x" 'send-to-scheme) ;;copies from top buffer to bottom
@@ -609,7 +612,7 @@
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "inconsolata" 16)
+  (my-set-mac-font "inconsolata2" 15)
   (arrange-frame 170 45 nosplit))
 
 (defun presentation ()
