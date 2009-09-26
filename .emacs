@@ -32,6 +32,6 @@
 
 (load-file "~/.emacs.d/cf-general.el")
 
-(mac-toggle-max-window)
-(medium)
-(setq show-trailing-whitespace t)
+;; (mac-toggle-max-window)
+;; (medium)
+;; (setq show-trailing-whitespace t)
