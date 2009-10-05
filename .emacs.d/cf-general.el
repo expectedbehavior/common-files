@@ -193,9 +193,6 @@
 (load-file "~/.emacs.d/sass/sass-mode.el")
 (require 'sass-mode)
 
-(load-file "~/.emacs.d/minimap/minimap.el")
-(require 'minimap)
-
 (set-face-background 'flymake-errline "red4")
 (set-face-background 'flymake-warnline "dark slate blue")
 
