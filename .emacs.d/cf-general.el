@@ -615,6 +615,13 @@
   (my-set-mac-font "inconsolata2" 15)
   (arrange-frame 170 45 nosplit))
 
+(defun projector (&optional nosplit)
+  "Create a large window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "inconsolata" 18)
+  (arrange-frame 170 45 nosplit))
+
+
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."
   (interactive)

@@ -35,3 +35,5 @@
 ;; (mac-toggle-max-window)
 ;; (medium)
 ;; (setq show-trailing-whitespace t)
+;;  (my-set-mac-font "inconsolata" 16)
+
