@@ -208,26 +208,26 @@ cf_check_for_updates() {
 ((
 #checking to see if you're up to date
 #make sure you have curl and svn
-if which git curl &> /dev/null; then
-    #get the latest revision number, this should just be an integer.
-    latest=`curl -sL http://cf.telaranrhiod.com/files/common/latest_revision.txt`
-    #make sure curl returned successfully
-    if [[ "$?" == "0" ]]; then
-#	my_rev="`cf_get_latest_local_version`"
-cf_get_latest_local_version
-	my_rev=$CF_LOCAL_LATEST_VERSION
-	#check if you're up to date
-  latest_hash=`echo $latest | awk '{print $1}'`
-  my_hash=`echo $my_rev | awk '{print $1}'`
-	if [[ "$latest_hash" != "$my_hash" ]]; then 
-	    #if not, create the .out_of_date file with the appropriate message so next time you start a terminal we can alert you.
-	    echo "Not on latest revision of common_files.  Latest: $latest, yours: $my_rev" > $notification_message_path
-	else
-	    #if you're up to date we don't need this file
-	    [ -f $notification_message_path ] && rm $notification_message_path
-	fi
-    fi
-fi
+        if which git curl &> /dev/null; then
+            #get the latest revision number, this should just be an integer.
+            latest=`curl -sL http://cf.telaranrhiod.com/files/common/latest_revision.txt`
+            #make sure curl returned successfully
+            if [[ "$?" == "0" ]]; then
+                #	my_rev="`cf_get_latest_local_version`"
+                cf_get_latest_local_version
+	              my_rev=$CF_LOCAL_LATEST_VERSION
+              	#check if you're up to date
+                latest_hash=`echo $latest | awk '{print $1}'`
+                my_hash=`echo $my_rev | awk '{print $1}'`
+	              if [[ "$latest_hash" != "$my_hash" ]]; then 
+              	    #if not, create the .out_of_date file with the appropriate message so next time you start a terminal we can alert you.
+	                  echo "Not on latest revision of common_files.  Latest: $latest, yours: $my_rev" > $notification_message_path
+	              else
+              	    #if you're up to date we don't need this file
+	                  [ -f $notification_message_path ] && rm $notification_message_path
+	              fi
+            fi
+        fi
 ) &)
 }
 
