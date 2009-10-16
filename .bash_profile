@@ -6,7 +6,6 @@
 
 for k in /usr/bin/keychain /opt/local/bin/keychain; do
     if [ -f $k ]; then
-        echo ~/.ssh/*
         for i in ~/.ssh/*; do
             [ -f $i ] && [ -f $i.pub ] && $k --nogui $i
         done
