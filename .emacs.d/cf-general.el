@@ -45,7 +45,7 @@
 				("\\.gemspec$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.haml$" . haml-mode)
-				("\\.feature$" . cucumber-mode))         
+				("\\.feature$" . feature-mode))         
 			      auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -67,7 +67,6 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/cucumber.el"))
-
 (require 'feature-mode)
 
 (require 'linum)
@@ -207,8 +206,8 @@
 (load-file "~/.emacs.d/sass/sass-mode.el")
 (require 'sass-mode)
 
-(load-file "~/.emacs.d/minimap/minimap.el")
-(require 'minimap)
+;; (load-file "~/.emacs.d/minimap/minimap.el")
+;; (require 'minimap)
 
 (set-face-background 'flymake-errline "red4")
 (set-face-background 'flymake-warnline "dark slate blue")
@@ -628,6 +627,13 @@
   (interactive "P")
   (my-set-mac-font "inconsolata2" 15)
   (arrange-frame 170 45 nosplit))
+
+(defun projector (&optional nosplit)
+  "Create a large window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "inconsolata" 20)
+  (arrange-frame 170 45 nosplit))
+
 
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."
