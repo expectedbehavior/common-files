@@ -147,6 +147,20 @@
 (add-hook 'term-mode-hook 'cf-set-term-char-mode-bindings)
 
 
+
+(setq ido-enable-flex-matching t)
+
+
+
+(require 'mumamo-fun)
+;; (setq mumamo-chunk-coloring 'submode-colored)
+(setq mumamo-chunk-coloring 'no-chunks-colored)
+(add-to-list 'auto-mode-alist '("\\.rhtml" . eruby-html-mumamo))
+(add-to-list 'auto-mode-alist '("\\.html\\.erb" . eruby-html-mumamo))
+(add-to-list 'auto-mode-alist '("\\.erb" . eruby-html-mumamo))
+
+
+
 ;; our bash wrapper specifies the -il so bash will load all the appropriate files
 ;; might want to change the CFs' bash files to explicitly load all the necessary file (once) but that's more work
 (if (not (getenv "ESHELL"))
