@@ -45,7 +45,7 @@
 				("\\.gemspec$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.haml$" . haml-mode)
-				("\\.feature$" . cucumber-mode))         
+				("\\.feature$" . feature-mode))         
 			      auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -67,7 +67,6 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/cucumber.el"))
-
 (require 'feature-mode)
 
 (require 'linum)
@@ -145,6 +144,20 @@
   (define-key term-raw-map (kbd "M-w") 'kill-ring-save)
   )
 (add-hook 'term-mode-hook 'cf-set-term-char-mode-bindings)
+
+
+
+(setq ido-enable-flex-matching t)
+
+
+
+(require 'mumamo-fun)
+;; (setq mumamo-chunk-coloring 'submode-colored)
+(setq mumamo-chunk-coloring 'no-chunks-colored)
+(add-to-list 'auto-mode-alist '("\\.rhtml" . eruby-html-mumamo))
+(add-to-list 'auto-mode-alist '("\\.html\\.erb" . eruby-html-mumamo))
+(add-to-list 'auto-mode-alist '("\\.erb" . eruby-html-mumamo))
+
 
 
 ;; our bash wrapper specifies the -il so bash will load all the appropriate files
@@ -611,6 +624,13 @@
   (interactive "P")
   (my-set-mac-font "inconsolata2" 15)
   (arrange-frame 170 45 nosplit))
+
+(defun projector (&optional nosplit)
+  "Create a large window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "inconsolata" 20)
+  (arrange-frame 170 45 nosplit))
+
 
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."
