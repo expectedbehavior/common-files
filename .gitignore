@@ -13,3 +13,5 @@
 !.irbrc.d/**
 !.railsrc.d
 !.railsrc.d/**
+!.bash_completions
+!.bash_completions/**

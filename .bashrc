@@ -7,6 +7,7 @@
 #PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\W \$ \[\033[00m\]'
 
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
+[[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
 
 export INPUTRC="$HOME/.inputrc"
 export EDITOR="/usr/bin/emacs"
@@ -31,6 +32,8 @@ alias sw='screen -wipe'
 #alias cfup='((svn info &> /dev/null && svn up) || (echo; echo -n "svn repository not detected, use tbz2? [Y,n]: "; read y; [ "$y" == "" -o "$y" == "y" -o "$y" == "Y" ] && (wget -O - http://cf.telaranrhiod.com/files/common/common_files.tbz2 | tar -xjov --no-same-permissions ./))); exec bash'
 alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 | tar -xjov --no-same-permissions -C ~/.fluxbox/backgrounds/)'
 alias md5='md5sum'
+alias glg='git lg'
+complete -o default -o nospace -F _git_log glg
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
