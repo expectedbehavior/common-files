@@ -637,3 +637,12 @@
   (interactive)
   (arrange-frame 85 25 t)
   (my-set-mac-font "bitstream vera sans mono" 24))
+
+(defun reload-file ()
+  (interactive)
+  (let ((curr-scroll (window-vscroll)))
+    (find-file (buffer-name))
+    (set-window-vscroll nil curr-scroll)
+    (message "Reloaded file")))
+ 
+(global-set-key "\C-x\C-v" 'reload-file)
