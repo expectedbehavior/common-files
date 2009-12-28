@@ -62,6 +62,18 @@
      (load "/usr/share/emacs/site-lisp/site-gentoo"))
 
 
+(let ((default-directory "~/.emacs.d/"))
+  (add-to-list 'load-path default-directory)
+  (normal-top-level-add-subdirs-to-load-path))
+ 
+(defun load-directory (dir)
+  (mapcar '(lambda (x)
+             (load-file x))
+          (directory-files dir t "\\.el$")))
+ 
+(load-directory "~/.emacs.d/autoload/")
+
+
 ;; Load paths
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
