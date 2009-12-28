@@ -18,7 +18,7 @@ include Grit
 
 exceptions_to_the_exception = { 
   ".emacs.d" => ["semantic.cache", "url"],
-  ".common_files" => ["*svn", ".last_checked_date", ".out_of_date_last_notified_date", ".out_of_date_notification_message", "cf.conf"]
+  ".common_files" => ["*svn", ".last_checked_date", ".out_of_date_last_notified_date", ".out_of_date_notification_message", "cf.conf", "backups"]
 }
 
 def common_files_path

@@ -3,6 +3,8 @@
 
 *
 !.gitignore
+!.bash_completions
+!.bash_completions/**
 !.common_files
 !.common_files/**
 !.emacs.d
@@ -13,5 +15,3 @@
 !.irbrc.d/**
 !.railsrc.d
 !.railsrc.d/**
-!.bash_completions
-!.bash_completions/**
