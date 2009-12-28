@@ -84,15 +84,8 @@
 (require 'linum)
 (global-linum-mode 1)
 
-(load-file "~/.emacs.d/lisp/pastie.el")
 
 
-;; make buffers that would have the same name be better named than default <n>
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse)
-(setq uniquify-separator "|")
-(setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
 
 
 ;; some stuff that seems like it should work to turn off linum in term-mode, but doesn't
