@@ -35,5 +35,16 @@
 ;; (mac-toggle-max-window)
 ;; (medium)
 ;; (setq show-trailing-whitespace t)
-;;  (my-set-mac-font "inconsolata" 16)
 
+(put 'upcase-region 'disabled nil)
+
+(defun medium (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "espresso" 15)
+;;  (my-set-mac-font "inconsolata2" 14)
+  (arrange-frame 170 45 nosplit))
+
+(medium)
+
+(mac-toggle-max-window)
