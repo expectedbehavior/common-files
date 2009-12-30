@@ -21,9 +21,16 @@ require 'pp'
 
 # load rubygems and wirble
 require 'rubygems' rescue nil
-require 'wirble'
-require 'utility_belt'
 
-# load wirble
-Wirble.init
-Wirble.colorize
+begin
+  # load wirble
+  require 'wirble'
+
+  # start wirble (with color)
+  Wirble.init
+  Wirble.colorize
+rescue LoadError => err
+  warn "Couldn't load Wirble: #{err}"
+end
+
+require 'utility_belt'

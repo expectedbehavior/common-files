@@ -24,3 +24,5 @@ cf_date_check_notify
 cf_check_for_updates
 
 #testing
+
+source "ruby_switcher.sh"
