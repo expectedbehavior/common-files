@@ -150,19 +150,18 @@ psg() {
 }
 
 known_hosts_temp_file=~/.ssh/temp_known_hosts_file
-pssh() {
-    echo "making backup of current known_hosts file and adding new key to old one"
-    cp ~/.ssh/known_hosts ~/.ssh/known_hosts.nssh.bak || exit 1
+set_temp_known_host() {
     rm ${known_hosts_temp_file} &> /dev/null
-    ssh -o 'StrictHostKeyChecking=no' -o 'PreferredAuthentications=""' -o "UserKnownHostsFile=${known_hosts_temp_file}" $* &> /dev/null
-    cat ~/.ssh/known_hosts | grep -v "`cat ${known_hosts_temp_file} | awk '{print $1}'`" >> ${known_hosts_temp_file}
-    mv ${known_hosts_temp_file} ~/.ssh/known_hosts
-    ssh $*   
+    # we use xxx because we want this to fail to login, just set the known host
+    ssh -o 'StrictHostKeyChecking=no' -o 'PreferredAuthentications="xxx"' -o "UserKnownHostsFile=${known_hosts_temp_file}" $* &> /dev/null
 }
-
+pssh() {
+    set_temp_known_host $*
+    cat ${known_hosts_temp_file} >> ~/.ssh/known_hosts
+    ssh $*
+}
 tssh() {
-    rm ${known_hosts_temp_file} &> /dev/null
-    ssh -o 'StrictHostKeyChecking=no' -o 'PreferredAuthentications=""' -o "UserKnownHostsFile=${known_hosts_temp_file}" $* &> /dev/null
+    set_temp_known_host $*
     ssh -o "UserKnownHostsFile=${known_hosts_temp_file}" $*   
 }
 
