@@ -47,4 +47,7 @@
 
 (medium)
 
+(cua-mode)
+
 (mac-toggle-max-window)
+
