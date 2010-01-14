@@ -14,6 +14,7 @@ export EDITOR="/usr/bin/emacs"
 export GLOBIGNORE='.:..'
 export HISTTIMEFORMAT='%c  '
 export LC_COLLATE="POSIX"
+export ACKRC="$HOME/.ackrc"
 
 # remove the ':' from wordbreaks so we don't have to escape it on teh command line
 COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
@@ -49,6 +50,7 @@ alias gd="git diff"
 complete -o default -o nospace -F _git_diff gd
 alias gbr="git branch"
 complete -o default -o nospace -F _git_branch gbr
+alias ackp='ack --pager="less -r"'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
