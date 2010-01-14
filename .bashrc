@@ -35,6 +35,7 @@ alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 
 alias md5='md5sum'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
+alias ackp='ack --pager="less -r"'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
