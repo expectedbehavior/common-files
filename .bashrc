@@ -14,6 +14,7 @@ export EDITOR="/usr/bin/emacs"
 export GLOBIGNORE='.:..'
 export HISTTIMEFORMAT='%c  '
 export LC_COLLATE="POSIX"
+export ACKRC="$HOME/.ackrc"
 
 # remove the ':' from wordbreaks so we don't have to escape it on teh command line
 COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
