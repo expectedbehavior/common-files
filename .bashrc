@@ -314,6 +314,11 @@ if [[ "$TERM" != 'dumb'  ]] && [[ -n "$BASH" ]]; then
 #    ORIG_PS1="$PS1"
 fi
 
+#make eterm into xterm for emacs/ssh purposes
+if [[ "$TERM" = "eterm-color" ]]; then
+    export TERM="xterm-color"
+fi
+
 if [[ "`/usr/bin/whoami`" = 'root' ]]; then
         export PATH="/bin:/sbin:/usr/bin:/usr/sbin:${ROOTPATH}"
 else
@@ -350,3 +355,4 @@ fi
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
+source ~/ruby_switcher.sh
