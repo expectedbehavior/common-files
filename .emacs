@@ -46,5 +46,11 @@
 
 (require 'color-theme)
 (color-theme-initialize)
-(load-file "~/.emacs.d/autoload/colors/themes/color-theme-twilight.el")
-(color-theme-twilight)
+(load "~/.emacs.d/autoload/colors/themes/color-theme-vibrant-ink.el")
+(load "~/.emacs.d/autoload/colors/themes/color-theme-wombat.el")
+(load "~/.emacs.d/autoload/colors/themes/color-theme-twilight.el")
+(load "~/.emacs.d/autoload/colors/themes/zenburn.el")
+;; (color-theme-twilight)
+;; (color-theme-wombat)
+;; (color-theme-chocolate-rain)
+(color-theme-vibrant-ink)
