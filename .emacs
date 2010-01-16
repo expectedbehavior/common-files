@@ -28,13 +28,7 @@
   ;; If there is more than one, they won't work right.
  )
 
-
-
 (load-file "~/.emacs.d/cf-general.el")
-
-;; (mac-toggle-max-window)
-;; (medium)
-;; (setq show-trailing-whitespace t)
 
 (put 'upcase-region 'disabled nil)
 
@@ -45,9 +39,12 @@
 ;;  (my-set-mac-font "inconsolata2" 14)
   (arrange-frame 170 45 nosplit))
 
+(mac-toggle-max-window)
 (medium)
-
+(setq show-trailing-whitespace t)
 (cua-mode)
 
-(mac-toggle-max-window)
-
+(require 'color-theme)
+(color-theme-initialize)
+(load-file "~/.emacs.d/autoload/colors/themes/color-theme-twilight.el")
+(color-theme-twilight)
