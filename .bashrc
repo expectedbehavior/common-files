@@ -14,6 +14,7 @@ export EDITOR="/usr/bin/emacs"
 export GLOBIGNORE='.:..'
 export HISTTIMEFORMAT='%c  '
 export LC_COLLATE="POSIX"
+export ACKRC="$HOME/.ackrc"
 
 # remove the ':' from wordbreaks so we don't have to escape it on teh command line
 COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
@@ -34,6 +35,7 @@ alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 
 alias md5='md5sum'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
+alias ackp='ack --pager="less -r"'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
