@@ -3,8 +3,10 @@
 The common files are meant to be installed into your home directory, but Git is a little reluctant to put itself right
 into an existing directory. Install by checking out to a directory and then copying into your home directory:
 
-* git clone git@github.com:expectedbehavior/common-files.git
+* git clone git://github.com/expectedbehavior/common-files.git
 * cp -fr common-files/* .
+* cp -fr common-files/.?? .
+* rm -fr common-files/
 
 # History Search
 
