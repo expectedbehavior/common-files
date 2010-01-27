@@ -35,10 +35,10 @@
 (defun medium (&optional nosplit)
   "Create a two-pane window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "espresso" 16)
+  (my-set-mac-font "espresso" 14)
   (arrange-frame 170 45 nosplit))
 
-;; (mac-toggle-max-window)
+(mac-toggle-max-window)
 (medium)
 (setq show-trailing-whitespace t)
 (cua-mode)
