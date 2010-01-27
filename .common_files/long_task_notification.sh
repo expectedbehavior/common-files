@@ -141,7 +141,7 @@ notify_or_wait_for_background_jobs_and_notify() {
 		    while [[ "`cf_number_of_child_processes_count`" -gt "$(( start_processes - 1 ))" ]]; do
 			checked_once="true"
 #			notify-send "bash" "checking...";
-			sleep 3;
+			sleep 3 || break;
 		    done;
 ## all the background jobs have completed
 		    cmd_time=$(( SECONDS - (cmd_date - CF_START_SECONDS) ))
