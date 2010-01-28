@@ -50,7 +50,11 @@ alias gd="git diff"
 complete -o default -o nospace -F _git_diff gd
 alias gbr="git branch"
 complete -o default -o nospace -F _git_branch gbr
+alias ga="git add"
+complete -o default -o nospace -F _git_add ga
+
 alias ackp='ack --pager="less -r"'
+
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
