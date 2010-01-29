@@ -1,2 +1,3 @@
 --color
 --type-set=haml=.haml
+--type-set=cuke=.feature
