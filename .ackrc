@@ -1,3 +1,4 @@
 --color
 --type-set=haml=.haml
 --type-set=cuke=.feature
+--ignore-dir=culerity_page_errors
