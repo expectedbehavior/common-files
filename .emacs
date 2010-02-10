@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;; end Red Hat defaults ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; these customizations were made from the options menu.  To change 
+;; these customizations were made from the options menu.  To change
 ;; them make use the options menu.  They should be self explanatory
 ;; (I hope)
 

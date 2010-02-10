@@ -53,6 +53,11 @@ complete -o default -o nospace -F _git_branch gbr
 alias ga="git add"
 complete -o default -o nospace -F _git_add ga
 
+alias cupass="cucumber ./features -t @shouldpass"
+alias cuwip="cucumber ./features -t @wip"
+alias cufail="cucumber ./features -t @shouldfail"
+alias cuke="cucumber ./features"
+
 alias ackp='ack --pager="less -r"'
 
 
