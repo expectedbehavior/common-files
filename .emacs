@@ -37,3 +37,22 @@
 ;; (setq show-trailing-whitespace t)
 ;;  (my-set-mac-font "inconsolata" 16)
 
+
+(require 'color-theme)
+(color-theme-initialize)
+;; uncomment two lines below to start emacs with a different color theme.
+;; I like the twilight theme. It has draculas. -joel
+;; (load "~/.emacs.d/autoload/colors/themes/color-theme-vibrant-ink.el")
+;; (color-theme-vibrant-ink)
+;; (load "~/.emacs.d/autoload/colors/themes/color-theme-less.el")
+;; (color-theme-less)
+;; (load "~/.emacs.d/autoload/colors/themes/color-theme-subdued.el")
+;; (color-theme-subdued)
+;; (load "~/.emacs.d/autoload/colors/themes/color-theme-wombat.el")
+;; (color-theme-wombat)
+;; (load "~/.emacs.d/autoload/colors/themes/color-theme-twilight.el")
+;; (color-theme-twilight)
+;; (load "~/.emacs.d/autoload/colors/themes/color-theme-railscasts.el")
+;; (color-theme-railscasts)
+;;(load "~/.emacs.d/autoload/colors/themes/color-theme-chocolate-rain.el")
+;; (color-theme-chocolate-rain)
