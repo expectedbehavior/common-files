@@ -55,3 +55,6 @@ _rake()
     fi
 }
 [ -n "${have:-}" ] && complete -F _rake $filenames rake
+
+
+complete -C "mite auto-complete" mite
