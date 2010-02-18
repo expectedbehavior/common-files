@@ -356,4 +356,4 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-source ~/ruby_switcher.sh
+# source ~/ruby_switcher.sh
