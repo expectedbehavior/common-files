@@ -45,6 +45,8 @@
 
 (require 'color-theme)
 (color-theme-initialize)
+;; uncomment two lines below to start emacs with a different color theme.
+;; I like the twilight theme. It has draculas. -joel
 ;; (load "~/.emacs.d/autoload/colors/themes/color-theme-vibrant-ink.el")
 ;; (color-theme-vibrant-ink)
 ;; (load "~/.emacs.d/autoload/colors/themes/color-theme-less.el")
