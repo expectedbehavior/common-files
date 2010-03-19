@@ -5,3 +5,10 @@ def db_inspect
   end
   nil
 end
+
+require 'active_record'
+class ActiveRecord::Base
+  def self.[](*args)
+    self.find(*args)
+  end
+end
