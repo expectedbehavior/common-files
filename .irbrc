@@ -21,6 +21,8 @@ require 'rubygems'
 require 'irb/completion'
 # Save irb sessions to history file
 require 'irb/ext/save-history'
+require 'pp'
+require 'ap'
 
 # Not stdlib
 require 'map_by_method'
