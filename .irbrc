@@ -18,6 +18,7 @@ IRB.conf[:PROMPT_MODE] = :SIMPLE
 require 'irb/completion'
 require 'irb/ext/save-history'
 require 'pp'
+require 'ap'
 
 # load rubygems and wirble
 require 'rubygems' rescue nil
