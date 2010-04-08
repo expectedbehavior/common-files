@@ -35,6 +35,28 @@ alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 
 alias md5='md5sum'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
+alias gcm='git commit -m'
+alias gca='git commit -a'
+alias gcam='git commit -a -m'
+alias gst='git status'
+alias gco="git checkout"
+complete -o default -o nospace -F _git_checkout gco
+alias gpul="git pull"
+complete -o default -o nospace -F _git_pull gpull
+alias gpsh="git push"
+complete -o default -o nospace -F _git_push gpush
+alias gd="git diff"
+complete -o default -o nospace -F _git_diff gd
+alias gbr="git branch"
+complete -o default -o nospace -F _git_branch gbr
+alias ga="git add"
+complete -o default -o nospace -F _git_add ga
+
+alias cuwork="cucumber ./features -t @shouldwork"
+alias cuwip="cucumber ./features -t @wip"
+alias cufail="cucumber ./features -t @shouldfail"
+alias cuke="cucumber ./features"
+
 alias ackp='ack --pager="less -r"'
 
 export CF_TARBALL_BACKUP="true"
