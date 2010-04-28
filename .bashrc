@@ -57,6 +57,9 @@ alias cuwip="cucumber ./features -t @wip"
 alias cufail="cucumber ./features -t @shouldfail"
 alias cuke="cucumber ./features"
 
+alias sc='script/console'
+alias sct='RAILS_ENV="test" sc'
+
 alias ackp='ack --pager="less -r"'
 
 export CF_TARBALL_BACKUP="true"
