@@ -58,6 +58,9 @@ alias cuwip="cucumber ./features -t @wip"
 alias cufail="cucumber ./features -t @shouldfail"
 alias cuke="cucumber ./features"
 
+alias sc='script/console'
+alias sct='RAILS_ENV="test" sc'
+
 alias ackp='ack --pager="less -r"'
 
 
@@ -319,12 +322,18 @@ shopt -s cdspell
 #let * match files beginning with '.' but since GLOBIGNORE is set above it won't match '.' or '..'
 shopt -s dotglob
 
+#make eterm into xterm for emacs/ssh purposes
+if [[ "$TERM" = "eterm-color" ]]; then
+    export CF_REAL_TERM=$TERM
+    export TERM="xterm-color"
+fi
+
 #build PS1
 #don't set PS1 for dumb terminals
 if [[ "$TERM" != 'dumb'  ]] && [[ -n "$BASH" ]]; then
     PS1=''
     #don't modify titlebar on console
-    [[ "$TERM" != 'linux' && "$TERM" != "eterm-color" ]] && PS1="${PS1}\[\e]2;\u@\H:\W\a"
+    [[ "$TERM" != 'linux' && "$CF_REAL_TERM" != "eterm-color" ]] && PS1="${PS1}\[\e]2;\u@\H:\W\a"
 #    [[ "$TERM" != 'linux' ]] && PS1="${PS1}\[\e]2;\u@\H:\W -- <cmd_time>\a"
     if [[ "`/usr/bin/whoami`" = "root" ]]; then
 	#red hostname
@@ -337,6 +346,7 @@ if [[ "$TERM" != 'dumb'  ]] && [[ -n "$BASH" ]]; then
     PS1="${PS1}\h \[\033[01;34m\]\W \$ \[\033[00m\]"
 #    ORIG_PS1="$PS1"
 fi
+
 
 #PS1='\h:\W$(__git_ps1 "(%s)") \u\$ '
 #make eterm into xterm for emacs/ssh purposes

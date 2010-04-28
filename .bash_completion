@@ -1,5 +1,6 @@
 #!/bin/bash
 
+[[ "`declare -f have`" != "" ]] &&
 have rake &&
 _rake()
 {

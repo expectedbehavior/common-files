@@ -126,6 +126,9 @@
            (set-face-background 'hl-line "#222")))
 
 
+(put 'upcase-region 'disabled nil)
+
+
 
 (defun local-hl-line-mode-off ()
   (interactive)
