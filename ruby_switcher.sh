@@ -141,7 +141,7 @@ function install_ruby_from_source {
   curl --silent -L -O $url &&
   tar xzf $ruby_version.tar.gz &&
   cd $ruby_version &&
-  ./configure --prefix=$HOME/.ruby_versions/$ruby_version --enable-shared &&
+  ./configure --prefix=$HOME/.ruby_versions/$ruby_version --enable-shared,--with-readline-dir=/opt/local &&
   make && make install && cd ~/tmp &&
   rm -rf $ruby_version.tar.gz $ruby_version
 }

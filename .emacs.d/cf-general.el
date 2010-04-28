@@ -641,7 +641,7 @@
   "Create a giant font window suitable for doing live demos."
   (interactive)
   (arrange-frame 85 25 t)
-  (my-set-mac-font "bitstream vera sans mono" 24))
+  (my-set-mac-font "expresso" 22))
 
 (defun reload-file ()
   (interactive)

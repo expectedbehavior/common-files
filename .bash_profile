@@ -26,4 +26,6 @@ cf_check_for_updates
 
 #testing
 
-source "ruby_switcher.sh"
+#source "ruby_switcher.sh"
+
+if [[ -s /Users/joel/.rvm/scripts/rvm ]] ; then source /Users/joel/.rvm/scripts/rvm ; fi
