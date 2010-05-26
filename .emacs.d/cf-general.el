@@ -37,8 +37,8 @@
 				("\\.java$" . java-mode)
 				("\\.html$" . html-mode)
 				("\\.php$" . php-mode)
-				("\\.js$" . js2-mode)
-				("\\.js.erb$" . js2-mode)
+				("\\.js$" . js-mode)
+				("\\.js.erb$" . js-mode)
 				("\\.cl$" . lisp-mode)
 				("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
@@ -85,7 +85,7 @@
 (global-linum-mode 1)
 
 
-
+(setq js-indent-level 2)
 
 
 ;; some stuff that seems like it should work to turn off linum in term-mode, but doesn't
