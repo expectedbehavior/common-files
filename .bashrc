@@ -36,8 +36,10 @@ alias md5='md5sum'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
 alias gcm='git commit -m'
+alias gc="git commit"
 alias gca='git commit -a'
 alias gcam='git commit -a -m'
+alias gs='git status'
 alias gst='git status'
 alias gco="git checkout"
 complete -o default -o nospace -F _git_checkout gco
