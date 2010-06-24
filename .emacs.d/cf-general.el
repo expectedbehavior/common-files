@@ -43,6 +43,7 @@
 				("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
 				("\\.gemspec$" . ruby-mode)
+        ("\\Gemfile$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.haml$" . haml-mode)
 				("\\.feature$" . feature-mode))         
@@ -630,7 +631,7 @@
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "inconsolata2" 15)
+  (my-set-mac-font "expresso" 15)
   (arrange-frame 170 45 nosplit))
 
 (defun projector (&optional nosplit)
