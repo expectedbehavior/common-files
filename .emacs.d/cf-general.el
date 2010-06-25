@@ -43,6 +43,7 @@
 				("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
 				("\\.gemspec$" . ruby-mode)
+        ("\\Gemfile$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.haml$" . haml-mode)
 				("\\.feature$" . feature-mode))         
