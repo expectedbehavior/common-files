@@ -42,6 +42,8 @@
 				("\\.cl$" . lisp-mode)
 				("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
+				("\\.Gemfile$" . ruby-mode)
+				("\\.Capfile$" . ruby-mode)
 				("\\.gemspec$" . ruby-mode)
         ("\\Gemfile$" . ruby-mode)
 				("\\.sass$" . sass-mode)

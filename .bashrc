@@ -64,7 +64,6 @@ alias sct='RAILS_ENV="test" sc'
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
 
-
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
 cfup() {
