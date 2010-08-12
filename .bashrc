@@ -191,12 +191,12 @@ vncvia() {
     fi
 }
 
-cf_cd() {
-#alias cd='pushd -n $PWD; cd'
-    pushd -n "$PWD" &> /dev/null
-    cd "$@" || popd -n &> /dev/null
-}
-alias cd='cf_cd' # put this below cf_cd so when cf_cd is read 'cd' isn't expanded making it recursive
+alias cd='pushd -n $PWD &> /dev/null; cd'
+# cf_cd() {
+#     pushd -n "$PWD" &> /dev/null
+#     /usr/bin/cd "$@" || popd -n &> /dev/null
+# }
+# alias cd='cf_cd' # put this below cf_cd so when cf_cd is read 'cd' isn't expanded making it recursive
 
 #min seconds between notifications of new common files.
 export CF_TIME_BETWEEN_NOTIFICATIONS=86400
@@ -217,7 +217,7 @@ cf_date_check_notify() {
 cf_get_latest_local_version() {
     #get your current revision number
     if which git &> /dev/null; then
-	      my_rev=`(cd $HOME && git log -1 --pretty=format:"%H %ad") 2> /dev/null`
+	      my_rev=`(git --git-dir $HOME log -1 --pretty=format:"%H %ad") 2> /dev/null`
     fi	
 	  if [[ "$my_rev" == "" ]]; then
 	      #couldn't get version from svn so we'll try .common_files/latest_revision.txt
