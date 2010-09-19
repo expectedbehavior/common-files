@@ -2,10 +2,6 @@
 # or not.  This file *should generate no output* or it will break the
 # scp and rcp commands.
 
-#PS1="[\h]\u@\W#"
-#PS1='\[\033[01;31m\]\h \[\033[01;34m\]\W \$ \[\033[00m\]'
-#PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\W \$ \[\033[00m\]'
-
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 [[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
 
@@ -325,6 +321,13 @@ shopt -s cdspell
 #let * match files beginning with '.' but since GLOBIGNORE is set above it won't match '.' or '..'
 shopt -s dotglob
 
+FG_BLACK="\[\033[01;30m\]"
+FG_WHITE="\[\033[01;37m\]"
+FG_RED="\[\033[01;31m\]"
+FG_GREEN="\[\033[01;32m\]"
+FG_BLUE="\[\033[01;34m\]"
+WHOAMI="`/usr/bin/whoami`"
+
 #make eterm into xterm for emacs/ssh purposes
 if [[ "$TERM" = "eterm-color" ]]; then
     export CF_REAL_TERM=$TERM
@@ -333,31 +336,31 @@ fi
 
 #build PS1
 #don't set PS1 for dumb terminals
-if [[ "$TERM" != 'dumb'  ]] && [[ -n "$BASH" ]]; then
+if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
     PS1=''
     #don't modify titlebar on console
     [[ "$TERM" != 'linux' && "$CF_REAL_TERM" != "eterm-color" ]] && PS1="${PS1}\[\e]2;\u@\H:\W\a"
-#    [[ "$TERM" != 'linux' ]] && PS1="${PS1}\[\e]2;\u@\H:\W -- <cmd_time>\a"
-    if [[ "`/usr/bin/whoami`" = "root" ]]; then
-	#red hostname
-	PS1="${PS1}\[\033[01;31m\]\u@"
+
+    #use a red $ if you're root, white otherwise
+    if [[ $WHOAMI = "root" ]]; then
+    	  #red hostname
+	      PS1="${PS1}${FG_RED}\u@"
     else
-	#green user@hostname
-	PS1="${PS1}\[\033[01;32m\]\u@"
+      	#green user@hostname
+     	  PS1="${PS1}${FG_GREEN}\u@"
     fi
+ 
+    GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
-    PS1="${PS1}\h \[\033[01;34m\]\W \$ \[\033[00m\]"
-#    ORIG_PS1="$PS1"
+    PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${FG_WHITE}"
 fi
 
-
-#PS1='\h:\W$(__git_ps1 "(%s)") \u\$ '
 #make eterm into xterm for emacs/ssh purposes
 if [[ "$TERM" = "eterm-color" ]]; then
     export TERM="xterm-color"
 fi
 
-if [[ "`/usr/bin/whoami`" = 'root' ]]; then
+if [[ $WHOAMI = 'root' ]]; then
         export PATH="/bin:/sbin:/usr/bin:/usr/sbin:${ROOTPATH}"
 else
         export PATH="/bin:/usr/bin:${PATH}"
