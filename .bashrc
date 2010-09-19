@@ -393,3 +393,5 @@ fi
 
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
+
+[ -f ~/.bundler-exec.sh ] && source ~/.bundler-exec.sh
