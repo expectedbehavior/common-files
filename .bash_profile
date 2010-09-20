@@ -19,8 +19,5 @@ cf_date_check_notify
 
 cf_check_for_updates
 
-#testing
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 
-#source "ruby_switcher.sh"
-
-if [[ -s /Users/joel/.rvm/scripts/rvm ]] ; then source /Users/joel/.rvm/scripts/rvm ; fi
