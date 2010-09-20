@@ -15,13 +15,12 @@ for k in /usr/bin/keychain /opt/local/bin/keychain; do
 done
 [ -f ~/.keychain/$HOSTNAME-sh ] && source ~/.keychain/$HOSTNAME-sh > /dev/null
 
-
-
 cf_date_check_notify
-
-
 
 cf_check_for_updates
 
-
 #testing
+
+#source "ruby_switcher.sh"
+
+if [[ -s /Users/joel/.rvm/scripts/rvm ]] ; then source /Users/joel/.rvm/scripts/rvm ; fi

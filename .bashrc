@@ -2,10 +2,6 @@
 # or not.  This file *should generate no output* or it will break the
 # scp and rcp commands.
 
-#PS1="[\h]\u@\W#"
-#PS1='\[\033[01;31m\]\h \[\033[01;34m\]\W \$ \[\033[00m\]'
-#PS1='\[\033[01;32m\]\u@\h \[\033[01;34m\]\W \$ \[\033[00m\]'
-
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 [[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
 
@@ -32,7 +28,11 @@ alias sls='screen -ls'
 alias sw='screen -wipe'
 #alias cfup='((svn info &> /dev/null && svn up) || (echo; echo -n "svn repository not detected, use tbz2? [Y,n]: "; read y; [ "$y" == "" -o "$y" == "y" -o "$y" == "Y" ] && (wget -O - http://cf.telaranrhiod.com/files/common/common_files.tbz2 | tar -xjov --no-same-permissions ./))); exec bash'
 alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 | tar -xjov --no-same-permissions -C ~/.fluxbox/backgrounds/)'
-alias md5='md5sum'
+alias pgrep='pgrep -iL'
+which md5 &> /dev/null || alias md5='md5sum'
+alias g='git'
+alias g{='git stash'
+alias g}='git stash apply'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
 alias gcm='git commit -m'
@@ -60,7 +60,11 @@ alias cuwip="cucumber ./features -t @wip"
 alias cufail="cucumber ./features -t @shouldfail"
 alias cuke="cucumber ./features"
 
+alias sc='script/console'
+alias sct='RAILS_ENV="test" sc'
+
 alias ackp='ack --pager="less -r"'
+alias acki='ack -i'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
@@ -186,12 +190,12 @@ vncvia() {
     fi
 }
 
-cf_cd() {
-#alias cd='pushd -n $PWD; cd'
-    pushd -n "$PWD" &> /dev/null
-    cd "$@" || popd -n &> /dev/null
-}
-alias cd='cf_cd' # put this below cf_cd so when cf_cd is read 'cd' isn't expanded making it recursive
+alias cd='pushd -n $PWD &> /dev/null; cd'
+# cf_cd() {
+#     pushd -n "$PWD" &> /dev/null
+#     /usr/bin/cd "$@" || popd -n &> /dev/null
+# }
+# alias cd='cf_cd' # put this below cf_cd so when cf_cd is read 'cd' isn't expanded making it recursive
 
 #min seconds between notifications of new common files.
 export CF_TIME_BETWEEN_NOTIFICATIONS=86400
@@ -212,7 +216,7 @@ cf_date_check_notify() {
 cf_get_latest_local_version() {
     #get your current revision number
     if which git &> /dev/null; then
-	      my_rev=`(cd $HOME && git log -1 --pretty=format:"%H %ad") 2> /dev/null`
+	      my_rev=`(git --git-dir $HOME log -1 --pretty=format:"%H %ad") 2> /dev/null`
     fi	
 	  if [[ "$my_rev" == "" ]]; then
 	      #couldn't get version from svn so we'll try .common_files/latest_revision.txt
@@ -320,6 +324,13 @@ shopt -s cdspell
 #let * match files beginning with '.' but since GLOBIGNORE is set above it won't match '.' or '..'
 shopt -s dotglob
 
+FG_BLACK="\[\033[01;30m\]"
+FG_WHITE="\[\033[01;37m\]"
+FG_RED="\[\033[01;31m\]"
+FG_GREEN="\[\033[01;32m\]"
+FG_BLUE="\[\033[01;34m\]"
+WHOAMI="`/usr/bin/whoami`"
+
 #make eterm into xterm for emacs/ssh purposes
 if [[ "$TERM" = "eterm-color" ]]; then
     export CF_REAL_TERM=$TERM
@@ -328,24 +339,31 @@ fi
 
 #build PS1
 #don't set PS1 for dumb terminals
-if [[ "$TERM" != 'dumb'  ]] && [[ -n "$BASH" ]]; then
+if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
     PS1=''
     #don't modify titlebar on console
     [[ "$TERM" != 'linux' && "$CF_REAL_TERM" != "eterm-color" ]] && PS1="${PS1}\[\e]2;\u@\H:\W\a"
-#    [[ "$TERM" != 'linux' ]] && PS1="${PS1}\[\e]2;\u@\H:\W -- <cmd_time>\a"
-    if [[ "`/usr/bin/whoami`" = "root" ]]; then
-	#red hostname
-	PS1="${PS1}\[\033[01;31m\]"
+
+    #use a red $ if you're root, white otherwise
+    if [[ $WHOAMI = "root" ]]; then
+    	  #red hostname
+	      PS1="${PS1}${FG_RED}\u@"
     else
-	#green user@hostname
-	PS1="${PS1}\[\033[01;32m\]\u@"
+      	#green user@hostname
+     	  PS1="${PS1}${FG_GREEN}\u@"
     fi
+ 
+    GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
-    PS1="${PS1}\h \[\033[01;34m\]\W \$ \[\033[00m\]"
-#    ORIG_PS1="$PS1"
+    PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${FG_WHITE}"
 fi
 
-if [[ "`/usr/bin/whoami`" = 'root' ]]; then
+#make eterm into xterm for emacs/ssh purposes
+if [[ "$TERM" = "eterm-color" ]]; then
+    export TERM="xterm-color"
+fi
+
+if [[ $WHOAMI = 'root' ]]; then
         export PATH="/bin:/sbin:/usr/bin:/usr/sbin:${ROOTPATH}"
 else
         export PATH="/bin:/usr/bin:${PATH}"
@@ -382,4 +400,4 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
-# source ~/ruby_switcher.sh
+[ -f ~/.bundler-exec.sh ] && source ~/.bundler-exec.sh

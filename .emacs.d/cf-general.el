@@ -37,12 +37,15 @@
 				("\\.java$" . java-mode)
 				("\\.html$" . html-mode)
 				("\\.php$" . php-mode)
-				("\\.js$" . js2-mode)
-				("\\.js.erb$" . js2-mode)
+				("\\.js$" . js-mode)
+				("\\.js.erb$" . js-mode)
 				("\\.cl$" . lisp-mode)
 				("\\.tpl$" . html-mode)
 				("\\.rb$" . ruby-mode)
+				("\\.Gemfile$" . ruby-mode)
+				("\\.Capfile$" . ruby-mode)
 				("\\.gemspec$" . ruby-mode)
+        ("\\Gemfile$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.haml$" . haml-mode)
 				("\\.feature$" . feature-mode))         
@@ -85,7 +88,7 @@
 (global-linum-mode 1)
 
 
-
+(setq js-indent-level 2)
 
 
 ;; some stuff that seems like it should work to turn off linum in term-mode, but doesn't
@@ -630,7 +633,7 @@
 (defun medium (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "inconsolata2" 15)
+  (my-set-mac-font "expresso" 15)
   (arrange-frame 170 45 nosplit))
 
 (defun projector (&optional nosplit)
@@ -644,7 +647,7 @@
   "Create a giant font window suitable for doing live demos."
   (interactive)
   (arrange-frame 85 25 t)
-  (my-set-mac-font "bitstream vera sans mono" 24))
+  (my-set-mac-font "expresso" 22))
 
 (defun reload-file ()
   (interactive)
@@ -654,3 +657,8 @@
     (message "Reloaded file")))
  
 (global-set-key "\C-x\C-v" 'reload-file)
+
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 100)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)

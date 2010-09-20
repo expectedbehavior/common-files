@@ -2,7 +2,7 @@
 ;;;;;;;;;;;;;;;;;;;;;; end Red Hat defaults ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; these customizations were made from the options menu.  To change 
+;; these customizations were made from the options menu.  To change
 ;; them make use the options menu.  They should be self explanatory
 ;; (I hope)
 
@@ -28,15 +28,20 @@
   ;; If there is more than one, they won't work right.
  )
 
-
-
 (load-file "~/.emacs.d/cf-general.el")
 
-;; (mac-toggle-max-window)
-;; (medium)
-;; (setq show-trailing-whitespace t)
-;;  (my-set-mac-font "inconsolata" 16)
+(put 'upcase-region 'disabled nil)
 
+(defun medium (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "espresso" 14)
+  (arrange-frame 170 45 nosplit))
+
+(mac-toggle-max-window)
+(medium)
+(setq show-trailing-whitespace t)
+(cua-mode)
 
 (require 'color-theme)
 (color-theme-initialize)
@@ -50,8 +55,8 @@
 ;; (color-theme-subdued)
 ;; (load "~/.emacs.d/autoload/colors/themes/color-theme-wombat.el")
 ;; (color-theme-wombat)
-;; (load "~/.emacs.d/autoload/colors/themes/color-theme-twilight.el")
-;; (color-theme-twilight)
+(load "~/.emacs.d/autoload/colors/themes/color-theme-twilight.el")
+(color-theme-twilight)
 ;; (load "~/.emacs.d/autoload/colors/themes/color-theme-railscasts.el")
 ;; (color-theme-railscasts)
 ;;(load "~/.emacs.d/autoload/colors/themes/color-theme-chocolate-rain.el")
