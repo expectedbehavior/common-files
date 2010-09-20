@@ -42,6 +42,7 @@ alias gcam='git commit -a -m'
 alias gs='git status'
 alias gst='git status'
 alias gco="git checkout"
+alias gpp="git pull && git push"
 complete -o default -o nospace -F _git_checkout gco
 alias gpul="git pull"
 complete -o default -o nospace -F _git_pull gpull
