@@ -36,10 +36,13 @@ alias g}='git stash apply'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
 alias gcm='git commit -m'
+alias gc="git commit"
 alias gca='git commit -a'
 alias gcam='git commit -a -m'
+alias gs='git status'
 alias gst='git status'
 alias gco="git checkout"
+alias gpp="git pull && git push"
 complete -o default -o nospace -F _git_checkout gco
 alias gpul="git pull"
 complete -o default -o nospace -F _git_pull gpull

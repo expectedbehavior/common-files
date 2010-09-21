@@ -662,3 +662,7 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 100)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+
+(defun word-count nil "Count words in buffer" (interactive)
+(shell-command-on-region (point-min) (point-max) "wc -w"))
+
