@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BUNDLED_COMMANDS="spec rspec cucumber cap css2sass sass-convert html2haml rails rackup rake resque resque-web"
+BUNDLED_COMMANDS="spec rspec cucumber cap css2sass sass-convert html2haml rackup rake resque resque-web"
 
 ## Functions
 
