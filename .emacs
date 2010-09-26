@@ -32,7 +32,6 @@
 
 (put 'upcase-region 'disabled nil)
 
-(medium)
 (setq show-trailing-whitespace t)
 (cua-mode)
 
