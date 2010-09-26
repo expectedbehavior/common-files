@@ -17,7 +17,7 @@ require 'grit'
 include Grit
 
 exceptions_to_the_exception = { 
-  ".emacs.d" => ["semantic.cache", "url"],
+  ".emacs.d" => ["semantic.cache", "url", "zz-my-stuff.el"],
   ".common_files" => ["*svn", ".last_checked_date", ".out_of_date_last_notified_date", ".out_of_date_notification_message", "cf.conf", "backups"]
 }
 
