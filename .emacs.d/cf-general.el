@@ -68,6 +68,15 @@
 (let ((default-directory "~/.emacs.d/"))
   (add-to-list 'load-path default-directory)
   (normal-top-level-add-subdirs-to-load-path))
+
+
+;; moved to before autoload so it's easier to override the default call to it
+(defun mac-toggle-max-window ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
+                                           nil
+                                           'fullboth))) 
+
  
 (defun load-directory (dir)
   (mapcar '(lambda (x)
@@ -594,12 +603,6 @@
 (fset 'send-to-scheme
    "\C-@\C-[\C-f\C-e\C-[w\C-xo\C-y\C-m\C-xo\C-e\C-[OC")
 
-(defun mac-toggle-max-window ()
-  (interactive)
-  (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
-                                           nil
-                                           'fullboth))) 
-
 
 
 
@@ -631,9 +634,9 @@
 
 
 (defun medium (&optional nosplit)
-  "Create a large window suitable for coding on a macbook."
+  "Create a two-pane window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "expresso" 15)
+  (my-set-mac-font "espresso" 14)
   (arrange-frame 170 45 nosplit))
 
 (defun projector (&optional nosplit)

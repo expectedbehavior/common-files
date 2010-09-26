@@ -1,0 +1,1 @@
+(mac-toggle-max-window)
