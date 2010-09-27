@@ -47,6 +47,7 @@
 				("\\.gemspec$" . ruby-mode)
         ("\\Gemfile$" . ruby-mode)
 				("\\.sass$" . sass-mode)
+				("\\.scss$" . sass-mode)
 				("\\.haml$" . haml-mode)
 				("\\.feature$" . feature-mode))         
 			      auto-mode-alist))
