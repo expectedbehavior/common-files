@@ -24,7 +24,8 @@
 ;;If you want files with a particular ending to always start in a particular
 ;;mode, this is the place to put them.
 ;;
-(setq auto-mode-alist (append '(("\\.ss$" . scheme-mode)
+(setq auto-mode-alist (append '(
+        ("\\.ss$" . scheme-mode)
 				("\\.t$" . text-mode)
 				("\\.doc$" . text-mode)
 				("\\.tex$" . latex-mode)
@@ -48,8 +49,9 @@
         ("\\Gemfile$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.haml$" . haml-mode)
-				("\\.feature$" . feature-mode))         
-			      auto-mode-alist))
+				("\\.feature$" . feature-mode)
+				("\\.org$" . org-mode)
+          ) auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;Load Paths
