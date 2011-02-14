@@ -4,7 +4,7 @@
 
 Make sure you're in your home directory, then copy and paste this into your terminal:
 
-    curl http://github.com/expectedbehavior/common-files/raw/master/.common_files/install.sh | bash
+    curl -L http://github.com/expectedbehavior/common-files/raw/master/.common_files/install.sh | bash
 
 Check out [the install script](http://github.com/expectedbehavior/common-files/blob/master/.common_files/install.sh) if you like.  It's pretty close to the lines below.
 
