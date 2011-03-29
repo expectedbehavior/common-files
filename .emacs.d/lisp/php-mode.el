@@ -3033,7 +3033,7 @@ Turn on if ARG positive, turn off if ARG negative, toggle if ARG zero or nil."
     '("\\<[0-9]+" . default)		; number (also matches word)
 
     ;; Warn on any words not already fontified
-    '("\\<\\(?:\\sw\\|\\s_\\)+\\>" . font-lock-warning-face)
+;;     '("\\<\\(?:\\sw\\|\\s_\\)+\\>" . font-lock-warning-face)
     ))
   "Gauchy level highlighting for PHP mode.")
   
