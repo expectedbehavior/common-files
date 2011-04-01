@@ -146,6 +146,8 @@
 
 (setq js-indent-level 2)
 
+(setq php-indent-level 2)
+
 
 ;; some stuff that seems like it should work to turn off linum in term-mode, but doesn't
 ;; (global-linum-mode 1)

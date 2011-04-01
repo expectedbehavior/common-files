@@ -19,6 +19,7 @@
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(ecb-source-path (quote (("/" "/"))))
  '(global-font-lock-mode t nil (font-lock))
+ '(php-basic-offset 2)
  '(show-paren-mode t nil (paren))
  '(transient-mark-mode t))
 (custom-set-faces
