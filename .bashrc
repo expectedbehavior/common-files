@@ -377,7 +377,7 @@ export BC_ENV_ARGS="$HOME/.bcrc"
 export HISTSIZE=5000000
 
 #Repeated commands are only stored once
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 
 #save history with each command
 export PROMPT_COMMAND='[[ "`set | grep -E \"cf_prompt_command \(\)\"`" != "" ]] && cf_prompt_command'
