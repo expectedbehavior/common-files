@@ -67,6 +67,8 @@ alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
 
 alias hn='hcl note'
+alias ht='hcl start'
+alias hp='hcl stop'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
