@@ -331,6 +331,8 @@ FG_WHITE="\[\033[01;37m\]"
 FG_RED="\[\033[01;31m\]"
 FG_GREEN="\[\033[01;32m\]"
 FG_BLUE="\[\033[01;34m\]"
+NO_COLOR="\[\e[0m\]"
+
 WHOAMI="`/usr/bin/whoami`"
 
 #make eterm into xterm for emacs/ssh purposes
@@ -357,7 +359,7 @@ if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
  
     GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
-    PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${FG_WHITE}"
+    PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${NO_COLOR}"
 fi
 
 #make eterm into xterm for emacs/ssh purposes
