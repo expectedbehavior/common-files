@@ -4,6 +4,10 @@
 
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 [[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
+for f in /usr/local/etc/bash_completion.d/*
+do
+  source $f > /dev/null 2>&1
+done
 
 export INPUTRC="$HOME/.inputrc"
 export EDITOR="/usr/bin/emacs"
@@ -54,6 +58,12 @@ alias gbr="git branch"
 complete -o default -o nospace -F _git_branch gbr
 alias ga="git add"
 complete -o default -o nospace -F _git_add ga
+alias gff="git flow feature"
+complete -o default -o nospace -F __git_flow_feature gff
+alias gfr="git flow release"
+complete -o default -o nospace -F __git_flow_release gfr
+alias gfh="git flow hotfix"
+complete -o default -o nospace -F __git_flow_hotfix gfh
 
 alias cuwork="cucumber ./features -t @shouldwork"
 alias cuwip="cucumber ./features -t @wip"
@@ -62,11 +72,15 @@ alias cuke="cucumber ./features"
 
 alias sc='script/console'
 alias sct='RAILS_ENV="test" sc'
+alias ssd='script/server -p `awk -F = '"'"'/RAILS_DEV_PORT=/ { print $2; exit; }'"'"' ports-of-import`'
+alias sst='RAILS_ENV="test" script/server -p `awk -F = '"'"'/RAILS_TEST_PORT=/ { print $2; exit; }'"'"' ports-of-import`'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
 
 alias hn='hcl note'
+
+alias heroku='bundle exec heroku'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5

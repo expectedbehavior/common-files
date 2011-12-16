@@ -2152,6 +2152,7 @@ _git ()
 	diff)        _git_diff ;;
 	difftool)    _git_difftool ;;
 	fetch)       _git_fetch ;;
+  flow)        _git_flow ;;
 	format-patch) _git_format_patch ;;
 	fsck)        _git_fsck ;;
 	gc)          _git_gc ;;
