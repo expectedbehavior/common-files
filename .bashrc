@@ -78,6 +78,8 @@ alias acki='ack -i'
 
 alias hn='hcl note'
 
+alias heroku='bundle exec heroku'
+
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
 cfup() {
