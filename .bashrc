@@ -72,6 +72,8 @@ alias cuke="cucumber ./features"
 
 alias sc='script/console'
 alias sct='RAILS_ENV="test" sc'
+alias ssd='script/server -p `grep RAILS_DEV_PORT= ports-of-import | awk '"'"'BEGIN { FS = "=" } ; { print $2 }'"'"'`'
+alias sst='RAILS_ENV="test" script/server -p `grep RAILS_TEST_PORT= ports-of-import | awk '"'"'BEGIN { FS = "=" } ; { print $2 }'"'"'`'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
