@@ -62,6 +62,7 @@ alias cuke="cucumber ./features"
 
 alias sc='script/console'
 alias sct='RAILS_ENV="test" sc'
+alias ss='script/server'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
