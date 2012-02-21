@@ -68,6 +68,7 @@ alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
 
 alias hn='hcl note'
+alias be='bundle exec'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
