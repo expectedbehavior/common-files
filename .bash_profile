@@ -4,7 +4,7 @@
 #This file is sourced by bash when you log in interactively.
 [ -f ~/.bashrc ] && . ~/.bashrc
 
-for k in /usr/bin/keychain /opt/local/bin/keychain; do
+for k in /usr/bin/keychain /opt/local/bin/keychain /usr/local/bin/keychain; do
     if [ -f $k ]; then
         for i in ~/.ssh/*; do
             [ -f $i ] && [ -f $i.pub ] && $k --nogui $i
