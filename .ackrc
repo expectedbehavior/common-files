@@ -3,4 +3,5 @@
 --type-set=sass=.sass
 --type-set=cuke=.feature
 --type-set=conf=.conf
+--type-set=coffee=.coffee
 --ignore-dir=culerity_page_errors
