@@ -12,6 +12,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(case-fold-search t)
+ '(css-indent-offset 2)
  '(current-language-environment "Latin-9")
  '(default-input-method "latin-9-prefix")
  '(ecb-layout-name "left13")
@@ -43,6 +44,10 @@
 (setq show-trailing-whitespace t)
 (cua-mode)
 
+(require 'yaml-mode)
+(require 'markdown-mode)
+(require 'coffee-mode)
+
 (require 'color-theme)
 (color-theme-initialize)
 ;; uncomment two lines below to start emacs with a different color theme.
@@ -61,3 +66,68 @@
 ;; (color-theme-railscasts)
 ;;(load "~/.emacs.d/autoload/colors/themes/color-theme-chocolate-rain.el")
 ;; (color-theme-chocolate-rain)
+
+
+(defun small (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "PragmataPro" 12)
+  (arrange-frame 170 45 nosplit))
+
+(defun medium (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "PragmataPro" 16)
+  (arrange-frame 170 45 nosplit))
+
+(defun large (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "PragmataPro" 20)
+  (arrange-frame 170 45 nosplit))
+
+(defun projector (&optional nosplit)
+  "Create a large window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "PragmataPro" 20)
+  (arrange-frame 170 45 nosplit))
+
+(defun presentation ()
+  "Create a giant font window suitable for doing live demos."
+  (interactive)
+  (arrange-frame 85 26 t)
+  (my-set-mac-font "PragmataPro" 26))
+
+(set-frame-parameter (selected-frame) 'alpha '(94 50))
+(add-to-list 'default-frame-alist '(alpha 94 50))
+
+(server-start)
+(medium)
+(maximize-frame)
+
+;; Use a hbar cursor when mark is active and a region exists.
+(defun th-activate-mark-init ()
+  (setq cursor-type 'hbar))
+(add-hook 'activate-mark-hook 'th-activate-mark-init)
+
+(defun th-deactivate-mark-init ()
+  (setq cursor-type 'box))
+(add-hook 'deactivate-mark-hook 'th-deactivate-mark-init)
+
+
+;;;;;;;;;;;;;;;;;;;;
+;; set up unicode
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+;; This from a japanese individual.  I hope it works.
+(setq default-buffer-file-coding-system 'utf-8)
+;; From Emacs wiki
+(setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
+;; MS Windows clipboard is UTF-16LE 
+(set-clipboard-coding-system 'utf-16le-dos)
+
+;;;;;;;;;;;;;;;;;;;;;
+;; add marmelade to package sets
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))

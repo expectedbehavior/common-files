@@ -76,6 +76,8 @@
 
 
 ;; moved to before autoload so it's easier to override the default call to it
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
 (defun mac-toggle-max-window ()
   (interactive)
   (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
@@ -131,10 +133,12 @@
              (load-file x))
           (directory-files dir t "\\.el$")))
  
-(load-directory "~/.emacs.d/autoload/")
+
 
 
 ;; Load paths
+(require 'ruby-mode)
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
@@ -236,7 +240,12 @@
     (setenv "ESHELL" (concat (getenv "HOME") "/.emacs.d/bash_wrapper")))
 
 
-(setq mac-option-modifier 'control)
+;;(setq mac-option-modifier 'control)
+;;(setq mac-command-modifier 'meta)
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
 (global-set-key (kbd "C-M-<left>") 'windmove-left)          ; move to left windnow
 (global-set-key (kbd "C-M-<right>") 'windmove-right)        ; move to right window

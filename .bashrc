@@ -6,7 +6,7 @@
 [[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
 
 export INPUTRC="$HOME/.inputrc"
-export EDITOR="/usr/bin/emacs"
+export EDITOR="/usr/bin/emacsclient"
 export GLOBIGNORE='.:..'
 export HISTTIMEFORMAT='%c  '
 export LC_COLLATE="POSIX"
