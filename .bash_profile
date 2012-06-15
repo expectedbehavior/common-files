@@ -20,4 +20,4 @@ cf_date_check_notify
 cf_check_for_updates
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
-
+if [[ -d "$HOME/.rbenv" ]] ; then eval "$(rbenv init -)"; fi
