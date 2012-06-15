@@ -68,6 +68,7 @@ alias ss='script/server'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
+alias a='acki'
 
 alias hn='hcl note'
 alias be='bundle exec'
