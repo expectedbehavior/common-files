@@ -35,6 +35,8 @@ alias g{='git stash'
 alias g}='git stash apply'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
+alias gdc='git diff --cached'
+complete -o default -o nospace -F _git_diff gdc
 alias gcm='git commit -m'
 alias gc="git commit"
 alias gca='git commit -a'
@@ -66,6 +68,7 @@ alias ss='script/server'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
+alias a='acki'
 
 alias hn='hcl note'
 alias be='bundle exec'
