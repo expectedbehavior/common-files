@@ -84,7 +84,7 @@
 	 [(0 5)
 	  nil "OAuth 2.0 Authorization Protocol" single])
  (org .
-      [(20120615)
+      [(20120625)
        nil "Outline-based notes management and organizer" tar])
  (quarter-plane .
 		[(0 1)
@@ -125,6 +125,9 @@
  (uni-confusables .
 		  [(0 1)
 		   nil "Unicode confusables table" tar])
+ (vlf .
+      [(0 2)
+       nil "View Large Files" single])
  (windresize .
 	     [(0 1)
 	      nil "Resize windows interactively" single])

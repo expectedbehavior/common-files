@@ -128,6 +128,12 @@
 ;; MS Windows clipboard is UTF-16LE 
 (set-clipboard-coding-system 'utf-16le-dos)
 
+
+;;;;;;;;;;;;;;;;;;;;;
+;; setup package archives
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; add marmelade to package sets
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))

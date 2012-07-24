@@ -49,6 +49,7 @@
 				("\\.gemspec$" . ruby-mode)
         ("\\Gemfile$" . ruby-mode)
         ("\\Capfile$" . ruby-mode)
+        ("\\.rabl$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.scss$" . sass-mode)
 				("\\.haml$" . haml-mode)
