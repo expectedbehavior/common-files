@@ -137,3 +137,7 @@
 ;;;;;;;;;;;;;;;;;;;;;
 ;; add marmelade to package sets
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+;; create a backup file directory
+(defun make-backup-file-name (file)
+(concat "~/.emacs.backups/" (file-name-nondirectory file) "~"))
