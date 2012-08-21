@@ -9,6 +9,8 @@
   '(
    ))
 
+(define-abbrev-table 'bibtex-mode-abbrev-table '())
+
 (define-abbrev-table 'c++-mode-abbrev-table
   '(
    ))
@@ -17,6 +19,8 @@
   '(
    ))
 
+(define-abbrev-table 'calendar-mode-abbrev-table '())
+
 (define-abbrev-table 'change-log-mode-abbrev-table '())
 
 (define-abbrev-table 'coffee-mode-abbrev-table '())
@@ -24,6 +28,8 @@
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
+
+(define-abbrev-table 'css-mode-abbrev-table '())
 
 (define-abbrev-table 'display-time-world-mode-abbrev-table '())
 
@@ -35,7 +41,9 @@
 
 (define-abbrev-table 'global-abbrev-table '())
 
-(define-abbrev-table 'haml-mode-abbrev-table '())
+(define-abbrev-table 'haml-mode-abbrev-table
+  '(
+   ))
 
 (define-abbrev-table 'help-mode-abbrev-table '())
 

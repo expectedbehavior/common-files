@@ -11,6 +11,9 @@
  (auctex .
 	 [(11 86)
 	  nil "Integrated environment for *TeX*" tar])
+ (coffee-mode .
+	      [(0 4 1)
+	       nil "Major mode for CoffeeScript files" tar])
  (company .
 	  [(0 5)
 	   nil "Flexible inline text and code completion" tar])
@@ -81,10 +84,10 @@
 	 [(1 0)
 	  nil "Show line numbers in the margin" single])
  (oauth2 .
-	 [(0 5)
+	 [(0 7)
 	  nil "OAuth 2.0 Authorization Protocol" single])
  (org .
-      [(20120625)
+      [(20120730)
        nil "Outline-based notes management and organizer" tar])
  (quarter-plane .
 		[(0 1)
@@ -120,7 +123,7 @@
 	  (0 3)))
 	"Trie data structure" single])
  (undo-tree .
-	    [(0 5 2)
+	    [(0 5 3)
 	     nil "Treat undo history as a tree" single])
  (uni-confusables .
 		  [(0 1)
@@ -134,4 +137,3 @@
  (xclip .
 	[(1 0)
 	 nil "Emacs Interface to XClip" single]))
-

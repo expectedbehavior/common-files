@@ -55,6 +55,7 @@
 				("\\.haml$" . haml-mode)
 				("\\.feature$" . feature-mode)
 				("\\.org$" . org-mode)
+        ("\\.cnf$" . conf-mode)
           ) auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
