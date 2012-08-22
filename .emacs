@@ -33,7 +33,7 @@
 (add-to-list 'default-frame-alist '(alpha 94 50))
 
 (server-start)
-(medium)
+(small)
 (maximize-frame)
 
 ;; Use a hbar cursor when mark is active and a region exists.
