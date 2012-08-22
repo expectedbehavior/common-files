@@ -2,6 +2,8 @@
 # $Header: /home/cvsroot/gentoo-src/rc-scripts/etc/skel/.bash_profile,v 1.10 2002/11/18 19:39:22 azarah Exp $
 
 #This file is sourced by bash when you log in interactively.
+if [[ -d "$HOME/.rbenv" ]] ; then eval "$(rbenv init -)"; fi
+
 [ -f ~/.bashrc ] && . ~/.bashrc
 
 for k in /usr/bin/keychain /opt/local/bin/keychain /usr/local/bin/keychain; do
@@ -20,4 +22,3 @@ cf_date_check_notify
 cf_check_for_updates
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
-if [[ -d "$HOME/.rbenv" ]] ; then eval "$(rbenv init -)"; fi
