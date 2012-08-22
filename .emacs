@@ -35,6 +35,7 @@
 (server-start)
 (small)
 (maximize-frame)
+(ns-toggle-fullscreen)
 
 ;; Use a hbar cursor when mark is active and a region exists.
 (defun th-activate-mark-init ()
