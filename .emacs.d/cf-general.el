@@ -110,24 +110,36 @@
                       :height (* 10 size))
   (frame-parameter nil 'font))
 
+(defun small (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "PragmataPro" 12)
+  (arrange-frame 170 45 nosplit))
+
 (defun medium (&optional nosplit)
   "Create a two-pane window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "espresso" 14)
+  (my-set-mac-font "Inconsolata" 16)
   (arrange-frame 170 45 nosplit))
+
+(defun large (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "PragmataPro" 20)
+  (arrange-frame 170 45 nosplit)
+  (maximize-frame))
 
 (defun projector (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "inconsolata" 20)
+  (my-set-mac-font "PragmataPro" 20)
   (arrange-frame 170 45 nosplit))
-
 
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."
   (interactive)
-  (arrange-frame 85 25 t)
-  (my-set-mac-font "expresso" 22))
+  (arrange-frame 85 26 t)
+  (my-set-mac-font "PragmataPro" 26))
 
  
 (defun load-directory (dir)

@@ -29,37 +29,6 @@
 ;;(load "~/.emacs.d/autoload/colors/themes/color-theme-chocolate-rain.el")
 ;; (color-theme-chocolate-rain)
 
-
-(defun small (&optional nosplit)
-  "Create a two-pane window suitable for coding on a macbook."
-  (interactive "P")
-  (my-set-mac-font "PragmataPro" 12)
-  (arrange-frame 170 45 nosplit))
-
-(defun medium (&optional nosplit)
-  "Create a two-pane window suitable for coding on a macbook."
-  (interactive "P")
-  (my-set-mac-font "PragmataPro" 16)
-  (arrange-frame 170 45 nosplit))
-
-(defun large (&optional nosplit)
-  "Create a two-pane window suitable for coding on a macbook."
-  (interactive "P")
-  (my-set-mac-font "PragmataPro" 20)
-  (arrange-frame 170 45 nosplit))
-
-(defun projector (&optional nosplit)
-  "Create a large window suitable for coding on a macbook."
-  (interactive "P")
-  (my-set-mac-font "PragmataPro" 20)
-  (arrange-frame 170 45 nosplit))
-
-(defun presentation ()
-  "Create a giant font window suitable for doing live demos."
-  (interactive)
-  (arrange-frame 85 26 t)
-  (my-set-mac-font "PragmataPro" 26))
-
 (set-frame-parameter (selected-frame) 'alpha '(94 50))
 (add-to-list 'default-frame-alist '(alpha 94 50))
 
