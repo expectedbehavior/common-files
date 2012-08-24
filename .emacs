@@ -64,11 +64,8 @@
 ;;;;;;;;;;;;;;;;;;;;;
 ;; setup package archives
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")))
-
-;;;;;;;;;;;;;;;;;;;;;
-;; add marmelade to package sets
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 ;; create a backup file directory
 (defun make-backup-file-name (file)
