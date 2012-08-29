@@ -36,7 +36,7 @@ which md5 &> /dev/null || alias md5='md5sum'
 alias g='git'
 alias g{='git stash'
 alias g}='git stash apply'
-alias glg='git lg'
+alias glg='git log --graph --pretty=format:"%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %C(yellow)-%Creset %C(bold blue)%an%Creset %C(bold green)(%cr)%Creset"'
 complete -o default -o nospace -F _git_log glg
 alias gdc='git diff --cached'
 complete -o default -o nospace -F _git_diff gdc
@@ -47,6 +47,8 @@ alias gcam='git commit -a -m'
 alias gs='git status'
 alias gst='git status'
 alias gco="git checkout"
+alias gu="git reset HEAD"
+alias ghr="git log -n1 --pretty=format:'%C(bold red)%h%Creset'"
 alias gpp="git pull && git push"
 complete -o default -o nospace -F _git_checkout gco
 alias gpul="git pull"
