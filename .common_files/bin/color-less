@@ -1,0 +1,57 @@
+#!/bin/bash
+# color-less
+# By Nathan Weizenbaum (http://nex-3.com)
+# MIT License (http://www.opensource.org/licenses/mit-license.php)
+#
+# A quick script to make terminal-based syntax highlighting a little easier.
+# The usage is the same as less, except that the first argument can be =,
+# where  is any syntax CodeRay knows how to highlight.
+# It'll autodetect as much as possible based on the filename.
+# For example:
+#
+#  color-less tetris.c --quiet
+#  color-less =ruby Rakefile
+#  svn diff | color-less =diff
+#
+# Uses my CodeRay terminal encoder, available at http://pastie.caboo.se/96744.
+# Check out http://nex-3.com/posts/37-terminal-syntax-highlighting
+
+function run_coderay {
+    if [ "$2" ]
+    then input="$2"
+    else input=/dev/stdin
+    fi
+    coderay "${1/=/-}" -term < $input | less -R "${args[@]}"
+}
+
+args=("$@")
+if [ "${1:0:1}" = '=' ] # syntax given
+then
+    unset args[0]
+    unset args[1]
+
+    if [ "${2:0:1}" != - ]
+    then run_coderay "$1" "$2"
+    else run_coderay "$1"
+    fi
+elif [ "${1:0:1}" != - ] # file given
+then
+    case "`echo "$1" | sed 's/.*\.\([^\.]*\)$/\1/'`" in
+        'rhtml' ) syn=rhtml;;
+        'xml'   ) syn=xml;;
+        'js'    ) syn=javascript;;
+        'rb'    ) syn=ruby;;
+        'c'     ) syn=c;;
+        'html'  | 'xhtml' ) syn=html;;
+        'lisp'  | 'el'    ) syn=lisp;;
+    esac
+
+    if [ "$syn" ]
+    then
+        unset args[0]
+        run_coderay "-$syn" "$1"
+    else less $@
+    fi
+else
+    less $@
+fi

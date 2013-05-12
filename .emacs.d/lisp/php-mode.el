@@ -2915,6 +2915,14 @@ Turn on if ARG positive, turn off if ARG negative, toggle if ARG zero or nil."
   (list
    ;; Fontify constants
    (cons
+    (concat "\/\/\\([A-z ;:.,?!-יאט']*\\)$")
+    'font-lock-comment-face)
+   (cons
+    (concat "\/\/.*")
+    'font-lock-comment-face)
+
+   ;; Fontify constants
+   (cons
     (concat "\\<\\(" php-constants-regexp "\\)\\>")
     'font-lock-constant-face)
 
@@ -2929,6 +2937,10 @@ Turn on if ARG positive, turn off if ARG negative, toggle if ARG zero or nil."
 
    ;; Fontify keywords and targets, and case default tags.
    (list "\\<\\(break\\|case\\|continue\\)\\>[ \t]*\\(-?\\(?:\\sw\\|\\s_\\)+\\)?"
+
+;;    '("\/\/\\([A-z ;:.,?!-יאט']*\\)$" . font-lock-comment-face)
+;;    '("\/\/.*" . font-lock-comment-face)
+
 	 '(1 font-lock-keyword-face) '(2 font-lock-constant-face t t))
    ;; This must come after the one for keywords and targets.
    '(":" ("^[ \t]*\\(\\(?:\\sw\\|\\s_\\)+\\)[ \t]*:[ \t]*$"
@@ -2946,9 +2958,6 @@ Turn on if ARG positive, turn off if ARG negative, toggle if ARG zero or nil."
    ;; Fontify ASP-style tag
    '("<\\%\\(=\\)?" . font-lock-constant-face)
    '("\\%>" . font-lock-constant-face)
-
-   ;;'("\/\/\\([A-z ;:.,?!-יאט']*\\)$" . font-lock-comment-face)
-   ;;'("\/\/.*" . font-lock-comment-face)
 
    )
   "Subdued level highlighting for PHP mode.")

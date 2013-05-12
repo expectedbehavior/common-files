@@ -21,3 +21,12 @@ cf_check_for_updates
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 
+
+##
+# Your previous /Users/jason/.bash_profile file was backed up as /Users/jason/.bash_profile.macports-saved_2011-05-18_at_10:15:20
+##
+
+# MacPorts Installer addition on 2011-05-18_at_10:15:20: adding an appropriate PATH variable for use with MacPorts.
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+

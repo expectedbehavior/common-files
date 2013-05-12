@@ -48,6 +48,8 @@
 				("\\.Capfile$" . ruby-mode)
 				("\\.gemspec$" . ruby-mode)
         ("\\Gemfile$" . ruby-mode)
+        ("\\Vagrantfile$" . ruby-mode)
+        ("\\.god$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.scss$" . sass-mode)
 				("\\.haml$" . haml-mode)
@@ -62,6 +64,10 @@
 ;;gentoo puts all of its crap in one file under /usr/share and it has to be
 ;;sourced if emerging major modes is going to do you any good.
 ;;
+
+;;; A quick & ugly PATH solution to Emacs on Mac OSX
+(if (string-equal "darwin" (symbol-name system-type))
+    (setenv "PATH" (concat "/opt/local/bin:/opt/local/sbin:" (getenv "PATH"))))
 
 (if (file-readable-p "/usr/share/emacs/site-lisp/site-gentoo.el")
      (setq load-path (append "/usr/share/emacs/site-lisp/site-gentoo.el" load-path)))

@@ -55,6 +55,8 @@ complete -o default -o nospace -F _git_branch gbr
 alias ga="git add"
 complete -o default -o nospace -F _git_add ga
 
+complete -o default -o nospace -F _git_checkout grb
+
 alias cuwork="cucumber ./features -t @shouldwork"
 alias cuwip="cucumber ./features -t @wip"
 alias cufail="cucumber ./features -t @shouldfail"
@@ -175,11 +177,11 @@ set_temp_known_host() {
     # we use xxx because we want this to fail to login, just set the known host
     ssh -o 'StrictHostKeyChecking=no' -o 'PreferredAuthentications="xxx"' -o "UserKnownHostsFile=${known_hosts_temp_file}" $* &> /dev/null
 }
-pssh() {
-    set_temp_known_host $*
-    cat ${known_hosts_temp_file} >> ~/.ssh/known_hosts
-    ssh $*
-}
+# pssh() {
+#     set_temp_known_host $*
+#     cat ${known_hosts_temp_file} >> ~/.ssh/known_hosts
+#     ssh $*
+# }
 tssh() {
     set_temp_known_host $*
     ssh -o "UserKnownHostsFile=${known_hosts_temp_file}" $*   
@@ -304,6 +306,13 @@ cf_prompt_command() {
     [[ "`declare -f cf_user_prompt_hook`" != "" ]] && cf_user_prompt_hook
 }
 
+lc() {
+  # echo $SECONDS
+  eval "$@"
+  growlnotify -swm "command finished: $*"
+  open /Applications/iTerm.app
+  # echo $SECONDS
+}
 
 #export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;
 #35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;
@@ -405,3 +414,5 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 [ -f ~/.bundler-exec.sh ] && source ~/.bundler-exec.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
