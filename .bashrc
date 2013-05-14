@@ -285,19 +285,17 @@ cf_date_check_for_updates() {
 }
 
 cf_prompt_command() {
-#    old_hist_time_format=$HISTTIMEFORMAT
-#    HISTTIMEFORMAT='%s  '
-#    hist_cmd=`history 1`
-#    HISTTIMEFORMAT=$old_hist_time_format
-#    history 10
-#    begin_hist=`begin_hist_grep $hist_cmd`
-#    history -p '!!:1'
-#    set | grep sleep
-#    foo=">${hist_cmd/$begin_hist  $BASH_COMMAND/}--$begin_hist--$BASH_COMMAND<"
-#    echo $foo
-#    [[ "${hist_cmd/$begin_hist  $BASH_COMMAND/}" == "" ]] && echo "hooray"
-#    history 10
     history -a
+    old_hist_time_format=$HISTTIMEFORMAT
+    HISTTIMEFORMAT='%s '
+    hist_cmd=`history 1`
+    HISTTIMEFORMAT=$old_hist_time_format
+    hist_cmd=${hist_cmd#*  }
+    ((
+        [ -d "$HOME/Dropbox/personal/scripts/history_info/by_directory/" ] &&
+        mkdir -p "$HOME/Dropbox/personal/scripts/history_info/by_directory/$PWD" &&
+        (echo -e "#${hist_cmd/ /\\n}" >> $HOME/Dropbox/personal/scripts/history_info/by_directory/$PWD/.bash_history)
+        ) &)
 #    history 10
     ((cf_date_check_for_updates) &)
     cf_date_check_notify
