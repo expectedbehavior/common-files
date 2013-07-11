@@ -307,8 +307,13 @@ cf_prompt_command() {
 lc() {
   # echo $SECONDS
   eval "$@"
-  growlnotify -swm "command finished: $*"
-  open /Applications/iTerm.app
+  # The -n makes it so clicking the toast doesn't make every lc continue processing
+  ((
+      growlnotify -n "lc${RANDOM}" -swm "command finished: $*"
+      open /Applications/iTerm.app
+      # &> /dev/null otherwise commands like "lc time sleep 1 | tee /tmp/foo.log" hang
+      ) &> /dev/null &
+      ) # subshell so it doesn't stick around in the jobs list and hold up other "wait" commands
   # echo $SECONDS
 }
 
