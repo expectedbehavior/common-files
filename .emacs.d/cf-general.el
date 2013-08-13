@@ -543,8 +543,8 @@
 (set-face-foreground 'font-lock-builtin-face       "Wheat")
 (set-face-foreground 'font-lock-constant-face      "yellow") ; "Wheat")
 
-(set-face-foreground 'modeline "black")
-(set-face-background 'modeline "grey100")
+(set-face-foreground 'mode-line "black")
+(set-face-background 'mode-line "grey100")
 (set-face-background 'region "blue")
 (set-face-foreground 'bold "red")
 (set-face-foreground 'italic "yellow")
