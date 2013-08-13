@@ -50,6 +50,7 @@
         ("\\Gemfile$" . ruby-mode)
         ("\\Vagrantfile$" . ruby-mode)
         ("\\.god$" . ruby-mode)
+        ("\\Capfile$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.scss$" . sass-mode)
 				("\\.haml$" . haml-mode)
@@ -115,6 +116,12 @@
   "Create a two-pane window suitable for coding on a macbook."
   (interactive "P")
   (my-set-mac-font "espresso" 14)
+  (arrange-frame 170 45 nosplit))
+
+(defun large (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "espresso" 18)
   (arrange-frame 170 45 nosplit))
 
 (defun projector (&optional nosplit)

@@ -6,7 +6,7 @@
 [[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
 
 export INPUTRC="$HOME/.inputrc"
-export EDITOR="/usr/bin/emacs"
+export EDITOR="/usr/bin/emacsclient"
 export GLOBIGNORE='.:..'
 export HISTTIMEFORMAT='%c  '
 export LC_COLLATE="POSIX"
@@ -35,6 +35,8 @@ alias g{='git stash'
 alias g}='git stash apply'
 alias glg='git lg'
 complete -o default -o nospace -F _git_log glg
+alias gdc='git diff --cached'
+complete -o default -o nospace -F _git_diff gdc
 alias gcm='git commit -m'
 alias gc="git commit"
 alias gca='git commit -a'
@@ -64,13 +66,16 @@ alias cuke="cucumber ./features"
 
 alias sc='script/console'
 alias sct='RAILS_ENV="test" sc'
+alias ss='script/server'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
+alias a='acki'
 
 alias hn='hcl note'
 alias ht='hcl start'
 alias hp='hcl stop'
+alias be='bundle exec'
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
@@ -345,6 +350,8 @@ FG_WHITE="\[\033[01;37m\]"
 FG_RED="\[\033[01;31m\]"
 FG_GREEN="\[\033[01;32m\]"
 FG_BLUE="\[\033[01;34m\]"
+NO_COLOR="\[\e[0m\]"
+
 WHOAMI="`/usr/bin/whoami`"
 
 #make eterm into xterm for emacs/ssh purposes
@@ -371,7 +378,7 @@ if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
  
     GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
-    PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${FG_WHITE}"
+    PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${NO_COLOR}"
 fi
 
 #make eterm into xterm for emacs/ssh purposes
