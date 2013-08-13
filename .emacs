@@ -35,7 +35,15 @@
 (server-start)
 (small)
 (maximize-frame)
-(ns-toggle-fullscreen)
+
+(defun toggle-fullscreen ()
+  "Toggle full screen"
+  (interactive)
+  (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
+
+(toggle-fullscreen)
 
 ;; Use a hbar cursor when mark is active and a region exists.
 (defun th-activate-mark-init ()
