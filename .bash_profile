@@ -18,6 +18,7 @@ if [[ "$SKIP_KEYCHAIN" != "true" ]]; then
       fi
   done
 fi
+[ -f ~/.keychain/$HOSTNAME-sh ] && source ~/.keychain/$HOSTNAME-sh > /dev/null
 
 cf_date_check_notify
 
