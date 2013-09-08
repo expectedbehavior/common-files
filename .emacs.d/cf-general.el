@@ -51,11 +51,13 @@
         ("\\Vagrantfile$" . ruby-mode)
         ("\\.god$" . ruby-mode)
         ("\\Capfile$" . ruby-mode)
+        ("\\.rabl$" . ruby-mode)
 				("\\.sass$" . sass-mode)
 				("\\.scss$" . sass-mode)
 				("\\.haml$" . haml-mode)
 				("\\.feature$" . feature-mode)
 				("\\.org$" . org-mode)
+        ("\\.cnf$" . conf-mode)
           ) auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -82,6 +84,8 @@
 
 
 ;; moved to before autoload so it's easier to override the default call to it
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
 (defun mac-toggle-max-window ()
   (interactive)
   (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
@@ -112,30 +116,36 @@
                       :height (* 10 size))
   (frame-parameter nil 'font))
 
+(defun small (&optional nosplit)
+  "Create a two-pane window suitable for coding on a macbook."
+  (interactive "P")
+  (my-set-mac-font "PragmataPro" 12)
+  (arrange-frame 170 45 nosplit))
+
 (defun medium (&optional nosplit)
   "Create a two-pane window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "espresso" 14)
+  (my-set-mac-font "Inconsolata" 16)
   (arrange-frame 170 45 nosplit))
 
 (defun large (&optional nosplit)
   "Create a two-pane window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "espresso" 18)
-  (arrange-frame 170 45 nosplit))
+  (my-set-mac-font "PragmataPro" 20)
+  (arrange-frame 170 45 nosplit)
+  (maximize-frame))
 
 (defun projector (&optional nosplit)
   "Create a large window suitable for coding on a macbook."
   (interactive "P")
-  (my-set-mac-font "inconsolata" 20)
+  (my-set-mac-font "PragmataPro" 20)
   (arrange-frame 170 45 nosplit))
-
 
 (defun presentation ()
   "Create a giant font window suitable for doing live demos."
   (interactive)
-  (arrange-frame 85 25 t)
-  (my-set-mac-font "expresso" 22))
+  (arrange-frame 85 26 t)
+  (my-set-mac-font "PragmataPro" 26))
 
  
 (defun load-directory (dir)
@@ -143,10 +153,12 @@
              (load-file x))
           (directory-files dir t "\\.el$")))
  
-(load-directory "~/.emacs.d/autoload/")
+
 
 
 ;; Load paths
+(require 'ruby-mode)
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp-personal"))
@@ -248,7 +260,12 @@
     (setenv "ESHELL" (concat (getenv "HOME") "/.emacs.d/bash_wrapper")))
 
 
-(setq mac-option-modifier 'control)
+;;(setq mac-option-modifier 'control)
+;;(setq mac-command-modifier 'meta)
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
 (global-set-key (kbd "C-M-<left>") 'windmove-left)          ; move to left windnow
 (global-set-key (kbd "C-M-<right>") 'windmove-right)        ; move to right window
@@ -532,8 +549,8 @@
 (set-face-foreground 'font-lock-builtin-face       "Wheat")
 (set-face-foreground 'font-lock-constant-face      "yellow") ; "Wheat")
 
-(set-face-foreground 'modeline "black")
-(set-face-background 'modeline "grey100")
+(set-face-foreground 'mode-line "black")
+(set-face-background 'mode-line "grey100")
 (set-face-background 'region "blue")
 (set-face-foreground 'bold "red")
 (set-face-foreground 'italic "yellow")

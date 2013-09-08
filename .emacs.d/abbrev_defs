@@ -1,0 +1,1483 @@
+;;-*-coding: utf-8;-*-
+(define-abbrev-table 'Buffer-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'amrita-mode-abbrev-table '())
+
+(define-abbrev-table 'apropos-mode-abbrev-table '())
+
+(define-abbrev-table 'awk-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'bibtex-mode-abbrev-table '())
+
+(define-abbrev-table 'c++-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'c-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'calendar-mode-abbrev-table '())
+
+(define-abbrev-table 'change-log-mode-abbrev-table '())
+
+(define-abbrev-table 'coffee-mode-abbrev-table '())
+
+(define-abbrev-table 'comint-mode-abbrev-table '())
+
+(define-abbrev-table 'completion-list-mode-abbrev-table '())
+
+(define-abbrev-table 'css-mode-abbrev-table '())
+
+(define-abbrev-table 'display-time-world-mode-abbrev-table '())
+
+(define-abbrev-table 'emacs-lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'fundamental-mode-abbrev-table '())
+
+(define-abbrev-table 'gfm-mode-abbrev-table '())
+
+(define-abbrev-table 'global-abbrev-table '())
+
+(define-abbrev-table 'haml-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'help-mode-abbrev-table '())
+
+(define-abbrev-table 'html-helper-mode-abbrev-table
+  '(
+    ("%" "" (lambda nil (interactive) (snippet-insert "<% $. -%>")) 0)
+    ("%%" "" (lambda nil (interactive) (snippet-insert "<%= $. %>")) 0)
+    ("%for" "" (lambda nil (interactive) (snippet-insert "<% for $${elem} in @$${list} %>
+$>$.
+<% end %>$>")) 0)
+    ("%h" "" (lambda nil (interactive) (snippet-insert "<%=h $${@item} %>")) 0)
+    ("%if" "" (lambda nil (interactive) (snippet-insert "<% if $${cond} -%>
+$.
+<% end -%>")) 0)
+    ("%ifel" "" (lambda nil (interactive) (snippet-insert "<% if $${cond} -%>
+$.
+<% else -%>
+<% end -%>")) 0)
+    ("%unless" "" (lambda nil (interactive) (snippet-insert "<% unless $${cond} -%>
+$.
+<% end -%>")) 0)
+    ("body" "" (lambda nil (interactive) (snippet-insert "<body id=\"$${id}\" $${onload}>
+$>$.
+</body>")) 0)
+    ("dchttr" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"
+$>\"http://www.w3.org/TR/html4/loose.dtd\">
+")) 0)
+    ("dcxml1" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"
+$>\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">
+")) 0)
+    ("dcxmlf" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">
+")) 0)
+    ("dcxmls" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+")) 0)
+    ("dcxmlt" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+")) 0)
+    ("div" "" (lambda nil (interactive) (snippet-insert "<div>
+$>$${paste}
+</div>")) 0)
+    ("dtht" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
+$>\"http://www.w3.org/TR/html4/strict.dtd\">
+")) 0)
+    ("ff" "" (lambda nil (interactive) (snippet-insert "<%= form_for :$${item}, :action => \"$${update}\" %>
+$.
+<% end %>")) 0)
+    ("form" "" (lambda nil (interactive) (snippet-insert "<form action=\"$${action}\" method=\"$${post}\" accept-charset=\"utf-8\">
+$>$.
+
+$><p><input type=\"submit\" value=\"Continue &rarr;\"/></p>
+</form>")) 0)
+    ("ft" "" (lambda nil (interactive) (snippet-insert "<%= form_tag :action => \"$${update}\" %>
+$.
+<%= end_form_tag %>")) 0)
+    ("h" "" (lambda nil (interactive) (snippet-insert "<h1 id=\"$${alpha}\">$${paste}</h1>")) 0)
+    ("head" "" (lambda nil (interactive) (snippet-insert "<head>
+$><meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\"/>
+$><title>$${title}</title>
+$>$.
+</head>")) 0)
+    ("input" "" (lambda nil (interactive) (snippet-insert "<input type=\"$${button}\" name=\"$${some_name}\" value=\"$${3}\"$${id}>")) 0)
+    ("lia" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :action => \"$${index}\" %>")) 0)
+    ("liai" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :action => \"$${edit}\", :id => $${item} %>")) 0)
+    ("lic" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\" %>")) 0)
+    ("lica" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\", :action => \"$${index}\" %>")) 0)
+    ("licai" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\", :action => \"$${edit}\", :id => $${item} %>")) 0)
+    ("link" "" (lambda nil (interactive) (snippet-insert "<link rel=\"$${stylesheet}\" href=\"$${master}\" type=\"text/css\" media=\"$${screen}\" title=\"$${title}\" charset=\"$${utf}\"/>")) 0)
+    ("mailto" "" (lambda nil (interactive) (snippet-insert "<a href=\"mailto:$${example}?subject=$${feedback}\">$${email}</a>")) 0)
+    ("meta" "" (lambda nil (interactive) (snippet-insert "<meta name=\"$${name}\" content=\"$${content}\"/>")) 0)
+    ("movie" "" (lambda nil (interactive) (snippet-insert "<object width=\"$${2}\" height=\"$${3}\" classid=\"clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B\" codebase=\"http://www.apple.com/qtactivex/qtplugin.cab\">
+$><param name=\"src\" value=\"$${1}\"/>
+$><param name=\"controller\" value=\"$${4}\"/>
+$><param name=\"autoplay\" value=\"$${5}\"/>
+$><embed src=\"$${movie}\"
+$>$>width=\"$${320}\" height=\"$${240}\"
+$>$>controller=\"$${true}\" autoplay=\"$${true}\"
+$>$>scale=\"tofit\" cache=\"true\"
+$>$>pluginspage=\"http://www.apple.com/quicktime/download/\"
+$>/>
+</object>")) 0)
+    ("script" "" (lambda nil (interactive) (snippet-insert "<script type=\"text/javascript\" charset=\"utf-8\">
+$>$.
+</script>")) 0)
+    ("scriptsrc" "" (lambda nil (interactive) (snippet-insert "<script src=\"$${1}\" type=\"text/javascript\" charset=\"$${utf}\"></script>")) 0)
+    ("style" "" (lambda nil (interactive) (snippet-insert "<style type=\"text/css\" media=\"screen\">
+$>$.
+</style>")) 0)
+    ("table" "" (lambda nil (interactive) (snippet-insert "<table border=\"$${0}\" $${cellpadding}>
+$><tr><th>$${Header}</th></tr>
+$><tr><td>$${Data}</td></tr>
+</table>")) 0)
+    ("textarea" "" (lambda nil (interactive) (snippet-insert "<textarea name=\"$${Name}\" rows=\"$${8}\" cols=\"$${40}\">$.</textarea>")) 0)
+    ("title" "" (lambda nil (interactive) (snippet-insert "<title>$${title}</title>")) 0)
+   ))
+
+(define-abbrev-table 'html-mode-abbrev-table
+  '(
+    ("%" "" (lambda nil (interactive) (snippet-insert "<% $. -%>")) 0)
+    ("%%" "" (lambda nil (interactive) (snippet-insert "<%= $. %>")) 0)
+    ("%for" "" (lambda nil (interactive) (snippet-insert "<% for $${elem} in @$${list} %>
+$>$.
+<% end %>$>")) 0)
+    ("%h" "" (lambda nil (interactive) (snippet-insert "<%=h $${@item} %>")) 0)
+    ("%if" "" (lambda nil (interactive) (snippet-insert "<% if $${cond} -%>
+$.
+<% end -%>")) 0)
+    ("%ifel" "" (lambda nil (interactive) (snippet-insert "<% if $${cond} -%>
+$.
+<% else -%>
+<% end -%>")) 0)
+    ("%unless" "" (lambda nil (interactive) (snippet-insert "<% unless $${cond} -%>
+$.
+<% end -%>")) 0)
+    ("body" "" (lambda nil (interactive) (snippet-insert "<body id=\"$${id}\" $${onload}>
+$>$.
+</body>")) 0)
+    ("dchttr" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"
+$>\"http://www.w3.org/TR/html4/loose.dtd\">
+")) 0)
+    ("dcxml1" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"
+$>\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">
+")) 0)
+    ("dcxmlf" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">
+")) 0)
+    ("dcxmls" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+")) 0)
+    ("dcxmlt" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+")) 0)
+    ("div" "" (lambda nil (interactive) (snippet-insert "<div>
+$>$${paste}
+</div>")) 0)
+    ("dtht" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
+$>\"http://www.w3.org/TR/html4/strict.dtd\">
+")) 0)
+    ("ff" "" (lambda nil (interactive) (snippet-insert "<%= form_for :$${item}, :action => \"$${update}\" %>
+$.
+<% end %>")) 0)
+    ("form" "" (lambda nil (interactive) (snippet-insert "<form action=\"$${action}\" method=\"$${post}\" accept-charset=\"utf-8\">
+$>$.
+
+$><p><input type=\"submit\" value=\"Continue &rarr;\"/></p>
+</form>")) 0)
+    ("ft" "" (lambda nil (interactive) (snippet-insert "<%= form_tag :action => \"$${update}\" %>
+$.
+<%= end_form_tag %>")) 0)
+    ("h" "" (lambda nil (interactive) (snippet-insert "<h1 id=\"$${alpha}\">$${paste}</h1>")) 0)
+    ("head" "" (lambda nil (interactive) (snippet-insert "<head>
+$><meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\"/>
+$><title>$${title}</title>
+$>$.
+</head>")) 0)
+    ("input" "" (lambda nil (interactive) (snippet-insert "<input type=\"$${button}\" name=\"$${some_name}\" value=\"$${3}\"$${id}>")) 0)
+    ("lia" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :action => \"$${index}\" %>")) 0)
+    ("liai" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :action => \"$${edit}\", :id => $${item} %>")) 0)
+    ("lic" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\" %>")) 0)
+    ("lica" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\", :action => \"$${index}\" %>")) 0)
+    ("licai" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\", :action => \"$${edit}\", :id => $${item} %>")) 0)
+    ("link" "" (lambda nil (interactive) (snippet-insert "<link rel=\"$${stylesheet}\" href=\"$${master}\" type=\"text/css\" media=\"$${screen}\" title=\"$${title}\" charset=\"$${utf}\"/>")) 0)
+    ("mailto" "" (lambda nil (interactive) (snippet-insert "<a href=\"mailto:$${example}?subject=$${feedback}\">$${email}</a>")) 0)
+    ("meta" "" (lambda nil (interactive) (snippet-insert "<meta name=\"$${name}\" content=\"$${content}\"/>")) 0)
+    ("movie" "" (lambda nil (interactive) (snippet-insert "<object width=\"$${2}\" height=\"$${3}\" classid=\"clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B\" codebase=\"http://www.apple.com/qtactivex/qtplugin.cab\">
+$><param name=\"src\" value=\"$${1}\"/>
+$><param name=\"controller\" value=\"$${4}\"/>
+$><param name=\"autoplay\" value=\"$${5}\"/>
+$><embed src=\"$${movie}\"
+$>$>width=\"$${320}\" height=\"$${240}\"
+$>$>controller=\"$${true}\" autoplay=\"$${true}\"
+$>$>scale=\"tofit\" cache=\"true\"
+$>$>pluginspage=\"http://www.apple.com/quicktime/download/\"
+$>/>
+</object>")) 0)
+    ("script" "" (lambda nil (interactive) (snippet-insert "<script type=\"text/javascript\" charset=\"utf-8\">
+$>$.
+</script>")) 0)
+    ("scriptsrc" "" (lambda nil (interactive) (snippet-insert "<script src=\"$${1}\" type=\"text/javascript\" charset=\"$${utf}\"></script>")) 0)
+    ("style" "" (lambda nil (interactive) (snippet-insert "<style type=\"text/css\" media=\"screen\">
+$>$.
+</style>")) 0)
+    ("table" "" (lambda nil (interactive) (snippet-insert "<table border=\"$${0}\" $${cellpadding}>
+$><tr><th>$${Header}</th></tr>
+$><tr><td>$${Data}</td></tr>
+</table>")) 0)
+    ("textarea" "" (lambda nil (interactive) (snippet-insert "<textarea name=\"$${Name}\" rows=\"$${8}\" cols=\"$${40}\">$.</textarea>")) 0)
+    ("title" "" (lambda nil (interactive) (snippet-insert "<title>$${title}</title>")) 0)
+   ))
+
+(define-abbrev-table 'idl-mode-abbrev-table '())
+
+(define-abbrev-table 'inferior-moz-mode-abbrev-table '())
+
+(define-abbrev-table 'java-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'js-mode-abbrev-table '())
+
+(define-abbrev-table 'lisp-mode-abbrev-table '())
+
+(define-abbrev-table 'markdown-mode-abbrev-table '())
+
+(define-abbrev-table 'message-mode-abbrev-table '())
+
+(define-abbrev-table 'mumamo-border-mode-abbrev-table '())
+
+(define-abbrev-table 'mumamo-comment-mode-abbrev-table '())
+
+(define-abbrev-table 'nxml-mode-abbrev-table
+  '(
+    ("%" "" (lambda nil (interactive) (snippet-insert "<% $. -%>")) 0)
+    ("%%" "" (lambda nil (interactive) (snippet-insert "<%= $. %>")) 0)
+    ("%for" "" (lambda nil (interactive) (snippet-insert "<% for $${elem} in @$${list} %>
+$>$.
+<% end %>$>")) 0)
+    ("%h" "" (lambda nil (interactive) (snippet-insert "<%=h $${@item} %>")) 0)
+    ("%if" "" (lambda nil (interactive) (snippet-insert "<% if $${cond} -%>
+$.
+<% end -%>")) 0)
+    ("%ifel" "" (lambda nil (interactive) (snippet-insert "<% if $${cond} -%>
+$.
+<% else -%>
+<% end -%>")) 0)
+    ("%unless" "" (lambda nil (interactive) (snippet-insert "<% unless $${cond} -%>
+$.
+<% end -%>")) 0)
+    ("body" "" (lambda nil (interactive) (snippet-insert "<body id=\"$${id}\" $${onload}>
+$>$.
+</body>")) 0)
+    ("dchttr" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"
+$>\"http://www.w3.org/TR/html4/loose.dtd\">
+")) 0)
+    ("dcxml1" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\"
+$>\"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">
+")) 0)
+    ("dcxmlf" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Frameset//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd\">
+")) 0)
+    ("dcxmls" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">
+")) 0)
+    ("dcxmlt" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+$>\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+")) 0)
+    ("div" "" (lambda nil (interactive) (snippet-insert "<div>
+$>$${paste}
+</div>")) 0)
+    ("dtht" "" (lambda nil (interactive) (snippet-insert "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"
+$>\"http://www.w3.org/TR/html4/strict.dtd\">
+")) 0)
+    ("ff" "" (lambda nil (interactive) (snippet-insert "<%= form_for :$${item}, :action => \"$${update}\" %>
+$.
+<% end %>")) 0)
+    ("form" "" (lambda nil (interactive) (snippet-insert "<form action=\"$${action}\" method=\"$${post}\" accept-charset=\"utf-8\">
+$>$.
+
+$><p><input type=\"submit\" value=\"Continue &rarr;\"/></p>
+</form>")) 0)
+    ("ft" "" (lambda nil (interactive) (snippet-insert "<%= form_tag :action => \"$${update}\" %>
+$.
+<%= end_form_tag %>")) 0)
+    ("h" "" (lambda nil (interactive) (snippet-insert "<h1 id=\"$${alpha}\">$${paste}</h1>")) 0)
+    ("head" "" (lambda nil (interactive) (snippet-insert "<head>
+$><meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\"/>
+$><title>$${title}</title>
+$>$.
+</head>")) 0)
+    ("input" "" (lambda nil (interactive) (snippet-insert "<input type=\"$${button}\" name=\"$${some_name}\" value=\"$${3}\"$${id}>")) 0)
+    ("lia" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :action => \"$${index}\" %>")) 0)
+    ("liai" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :action => \"$${edit}\", :id => $${item} %>")) 0)
+    ("lic" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\" %>")) 0)
+    ("lica" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\", :action => \"$${index}\" %>")) 0)
+    ("licai" "" (lambda nil (interactive) (snippet-insert "<%= link_to \"$${text}\", :controller => \"$${items}\", :action => \"$${edit}\", :id => $${item} %>")) 0)
+    ("link" "" (lambda nil (interactive) (snippet-insert "<link rel=\"$${stylesheet}\" href=\"$${master}\" type=\"text/css\" media=\"$${screen}\" title=\"$${title}\" charset=\"$${utf}\"/>")) 0)
+    ("mailto" "" (lambda nil (interactive) (snippet-insert "<a href=\"mailto:$${example}?subject=$${feedback}\">$${email}</a>")) 0)
+    ("meta" "" (lambda nil (interactive) (snippet-insert "<meta name=\"$${name}\" content=\"$${content}\"/>")) 0)
+    ("movie" "" (lambda nil (interactive) (snippet-insert "<object width=\"$${2}\" height=\"$${3}\" classid=\"clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B\" codebase=\"http://www.apple.com/qtactivex/qtplugin.cab\">
+$><param name=\"src\" value=\"$${1}\"/>
+$><param name=\"controller\" value=\"$${4}\"/>
+$><param name=\"autoplay\" value=\"$${5}\"/>
+$><embed src=\"$${movie}\"
+$>$>width=\"$${320}\" height=\"$${240}\"
+$>$>controller=\"$${true}\" autoplay=\"$${true}\"
+$>$>scale=\"tofit\" cache=\"true\"
+$>$>pluginspage=\"http://www.apple.com/quicktime/download/\"
+$>/>
+</object>")) 0)
+    ("script" "" (lambda nil (interactive) (snippet-insert "<script type=\"text/javascript\" charset=\"utf-8\">
+$>$.
+</script>")) 0)
+    ("scriptsrc" "" (lambda nil (interactive) (snippet-insert "<script src=\"$${1}\" type=\"text/javascript\" charset=\"$${utf}\"></script>")) 0)
+    ("style" "" (lambda nil (interactive) (snippet-insert "<style type=\"text/css\" media=\"screen\">
+$>$.
+</style>")) 0)
+    ("table" "" (lambda nil (interactive) (snippet-insert "<table border=\"$${0}\" $${cellpadding}>
+$><tr><th>$${Header}</th></tr>
+$><tr><td>$${Data}</td></tr>
+</table>")) 0)
+    ("textarea" "" (lambda nil (interactive) (snippet-insert "<textarea name=\"$${Name}\" rows=\"$${8}\" cols=\"$${40}\">$.</textarea>")) 0)
+    ("title" "" (lambda nil (interactive) (snippet-insert "<title>$${title}</title>")) 0)
+   ))
+
+(define-abbrev-table 'objc-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'occur-edit-mode-abbrev-table '())
+
+(define-abbrev-table 'occur-mode-abbrev-table '())
+
+(define-abbrev-table 'org-mode-abbrev-table '())
+
+(define-abbrev-table 'outline-mode-abbrev-table '())
+
+(define-abbrev-table 'package-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'php-mode-abbrev-table
+  '(
+    ("__halt_compiler" "" php-template-halt-compiler-hook 0)
+    ("abs" "" php-template-abs-hook 0)
+    ("acos" "" php-template-acos-hook 0)
+    ("acosh" "" php-template-acosh-hook 0)
+    ("addcslashes" "" php-template-addcslashes-hook 0)
+    ("addslashes" "" php-template-addslashes-hook 0)
+    ("apache_child_terminate" "" php-template-apache-child-terminate-hook 0)
+    ("apache_get_modules" "" php-template-apache-get-modules-hook 0)
+    ("apache_get_version" "" php-template-apache-get-version-hook 0)
+    ("apache_getenv" "" php-template-apache-getenv-hook 0)
+    ("apache_lookup_uri" "" php-template-apache-lookup-uri-hook 0)
+    ("apache_note" "" php-template-apache-note-hook 0)
+    ("apache_request_headers" "" php-template-apache-request-headers-hook 0)
+    ("apache_reset_timeout" "" php-template-apache-reset-timeout-hook 0)
+    ("apache_response_headers" "" php-template-apache-response-headers-hook 0)
+    ("apache_setenv" "" php-template-apache-setenv-hook 0)
+    ("apc_cache_info" "" php-template-apc-cache-info-hook 0)
+    ("apc_clear_cache" "" php-template-apc-clear-cache-hook 0)
+    ("apc_define_constants" "" php-template-apc-define-constants-hook 0)
+    ("apc_delete" "" php-template-apc-delete-hook 0)
+    ("apc_fetch" "" php-template-apc-fetch-hook 0)
+    ("apc_load_constants" "" php-template-apc-load-constants-hook 0)
+    ("apc_sma_info" "" php-template-apc-sma-info-hook 0)
+    ("apc_store" "" php-template-apc-store-hook 0)
+    ("array" "" php-template-array-hook 0)
+    ("array_change_key_case" "" php-template-array-change-key-case-hook 0)
+    ("array_chunk" "" php-template-array-chunk-hook 0)
+    ("array_combine" "" php-template-array-combine-hook 0)
+    ("array_count_values" "" php-template-array-count-values-hook 0)
+    ("array_diff" "" php-template-array-diff-hook 0)
+    ("array_diff_assoc" "" php-template-array-diff-assoc-hook 0)
+    ("array_diff_key" "" php-template-array-diff-key-hook 0)
+    ("array_diff_uassoc" "" php-template-array-diff-uassoc-hook 0)
+    ("array_diff_ukey" "" php-template-array-diff-ukey-hook 0)
+    ("array_fill" "" php-template-array-fill-hook 0)
+    ("array_filter" "" php-template-array-filter-hook 0)
+    ("array_flip" "" php-template-array-flip-hook 0)
+    ("array_intersect" "" php-template-array-intersect-hook 0)
+    ("array_intersect_assoc" "" php-template-array-intersect-assoc-hook 0)
+    ("array_intersect_key" "" php-template-array-intersect-key-hook 0)
+    ("array_intersect_uassoc" "" php-template-array-intersect-uassoc-hook 0)
+    ("array_intersect_ukey" "" php-template-array-intersect-ukey-hook 0)
+    ("array_key_exists" "" php-template-array-exists-hook 0)
+    ("array_keys" "" php-template-array-keys-hook 0)
+    ("array_map" "" php-template-array-map-hook 0)
+    ("array_merge" "" php-template-array-merge-hook 0)
+    ("array_merge_recursive" "" php-template-array-merge-recursive-hook 0)
+    ("array_multisort" "" php-template-array-multisort-hook 0)
+    ("array_pad" "" php-template-array-pad-hook 0)
+    ("array_pop" "" php-template-array-pop-hook 0)
+    ("array_product" "" php-template-array-product-hook 0)
+    ("array_push" "" php-template-array-push-hook 0)
+    ("array_rand" "" php-template-array-rand-hook 0)
+    ("array_reduce" "" php-template-array-reduce-hook 0)
+    ("array_reverse" "" php-template-array-reverse-hook 0)
+    ("array_search" "" php-template-array-search-hook 0)
+    ("array_shift" "" php-template-array-shift-hook 0)
+    ("array_slice" "" php-template-array-slice-hook 0)
+    ("array_splice" "" php-template-array-splice-hook 0)
+    ("array_sum" "" php-template-array-sum-hook 0)
+    ("array_udiff" "" php-template-array-udiff-hook 0)
+    ("array_udiff_assoc" "" php-template-array-udiff-assoc-hook 0)
+    ("array_udiff_uassoc" "" php-template-array-udiff-uassoc-hook 0)
+    ("array_uintersect" "" php-template-array-uintersect-hook 0)
+    ("array_uintersect_assoc" "" php-template-array-uintersect-assoc-hook 0)
+    ("array_uintersect_uassoc" "" php-template-array-uintersect-uassoc-hook 0)
+    ("array_unique" "" php-template-array-unique-hook 0)
+    ("array_unshift" "" php-template-array-unshift-hook 0)
+    ("array_values" "" php-template-array-values-hook 0)
+    ("array_walk" "" php-template-array-walk-hook 0)
+    ("array_walk_recursive" "" php-template-array-walk-recursive-hook 0)
+    ("arsort" "" php-template-arsort-hook 0)
+    ("ascii2ebcdic" "" php-template-ascii2ebcdic-hook 0)
+    ("asin" "" php-template-asin-hook 0)
+    ("asinh" "" php-template-asinh-hook 0)
+    ("asort" "" php-template-asort-hook 0)
+    ("atan" "" php-template-atan-hook 0)
+    ("atan2" "" php-template-atan2-hook 0)
+    ("atanh" "" php-template-atanh-hook 0)
+    ("base_convert" "" php-template-base-convert-hook 0)
+    ("basename" "" php-template-basename-hook 0)
+    ("bin2hex" "" php-template-bin2hex-hook 0)
+    ("bindec" "" php-template-bindec-hook 0)
+    ("break" "" php-template-break-hook 0)
+    ("call_user_func" "" php-template-call-user-func-hook 0)
+    ("call_user_func_array" "" php-template-call-user-func-array-hook 0)
+    ("ceil" "" php-template-ceil-hook 0)
+    ("chdir" "" php-template-chdir-hook 0)
+    ("checkdate" "" php-template-checkdate-hook 0)
+    ("chgrp" "" php-template-chgrp-hook 0)
+    ("chmod" "" php-template-chmod-hook 0)
+    ("chop" "" php-template-chop-hook 0)
+    ("chown" "" php-template-chown-hook 0)
+    ("chr" "" php-template-chr-hook 0)
+    ("chroot" "" php-template-chroot 0)
+    ("chunk_split" "" php-template-chunk-split-hook 0)
+    ("class" "" php-template-class-hook 0)
+    ("clearstatcache" "" php-template-clearstatcache-hook 0)
+    ("closedir" "" php-template-closedir-hook 0)
+    ("compact" "" php-template-compact-hook 0)
+    ("connection_aborted" "" php-template-connection-aborted-hook 0)
+    ("connection_status" "" php-template-connection-status-hook 0)
+    ("connection_timeout" "" php-template-connection-timeout-hook 0)
+    ("constant" "" php-template-constant-hook 0)
+    ("continue" "" php-template-continue-hook 0)
+    ("convert_cyr_string" "" php-template-convert-cyr-string-hook 0)
+    ("convert_uudecode" "" php-template-convert-uudecode-hook 0)
+    ("convert_uuencode" "" php-template-convert-uuencode-hook 0)
+    ("copy" "" php-template-copy-hook 0)
+    ("cos" "" php-template-cos-hook 0)
+    ("cosh" "" php-template-cosh-hook 0)
+    ("count" "" php-template-count-hook 0)
+    ("count_chars" "" php-template-count-chars-hook 0)
+    ("crc32" "" php-template-crc32-hook 0)
+    ("create_function" "" php-template-create-function-hook 0)
+    ("crypt" "" php-template-crypt-hook 0)
+    ("current" "" php-template-current-hook 0)
+    ("date" "" php-template-date-hook 0)
+    ("date_default_timezone_get" "" php-template-date-default-timezone-get-hook 0)
+    ("date_default_timezone_set" "" php-template-date-default-timezone-set-hook 0)
+    ("date_sunrise" "" php-template-date-sunrise-hook 0)
+    ("date_sunset" "" php-template-date-sunset-hook 0)
+    ("debug_backtrace" "" php-template-debug-backtrace-hook 0)
+    ("debug_print_backtrace" "" php-template-debug-print-backtrace-hook 0)
+    ("debug_zval_dump" "" php-template-debug-zval-dump-hook 0)
+    ("decbin" "" php-template-decbin-hook 0)
+    ("dechex" "" php-template-dechex-hook 0)
+    ("decoct" "" php-template-decoct-hook 0)
+    ("define" "" php-template-define-hook 0)
+    ("defined" "" php-template-defined-hook 0)
+    ("deg2rad" "" php-template-deg2rad-hook 0)
+    ("delete" "" php-template-delete-hook 0)
+    ("die" "" php-template-die-hook 0)
+    ("dir" "" php-template-dir-hook 0)
+    ("dirname" "" php-template-dirname-hook 0)
+    ("disk_free_space" "" php-template-disk-free-space-hook 0)
+    ("disk_total_space" "" php-template-disk-total-space-hook 0)
+    ("diskfreespace" "" php-template-disk-free-space-hook 0)
+    ("do" "" php-template-do-while-hook 0)
+    ("dotnet_load" "" php-template-dotnet-load-hook 0)
+    ("doubleval" "" php-template-doubleval-hook 0)
+    ("each" "" php-template-each-hook 0)
+    ("ebcdic2ascii" "" php-template-ebcdic2ascii-hook 0)
+    ("echo" "" php-template-echo-hook 0)
+    ("else" "" php-template-else-hook 0)
+    ("elseif" "" php-template-elseif-hook 0)
+    ("empty" "" php-template-empty-hook 0)
+    ("end" "" php-template-end-hook 0)
+    ("ereg" "" php-template-ereg-hook 0)
+    ("ereg_replace" "" php-template-ereg-replace-hook 0)
+    ("eregi" "" php-template-eregi-hook 0)
+    ("eregi_replace" "" php-template-eregi-replace-hook 0)
+    ("error_log" "" php-template-error-log-hook 0)
+    ("error_reporting" "" php-template-error-reporting-hook 0)
+    ("eval" "" php-template-eval-hook 0)
+    ("exit" "" php-template-exit-hook 0)
+    ("exp" "" php-template-exp-hook 0)
+    ("explode" "" php-template-explode-hook 0)
+    ("expm1" "" php-template-expm1-hook 0)
+    ("extract" "" php-template-extract-hook 0)
+    ("ezmlm_hash" "" php-template-ezmlm-hash-hook 0)
+    ("fclose" "" php-template-fclose-hook 0)
+    ("feof" "" php-template-feof-hook 0)
+    ("fflush" "" php-template-fflush-hook 0)
+    ("fgetc" "" php-template-fgetc-hook 0)
+    ("fgetcsv" "" php-template-fgetcsv-hook 0)
+    ("fgets" "" php-template-fgets-hook 0)
+    ("fgetss" "" php-template-fgetss-hook 0)
+    ("file" "" php-template-file-hook 0)
+    ("file_exists" "" php-template-file-exists-hook 0)
+    ("file_get_contents" "" php-template-file-get-contents-hook 0)
+    ("file_put_contents" "" php-template-file-put-contents-hook 0)
+    ("fileatime" "" php-template-fileatime-hook 0)
+    ("filectime" "" php-template-filectime-hook 0)
+    ("filegroup" "" php-template-filegroup-hook 0)
+    ("fileinode" "" php-template-fileinode-hook 0)
+    ("filemtime" "" php-template-filemtime-hook 0)
+    ("fileowner" "" php-template-fileowner-hook 0)
+    ("fileperms" "" php-template-fileperms-hook 0)
+    ("filesize" "" php-template-filesize-hook 0)
+    ("filetype" "" php-template-filetype-hook 0)
+    ("floatval" "" php-template-floatval-hook 0)
+    ("flock" "" php-template-flock-hook 0)
+    ("floor" "" php-template-floor-hook 0)
+    ("fmod" "" php-template-fmod-hook 0)
+    ("fnmatch" "" php-template-fnmatch-hook 0)
+    ("fopen" "" php-template-fopen-hook 0)
+    ("for" "" php-template-for-hook 0)
+    ("foreach" "" php-template-foreach-hook 0)
+    ("fpassthru" "" php-template-fpassthru-hook 0)
+    ("fprintf" "" php-template-fprintf-hook 0)
+    ("fput" "" php-template-fwrite-hook 0)
+    ("fputcsv" "" php-template-fputcsv-hook 0)
+    ("fread" "" php-template-fread-hook 0)
+    ("fseek" "" php-template-fseek-hook 0)
+    ("fstat" "" php-template-fstat-hook 0)
+    ("ftell" "" php-template-ftell-hook 0)
+    ("ftruncate" "" php-template-ftruncate-hook 0)
+    ("func_get_arg" "" php-template-func-get-arg-hook 0)
+    ("func_get_args" "" php-template-func-get-args-hook 0)
+    ("func_num_args" "" php-template-func-num-args-hook 0)
+    ("function" "" php-template-function-hook 0)
+    ("function_exists" "" php-template-function-exists-hook 0)
+    ("fwrite" "" php-template-fwrite-hook 0)
+    ("gd_info" "" php-template-gd-info-hook 0)
+    ("get_browser" "" php-template-get-browser-hook 0)
+    ("get_defined_functions" "" php-template-get-defined-functions-hook 0)
+    ("get_defined_vars" "" php-template-get-defined-vars-hook 0)
+    ("get_html_translation_table" "" php-template-get-html-translation-table-hook 0)
+    ("get_resource_type" "" php-template-get-resource-type-hook 0)
+    ("getallheaders" "" php-template-getallheaders-hook 0)
+    ("getcwd" "" php-template-getcwd-hook 0)
+    ("getdate" "" php-template-getdate-hook 0)
+    ("getimagesize" "" php-template-getimagesize-hook 0)
+    ("getrandmax" "" php-template-getrandmax-hook 0)
+    ("gettimeofday" "" php-template-gettimeofday-hook 0)
+    ("gettype" "" php-template-gettype-hook 0)
+    ("glob" "" php-template-glob-hook 0)
+    ("gmdate" "" php-template-gmdate-hook 0)
+    ("gmmktime" "" php-template-gmmktime-hook 0)
+    ("gmstrftime" "" php-template-gmstrftime-hook 0)
+    ("hebrev" "" php-template-hebrev-hook 0)
+    ("hebrevc" "" php-template-hebrevc-hook 0)
+    ("hexdec" "" php-template-hexdec-hook 0)
+    ("highlight_file" "" php-template-highlight-file-hook 0)
+    ("highlight_string" "" php-template-highlight-string-hook 0)
+    ("html_entity_decode" "" php-template-html-entity-decode-hook 0)
+    ("htmlentities" "" php-template-htmlentities-hook 0)
+    ("htmlspecialchars" "" php-template-htmlspecialchars-hook 0)
+    ("htmlspecialchars_decode" "" php-template-htmlspecialchars-decode-hook 0)
+    ("hypot" "" php-template-hypot-hook 0)
+    ("idate" "" php-template-idate-hook 0)
+    ("if" "" php-template-if-hook 0)
+    ("ignore_user_abort" "" php-template-ignore-user-abort-hook 0)
+    ("image2wbmp" "" php-template-image2wbmp-hook 0)
+    ("image_type_to_extension" "" php-template-image-type-to-extension-hook 0)
+    ("image_type_to_mime_type" "" php-template-image-type-to-mime-type-hook 0)
+    ("imagealphablending" "" php-template-imagealphablending-hook 0)
+    ("imageantialias" "" php-template-imageantialias-hook 0)
+    ("imagearc" "" php-template-imagearc-hook 0)
+    ("imagechar" "" php-template-imagechar-hook 0)
+    ("imagecharup" "" php-template-imagecharup-hook 0)
+    ("imagecolorallocate" "" php-template-imagecolorallocate-hook 0)
+    ("imagecolorallocatealpha" "" php-template-imagecolorallocatealpha-hook 0)
+    ("imagecolorat" "" php-template-imagecolorat-hook 0)
+    ("imagecolorclosest" "" php-template-imagecolorclosest-hook 0)
+    ("imagecolorclosestalpha" "" php-template-imagecolorclosestalpha-hook 0)
+    ("imagecolorclosesthwb" "" php-template-imagecolorclosesthwb-hook 0)
+    ("imagecolordeallocate" "" php-template-imagecolordeallocate-hook 0)
+    ("imagecolorexact" "" php-template-imagecolorexact-hook 0)
+    ("imagecolorexactalpha" "" php-template-imagecolorexactalpha-hook 0)
+    ("imagecolormatch" "" php-template-imagecolormatch-hook 0)
+    ("imagecolorresolve" "" php-template-imagecolorresolve-hook 0)
+    ("imagecolorresolvealpha" "" php-template-imagecolorresolvealpha-hook 0)
+    ("imagecolorset" "" php-template-imagecolorset-hook 0)
+    ("imagecolorsforindex" "" php-template-imagecolorsforindex-hook 0)
+    ("imagecolorstotal" "" php-template-imagecolorstotal-hook 0)
+    ("imagecolortransparent" "" php-template-imagecolortransparent-hook 0)
+    ("imageconvolution" "" php-template-imageconvolution-hook 0)
+    ("imagecopy" "" php-template-imagecopy-hook 0)
+    ("imagecopymerge" "" php-template-imagecopymerge-hook 0)
+    ("imagecopymergegray" "" php-template-imagecopymergegray-hook 0)
+    ("imagecopyresampled" "" php-template-imagecopyresampled-hook 0)
+    ("imagecopyresized" "" php-template-imagecopyresized-hook 0)
+    ("imagecreate" "" php-template-imagecreate-hook 0)
+    ("imagecreatefromgd" "" php-template-imagecreatefromgd-hook 0)
+    ("imagecreatefromgd2" "" php-template-imagecreatefromgd2-hook 0)
+    ("imagecreatefromgd2part" "" php-template-imagecreatefromgd2part-hook 0)
+    ("imagecreatefromgif" "" php-template-imagecreatefromgif-hook 0)
+    ("imagecreatefromjpeg" "" php-template-imagecreatefromjpeg-hook 0)
+    ("imagecreatefrompng" "" php-template-imagecreatefrompng-hook 0)
+    ("imagecreatefromstring" "" php-template-imagecreatefromstring-hook 0)
+    ("imagecreatefromwbmp" "" php-template-imagecreatefromwbmp-hook 0)
+    ("imagecreatefromxbm" "" php-template-imagecreatefromxbm-hook 0)
+    ("imagecreatefromxpm" "" php-template-imagecreatefromxpm-hook 0)
+    ("imagecreatetruecolor" "" php-template-imagecreatetruecolor-hook 0)
+    ("imagedashedline" "" php-template-imagedashedline-hook 0)
+    ("imagedestroy" "" php-template-imagedestroy-hook 0)
+    ("imageellipse" "" php-template-imageellipse-hook 0)
+    ("imagefill" "" php-template-imagefill-hook 0)
+    ("imagefilledarc" "" php-template-imagefilledarc-hook 0)
+    ("imagefilledellipse" "" php-template-imagefilledellipse-hook 0)
+    ("imagefilledpolygon" "" php-template-imagefilledpolygon-hook 0)
+    ("imagefilledrectangle" "" php-template-imagefilledrectangle-hook 0)
+    ("imagefilltoborder" "" php-template-imagefilltoborder-hook 0)
+    ("imagefilter" "" php-template-imagefilter-hook 0)
+    ("imagefontheight" "" php-template-imagefontheight-hook 0)
+    ("imagefontwidth" "" php-template-imagefontwidth-hook 0)
+    ("imageftbbox" "" php-template-imageftbbox-hook 0)
+    ("imagefttext" "" php-template-imagefttext-hook 0)
+    ("imagegammacorrect" "" php-template-imagegammacorrect-hook 0)
+    ("imagegd" "" php-template-imagegd-hook 0)
+    ("imagegd2" "" php-template-imagegd2-hook 0)
+    ("imagegif" "" php-template-imagegif-hook 0)
+    ("imageinterlace" "" php-template-imageinterlace-hook 0)
+    ("imageistruecolor" "" php-template-imageistruecolor-hook 0)
+    ("imagejpeg" "" php-template-imagejpeg-hook 0)
+    ("imagelayereffect" "" php-template-imagelayereffect-hook 0)
+    ("imageline" "" php-template-imageline-hook 0)
+    ("imageloadfont" "" php-template-imageloadfont-hook 0)
+    ("imagepalettecopy" "" php-template-imagepalettecopy-hook 0)
+    ("imagepng" "" php-template-imagepng-hook 0)
+    ("imagepolygon" "" php-template-imagepolygon-hook 0)
+    ("imagepsbbox" "" php-template-imagepsbbox-hook 0)
+    ("imagepsencodefont" "" php-template-imagepsencodefont-hook 0)
+    ("imagepsextendfont" "" php-template-imagepsextendfont-hook 0)
+    ("imagepsfreefont" "" php-template-imagepsfreefont-hook 0)
+    ("imagepsloadfont" "" php-template-imagepsloadfont-hook 0)
+    ("imagepsslantfont" "" php-template-imagepsslantfont-hook 0)
+    ("imagepstext" "" php-template-imagepstext-hook 0)
+    ("imagerectangle" "" php-template-imagerectangle-hook 0)
+    ("imagerotate" "" php-template-imagerotate-hook 0)
+    ("imagesavealpha" "" php-template-imagesavealpha-hook 0)
+    ("imagesetbrush" "" php-template-imagesetbrush-hook 0)
+    ("imagesetpixel" "" php-template-imagesetpixel-hook 0)
+    ("imagesetstyle" "" php-template-imagesetstyle-hook 0)
+    ("imagesetthickness" "" php-template-imagesetthickness-hook 0)
+    ("imagesettile" "" php-template-imagesettile-hook 0)
+    ("imagestring" "" php-template-imagestring-hook 0)
+    ("imagestringup" "" php-template-imagestringup-hook 0)
+    ("imagesx" "" php-template-imagesx-hook 0)
+    ("imagesy" "" php-template-imagesy-hook 0)
+    ("imagetruecolortopalette" "" php-template-imagetruecolortopalette-hook 0)
+    ("imagettfbbox" "" php-template-imagettfbbox-hook 0)
+    ("imagettftext" "" php-template-imagettftext-hook 0)
+    ("imagetypes" "" php-template-imagetypes-hook 0)
+    ("imagewbmp" "" php-template-imagewbmp-hook 0)
+    ("imagexbm" "" php-template-imagexbm-hook 0)
+    ("implode" "" php-template-implode-hook 0)
+    ("import_request_variables" "" php-template-import-request-variables-hook 0)
+    ("in_array" "" php-template-in-array-hook 0)
+    ("include" "" php-template-include-hook 0)
+    ("include_once" "" php-template-include-once-hook 0)
+    ("intval" "" php-template-intval-hook 0)
+    ("iptcembed" "" php-template-iptcembed-hook 0)
+    ("iptcparse" "" php-template-iptcparse-hook 0)
+    ("is_array" "" php-template-is-array-hook 0)
+    ("is_bool" "" php-template-is-bool-hook 0)
+    ("is_callable" "" php-template-is-callable-hook 0)
+    ("is_dir" "" php-template-is-dir-hook 0)
+    ("is_double" "" php-template-is-double-hook 0)
+    ("is_executable" "" php-template-is-executable-hook 0)
+    ("is_file" "" php-template-is-file-hook 0)
+    ("is_finite" "" php-template-is-finite-hook 0)
+    ("is_float" "" php-template-is-float-hook 0)
+    ("is_infinite" "" php-template-is-infinite-hook 0)
+    ("is_int" "" php-template-is-int-hook 0)
+    ("is_integer" "" php-template-is-integer-hook 0)
+    ("is_link" "" php-template-is-link-hook 0)
+    ("is_long" "" php-template-is-long-hook 0)
+    ("is_nan" "" php-template-is-nan-hook 0)
+    ("is_null" "" php-template-is-null-hook 0)
+    ("is_numeric" "" php-template-is-numeric-hook 0)
+    ("is_object" "" php-template-is-object-hook 0)
+    ("is_readable" "" php-template-is-readable-hook 0)
+    ("is_real" "" php-template-is-real-hook 0)
+    ("is_resource" "" php-template-is-resource-hook 0)
+    ("is_scalar" "" php-template-is-scalar-hook 0)
+    ("is_string" "" php-template-is-string-hook 0)
+    ("is_uploaded_file" "" php-template-is-uploaded-file-hook 0)
+    ("is_writable" "" php-template-is-writable-hook 0)
+    ("is_writeable" "" php-template-is-writable-hook 0)
+    ("isset" "" php-template-isset-hook 0)
+    ("join" "" php-template-join-hook 0)
+    ("jpeg2wbmp" "" php-template-jpeg2wbmp-hook 0)
+    ("key" "" php-template-key-hook 0)
+    ("krsort" "" php-template-krsort-hook 0)
+    ("ksort" "" php-template-ksort-hook 0)
+    ("lcg_value" "" php-template-lcg-value-hook 0)
+    ("levenshtein" "" php-template-levenshtein-hook 0)
+    ("link" "" php-template-link-hook 0)
+    ("linkinfo" "" php-template-linkinfo-hook 0)
+    ("list" "" php-template-list-hook 0)
+    ("localeconv" "" php-template-localeconv-hook 0)
+    ("localtime" "" php-template-localtime-hook 0)
+    ("log" "" php-template-log-hook 0)
+    ("log10" "" php-template-log10-hook 0)
+    ("log1p" "" php-template-log1p-hook 0)
+    ("lstat" "" php-template-lstat-hook 0)
+    ("ltrim" "" php-template-ltrim-hook 0)
+    ("mail" "" php-template-mail-hook 0)
+    ("max" "" php-template-max-hook 0)
+    ("md5" "" php-template-md5-hook 0)
+    ("md5_file" "" php-template-md5-file-hook 0)
+    ("metaphone" "" php-template-metaphone-hook 0)
+    ("microtime" "" php-template-microtime-hook 0)
+    ("min" "" php-template-min-hook 0)
+    ("mkdir" "" php-template-mkdir-hook 0)
+    ("mktime" "" php-template-mktime-hook 0)
+    ("money_format" "" php-template-money-format-hook 0)
+    ("move_uploaded_file" "" php-template-move-uploaded-file-hook 0)
+    ("mt_getrandmax" "" php-template-mt-getrandmax-hook 0)
+    ("mt_rand" "" php-template-mt-rand-hook 0)
+    ("mt_srand" "" php-template-mt-srand-hook 0)
+    ("mysql_affected_rows" "" php-template-mysql-affected-rows-hook 0)
+    ("mysql_change_user" "" php-template-mysql-change-user-hook 0)
+    ("mysql_client_encoding" "" php-template-mysql-client-encoding-hook 0)
+    ("mysql_close" "" php-template-mysql-close-hook 0)
+    ("mysql_connect" "" php-template-mysql-connect-hook 0)
+    ("mysql_create_db" "" php-template-mysql-create-db-hook 0)
+    ("mysql_data_seek" "" php-template-mysql-data-seek-hook 0)
+    ("mysql_db_name" "" php-template-mysql-db-name-hook 0)
+    ("mysql_db_query" "" php-template-mysql-db-query-hook 0)
+    ("mysql_drop_db" "" php-template-mysql-drop-db-hook 0)
+    ("mysql_errno" "" php-template-mysql-errno-hook 0)
+    ("mysql_error" "" php-template-mysql-error-hook 0)
+    ("mysql_escape_string" "" php-template-mysql-escape-string-hook 0)
+    ("mysql_fetch_array" "" php-template-mysql-fetch-array-hook 0)
+    ("mysql_fetch_assoc" "" php-template-mysql-fetch-assoc-hook 0)
+    ("mysql_fetch_field" "" php-template-mysql-fetch-field-hook 0)
+    ("mysql_fetch_lengths" "" php-template-mysql-fetch-lengths-hook 0)
+    ("mysql_fetch_object" "" php-template-mysql-fetch-object-hook 0)
+    ("mysql_fetch_row" "" php-template-mysql-fetch-row-hook 0)
+    ("mysql_field_flags" "" php-template-mysql-field-flags-hook 0)
+    ("mysql_field_len" "" php-template-mysql-field-len-hook 0)
+    ("mysql_field_name" "" php-template-mysql-field-name-hook 0)
+    ("mysql_field_seek" "" php-template-mysql-field-seek-hook 0)
+    ("mysql_field_table" "" php-template-mysql-field-table-hook 0)
+    ("mysql_field_type" "" php-template-mysql-field-type-hook 0)
+    ("mysql_free_result" "" php-template-mysql-free-result-hook 0)
+    ("mysql_get_client_info" "" php-template-mysql-get-client-info-hook 0)
+    ("mysql_get_host_info" "" php-template-mysql-get-host-info-hook 0)
+    ("mysql_get_proto_info" "" php-template-mysql-get-proto-info-hook 0)
+    ("mysql_get_server_info" "" php-template-mysql-get-server-info-hook 0)
+    ("mysql_info" "" php-template-mysql-info-hook 0)
+    ("mysql_insert_id" "" php-template-mysql-insert-id-hook 0)
+    ("mysql_list_dbs" "" php-template-mysql-list-dbs-hook 0)
+    ("mysql_list_fields" "" php-template-mysql-list-fields-hook 0)
+    ("mysql_list_processes" "" php-template-mysql-list-processes-hook 0)
+    ("mysql_list_tables" "" php-template-mysql-list-tables-hook 0)
+    ("mysql_num_fields" "" php-template-mysql-num-fields-hook 0)
+    ("mysql_num_rows" "" php-template-mysql-num-rows-hook 0)
+    ("mysql_pconnect" "" php-template-mysql-pconnect-hook 0)
+    ("mysql_ping" "" php-template-mysql-ping-hook 0)
+    ("mysql_query" "" php-template-mysql-query-hook 0)
+    ("mysql_real_escape_string" "" php-template-mysql-real-escape-string-hook 0)
+    ("mysql_result" "" php-template-mysql-result-hook 0)
+    ("mysql_select_db" "" php-template-mysql-select-db-hook 0)
+    ("mysql_stat" "" php-template-mysql-stat-hook 0)
+    ("mysql_tablename" "" php-template-mysql-tablename-hook 0)
+    ("mysql_thread_id" "" php-template-mysql-thread-id-hook 0)
+    ("mysql_unbuffered_query" "" php-template-mysql-unbuffered-query-hook 0)
+    ("natcasesort" "" php-template-natcasesort-hook 0)
+    ("natsort" "" php-template-natsort-hook 0)
+    ("next" "" php-template-next-hook 0)
+    ("nl2br" "" php-template-nl2br-hook 0)
+    ("nl_langinfo" "" php-template-nl-langinfo-hook 0)
+    ("number_format" "" php-template-number-format-hook 0)
+    ("octdec" "" php-template-octdec-hook 0)
+    ("opendir" "" php-template-opendir-hook 0)
+    ("ord" "" php-template-ord-hook 0)
+    ("pack" "" php-template-pack-hook 0)
+    ("parse_ini_file" "" php-template-parse-ini-file-hook 0)
+    ("parse_str" "" php-template-parse-str-hook 0)
+    ("pathinfo" "" php-template-pathinfo-hook 0)
+    ("pclose" "" php-template-pclose-hook 0)
+    ("php_check_syntax" "" php-template-php-check-syntax-hook 0)
+    ("php_strip_whitespace" "" php-template-php-strip-whitespace-hook 0)
+    ("pi" "" php-template-pi-hook 0)
+    ("png2wbmp" "" php-template-png2wbmp-hook 0)
+    ("popen" "" php-template-popen-hook 0)
+    ("pos" "" php-template-pos-hook 0)
+    ("pow" "" php-template-pow-hook 0)
+    ("prev" "" php-template-prev-hook 0)
+    ("print" "" php-template-print-hook 0)
+    ("print_r" "" php-template-print-r-hook 0)
+    ("printf" "" php-template-printf-hook 0)
+    ("quoted_printable_decode" "" php-template-quoted-printable-decode-hook 0)
+    ("quotemeta" "" php-template-quotemeta-hook 0)
+    ("rad2deg" "" php-template-rad2deg-hook 0)
+    ("rand" "" php-template-rand-hook 0)
+    ("range" "" php-template-range-hook 0)
+    ("readdir" "" php-template-readdir-hook 0)
+    ("readfile" "" php-template-readfile-hook 0)
+    ("readlink" "" php-template-readlink-hook 0)
+    ("realpath" "" php-template-realpath-hook 0)
+    ("register_shutdown_function" "" php-template-register-shutdown-function-hook 0)
+    ("register_tick_function" "" php-template-register-tick-function-hook 0)
+    ("rename" "" php-template-rename-hook 0)
+    ("require" "" php-template-require-hook 0)
+    ("require_once" "" php-template-require-once-hook 0)
+    ("reset" "" php-template-reset-hook 0)
+    ("restore_error_handler" "" php-template-restore-error-handler-hook 0)
+    ("restore_exception_handler" "" php-template-restore-exception-handler-hook 0)
+    ("return" "" php-template-return-hook 0)
+    ("rewind" "" php-template-rewind-hook 0)
+    ("rewinddir" "" php-template-rewinddir-hook 0)
+    ("rmdir" "" php-template-rmdir-hook 0)
+    ("round" "" php-template-round-hook 0)
+    ("rsort" "" php-template-rsort-hook 0)
+    ("rtrim" "" php-template-rtrim-hook 0)
+    ("scandir" "" php-template-scandir-hook 0)
+    ("serialize" "" php-template-serialize-hook 0)
+    ("session_cache_expire" "" php-template-session-cache-expire-hook 0)
+    ("session_cache_limiter" "" php-template-session-cache-limiter-hook 0)
+    ("session_commit" "" php-template-session-commit-hook 0)
+    ("session_decode" "" php-template-session-decode-hook 0)
+    ("session_destroy" "" php-template-session-destroy-hook 0)
+    ("session_encode" "" php-template-session-encode-hook 0)
+    ("session_get_cookie_params" "" php-template-session-get-cookie-params-hook 0)
+    ("session_id" "" php-template-session-id-hook 0)
+    ("session_is_registered" "" php-template-session-is-registered-hook 0)
+    ("session_module_name" "" php-template-session-module-name-hook 0)
+    ("session_name" "" php-template-session-name-hook 0)
+    ("session_regenerate_id" "" php-template-session-regenerate-id-hook 0)
+    ("session_register" "" php-template-session-register-hook 0)
+    ("session_save_path" "" php-template-session-save-path-hook 0)
+    ("session_set_cookie_params" "" php-template-session-set-cookie-params-hook 0)
+    ("session_set_save_handler" "" php-template-session-set-save-handler-hook 0)
+    ("session_start" "" php-template-session-start-hook 0)
+    ("session_unregister" "" php-template-session-unregister-hook 0)
+    ("session_unset" "" php-template-session-unset-hook 0)
+    ("session_write_close" "" php-template-session-write-close-hook 0)
+    ("set_error_handler" "" php-template-set-error-handler-hook 0)
+    ("set_exception_handler" "" php-template-set-exception-handler-hook 0)
+    ("setlocale" "" php-template-setlocale-hook 0)
+    ("settype" "" php-template-settype-hook 0)
+    ("sha1" "" php-template-sha1-hook 0)
+    ("sha1_file" "" php-template-sha1-file-hook 0)
+    ("show_source" "" php-template-show-source-hook 0)
+    ("shuffle" "" php-template-shuffle-hook 0)
+    ("similar_text" "" php-template-similar-text-hook 0)
+    ("sin" "" php-template-sin-hook 0)
+    ("sinh" "" php-template-sinh-hook 0)
+    ("sizeof" "" php-template-sizeof-hook 0)
+    ("sleep" "" php-template-sleep-hook 0)
+    ("sort" "" php-template-sort-hook 0)
+    ("soundex" "" php-template-soundex-hook 0)
+    ("split" "" php-template-split-hook 0)
+    ("spliti" "" php-template-spliti-hook 0)
+    ("sprintf" "" php-template-sprintf-hook 0)
+    ("sql_regcase" "" php-template-sql-regcase-hook 0)
+    ("sqrt" "" php-template-sqrt-hook 0)
+    ("srand" "" php-template-srand-hook 0)
+    ("sscanf" "" php-template-sscanf-hook 0)
+    ("stat" "" php-template-stat-hook 0)
+    ("str_ireplace" "" php-template-str-ireplace-hook 0)
+    ("str_pad" "" php-template-str-pad-hook 0)
+    ("str_repeat" "" php-template-str-repeat-hook 0)
+    ("str_replace" "" php-template-str-replace-hook 0)
+    ("str_rot13" "" php-template-str-rot13-hook 0)
+    ("str_shuffle" "" php-template-str-shuffle-hook 0)
+    ("str_split" "" php-template-str-split-hook 0)
+    ("str_word_count" "" php-template-str-word-count-hook 0)
+    ("strcasecmp" "" php-template-strcasecmp-hook 0)
+    ("strchr" "" php-template-strchr-hook 0)
+    ("strcmp" "" php-template-strcmp-hook 0)
+    ("strcoll" "" php-template-strcoll-hook 0)
+    ("strcspn" "" php-template-strcspn-hook 0)
+    ("strftime" "" php-template-strftime-hook 0)
+    ("strip_tags" "" php-template-strip-tags-hook 0)
+    ("stripcslashes" "" php-template-stripcslashes-hook 0)
+    ("stripos" "" php-template-stripos-hook 0)
+    ("stripslashes" "" php-template-stripslashes-hook 0)
+    ("stristr" "" php-template-stristr-hook 0)
+    ("strlen" "" php-template-strlen-hook 0)
+    ("strnatcasecmp" "" php-template-strnatcasecmp-hook 0)
+    ("strnatcmp" "" php-template-strnatcmp-hook 0)
+    ("strncasecmp" "" php-template-strncasecmp-hook 0)
+    ("strncmp" "" php-template-strncmp-hook 0)
+    ("strpbrk" "" php-template-strpbrk-hook 0)
+    ("strpos" "" php-template-strpos-hook 0)
+    ("strptime" "" php-template-strptime-hook 0)
+    ("strrchr" "" php-template-strrchr-hook 0)
+    ("strrev" "" php-template-strrev-hook 0)
+    ("strripos" "" php-template-strripos-hook 0)
+    ("strrpos" "" php-template-strrpos-hook 0)
+    ("strspn" "" php-template-strspn-hook 0)
+    ("strstr" "" php-template-strstr-hook 0)
+    ("strtok" "" php-template-strtok-hook 0)
+    ("strtolower" "" php-template-strtolower-hook 0)
+    ("strtotime" "" php-template-strtotime-hook 0)
+    ("strtoupper" "" php-template-strtoupper-hook 0)
+    ("strtr" "" php-template-strtr-hook 0)
+    ("strval" "" php-template-strval-hook 0)
+    ("substr" "" php-template-substr-hook 0)
+    ("substr_compare" "" php-template-substr-compare-hook 0)
+    ("substr_count" "" php-template-substr-count-hook 0)
+    ("substr_replace" "" php-template-substr-replace-hook 0)
+    ("switch" "" php-template-switch-hook 0)
+    ("symlink" "" php-template-symlink-hook 0)
+    ("sys_getloadavg" "" php-template-sys-getloadavg-hook 0)
+    ("tan" "" php-template-tan-hook 0)
+    ("tanh" "" php-template-tanh-hook 0)
+    ("tempnam" "" php-template-tempnam-hook 0)
+    ("time" "" php-template-time-hook 0)
+    ("time_nanosleep" "" php-template-time-nanosleep-hook 0)
+    ("time_sleep_until" "" php-template-time-sleep-until-hook 0)
+    ("tmpfile" "" php-template-tmpfile-hook 0)
+    ("touch" "" php-template-touch-hook 0)
+    ("trigger_error" "" php-template-trigger-error-hook 0)
+    ("trim" "" php-template-trim-hook 0)
+    ("uasort" "" php-template-uasort-hook 0)
+    ("ucfirst" "" php-template-ucfirst-hook 0)
+    ("ucwords" "" php-template-ucwords-hook 0)
+    ("uksort" "" php-template-uksort-hook 0)
+    ("umask" "" php-template-umask-hook 0)
+    ("uniqid" "" php-template-uniqid-hook 0)
+    ("unlink" "" php-template-unlink-hook 0)
+    ("unpack" "" php-template-unpack-hook 0)
+    ("unregister_tick_function" "" php-template-unregister-tick-function-hook 0)
+    ("unserialize" "" php-template-unserialize-hook 0)
+    ("unset" "" php-template-unset-hook 0)
+    ("user_error" "" php-template-user-error-hook 0)
+    ("usleep" "" php-template-usleep-hook 0)
+    ("usort" "" php-template-usort-hook 0)
+    ("utf8_decode" "" php-template-utf8-decode-hook 0)
+    ("utf8_encode" "" php-template-utf8-encode-hook 0)
+    ("var_dump" "" php-template-var-dump-hook 0)
+    ("var_export" "" php-template-var-export-hook 0)
+    ("vfprintf" "" php-template-vfprintf-hook 0)
+    ("virtual" "" php-template-virtual-hook 0)
+    ("vprintf" "" php-template-vprintf-hook 0)
+    ("vsprintf" "" php-template-vsprintf-hook 0)
+    ("while" "" php-template-while-hook 0)
+    ("wordwrap" "" php-template-wordwrap-hook 0)
+    ("xml_error_string" "" php-template-xml-error-string-hook 0)
+    ("xml_get_current_byte_index" "" php-template-xml-get-current-byte-index-hook 0)
+    ("xml_get_current_column_number" "" php-template-xml-get-current-column-number-hook 0)
+    ("xml_get_current_line_number" "" php-template-xml-get-current-line-number-hook 0)
+    ("xml_get_error_code" "" php-template-xml-get-error-code-hook 0)
+    ("xml_parse" "" php-template-xml-parse-hook 0)
+    ("xml_parse_into_struct" "" php-template-xml-parse-into-struct-hook 0)
+    ("xml_parser_create" "" php-template-xml-parser-create-hook 0)
+    ("xml_parser_create_ns" "" php-template-xml-parser-create-ns-hook 0)
+    ("xml_parser_free" "" php-template-xml-parser-free-hook 0)
+    ("xml_parser_get_option" "" php-template-xml-parser-get-option-hook 0)
+    ("xml_parser_set_option" "" php-template-xml-parser-set-option-hook 0)
+    ("xml_set_character_data_handler" "" php-template-xml-set-character-data-handler-hook 0)
+    ("xml_set_default_handler" "" php-template-xml-set-default-handler-hook 0)
+    ("xml_set_element_handler" "" php-template-xml-set-element-handler-hook 0)
+    ("xml_set_end_namespace_decl_handler" "" php-template-xml-set-end-namespace-decl-handler-hook 0)
+    ("xml_set_external_entity_ref_handler" "" php-template-xml-set-external-entity-ref-handler-hook 0)
+    ("xml_set_notation_decl_handler" "" php-template-xml-set-notation-decl-handler-hook 0)
+    ("xml_set_object" "" php-template-xml-set-object-hook 0)
+    ("xml_set_processing_instruction_handler" "" php-template-xml-set-processing-instruction-handler-hook 0)
+    ("xml_set_start_namespace_decl_handler" "" php-template-xml-set-start-namespace-decl-handler-hook 0)
+    ("xml_set_unparsed_entity_decl_handler" "" php-template-xml-set-unparsed-entity-decl-handler-hook 0)
+   ))
+
+(define-abbrev-table 'pike-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'process-menu-mode-abbrev-table '())
+
+(define-abbrev-table 'prog-mode-abbrev-table '())
+
+(define-abbrev-table 'rails-controller-minor-mode-abbrev-table
+  '(
+    ("af" "" (lambda nil (interactive) (snippet-insert "after_filter :$${filter}")) 0)
+    ("arf" "" (lambda nil (interactive) (snippet-insert "around_filter :$${filter}")) 0)
+    ("bf" "" (lambda nil (interactive) (snippet-insert "before_filter :$${filter}")) 0)
+    ("ra" "" (lambda nil (interactive) (snippet-insert "render :action => '$${index}'")) 0)
+    ("ral" "" (lambda nil (interactive) (snippet-insert "render :action => '$${index}', :layout => '{default}'")) 0)
+    ("rcea" "" (lambda nil (interactive) (snippet-insert "render_component :action => '$${index}'")) 0)
+    ("rcec" "" (lambda nil (interactive) (snippet-insert "render_component :controller => '$${items}'")) 0)
+    ("rceca" "" (lambda nil (interactive) (snippet-insert "render_component :controller => '$${items}', :action => '$${index}'")) 0)
+    ("rcreate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-create}")) 0)
+    ("rdestroy" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-destroy}")) 0)
+    ("rea" "" (lambda nil (interactive) (snippet-insert "redirect_to :action => '$${index}'")) 0)
+    ("reai" "" (lambda nil (interactive) (snippet-insert "redirect_to :action => '$${show}', :id => $${item}")) 0)
+    ("rec" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}'")) 0)
+    ("reca" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}', :action => '$${list}'")) 0)
+    ("recai" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}', :action => '$${show}', :id => $${item}")) 0)
+    ("redit" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-edit}")) 0)
+    ("rest" "" (lambda nil (interactive) (snippet-insert "respond_to do |format|
+$>format.html$>$.
+end$>")) 0)
+    ("rf" "" (lambda nil (interactive) (snippet-insert "render :file => '$${filepath}'")) 0)
+    ("rfu" "" (lambda nil (interactive) (snippet-insert "render :file => '$${filepath}', :use_full_path => $${false}")) 0)
+    ("ri" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}'")) 0)
+    ("ril" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}', :locals => { $${name} => '$${value}'$${4} }")) 0)
+    ("rindex" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-index}")) 0)
+    ("rit" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}', :type => $${rxml}")) 0)
+    ("rl" "" (lambda nil (interactive) (snippet-insert "render :layout => '$${layoutname}'")) 0)
+    ("rn" "" (lambda nil (interactive) (snippet-insert "render :nothing => $${true}")) 0)
+    ("rnew" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-new}")) 0)
+    ("rns" "" (lambda nil (interactive) (snippet-insert "render :nothing => $${true}, :status => $${401}")) 0)
+    ("rp" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}'")) 0)
+    ("rpc" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :collection => $${items}")) 0)
+    ("rpl" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :locals => { :$${name} => '$${value}'$${4} }")) 0)
+    ("rpo" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :object => $${object}")) 0)
+    ("rps" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :status => $${500}")) 0)
+    ("rshow" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-show}")) 0)
+    ("rt" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}'")) 0)
+    ("rtl" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :layout => '$${layoutname}'")) 0)
+    ("rtlt" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :layout => $${true}")) 0)
+    ("rts" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :status => $${401}")) 0)
+    ("ru" "" (lambda nil (interactive) (snippet-insert "render :update do |page|
+$>$.
+end$>")) 0)
+    ("rupdate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-update}")) 0)
+   ))
+
+(define-abbrev-table 'rails-functional-test-minor-mode-abbrev-table
+  '(
+    ("art" "" (lambda nil (interactive) (snippet-insert "assert_redirected_to :action => '$${index}'")) 0)
+    ("as" "" (lambda nil (interactive) (snippet-insert "assert $${test}")) 0)
+    ("asa" "" (lambda nil (interactive) (snippet-insert "assert assigns(:$${,rails-snippets-feature:model-name})")) 0)
+    ("ase" "" (lambda nil (interactive) (snippet-insert "assert_equal $${expected}, $${actual}")) 0)
+    ("asid" "" (lambda nil (interactive) (snippet-insert "assert_in_delta $${expected_float}, $${actual_float}, $${20}")) 0)
+    ("asio" "" (lambda nil (interactive) (snippet-insert "assert_instance_of $${ExpectedClass}, $${actual_instance}")) 0)
+    ("asko" "" (lambda nil (interactive) (snippet-insert "assert_kind_of $${ExpectedKind}, $${actual_instance}")) 0)
+    ("asm" "" (lambda nil (interactive) (snippet-insert "assert_match(/$${expected_pattern}/, $${actual_string})")) 0)
+    ("asn" "" (lambda nil (interactive) (snippet-insert "assert_nil $${instance}")) 0)
+    ("asne" "" (lambda nil (interactive) (snippet-insert "assert_not_equal $${unexpected}, $${actual}")) 0)
+    ("asnm" "" (lambda nil (interactive) (snippet-insert "assert_no_match(/$${unexpected_pattern}/, $${actual_string})")) 0)
+    ("asnn" "" (lambda nil (interactive) (snippet-insert "assert_not_nil $${instance}")) 0)
+    ("asnr" "" (lambda nil (interactive) (snippet-insert "assert_nothing_raised $${Exception}  { $. }")) 0)
+    ("asns" "" (lambda nil (interactive) (snippet-insert "assert_not_same $${unexpected}, $${actual}")) 0)
+    ("asnt" "" (lambda nil (interactive) (snippet-insert "assert_nothing_thrown { $. }")) 0)
+    ("aso" "" (lambda nil (interactive) (snippet-insert "assert_operator $${left}, :$${operator}, $${right}")) 0)
+    ("asr" "" (lambda nil (interactive) (snippet-insert "assert_raise $${Exception} { $. }")) 0)
+    ("asre" "" (lambda nil (interactive) (snippet-insert "assert_response :$${success}")) 0)
+    ("asrt" "" (lambda nil (interactive) (snippet-insert "assert_respond_to $${object}, :$${method}")) 0)
+    ("ass" "" (lambda nil (interactive) (snippet-insert "assert_same $${expected}, $${actual}")) 0)
+    ("assd" "" (lambda nil (interactive) (snippet-insert "assert_send [$${object}, :$${message}, $${args}]")) 0)
+    ("ast" "" (lambda nil (interactive) (snippet-insert "assert_throws :$${expected} { $. }")) 0)
+    ("astm" "" (lambda nil (interactive) (snippet-insert "assert_template '$${index}'")) 0)
+    ("fix" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:fixture}(:$${one})$.")) 0)
+    ("rcreate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-create}")) 0)
+    ("rdestroy" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-destroy}")) 0)
+    ("redit" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-edit}")) 0)
+    ("rindex" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-index}")) 0)
+    ("rnew" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-new}")) 0)
+    ("rshow" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-show}")) 0)
+    ("rupdate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-update}")) 0)
+   ))
+
+(define-abbrev-table 'rails-helper-minor-mode-abbrev-table
+  '(
+    ("ra" "" (lambda nil (interactive) (snippet-insert "render :action => '$${index}'")) 0)
+    ("ral" "" (lambda nil (interactive) (snippet-insert "render :action => '$${index}', :layout => '{default}'")) 0)
+    ("rcea" "" (lambda nil (interactive) (snippet-insert "render_component :action => '$${index}'")) 0)
+    ("rcec" "" (lambda nil (interactive) (snippet-insert "render_component :controller => '$${items}'")) 0)
+    ("rceca" "" (lambda nil (interactive) (snippet-insert "render_component :controller => '$${items}', :action => '$${index}'")) 0)
+    ("rcreate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-create}")) 0)
+    ("rdestroy" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-destroy}")) 0)
+    ("rea" "" (lambda nil (interactive) (snippet-insert "redirect_to :action => '$${index}'")) 0)
+    ("reai" "" (lambda nil (interactive) (snippet-insert "redirect_to :action => '$${show}', :id => $${item}")) 0)
+    ("rec" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}'")) 0)
+    ("reca" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}', :action => '$${list}'")) 0)
+    ("recai" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}', :action => '$${show}', :id => $${item}")) 0)
+    ("redit" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-edit}")) 0)
+    ("rf" "" (lambda nil (interactive) (snippet-insert "render :file => '$${filepath}'")) 0)
+    ("rfu" "" (lambda nil (interactive) (snippet-insert "render :file => '$${filepath}', :use_full_path => $${false}")) 0)
+    ("ri" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}'")) 0)
+    ("ril" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}', :locals => { $${name} => '$${value}'$${4} }")) 0)
+    ("rindex" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-index}")) 0)
+    ("rit" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}', :type => $${rxml}")) 0)
+    ("rl" "" (lambda nil (interactive) (snippet-insert "render :layout => '$${layoutname}'")) 0)
+    ("rn" "" (lambda nil (interactive) (snippet-insert "render :nothing => $${true}")) 0)
+    ("rnew" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-new}")) 0)
+    ("rns" "" (lambda nil (interactive) (snippet-insert "render :nothing => $${true}, :status => $${401}")) 0)
+    ("rp" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}'")) 0)
+    ("rpc" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :collection => $${items}")) 0)
+    ("rpl" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :locals => { :$${name} => '$${value}'$${4} }")) 0)
+    ("rpo" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :object => $${object}")) 0)
+    ("rps" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :status => $${500}")) 0)
+    ("rshow" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-show}")) 0)
+    ("rt" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}'")) 0)
+    ("rtl" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :layout => '$${layoutname}'")) 0)
+    ("rtlt" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :layout => $${true}")) 0)
+    ("rts" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :status => $${401}")) 0)
+    ("rupdate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-update}")) 0)
+   ))
+
+(define-abbrev-table 'rails-migration-minor-mode-abbrev-table
+  '(
+    ("acl" "" (lambda nil (interactive) (snippet-insert "add_column :$${,rails-snippets-feature:migration-table-name}, :$${column}, :$${string}")) 0)
+    ("ai" "" (lambda nil (interactive) (snippet-insert "add_index :$${,rails-snippets-feature:migration-table-name}, $${column}")) 0)
+    ("aiu" "" (lambda nil (interactive) (snippet-insert "add_index :$${,rails-snippets-feature:migration-table-name}, $${column}, :unique => true")) 0)
+    ("ct" "" (lambda nil (interactive) (snippet-insert "create_table :$${,rails-snippets-feature:migration-table-name} do |t|
+$>tcls$.
+end$>")) 0)
+    ("dt" "" (lambda nil (interactive) (snippet-insert "drop_table :$${,rails-snippets-feature:migration-table-name}$.")) 0)
+    ("recl" "" (lambda nil (interactive) (snippet-insert "rename_column :$${column}, :$${new_column}")) 0)
+    ("ret" "" (lambda nil (interactive) (snippet-insert "rename_table :$${,rails-snippets-feature:migration-table-name}, :$${new_name}$.")) 0)
+    ("rmcl" "" (lambda nil (interactive) (snippet-insert "remove_column :$${,rails-snippets-feature:migration-table-name}, :$${column}")) 0)
+    ("tcl" "" (lambda nil (interactive) (snippet-insert "t.column :$${title}, :$${string}$.")) 0)
+    ("tcln" "" (lambda nil (interactive) (snippet-insert "t.column :$${title}, :$${string}, :null => false$.")) 0)
+    ("tcls" "" (lambda nil (interactive) (snippet-insert "t.column :$${title}, :$${string}
+$>tcls$.")) 0)
+   ))
+
+(define-abbrev-table 'rails-model-minor-mode-abbrev-table
+  '(
+    ("bt" "" (lambda nil (interactive) (snippet-insert "belongs_to :$${model}")) 0)
+    ("habtm" "" (lambda nil (interactive) (snippet-insert "has_and_belongs_to_many :$${object}")) 0)
+    ("hm" "" (lambda nil (interactive) (snippet-insert "has_many :$${objects}")) 0)
+    ("hmt" "" (lambda nil (interactive) (snippet-insert "has_many :$${objects}, :through => :$${,rails-snippets-feature:prev-has-many-table-name}")) 0)
+    ("ho" "" (lambda nil (interactive) (snippet-insert "has_one :$${object}")) 0)
+    ("va" "" (lambda nil (interactive) (snippet-insert "validates_associated :$${attribute}")) 0)
+    ("vc" "" (lambda nil (interactive) (snippet-insert "validates_confirmation_of :$${attribute}")) 0)
+    ("ve" "" (lambda nil (interactive) (snippet-insert "validates_exclusion_of :$${attribute}")) 0)
+    ("vl" "" (lambda nil (interactive) (snippet-insert "validates_length_of :$${attribute}, :within => $${20}")) 0)
+    ("vp" "" (lambda nil (interactive) (snippet-insert "validates_presence_of :$${attribute}")) 0)
+    ("vpif" "" (lambda nil (interactive) (snippet-insert "validates_presence_of :$${attribute}, :if => proc { |obj| $${condition} }")) 0)
+    ("vu" "" (lambda nil (interactive) (snippet-insert "validates_uniqueness_of :$${attribute}")) 0)
+   ))
+
+(define-abbrev-table 'rails-script:output-mode-abbrev-table '())
+
+(define-abbrev-table 'rails-test:compilation-mode-abbrev-table '())
+
+(define-abbrev-table 'rails-unit-test-minor-mode-abbrev-table
+  '(
+    ("art" "" (lambda nil (interactive) (snippet-insert "assert_redirected_to :action => '$${index}'")) 0)
+    ("as" "" (lambda nil (interactive) (snippet-insert "assert $${test}")) 0)
+    ("asa" "" (lambda nil (interactive) (snippet-insert "assert assigns(:$${,rails-snippets-feature:model-name})")) 0)
+    ("ase" "" (lambda nil (interactive) (snippet-insert "assert_equal $${expected}, $${actual}")) 0)
+    ("asid" "" (lambda nil (interactive) (snippet-insert "assert_in_delta $${expected_float}, $${actual_float}, $${20}")) 0)
+    ("asio" "" (lambda nil (interactive) (snippet-insert "assert_instance_of $${ExpectedClass}, $${actual_instance}")) 0)
+    ("asko" "" (lambda nil (interactive) (snippet-insert "assert_kind_of $${ExpectedKind}, $${actual_instance}")) 0)
+    ("asm" "" (lambda nil (interactive) (snippet-insert "assert_match(/$${expected_pattern}/, $${actual_string})")) 0)
+    ("asn" "" (lambda nil (interactive) (snippet-insert "assert_nil $${instance}")) 0)
+    ("asne" "" (lambda nil (interactive) (snippet-insert "assert_not_equal $${unexpected}, $${actual}")) 0)
+    ("asnm" "" (lambda nil (interactive) (snippet-insert "assert_no_match(/$${unexpected_pattern}/, $${actual_string})")) 0)
+    ("asnn" "" (lambda nil (interactive) (snippet-insert "assert_not_nil $${instance}")) 0)
+    ("asnr" "" (lambda nil (interactive) (snippet-insert "assert_nothing_raised $${Exception}  { $. }")) 0)
+    ("asns" "" (lambda nil (interactive) (snippet-insert "assert_not_same $${unexpected}, $${actual}")) 0)
+    ("asnt" "" (lambda nil (interactive) (snippet-insert "assert_nothing_thrown { $. }")) 0)
+    ("aso" "" (lambda nil (interactive) (snippet-insert "assert_operator $${left}, :$${operator}, $${right}")) 0)
+    ("asr" "" (lambda nil (interactive) (snippet-insert "assert_raise $${Exception} { $. }")) 0)
+    ("asre" "" (lambda nil (interactive) (snippet-insert "assert_response :$${success}")) 0)
+    ("asrt" "" (lambda nil (interactive) (snippet-insert "assert_respond_to $${object}, :$${method}")) 0)
+    ("ass" "" (lambda nil (interactive) (snippet-insert "assert_same $${expected}, $${actual}")) 0)
+    ("assd" "" (lambda nil (interactive) (snippet-insert "assert_send [$${object}, :$${message}, $${args}]")) 0)
+    ("ast" "" (lambda nil (interactive) (snippet-insert "assert_throws :$${expected} { $. }")) 0)
+    ("astm" "" (lambda nil (interactive) (snippet-insert "assert_template '$${index}'")) 0)
+    ("fix" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:fixture}(:$${one})$.")) 0)
+   ))
+
+(define-abbrev-table 'rails-view-minor-mode-abbrev-table
+  '(
+    ("ra" "" (lambda nil (interactive) (snippet-insert "render :action => '$${index}'")) 0)
+    ("ral" "" (lambda nil (interactive) (snippet-insert "render :action => '$${index}', :layout => '{default}'")) 0)
+    ("rcea" "" (lambda nil (interactive) (snippet-insert "render_component :action => '$${index}'")) 0)
+    ("rcec" "" (lambda nil (interactive) (snippet-insert "render_component :controller => '$${items}'")) 0)
+    ("rceca" "" (lambda nil (interactive) (snippet-insert "render_component :controller => '$${items}', :action => '$${index}'")) 0)
+    ("rcreate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-create}")) 0)
+    ("rdestroy" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-destroy}")) 0)
+    ("rea" "" (lambda nil (interactive) (snippet-insert "redirect_to :action => '$${index}'")) 0)
+    ("reai" "" (lambda nil (interactive) (snippet-insert "redirect_to :action => '$${show}', :id => $${item}")) 0)
+    ("rec" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}'")) 0)
+    ("reca" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}', :action => '$${list}'")) 0)
+    ("recai" "" (lambda nil (interactive) (snippet-insert "redirect_to :controller => '$${items}', :action => '$${show}', :id => $${item}")) 0)
+    ("redit" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-edit}")) 0)
+    ("rf" "" (lambda nil (interactive) (snippet-insert "render :file => '$${filepath}'")) 0)
+    ("rfu" "" (lambda nil (interactive) (snippet-insert "render :file => '$${filepath}', :use_full_path => $${false}")) 0)
+    ("ri" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}'")) 0)
+    ("ril" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}', :locals => { $${name} => '$${value}'$${4} }")) 0)
+    ("rindex" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-index}")) 0)
+    ("rit" "" (lambda nil (interactive) (snippet-insert "render :inline => '$${hello}', :type => $${rxml}")) 0)
+    ("rl" "" (lambda nil (interactive) (snippet-insert "render :layout => '$${layoutname}'")) 0)
+    ("rn" "" (lambda nil (interactive) (snippet-insert "render :nothing => $${true}")) 0)
+    ("rnew" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-new}")) 0)
+    ("rns" "" (lambda nil (interactive) (snippet-insert "render :nothing => $${true}, :status => $${401}")) 0)
+    ("rp" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}'")) 0)
+    ("rpc" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :collection => $${items}")) 0)
+    ("rpl" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :locals => { :$${name} => '$${value}'$${4} }")) 0)
+    ("rpo" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :object => $${object}")) 0)
+    ("rps" "" (lambda nil (interactive) (snippet-insert "render :partial => '$${item}', :status => $${500}")) 0)
+    ("rshow" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-show}")) 0)
+    ("rt" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}'")) 0)
+    ("rtl" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :layout => '$${layoutname}'")) 0)
+    ("rtlt" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :layout => $${true}")) 0)
+    ("rts" "" (lambda nil (interactive) (snippet-insert "render :text => '$${render}', :status => $${401}")) 0)
+    ("rupdate" "" (lambda nil (interactive) (snippet-insert "$${,rails-snippets-feature:rest-update}")) 0)
+   ))
+
+(define-abbrev-table 'ruby-mode-abbrev-table
+  '(
+    (":" "" (lambda nil (interactive) (snippet-insert ":$${key} => '$${value}'")) 0)
+    ("all" "" (lambda nil (interactive) (snippet-insert "all? { |$${e}| $. }")) 0)
+    ("am" "" (lambda nil (interactive) (snippet-insert "alias_method :$${new_name}, :$${old_name}")) 0)
+    ("amc" "" (lambda nil (interactive) (snippet-insert "alias_method_chain :$${first_method}, :$${second_method}")) 0)
+    ("any" "" (lambda nil (interactive) (snippet-insert "any? { |$${e}| $. }")) 0)
+    ("array" "" (lambda nil (interactive) (snippet-insert "Array.new($${10}) { |$${i}|$. }")) 0)
+    ("b" "" (lambda nil (interactive) (snippet-insert "=begin rdoc
+$>$.
+=end")) 0)
+    ("begin" "" (lambda nil (interactive) (snippet-insert "begin
+$>$${paste}
+rescue $${Exception} => $${e}
+$>$.
+end$>
+")) 0)
+    ("bm" "" (lambda nil (interactive) (snippet-insert "TESTS = $${10_000}
+Benchmark.bmbm($${10}) do |results|
+  $.
+end$>")) 0)
+    ("cl" "" (lambda nil (interactive) (snippet-insert "classify { |$${e}| $. }")) 0)
+    ("cladl" "" (lambda nil (interactive) (snippet-insert "class $${ClassName} < DelegateClass($${ParentClass})
+$>def initialize$${1}
+$>$>super($${del_obj})
+$>$>
+$>$>$.
+end$>
+$>
+$>
+end$>")) 0)
+    ("clapr" "" (lambda nil (interactive) (snippet-insert "class $${ClassName} < $${ParentClass}
+$>def initialize$${1}
+$>$>$.
+end$>
+$>
+$>
+end$>")) 0)
+    ("clasf" "" (lambda nil (interactive) (snippet-insert "class << $${self}
+$>$.
+end$>")) 0)
+    ("class" "" (lambda nil (interactive) (snippet-insert "class $${ClassName}
+$>$.
+end$>")) 0)
+    ("classi" "" (lambda nil (interactive) (snippet-insert "class $${ClassName}
+$>def initialize$${1}
+$>$>$.
+end$>
+$>
+$>
+end$>")) 0)
+    ("clast" "" (lambda nil (interactive) (snippet-insert "class $${ClassName} < Struct.new(:$${attr_names})
+$>def initialize(*args)
+$>$>super
+$>$>
+$>$>$.
+end$>
+$>
+$>
+end$>")) 0)
+    ("col" "" (lambda nil (interactive) (snippet-insert "collect { |$${e}| $. }")) 0)
+    ("collect" "" (lambda nil (interactive) (snippet-insert "collect { |$${element}| $${element}.$. }")) 0)
+    ("comp" "" (lambda nil (interactive) (snippet-insert "include Comparable
+
+def <=>(other)
+$>$.
+end$>")) 0)
+    ("dee" "" (lambda nil (interactive) (snippet-insert "Marshal.load(Marshal.dump($${obj_to_copy}))")) 0)
+    ("defd" "" (lambda nil (interactive) (snippet-insert "def_delegator :$${del_obj}, :$${del_meth}, :$${new_name}")) 0)
+    ("defds" "" (lambda nil (interactive) (snippet-insert "def_delegators :$${del_obj}, :$${del_methods}")) 0)
+    ("defs" "" (lambda nil (interactive) (snippet-insert "def self.$${class_method_name}
+$>$.
+end$>")) 0)
+    ("deft" "" (lambda nil (interactive) (snippet-insert "def test_$${case_name}
+$>$.
+end$>")) 0)
+    ("deli" "" (lambda nil (interactive) (snippet-insert "delete_if { |$${e}| $. }")) 0)
+    ("det" "" (lambda nil (interactive) (snippet-insert "detect { |$${e}| $. }")) 0)
+    ("dir" "" (lambda nil (interactive) (snippet-insert "Dir.glob($${glob}) { |$${file}| $. }")) 0)
+    ("do" "" (lambda nil (interactive) (snippet-insert "do
+$>$.
+end$>")) 0)
+    ("doo" "" (lambda nil (interactive) (snippet-insert "do |$${object}|
+$>$.
+end$>")) 0)
+    ("dow" "" (lambda nil (interactive) (snippet-insert "downto($${0}) { |$${n}|$. }")) 0)
+    ("ea" "" (lambda nil (interactive) (snippet-insert "each { |$${e}| $. }")) 0)
+    ("eab" "" (lambda nil (interactive) (snippet-insert "each_byte { |$${byte}| $. }")) 0)
+    ("eac" "" (lambda nil (interactive) (snippet-insert "each_cons($${2}) { |$${group}| $. }")) 0)
+    ("each" "" (lambda nil (interactive) (snippet-insert "each { |$${element}| $${element}.$. }")) 0)
+    ("eai" "" (lambda nil (interactive) (snippet-insert "each_index { |$${i}| $. }")) 0)
+    ("eak" "" (lambda nil (interactive) (snippet-insert "each_key { |$${key}| $. }")) 0)
+    ("eal" "" (lambda nil (interactive) (snippet-insert "each_line$${1} { |$${line}| $. }")) 0)
+    ("eap" "" (lambda nil (interactive) (snippet-insert "each_pair { |$${name}, $${val}| $. }")) 0)
+    ("eas" "" (lambda nil (interactive) (snippet-insert "each_slice($${2}) { |$${group}| $. }")) 0)
+    ("eav" "" (lambda nil (interactive) (snippet-insert "each_value { |$${val}| $. }")) 0)
+    ("eawi" "" (lambda nil (interactive) (snippet-insert "each_with_index { |$${e}, $${i}| $. }")) 0)
+    ("elsif" "" (lambda nil (interactive) (snippet-insert "elsif $${condition}
+$>$.")) 0)
+    ("enum" "" (lambda nil (interactive) (snippet-insert "include Enumerable
+
+def each(&block)
+$>$.
+end$>")) 0)
+    ("fet" "" (lambda nil (interactive) (snippet-insert "fetch($${name}) { |$${key}|$. }")) 0)
+    ("fil" "" (lambda nil (interactive) (snippet-insert "fill($${range}) { |$${i}|$. }")) 0)
+    ("file" "" (lambda nil (interactive) (snippet-insert "File.foreach($${file}) { |$${line}| $. }")) 0)
+    ("fin" "" (lambda nil (interactive) (snippet-insert "find { |$${e}| $. }")) 0)
+    ("fina" "" (lambda nil (interactive) (snippet-insert "find_all { |$${e}| $. }")) 0)
+    ("fl" "" (lambda nil (interactive) (snippet-insert "flunk('$${message}')")) 0)
+    ("flao" "" (lambda nil (interactive) (snippet-insert "inject(Array.new) { |$${arr}, $${a}| $${arr}.push(*$${a}) }")) 0)
+    ("flash" "" (lambda nil (interactive) (snippet-insert "flash[:$${notice}] = '$${Successfully}'$.")) 0)
+    ("forin" "" (lambda nil (interactive) (snippet-insert "for $${element} in $${collection}
+$>$${element}.$.
+end$>")) 0)
+    ("forw" "" (lambda nil (interactive) (snippet-insert "extend Forwardable")) 0)
+    ("gre" "" (lambda nil (interactive) (snippet-insert "grep($${pattern}) { |$${match}| $. }")) 0)
+    ("gsu" "" (lambda nil (interactive) (snippet-insert "gsub(/$${pattern}/) { |$${match}|$. }")) 0)
+    ("ha" "" (lambda nil (interactive) (snippet-insert "{ $>:$. }")) 0)
+    ("hash" "" (lambda nil (interactive) (snippet-insert "Hash.new { |$${hash}, $${key}| $${hash}[$${key}] = $. }")) 0)
+    ("inj" "" (lambda nil (interactive) (snippet-insert "inject($${init}) { |$${mem}, $${var}| $. }")) 0)
+    ("inject" "" (lambda nil (interactive) (snippet-insert "inject($${object}) { |$${injection}, $${element}| $${4} }$.")) 0)
+    ("lam" "" (lambda nil (interactive) (snippet-insert "lambda { |$${args}|$. }")) 0)
+    ("logd" "" (lambda nil (interactive) (snippet-insert "logger.debug '$${message}'$.")) 0)
+    ("loge" "" (lambda nil (interactive) (snippet-insert "logger.error '$${message}'$.")) 0)
+    ("logf" "" (lambda nil (interactive) (snippet-insert "logger.fatal '$${message}'$.")) 0)
+    ("logi" "" (lambda nil (interactive) (snippet-insert "logger.info '$${message}'$.")) 0)
+    ("logw" "" (lambda nil (interactive) (snippet-insert "logger.warn '$${message}'$.")) 0)
+    ("map" "" (lambda nil (interactive) (snippet-insert "map { |$${e}| $. }")) 0)
+    ("mapwi" "" (lambda nil (interactive) (snippet-insert "enum_with_index.map { |$${e}, $${i}| $. }")) 0)
+    ("max" "" (lambda nil (interactive) (snippet-insert "max { |a, b| $. }")) 0)
+    ("md" "" (lambda nil (interactive) (snippet-insert "File.open($${dump}, \"w\") { |$${file}| Marshal.dump($${obj}, $${file}) }")) 0)
+    ("min" "" (lambda nil (interactive) (snippet-insert "min { |a, b| $. }")) 0)
+    ("ml" "" (lambda nil (interactive) (snippet-insert "File.open($${dump}) { |$${file}| Marshal.load($${file}) }")) 0)
+    ("mm" "" (lambda nil (interactive) (snippet-insert "def method_missing(meth, *args, &block)
+$>$.
+end$>")) 0)
+    ("modf" "" (lambda nil (interactive) (snippet-insert "module $${ModuleName}
+$>module ClassMethods
+$>$>$.
+end$>
+$>
+$>extend ClassMethods
+$>
+$>def self.included(receiver)
+$>$>receiver.extend(ClassMethods)
+end$>
+$>
+$>
+end$>")) 0)
+    ("mods" "" (lambda nil (interactive) (snippet-insert "module $${ModuleName}
+$>$.
+end$>")) 0)
+    ("modu" "" (lambda nil (interactive) (snippet-insert "module $${ModuleName}
+$>module_function
+$>
+$>$.
+end$>")) 0)
+    ("nr" "" (lambda nil (interactive) (snippet-insert "@$${item}.new_record?")) 0)
+    ("ope" "" (lambda nil (interactive) (snippet-insert "open($${pipe}) { |$${io}| $. }")) 0)
+    ("par" "" (lambda nil (interactive) (snippet-insert "params[:$${id}]")) 0)
+    ("patfh" "" (lambda nil (interactive) (snippet-insert "File.join(File.dirname(__FILE__), *%w[$${here}])")) 0)
+    ("pn" "" (lambda nil (interactive) (snippet-insert "PStore.new($${file_name})")) 0)
+    ("r" "" (lambda nil (interactive) (snippet-insert "attr_reader :$${attr_names}")) 0)
+    ("ran" "" (lambda nil (interactive) (snippet-insert "sort_by { rand }")) 0)
+    ("rb" "" (lambda nil (interactive) (snippet-insert "#!/usr/bin/env ruby -w
+
+")) 0)
+    ("rdl" "" (lambda nil (interactive) (snippet-insert "RAILS_DEFAULT_LOGGER.debug '$${message}'$.")) 0)
+    ("rej" "" (lambda nil (interactive) (snippet-insert "reject { |$${e}| $. }")) 0)
+    ("reject" "" (lambda nil (interactive) (snippet-insert "reject { |$${element}| $${element}.$. }")) 0)
+    ("rep" "" (lambda nil (interactive) (snippet-insert "results.report(\"$${name}:\") { TESTS.times { $. } }")) 0)
+    ("req" "" (lambda nil (interactive) (snippet-insert "require \"$.\"")) 0)
+    ("reve" "" (lambda nil (interactive) (snippet-insert "reverse_each { |$${e}| $. }")) 0)
+    ("rw" "" (lambda nil (interactive) (snippet-insert "attr_accessor :$${attr_names}")) 0)
+    ("sca" "" (lambda nil (interactive) (snippet-insert "scan(/$${pattern}/) { |$${match}| $. }")) 0)
+    ("sel" "" (lambda nil (interactive) (snippet-insert "select { |$${e}| $. }")) 0)
+    ("select" "" (lambda nil (interactive) (snippet-insert "select { |$${element}| $${element}.$${2} }$.")) 0)
+    ("session" "" (lambda nil (interactive) (snippet-insert "session[:$${User}]")) 0)
+    ("sin" "" (lambda nil (interactive) (snippet-insert "class << self; self end")) 0)
+    ("sor" "" (lambda nil (interactive) (snippet-insert "sort { |a, b| $. }")) 0)
+    ("sorb" "" (lambda nil (interactive) (snippet-insert "sort_by { |$${e}| $. }")) 0)
+    ("ste" "" (lambda nil (interactive) (snippet-insert "step($${2}) { |$${n}|$. }")) 0)
+    ("sub" "" (lambda nil (interactive) (snippet-insert "sub(/$${pattern}/) { |$${match}|$. }")) 0)
+    ("tc" "" (lambda nil (interactive) (snippet-insert "require \"test/unit\"
+
+require \"$${library_file_name}\"
+
+class Test$${amp} < Test::Unit::TestCase
+$>def test_$${case_name}
+$>$>$.
+end$>
+end$>")) 0)
+    ("tim" "" (lambda nil (interactive) (snippet-insert "times { |$${n}|$. }")) 0)
+    ("tra" "" (lambda nil (interactive) (snippet-insert "transaction$${1} { $. }")) 0)
+    ("ts" "" (lambda nil (interactive) (snippet-insert "require \"test/unit\"
+
+require \"tc_$${test_case_file}\"
+require \"tc_$${test_case_file}\"
+")) 0)
+    ("until" "" (lambda nil (interactive) (snippet-insert "until $${condition}
+$>$.
+end$>")) 0)
+    ("upt" "" (lambda nil (interactive) (snippet-insert "upto($${0}) { |$${n}|$. }")) 0)
+    ("verred" "" (lambda nil (interactive) (snippet-insert "verify :only => [:$${1}], :session => :user, :params => :id, :redirect_to => {:action => '$${index}'}
+")) 0)
+    ("verren" "" (lambda nil (interactive) (snippet-insert "verify :only => [:$${1}], :method => :post, :render => {:status => 500, :text => \"use HTTP-POST\"}
+")) 0)
+    ("w" "" (lambda nil (interactive) (snippet-insert "attr_writer :$${attr_names}")) 0)
+    ("when" "" (lambda nil (interactive) (snippet-insert "when $${condition}
+$>$.")) 0)
+    ("while" "" (lambda nil (interactive) (snippet-insert "while $${condition}
+$>$.
+end$>")) 0)
+    ("y" "" (lambda nil (interactive) (snippet-insert " :yields: $${arguments}")) 0)
+    ("yd" "" (lambda nil (interactive) (snippet-insert "File.open($${yaml}, \"w\") { |$${file}| YAML.dump($${obj}, $${file}) }")) 0)
+    ("yl" "" (lambda nil (interactive) (snippet-insert "File.open($${yaml}) { |$${file}| YAML.load($${file}) }")) 0)
+    ("zip" "" (lambda nil (interactive) (snippet-insert "zip($${enums}) { |$${row}| $. }")) 0)
+   ))
+
+(define-abbrev-table 'sass-mode-abbrev-table '())
+
+(define-abbrev-table 'select-tags-table-mode-abbrev-table '())
+
+(define-abbrev-table 'sgml-mode-abbrev-table '())
+
+(define-abbrev-table 'sh-mode-abbrev-table '())
+
+(define-abbrev-table 'shell-mode-abbrev-table '())
+
+(define-abbrev-table 'special-mode-abbrev-table '())
+
+(define-abbrev-table 'sql-mode-abbrev-table
+  '(
+   ))
+
+(define-abbrev-table 'tabulated-list-mode-abbrev-table '())
+
+(define-abbrev-table 'text-mode-abbrev-table '())
+
+(define-abbrev-table 'vc-git-log-view-mode-abbrev-table '())
+
+(define-abbrev-table 'yaml-mode-abbrev-table '())
+
