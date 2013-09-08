@@ -7,6 +7,7 @@
 
 export INPUTRC="$HOME/.inputrc"
 export EDITOR="/usr/bin/emacsclient"
+export ALTERNATE_EDITOR="emacs"
 export GLOBIGNORE='.:..'
 export HISTTIMEFORMAT='%c  '
 export LC_COLLATE="POSIX"
