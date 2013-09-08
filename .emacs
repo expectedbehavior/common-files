@@ -34,7 +34,7 @@
 
 (load "server")
 (unless (server-running-p) (server-start))
-(small)
+(medium)
 (maximize-frame)
 
 (defun toggle-fullscreen ()
