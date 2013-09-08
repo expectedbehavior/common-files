@@ -32,7 +32,6 @@
 (set-frame-parameter (selected-frame) 'alpha '(94 50))
 (add-to-list 'default-frame-alist '(alpha 94 50))
 
-(server-start)
 (small)
 (maximize-frame)
 
