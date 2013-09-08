@@ -209,7 +209,9 @@
 ;; highlight the current line unless we're running on the console
 (if (not console-p)
     (progn (global-hl-line-mode 1)   ;; To customize the background color
-           (set-face-background 'hl-line "#222")))
+           (set-face-background 'hl-line "#222"))
+  (global-hl-line-mode 0)  ;; If we are on the console we don't want to use hl-line, but we still need to load it since some themes require the font face to exist
+)
 
 
 (put 'upcase-region 'disabled nil)
