@@ -9,7 +9,7 @@ if [[ "$SKIP_KEYCHAIN" != "true" ]]; then
       if [ -f $k ]; then
           for i in ~/.ssh/*; do
   #             [ -f $i ] && [ -f $i.pub ] && bash -x $k --agents ssh --nogui --inherit any $i  >> /tmp/ssh-agent_test.log 2>&1
-              [ -f $i ] && [ -f $i.pub ] && $k --agents ssh --nogui --inherit any # $i >> /tmp/ssh-agent_test.log 2>&1
+              [ -f $i ] && [ -f $i.pub ] && $k --agents ssh --nogui --inherit any $i # >> /tmp/ssh-agent_test.log 2>&1
 #               [ -f $i ] && [ -f $i.pub ] && $k --nogui --inherit any # $i >> /tmp/ssh-agent_test.log 2>&1
 #               [ -f $i ] && [ -f $i.pub ] && eval `$k --eval --inherit any $i`
           done
