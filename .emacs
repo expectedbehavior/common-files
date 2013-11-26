@@ -79,3 +79,9 @@
 ;; create a backup file directory
 (defun make-backup-file-name (file)
 (concat "~/.emacs.backups/" (file-name-nondirectory file) "~"))
+
+
+
+(if (string-equal "jason" (user-login-name))
+    (my-set-mac-font "Monaco" 14)
+)
