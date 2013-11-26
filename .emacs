@@ -80,5 +80,7 @@
 
 
 (if (string-equal "jason" (user-login-name))
-    (my-set-mac-font "Monaco" 14)
+    (progn
+      (my-set-mac-font "Monaco" 14)
+    )
 )
