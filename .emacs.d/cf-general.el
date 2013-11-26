@@ -153,9 +153,7 @@
              (load-file x))
           (directory-files dir t "\\.el$")))
 
-;; Apaprently these don't all work in emacs24?  Joel removed this line from the emacs24 branch
-;; along with a bunch of other changes, so those defaults aren't working now.
-;; (load-directory "~/.emacs.d/autoload/")
+(load-directory "~/.emacs.d/autoload/")
 
 
 ;; Load paths

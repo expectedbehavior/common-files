@@ -76,9 +76,6 @@
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
-;; create a backup file directory
-(defun make-backup-file-name (file)
-(concat "~/.emacs.backups/" (file-name-nondirectory file) "~"))
 
 
 
