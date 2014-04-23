@@ -308,6 +308,22 @@ cf_prompt_command() {
 }
 
 
+## This is copied from OSX's /etc/bashrc and is used to allow Terminal to reopen
+## old tabs in the same directory.  It's used below in setting PROMPT_COMMAND.
+# Tell the terminal about the working directory at each prompt.
+if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
+    update_terminal_cwd() {
+        # Identify the directory using a "file:" scheme URL,
+        # including the host name to disambiguate local vs.
+        # remote connections. Percent-escape spaces.
+	local SEARCH=' '
+	local REPLACE='%20'
+	local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+	printf '\e]7;%s\a' "$PWD_URL"
+    }
+    PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
+fi
+
 #export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;
 #35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;
 #31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;
@@ -389,7 +405,7 @@ export HISTSIZE=5000000
 export HISTCONTROL=ignoreboth
 
 #save history with each command
-export PROMPT_COMMAND='[[ "`set | grep -E \"cf_prompt_command \(\)\"`" != "" ]] && cf_prompt_command'
+export PROMPT_COMMAND='[[ "`set | grep -E \"update_terminal_cwd \(\)\"`" != "" ]] && update_terminal_cwd; [[ "`set | grep -E \"cf_prompt_command \(\)\"`" != "" ]] && cf_prompt_command'
 
 if ! shopt -q login_shell; then
     if [ -f /usr/bin/keychain ]; then
