@@ -44,7 +44,7 @@
      nil 'fullscreen
      (when (not (frame-parameter nil 'fullscreen)) 'fullboth)))
 
-(toggle-fullscreen)
+;; (toggle-fullscreen)
 
 ;; Use a hbar cursor when mark is active and a region exists.
 (defun th-activate-mark-init ()
