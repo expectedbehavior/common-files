@@ -82,5 +82,13 @@
 (if (string-equal "jason" (user-login-name))
     (progn
       (my-set-mac-font "Monaco" 14)
+
+      (rename-frame nil "Home")
+      (maximize-frame)
+      (global-set-key "\M-`" 'other-frame)
+      (maximize-frame (make-frame '((name . "DocRaptor"))))
+      (maximize-frame (make-frame '((name . "DocRaptor2"))))
+      (maximize-frame (make-frame '((name . "Gauges"))))
+      (maximize-frame (make-frame '((name . "Instrumental"))))
     )
 )
