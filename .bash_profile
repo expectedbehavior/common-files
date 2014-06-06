@@ -31,3 +31,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 if [[ -d "$HOME/.rbenv" ]] ; then eval "$(rbenv init -)"; fi
+
+
+# Load eb automatically by adding
+# the following to ~/.bash_profile:
+
+eval "$(/Users/jason/projects/eb/bin/eb init -)"
