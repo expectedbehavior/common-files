@@ -20,7 +20,7 @@ cf_date_check_notify
 cf_check_for_updates
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
-if [[ -d "$HOME/.rbenv" ]] ; then eval "$(rbenv init -)"; fi
+if [[ -d "$HOME/.rbenv" ]] ; then eval "$($HOME/.rbenv/bin/rbenv init -)"; fi
 
 # Automatic discovery of your code directory
 for dir in ~/code ~/projects; do
