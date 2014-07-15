@@ -30,6 +30,6 @@ for dir in ~/code ~/projects; do
   fi
 done
 
-if [[ -f "$CODE_DIR/eb/bin/eb"]]; then
+if [[ -f "$CODE_DIR/eb/bin/eb" ]]; then
   eval "$($CODE_DIR/eb/bin/eb init -)"
 fi
