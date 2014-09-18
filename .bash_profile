@@ -8,17 +8,11 @@ if [[ "$SKIP_KEYCHAIN" != "true" ]]; then
   for k in /usr/bin/keychain /opt/local/bin/keychain /usr/local/bin/keychain /opt/boxen/homebrew/bin/keychain; do
       if [ -f $k ]; then
           for i in ~/.ssh/*; do
-  #             [ -f $i ] && [ -f $i.pub ] && bash -x $k --agents ssh --nogui --inherit any $i  >> /tmp/ssh-agent_test.log 2>&1
-              [ -f $i ] && [ -f $i.pub ] && $k --agents ssh --nogui --inherit any # $i >> /tmp/ssh-agent_test.log 2>&1
-#               [ -f $i ] && [ -f $i.pub ] && $k --nogui --inherit any # $i >> /tmp/ssh-agent_test.log 2>&1
-#               [ -f $i ] && [ -f $i.pub ] && eval `$k --eval --inherit any $i`
+              [ -f $i ] && [ -f $i.pub ] && eval `$k --eval --agents ssh --inherit any $i`
           done
-  #     [ -f ~/.ssh/id_dsa ] && /usr/bin/keychain --nogui ~/.ssh/id_dsa
-  #     [ -f ~/.ssh/id_rsa ] && /usr/bin/keychain --nogui ~/.ssh/id_rsa
       fi
   done
 fi
-[ -f ~/.keychain/$HOSTNAME-sh ] && source ~/.keychain/$HOSTNAME-sh > /dev/null
 
 cf_date_check_notify
 
