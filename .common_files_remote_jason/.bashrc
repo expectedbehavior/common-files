@@ -1,16 +1,24 @@
 
+export INPUTRC="$HOME/.common_files_remote_jason/.inputrc"
+export SCREENRC="$HOME/.common_files_remote_jason/.screenrc"
+export EDITOR="/usr/bin/emacsclient"
+export ALTERNATE_EDITOR="emacs"
+export GLOBIGNORE='.:..'
+export HISTTIMEFORMAT='%c  '
+export LC_COLLATE="POSIX"
+export ACKRC="$HOME/.ackrc"
+
+# remove the ':' from wordbreaks so we don't have to escape it on teh command line
+COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
+
 alias ls='ls --color=auto -F -b -T 0'
 alias ll='ls -lh --color=auto -F -b -T 0'
 alias lobster="lobster.telaranrhiod.com"
-#alias su='su -'
 alias la='ls -alh'
 alias es='eix'
 alias eS='eix -S'
-#alias sS='screen -S'
-#alias sx='screen -x'
 alias sls='screen -ls'
 alias sw='screen -wipe'
-#alias cfup='((svn info &> /dev/null && svn up) || (echo; echo -n "svn repository not detected, use tbz2? [Y,n]: "; read y; [ "$y" == "" -o "$y" == "y" -o "$y" == "Y" ] && (wget -O - http://cf.telaranrhiod.com/files/common/common_files.tbz2 | tar -xjov --no-same-permissions ./))); exec bash'
 alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 | tar -xjov --no-same-permissions -C ~/.fluxbox/backgrounds/)'
 alias pgrep='pgrep -iL'
 which md5 &> /dev/null || alias md5='md5sum'
