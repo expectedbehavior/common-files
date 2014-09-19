@@ -25,7 +25,7 @@ if [[ -d "$HOME/.rbenv" ]] ; then eval "$($HOME/.rbenv/bin/rbenv init -)"; fi
 # Automatic discovery of your code directory
 for dir in ~/code ~/projects; do
   if [ -d $dir ]; then
-    CODE_DIR=~/code
+    CODE_DIR=$dir
     break
   fi
 done
