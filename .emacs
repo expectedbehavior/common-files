@@ -85,6 +85,7 @@
 
       (rename-frame nil "Home")
       (maximize-frame)
+      (split-window-right)
       (global-set-key "\M-`" 'other-frame)
       (maximize-frame (make-frame '((name . "DocRaptor"))))
       (maximize-frame (make-frame '((name . "DocRaptor2"))))
