@@ -87,11 +87,19 @@
       (maximize-frame)
       (split-window-right)
       (global-set-key "\M-`" 'other-frame)
-      (maximize-frame (make-frame '((name . "DocRaptor"))))
-      (maximize-frame (make-frame '((name . "DocRaptor2"))))
-      (maximize-frame (make-frame '((name . "Gauges"))))
-      (maximize-frame (make-frame '((name . "Instrumental"))))
-      (maximize-frame (make-frame '((name . "Instrumental2"))))
+
+      (defun make-maximized-split-frame (name)
+        (let (( f (make-frame (list (cons 'name  name))) ))
+          (maximize-frame f)
+          (split-window (frame-root-window f) nil t)
+          ))
+
+      (make-maximized-split-frame "DocRaptor")
+      (make-maximized-split-frame "DocRaptor2")
+      (make-maximized-split-frame "Gauges")
+      (make-maximized-split-frame "Instrumental")
+      (make-maximized-split-frame "Instrumental2")
+
 
       ;; If you have multiple frames and try to switch to a buffer that's open in another frame, this will open that buffer in the current frame instead of switching frames
       (setq ido-default-buffer-method 'selected-window)
