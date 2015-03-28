@@ -106,5 +106,8 @@
       ;; If you have multiple frames and try to switch to a buffer that's open in another frame, this will open that buffer in the current frame instead of switching frames
       (setq ido-default-buffer-method 'selected-window)
       (setq ido-default-file-method 'selected-window)
+
+      (global-set-key (quote [M-down]) (quote scroll-up-line))
+      (global-set-key (quote [M-up]) (quote scroll-down-line))
     )
 )
