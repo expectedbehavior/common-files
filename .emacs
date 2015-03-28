@@ -80,27 +80,29 @@
 
 
 (if (string-equal "jason" (user-login-name))
-    (progn
-      (my-set-mac-font "Monaco" 14)
+    (if (display-graphic-p) ;; don't do all this stuff if I'm in a terminal
+        (progn
+          (my-set-mac-font "Monaco" 14)
 
-      (rename-frame nil "Home")
-      (maximize-frame)
-      (split-window-right)
-      (global-set-key "\M-`" 'other-frame)
+          (rename-frame nil "Home")
+          (maximize-frame)
+          (split-window-right)
+          (global-set-key "\M-`" 'other-frame)
 
-      (defun make-maximized-split-frame (name)
-        (let (( f (make-frame (list (cons 'name  name))) ))
-          (maximize-frame f)
-          (split-window (frame-root-window f) nil t)
-          ))
+          (defun make-maximized-split-frame (name)
+            (let (( f (make-frame (list (cons 'name  name))) ))
+              (maximize-frame f)
+              (split-window (frame-root-window f) nil t)
+              ))
 
-      (make-maximized-split-frame "DocRaptor")
-      (make-maximized-split-frame "DocRaptor2")
-      (make-maximized-split-frame "Gauges")
-      (make-maximized-split-frame "Instrumental")
-      (make-maximized-split-frame "Instrumental2")
+          (make-maximized-split-frame "DocRaptor")
+          (make-maximized-split-frame "DocRaptor2")
+          (make-maximized-split-frame "Gauges")
+          (make-maximized-split-frame "Instrumental")
+          (make-maximized-split-frame "Instrumental2")))
 
 
+  (progn
       ;; If you have multiple frames and try to switch to a buffer that's open in another frame, this will open that buffer in the current frame instead of switching frames
       (setq ido-default-buffer-method 'selected-window)
       (setq ido-default-file-method 'selected-window)
