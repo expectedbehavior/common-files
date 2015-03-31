@@ -14,7 +14,7 @@ export LC_COLLATE="POSIX"
 export ACKRC="$HOME/.ackrc"
 export ARCHFLAGS="-arch x86_64"
 # export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
-export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib
+# export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib
 
 # remove the ':' from wordbreaks so we don't have to escape it on teh command line
 COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
