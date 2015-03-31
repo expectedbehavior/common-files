@@ -32,8 +32,11 @@
 (set-frame-parameter (selected-frame) 'alpha '(94 50))
 (add-to-list 'default-frame-alist '(alpha 94 50))
 
+(set-file-modes (expand-file-name "~/.emacs.d/server") #o700)
+(setq server-socket-dir "~/.emacs.d/server")
 (load "server")
 (unless (server-running-p) (server-start))
+
 (medium)
 (maximize-frame)
 
