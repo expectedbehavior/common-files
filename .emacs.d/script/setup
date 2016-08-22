@@ -1,0 +1,7 @@
+# check emacs version
+# run cask install
+# check default editor
+# git config --global core.editor "/usr/local/bin/emacsclient"
+#
+
+echo "sorry, this doesn't work yet. check this file for notes"
