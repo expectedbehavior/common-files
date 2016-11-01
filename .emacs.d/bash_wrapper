@@ -1,4 +1,0 @@
-#!/bin/bash
-
-exec /bin/bash -il
-export TERM="xterm-color"
