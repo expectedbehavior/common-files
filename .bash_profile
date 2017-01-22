@@ -24,7 +24,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
-if [[ -d "$HOME/.rbenv" ]] ; then eval "$($HOME/.rbenv/bin/rbenv init -)"; fi
+if [[ -d "$HOME/.rbenv" ]] && which rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
 
 # Automatic discovery of your code directory
 for dir in ~/code ~/projects; do
