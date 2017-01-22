@@ -26,6 +26,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 if [[ -d "$HOME/.rbenv" ]] && which rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
 
+# mkdir .git/safe in the root of repositories you trust
+PATH=".git/safe/../../bin:$PATH"
+
 # Automatic discovery of your code directory
 for dir in ~/code ~/projects; do
   if [ -d $dir ]; then
