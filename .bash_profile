@@ -8,7 +8,10 @@ if [[ "$SKIP_KEYCHAIN" != "true" ]]; then
   for k in /usr/bin/keychain /opt/local/bin/keychain /usr/local/bin/keychain /opt/boxen/homebrew/bin/keychain; do
       if [ -f $k ]; then
           for i in ~/.ssh/*; do
-              [ -f $i ] && [ -f $i.pub ] && eval `$k --eval --agents ssh --inherit any $i`
+              # Lockwait prevents every terminal tab prompting for my password
+              # after reboot. Only one prompts, then the others wait and load
+              # the keys after the password has been entered.
+              [ -f $i ] && [ -f $i.pub ] && eval `$k --lockwait 9999999 --eval --agents ssh --inherit any $i`
           done
       fi
   done
