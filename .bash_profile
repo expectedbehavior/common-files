@@ -38,3 +38,7 @@ done
 if [[ -f "$CODE_DIR/eb/bin/eb" ]]; then
   eval "$($CODE_DIR/eb/bin/eb init -)"
 fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
