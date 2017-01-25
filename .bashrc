@@ -307,6 +307,22 @@ cf_prompt_command() {
     [[ "`declare -f cf_user_prompt_hook`" != "" ]] && cf_user_prompt_hook
 }
 
+lc() {
+  # echo $SECONDS
+  eval "$@"
+  # The -n makes it so clicking the toast doesn't make every lc continue processing
+  ((
+      growlnotify -n "lc${RANDOM}" -swm "command finished: $*"
+
+      ## These dont work on mavericks becase growlnotify -w times out
+      # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
+      # open "$term_app"
+
+      # &> /dev/null otherwise commands like "lc time sleep 1 | tee /tmp/foo.log" hang
+      ) &> /dev/null &
+      ) # subshell so it doesn't stick around in the jobs list and hold up other "wait" commands
+  # echo $SECONDS
+}
 
 ## This is copied from OSX's /etc/bashrc and is used to allow Terminal to reopen
 ## old tabs in the same directory.  It's used below in setting PROMPT_COMMAND.
