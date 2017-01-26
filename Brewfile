@@ -11,6 +11,7 @@ cask 'java'
 mas 'Xcode', id: 497799835
 
 # Things I use
+brew 'stow'
 brew 'emacs', args: ['with-cocoa', 'with-gnutls']
 brew 'mtr'
 brew 'keychain'
