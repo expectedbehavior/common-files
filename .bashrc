@@ -436,7 +436,12 @@ fi
 # load any OS specific changes we've made
 [ -f ~/.common_files/cf.`uname -s`.conf ] && . ~/.common_files/cf.`uname -s`.conf
 
-#last, but not least, source a configuration file so there's an easy place for users to make configuration changes from the default
+# Load user specific configuration that is checked into the repo.
+[ -f ~/.common_files/cf.`whoami`.conf ] && . ~/.common_files/cf.`whoami`.conf
+
+# Last, but not least, source a configuration file so there's an easy place for
+# users to make configuration changes from the default. This file isn't checked
+# in so it can contain secret info.
 [ -f ~/.common_files/cf.conf ] && . ~/.common_files/cf.conf
 
 export CLICOLOR=1
