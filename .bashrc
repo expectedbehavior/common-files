@@ -227,6 +227,7 @@ cf_get_latest_local_version() {
     fi	
 	  if [[ "$my_rev" == "" ]]; then
 	      #couldn't get version from svn so we'll try .common_files/latest_revision.txt
+        # This means you're probably using the tarball.
 	      my_rev=`cat "$HOME/.common_files/.latest_revision" 2> /dev/null`
 	  fi
 	  if [[ "$my_rev" == "" ]]; then
@@ -275,7 +276,7 @@ cf_check_for_updates() {
 export CF_TIME_BETWEEN_UPDATES=86400
 
 cf_date_check_for_updates() {
-    last_checked_for_updates_date_path="$HOME/.common_files/.last_checked_date"
+    last_checked_for_updates_date_path="$HOME/.common_files/tmp/.last_checked_date"
     last_date=0
     [ -f $last_checked_for_updates_date_path ] && last_date=`cat $last_checked_for_updates_date_path`
     let "new_date = $last_date + $CF_TIME_BETWEEN_UPDATES"
