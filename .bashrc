@@ -185,7 +185,7 @@ pssh() {
 }
 tssh() {
     set_temp_known_host $*
-    ssh -o "UserKnownHostsFile=${known_hosts_temp_file}" $*   
+    ssh -o "UserKnownHostsFile=${known_hosts_temp_file}" $*
 }
 
 vncvia() {
@@ -224,7 +224,7 @@ cf_get_latest_local_version() {
     #get your current revision number
     if which git &> /dev/null; then
 	      my_rev=`(git --git-dir $HOME log -1 --pretty=format:"%H %ad") 2> /dev/null`
-    fi	
+    fi
 	  if [[ "$my_rev" == "" ]]; then
 	      #couldn't get version from svn so we'll try .common_files/latest_revision.txt
         # This means you're probably using the tarball.
@@ -233,9 +233,9 @@ cf_get_latest_local_version() {
 	  if [[ "$my_rev" == "" ]]; then
 	      return 1
 	  fi
-    
+
 	  CF_LOCAL_LATEST_VERSION=$my_rev
-    
+
 	  return 0
 }
 
@@ -260,7 +260,7 @@ cf_check_for_updates() {
               	#check if you're up to date
                 latest_hash=`echo $latest | awk '{print $1}'`
                 my_hash=`echo $my_rev | awk '{print $1}'`
-	              if [[ "$latest_hash" != "$my_hash" ]]; then 
+	              if [[ "$latest_hash" != "$my_hash" ]]; then
               	    #if not, create the .out_of_date file with the appropriate message so next time you start a terminal we can alert you.
 	                  echo "Not on latest revision of common_files.  Latest: $latest, yours: $my_rev" > $notification_message_path
 	              else
@@ -394,7 +394,7 @@ if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
       	#green user@hostname
      	  PS1="${PS1}${FG_GREEN}\u@"
     fi
- 
+
     GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
     PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${NO_COLOR}"
