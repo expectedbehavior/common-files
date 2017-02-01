@@ -5,3 +5,7 @@
 --type-set=conf=.conf
 --type-set=coffee=.coffee
 --ignore-dir=culerity_page_errors
+--ignore-dir=coverage
+--ignore-dir=coverage_merged
+--ignore-dir=coverage.old
+--ignore-dir=coverage_dirs

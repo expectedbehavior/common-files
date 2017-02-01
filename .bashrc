@@ -6,7 +6,7 @@
 [[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
 
 export INPUTRC="$HOME/.inputrc"
-export EDITOR="/usr/bin/emacsclient"
+export EDITOR="emacsclient --alternate-editor=emacs"
 export GLOBIGNORE='.:..'
 export HISTTIMEFORMAT='%c  '
 export LC_COLLATE="POSIX"
@@ -190,7 +190,7 @@ pssh() {
 }
 tssh() {
     set_temp_known_host $*
-    ssh -o "UserKnownHostsFile=${known_hosts_temp_file}" $*   
+    ssh -o "UserKnownHostsFile=${known_hosts_temp_file}" $*
 }
 
 vncvia() {
@@ -229,17 +229,18 @@ cf_get_latest_local_version() {
     #get your current revision number
     if which git &> /dev/null; then
 	      my_rev=`(git --git-dir $HOME log -1 --pretty=format:"%H %ad") 2> /dev/null`
-    fi	
+    fi
 	  if [[ "$my_rev" == "" ]]; then
 	      #couldn't get version from svn so we'll try .common_files/latest_revision.txt
+        # This means you're probably using the tarball.
 	      my_rev=`cat "$HOME/.common_files/.latest_revision" 2> /dev/null`
 	  fi
 	  if [[ "$my_rev" == "" ]]; then
 	      return 1
 	  fi
-    
+
 	  CF_LOCAL_LATEST_VERSION=$my_rev
-    
+
 	  return 0
 }
 
@@ -264,7 +265,7 @@ cf_check_for_updates() {
               	#check if you're up to date
                 latest_hash=`echo $latest | awk '{print $1}'`
                 my_hash=`echo $my_rev | awk '{print $1}'`
-	              if [[ "$latest_hash" != "$my_hash" ]]; then 
+	              if [[ "$latest_hash" != "$my_hash" ]]; then
               	    #if not, create the .out_of_date file with the appropriate message so next time you start a terminal we can alert you.
 	                  echo "Not on latest revision of common_files.  Latest: $latest, yours: $my_rev" > $notification_message_path
 	              else
@@ -280,7 +281,7 @@ cf_check_for_updates() {
 export CF_TIME_BETWEEN_UPDATES=86400
 
 cf_date_check_for_updates() {
-    last_checked_for_updates_date_path="$HOME/.common_files/.last_checked_date"
+    last_checked_for_updates_date_path="$HOME/.common_files/tmp/.last_checked_date"
     last_date=0
     [ -f $last_checked_for_updates_date_path ] && last_date=`cat $last_checked_for_updates_date_path`
     let "new_date = $last_date + $CF_TIME_BETWEEN_UPDATES"
@@ -312,6 +313,38 @@ cf_prompt_command() {
     [[ "`declare -f cf_user_prompt_hook`" != "" ]] && cf_user_prompt_hook
 }
 
+lc() {
+  # echo $SECONDS
+  eval "$@"
+  # The -n makes it so clicking the toast doesn't make every lc continue processing
+  ((
+      growlnotify -n "lc${RANDOM}" -swm "command finished: $*"
+
+      ## These dont work on mavericks becase growlnotify -w times out
+      # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
+      # open "$term_app"
+
+      # &> /dev/null otherwise commands like "lc time sleep 1 | tee /tmp/foo.log" hang
+      ) &> /dev/null &
+      ) # subshell so it doesn't stick around in the jobs list and hold up other "wait" commands
+  # echo $SECONDS
+}
+
+## This is copied from OSX's /etc/bashrc and is used to allow Terminal to reopen
+## old tabs in the same directory.  It's used below in setting PROMPT_COMMAND.
+# Tell the terminal about the working directory at each prompt.
+if [ "$TERM_PROGRAM" == "Apple_Terminal" ] && [ -z "$INSIDE_EMACS" ]; then
+    update_terminal_cwd() {
+        # Identify the directory using a "file:" scheme URL,
+        # including the host name to disambiguate local vs.
+        # remote connections. Percent-escape spaces.
+	local SEARCH=' '
+	local REPLACE='%20'
+	local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+	printf '\e]7;%s\a' "$PWD_URL"
+    }
+    PROMPT_COMMAND="update_terminal_cwd; $PROMPT_COMMAND"
+fi
 
 #export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;
 #35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;
@@ -366,7 +399,7 @@ if [[ "$TERM" != 'dumb' ]] && [[ -n "$BASH" ]]; then
       	#green user@hostname
      	  PS1="${PS1}${FG_GREEN}\u@"
     fi
- 
+
     GIT_PS1_SHOWDIRTYSTATE=1
     #working dir basename and prompt
     PS1="${PS1}\h ${FG_RED}\$(__git_ps1 "[%s]") ${FG_BLUE}\W ${FG_BLUE}\$ ${NO_COLOR}"
@@ -394,7 +427,7 @@ export HISTSIZE=5000000
 export HISTCONTROL=ignoreboth
 
 #save history with each command
-export PROMPT_COMMAND='[[ "`set | grep -E \"cf_prompt_command \(\)\"`" != "" ]] && cf_prompt_command'
+export PROMPT_COMMAND='[[ "`set | grep -E \"update_terminal_cwd \(\)\"`" != "" ]] && update_terminal_cwd; [[ "`set | grep -E \"cf_prompt_command \(\)\"`" != "" ]] && cf_prompt_command'
 
 if ! shopt -q login_shell; then
     if [ -f /usr/bin/keychain ]; then
@@ -408,7 +441,12 @@ fi
 # load any OS specific changes we've made
 [ -f ~/.common_files/cf.`uname -s`.conf ] && . ~/.common_files/cf.`uname -s`.conf
 
-#last, but not least, source a configuration file so there's an easy place for users to make configuration changes from the default
+# Load user specific configuration that is checked into the repo.
+[ -f ~/.common_files/cf.`whoami`.conf ] && . ~/.common_files/cf.`whoami`.conf
+
+# Last, but not least, source a configuration file so there's an easy place for
+# users to make configuration changes from the default. This file isn't checked
+# in so it can contain secret info.
 [ -f ~/.common_files/cf.conf ] && . ~/.common_files/cf.conf
 
 export CLICOLOR=1
