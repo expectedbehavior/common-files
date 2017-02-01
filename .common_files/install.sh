@@ -8,4 +8,4 @@ cp -fr common-files/.??* .
 rm -fr common-files/
 git checkout . # fixes issues with weird permissions changes after copy
 
-~/.common-files/setup.sh
+~/.common_files/setup.sh
