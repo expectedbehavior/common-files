@@ -51,6 +51,7 @@
 (depends-on "multi-web-mode")
 (depends-on "multiple-cursors")
 (depends-on "nose")
+(depends-on "pallet")
 (depends-on "paredit")
 (depends-on "paredit-everywhere")
 (depends-on "pbcopy")
