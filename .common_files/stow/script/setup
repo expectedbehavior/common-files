@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+cd "$(dirname "$0")/.."
+
+stow_cmd="stow --dir . --target $HOME --restow common-files"
+
+personal_dir="common-files-`whoami`"
+if test -d "$personal_dir"; then
+  stow_cmd="$stow_cmd $personal_dir"
+fi
+
+$stow_cmd

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. $HOME/.common_files_remote_jason/.bashrc
+
+exec screen bash -il $*
