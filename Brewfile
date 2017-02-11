@@ -60,6 +60,7 @@ cask 'grandperspective'
 cask 'microsoft-office'
 cask 'sequel-pro'
 cask 'whatsapp'
+cask 'soulver'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
