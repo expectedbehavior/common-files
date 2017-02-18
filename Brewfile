@@ -15,6 +15,7 @@ brew 'stow'
 brew 'emacs', args: ['with-cocoa', 'with-gnutls']
 brew 'mtr'
 brew 'keychain'
+brew 'pinentry-mac'
 brew 'the_silver_searcher'
 brew 'watch'
 brew 'ssh-copy-id'
