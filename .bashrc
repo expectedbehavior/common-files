@@ -267,7 +267,7 @@ cf_check_for_updates() {
 #make sure you have curl and svn
         if which git curl &> /dev/null; then
             #get the latest revision number, this should just be an integer.
-            latest=`curl -sL http://cf.telaranrhiod.com/files/common/latest_revision.txt`
+            latest=`curl --max-time 5 -sL http://cf.telaranrhiod.com/files/common/latest_revision.txt`
             #make sure curl returned successfully
             if [[ "$?" == "0" ]]; then
                 #	my_rev="`cf_get_latest_local_version`"
