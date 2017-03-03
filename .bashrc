@@ -326,10 +326,12 @@ cf_prompt_command() {
 
 lc() {
   # echo $SECONDS
+  lc_local_dir="`basename $PWD`"
   eval "$@"
+  status="$?"
   # The -n makes it so clicking the toast doesn't make every lc continue processing
   ((
-      growlnotify -n "lc${RANDOM}" -swm "command finished: $*"
+      growlnotify -n "lc${RANDOM}" -swm "command finished (exited $status, run in ${lc_local_dir}): $*"
 
       ## These dont work on mavericks becase growlnotify -w times out
       # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
@@ -339,7 +341,9 @@ lc() {
       ) &> /dev/null &
       ) # subshell so it doesn't stick around in the jobs list and hold up other "wait" commands
   # echo $SECONDS
+  return $status
 }
+complete -o default -A command lc
 
 ## This is copied from OSX's /etc/bashrc and is used to allow Terminal to reopen
 ## old tabs in the same directory.  It's used below in setting PROMPT_COMMAND.
