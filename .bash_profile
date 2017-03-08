@@ -26,7 +26,7 @@ if my_lock /tmp/keychain_check.lock; then
 
             # Let other terminals know that keychain is being aborted so they
             # can display a nice message.
-            other_bash_pid=$(pstree -p $pid | grep -oE '([0-9]+.*)' | grep bash | grep -v grep | head -n 1 | awk '{print $1}')
+            other_bash_pid=$(pstree -p $pid | grep -oE '([1-9][0-9]*.*)' | grep bash | grep -v grep | head -n 1 | awk '{print $1}')
             file="/tmp/keychain_check_killed.`basename $loaded_key`.$other_bash_pid"
             touch "$file"
 
