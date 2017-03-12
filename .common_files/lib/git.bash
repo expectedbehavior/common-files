@@ -24,6 +24,8 @@ alias gpsh="git push"
 complete -o default -o nospace -F _git_push gpush
 alias gd="git diff"
 complete -o default -o nospace -F _git_diff gd
+alias gdc="git diff --cached"
+complete -o default -o nospace -F _git_diff gdc
 alias gbr="git branch"
 complete -o default -o nospace -F _git_branch gbr
 alias ga="git add"
