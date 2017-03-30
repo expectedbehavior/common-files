@@ -46,3 +46,5 @@
 [commit]
 	verbose = true
 	template = /Users/jason/.git_commit_msg.txt
+[rerere]
+	enabled = true
