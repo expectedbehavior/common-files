@@ -3,7 +3,6 @@
 # scp and rcp commands.
 
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
-[[ -f $HOME/.bash_completions/git-completion ]] && source $HOME/.bash_completions/git-completion
 
 export INPUTRC="$HOME/.inputrc"
 export EDITOR="emacsclient --alternate-editor=emacs"
@@ -33,34 +32,6 @@ alias sw='screen -wipe'
 alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 | tar -xjov --no-same-permissions -C ~/.fluxbox/backgrounds/)'
 alias pgrep='pgrep -iL'
 which md5 &> /dev/null || alias md5='md5sum'
-alias g='git'
-alias g{='git stash'
-alias g}='git stash apply'
-alias glg='git log --graph --pretty=format:"%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %C(yellow)-%Creset %C(bold blue)%an%Creset %C(bold green)(%cr)%Creset"'
-complete -o default -o nospace -F _git_log glg
-alias gdc='git diff --cached'
-complete -o default -o nospace -F _git_diff gdc
-alias gcm='git commit -m'
-alias gc="git commit"
-alias gca='git commit -a'
-alias gcam='git commit -a -m'
-alias gs='git status'
-alias gst='git status'
-alias gco="git checkout"
-alias gu="git reset HEAD"
-alias ghr="git log -n1 --pretty=format:'%C(bold red)%h%Creset'"
-alias gpp="git pull && git push"
-complete -o default -o nospace -F _git_checkout gco
-alias gpul="git pull"
-complete -o default -o nospace -F _git_pull gpull
-alias gpsh="git push"
-complete -o default -o nospace -F _git_push gpush
-alias gd="git diff"
-complete -o default -o nospace -F _git_diff gd
-alias gbr="git branch"
-complete -o default -o nospace -F _git_branch gbr
-alias ga="git add"
-complete -o default -o nospace -F _git_add ga
 
 alias cuwork="cucumber ./features -t @shouldwork"
 alias cuwip="cucumber ./features -t @wip"
@@ -77,6 +48,17 @@ alias a='acki'
 
 alias hn='hcl note'
 alias be='bundle exec'
+
+my_lock() {
+  # my_lock <name of lockfile>
+  lockfile="$1"
+  if ( set -o noclobber; echo "locked" > "$lockfile") 2> /dev/null; then
+  # if mkdir /tmp/keychain_check.lock &> /dev/null; then
+    return 0
+  else
+    return 1
+  fi
+}
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
@@ -256,7 +238,7 @@ cf_check_for_updates() {
 #make sure you have curl and svn
         if which git curl &> /dev/null; then
             #get the latest revision number, this should just be an integer.
-            latest=`curl -sL http://cf.telaranrhiod.com/files/common/latest_revision.txt`
+            latest=`curl --max-time 5 -sL http://cf.telaranrhiod.com/files/common/latest_revision.txt`
             #make sure curl returned successfully
             if [[ "$?" == "0" ]]; then
                 #	my_rev="`cf_get_latest_local_version`"
@@ -311,23 +293,6 @@ cf_prompt_command() {
     [[ "$CF_RUNNING_VERSION" != "$CF_LOCAL_LATEST_VERSION" ]] && exec bash
 #    cf_long_running_task_check
     [[ "`declare -f cf_user_prompt_hook`" != "" ]] && cf_user_prompt_hook
-}
-
-lc() {
-  # echo $SECONDS
-  eval "$@"
-  # The -n makes it so clicking the toast doesn't make every lc continue processing
-  ((
-      growlnotify -n "lc${RANDOM}" -swm "command finished: $*"
-
-      ## These dont work on mavericks becase growlnotify -w times out
-      # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
-      # open "$term_app"
-
-      # &> /dev/null otherwise commands like "lc time sleep 1 | tee /tmp/foo.log" hang
-      ) &> /dev/null &
-      ) # subshell so it doesn't stick around in the jobs list and hold up other "wait" commands
-  # echo $SECONDS
 }
 
 ## This is copied from OSX's /etc/bashrc and is used to allow Terminal to reopen
@@ -437,6 +402,11 @@ if ! shopt -q login_shell; then
     [ -f ~/.keychain/$HOSTNAME-sh ] && source ~/.keychain/$HOSTNAME-sh > /dev/null &> /dev/null
 fi
 
+
+# load any cf libs
+for i in ~/.common_files/lib/*; do
+  [ -e "$i" ] && . $i
+done
 
 # load any OS specific changes we've made
 [ -f ~/.common_files/cf.`uname -s`.conf ] && . ~/.common_files/cf.`uname -s`.conf

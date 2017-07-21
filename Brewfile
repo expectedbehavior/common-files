@@ -15,6 +15,7 @@ brew 'stow'
 brew 'emacs', args: ['with-cocoa', 'with-gnutls']
 brew 'mtr'
 brew 'keychain'
+brew 'pinentry-mac'
 brew 'the_silver_searcher'
 brew 'watch'
 brew 'ssh-copy-id'
@@ -60,6 +61,7 @@ cask 'grandperspective'
 cask 'microsoft-office'
 cask 'sequel-pro'
 cask 'whatsapp'
+cask 'soulver'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
