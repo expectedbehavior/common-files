@@ -32,6 +32,7 @@ brew 'hub'
 brew 'gnupg2'
 brew 'geeknote', args: ['HEAD']
 brew 'diff-so-fancy'
+brew 'tor'
 cask 'steam'
 cask 'battle-net'
 cask 'rescuetime'
@@ -62,6 +63,8 @@ cask 'microsoft-office'
 cask 'sequel-pro'
 cask 'whatsapp'
 cask 'soulver'
+cask 'tunnelblick'
+cask 'sqlpro-for-postgres'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
