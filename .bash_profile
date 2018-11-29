@@ -100,4 +100,13 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-eval "$(jenv init -)"
+
+if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
+  source /usr/local/opt/asdf/asdf.sh
+fi
+
+if which nodenv &>/dev/null; then
+  eval "$(nodenv init -)"
+fi
+
+export PATH="/usr/local/opt/sbt@0.13/bin:$PATH"
