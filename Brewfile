@@ -66,6 +66,7 @@ cask 'soulver'
 cask 'tunnelblick'
 cask 'sqlpro-for-postgres'
 cask 'anki'
+cask 'box-sync'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
