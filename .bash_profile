@@ -105,6 +105,10 @@ if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
   source /usr/local/opt/asdf/asdf.sh
 fi
 
+if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
+  source ~/.asdf/plugins/java/bin/asdf-java-wrapper
+fi
+
 if which nodenv &>/dev/null; then
   eval "$(nodenv init -)"
 fi
