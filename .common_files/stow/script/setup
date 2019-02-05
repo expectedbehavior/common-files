@@ -10,3 +10,5 @@ if test -d "$personal_dir"; then
 fi
 
 $stow_cmd
+
+git config --global commit.template "~/.gitmessage"
