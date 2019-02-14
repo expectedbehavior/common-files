@@ -103,11 +103,15 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
   source /usr/local/opt/asdf/asdf.sh
+  export JAVA_HOME=`asdf where java`
+  export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
-  source ~/.asdf/plugins/java/bin/asdf-java-wrapper
-fi
+# this is busted: https://github.com/skotchpine/asdf-java/issues/46
+# That is why the JAVA_HOME export is above.
+# if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
+#   source ~/.asdf/plugins/java/bin/asdf-java-wrapper
+# fi
 
 if which nodenv &>/dev/null; then
   eval "$(nodenv init -)"
