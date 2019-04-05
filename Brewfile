@@ -66,6 +66,9 @@ cask 'tunnelblick'
 cask 'sqlpro-for-postgres'
 cask 'anki'
 cask 'box-sync'
+cask 'vagrant'
+cask 'virtualbox'
+cask 'virtualbox-extension-pack'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
