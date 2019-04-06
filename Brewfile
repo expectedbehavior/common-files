@@ -12,7 +12,7 @@ mas 'Xcode', id: 497799835
 
 # Things I use
 brew 'stow'
-brew 'emacs', args: ['with-cocoa', 'with-gnutls']
+brew 'emacs'  # command line, macOS app is below
 brew 'mtr'
 brew 'keychain'
 brew 'pinentry-mac'
@@ -33,6 +33,7 @@ brew 'gnupg2'
 brew 'geeknote', args: ['HEAD']
 brew 'diff-so-fancy'
 brew 'tor'
+cask 'emacs'  # macOS app, command line is above
 cask 'steam'
 cask 'battle-net'
 cask 'rescuetime'
