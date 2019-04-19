@@ -69,6 +69,7 @@ cask 'box-sync'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'virtualbox-extension-pack'
+cask 'zoomus'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
