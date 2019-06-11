@@ -17,6 +17,7 @@ export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib
 # remove the ':' from wordbreaks so we don't have to escape it on teh command line
 COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 
+alias timerake='cat ~/.timerake; echo; time bundle exec rake'
 alias ls='ls --color=auto -F -b -T 0'
 alias ll='ls -lh --color=auto -F -b -T 0'
 alias lobster="lobster.telaranrhiod.com"
