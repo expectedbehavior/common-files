@@ -33,6 +33,7 @@ brew 'gnupg2'
 brew 'geeknote', args: ['HEAD']
 brew 'diff-so-fancy'
 brew 'tor'
+brew 'sshfs'
 cask 'emacs'  # macOS app, command line is above
 cask 'steam'
 cask 'battle-net'
@@ -70,6 +71,10 @@ cask 'vagrant'
 cask 'virtualbox'
 cask 'virtualbox-extension-pack'
 cask 'zoomus'
+cask 'plex-media-server'
+cask 'ngrok'
+cask 'teamviewer'
+cask 'ivpn'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
