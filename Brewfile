@@ -75,6 +75,7 @@ cask 'plex-media-server'
 cask 'ngrok'
 cask 'teamviewer'
 cask 'ivpn'
+cask 'adobe-acrobat-reader'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
