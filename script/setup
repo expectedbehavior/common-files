@@ -42,3 +42,6 @@ read apple_store_signedin
 brew tap Homebrew/bundle
 sudo xcodebuild -license accept
 brew bundle --verbose
+
+setup_echo "Install EB dotfiles"
+.common_files/stow/script/setup
