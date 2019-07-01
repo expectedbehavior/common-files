@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+cd "$(dirname "$0")/.."
+
+setup_echo() {
+  echo "[script/setup] $1"
+}
+
+setup_error() {
+  echo "[script/setup][ERROR] $1"
+}
+
+# TODO: remove this block from Instrumental script/setup when CF is fully required
+if ! which brew > /dev/null 2>&1; then
+  setup_error "Missing homebrew. Read about it here: https://brew.sh"
+  setup_error "Or install it with:"
+  setup_error '  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  exit 1
+fi
+
+
+brew_install() {
+  setup_echo "Installing $1"
+  brew list $1 > /dev/null || brew install $1
+}
+
+brew_cask_install() {
+  setup_echo "Installing $1"
+  brew cask list $1 > /dev/null || brew cask install $1
+}
+
+
+
+brew_install mas
+mas signin --dialog
