@@ -43,5 +43,39 @@ brew tap Homebrew/bundle
 sudo xcodebuild -license accept
 brew bundle --verbose
 
+
+
+
+# System Preferences > Desktop & Screen Saver > Start after: Never
+defaults -currentHost write com.apple.screensaver idleTime -int 0
+
+# System Preferences > Dock > Automatically hide and show the Dock:
+defaults write com.apple.dock autohide -bool true
+
+# System Preferences > Keyboard >
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+# System Preferences > Keyboard >
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+# System Preferences > Trackpad > Tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+# Finder > View > Show Path Bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Finder > View > As List
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+
+# Kill affected apps
+for app in "Dock" "Finder"; do
+  killall "${app}" > /dev/null 2>&1
+done
+
+
+
+
+
 setup_echo "Install EB dotfiles"
 .common_files/stow/script/setup

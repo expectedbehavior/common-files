@@ -78,8 +78,9 @@ cask 'ivpn'
 cask 'adobe-acrobat-reader'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
-
-
+mas 'IA Writer', id: 775737590
+mas 'Movist', id: 461788075
+mas 'Kindle', id: 405399194
 
 
 
