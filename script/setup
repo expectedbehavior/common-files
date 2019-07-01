@@ -30,5 +30,10 @@ brew_cask_install() {
 
 
 brew_install mas
-apple_id_email_address=$(dscl . readpl /Users/`whoami` dsAttrTypeNative:LinkedIdentity appleid.apple.com:linked\ identities:0:full\ name | awk -F ':' '{print $5}')
-mas signin --dialog $apple_id_email_address
+#apple_id_email_address=$(dscl . readpl /Users/`whoami` dsAttrTypeNative:LinkedIdentity appleid.apple.com:linked\ identities:0:full\ name | awk -F ':' '{print $5}')
+# mas signin --dialog $apple_id_email_address
+setup_echo "There's current no way to automatically sign you into the Apple Store. You'll need to open it and manually sign in. Hit enter when you've done that."
+read apple_store_signedin
+
+brew tap Homebrew/bundle
+brew bundle --verbose
