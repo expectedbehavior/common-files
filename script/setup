@@ -28,6 +28,8 @@ brew_cask_install() {
 }
 
 
+brew_cask_install dropbox
+read "If your code is in dropbox, now's the time to start syncing. After this, the script will start installing the default software and you'll be handsoff for a while. Hit enter when ready."
 
 brew_install mas
 #apple_id_email_address=$(dscl . readpl /Users/`whoami` dsAttrTypeNative:LinkedIdentity appleid.apple.com:linked\ identities:0:full\ name | awk -F ':' '{print $5}')
