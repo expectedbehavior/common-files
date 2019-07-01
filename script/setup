@@ -30,4 +30,5 @@ brew_cask_install() {
 
 
 brew_install mas
-mas signin --dialog
+apple_id_email_address=$(dscl . readpl /Users/`whoami` dsAttrTypeNative:LinkedIdentity appleid.apple.com:linked\ identities:0:full\ name | awk -F ':' '{print $5}')
+mas signin --dialog $apple_id_email_address
