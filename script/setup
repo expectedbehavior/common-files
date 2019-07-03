@@ -42,6 +42,9 @@ setup_echo "Desktop & Screen Saver > Screen Saver > Hot Corners: bottom right =>
 setup_echo "Sound > Check Show volume in menu bar"
 setup_echo "Touch ID > Add additional fingerprints (in case you're holding something)"
 setup_echo "iCloud > iCloud Drive Options > Uncheck 'Optimize Mac Storage'"
+setup_echo "Finder > View > Show Path Bar"
+setup_echo "Finder > Preference > Sidebar > Locations > Check <hostname>"
+setup_echo "Finder > Preference > Sidebar > Locations > Check 'Hard disks' (change from a dash to a checkmark)"
 setup_echo ""
 setup_echo
 setup_echo "When you're done changing your system preferences, hit enter"
