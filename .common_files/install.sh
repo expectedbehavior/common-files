@@ -2,6 +2,7 @@
 set -e
 set -x
 
+cd ~
 git clone git@github.com:expectedbehavior/common-files.git
 cp -fr common-files/* .
 cp -fr common-files/.??* .
