@@ -122,7 +122,36 @@ eval "$(rbenv global 2.6.3)"
 #rbenv global 2.6.3 #TODO: this doesn't work because of environment bullshit
 
 
+#TODO prompt for app setup
+setup_echo "SET UP YER APPS"
+read set_up_apps
+#flowdock
+
+#launchbar
+
+#divvy
+# maximize window
+
+# Setup chrome work and chrome personal
+# transfer tabs using history - "tabs from other devices"
+# verify 1password works
+
+# anki
+# word
+# excel
+
+# setup AWS credentials
+
+#TODO run script/setup for
+# instrumental
+# docraptor
+# automation
+# eb
 
 
 setup_echo "Install EB dotfiles"
 .common_files/stow/script/setup
+
+
+# Make new spaces
+# uncheck "Automatically rearrange Spaces based on most recent use"
