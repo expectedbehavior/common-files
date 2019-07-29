@@ -107,6 +107,8 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Finder > View > As List
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
+# Disable holding a key to bring up the Character Accent Menu
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Kill affected apps
 for app in "Dock" "Finder"; do
