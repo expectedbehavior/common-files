@@ -1,11 +1,10 @@
 #+TITLE: Expected Behavior Emacs Configuration
 #+AUTHOR: Matthew Gordon
 #+EMAIL: matt@expectedbehavior.com
-#+OPTIONS: num:nil 
+#+OPTIONS: num:nil
 
-* Expected Behavior Emacs Configuration
-** Emacs Package Management Setup
-*** Add Melpa as a package repo
+* Emacs Package Management Setup
+** Add Melpa as a package repo
 Melpa is the big package repo that nearly /everything/ can be
 found. It's a must for emacs configs.
 
@@ -15,7 +14,7 @@ found. It's a must for emacs configs.
 (package-initialize)
 #+END_SRC
 
-*** Make sure use-package is installed
+** Make sure use-package is installed
 use-package handles automatically installing and loading packages as they're referenced
 #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -25,7 +24,7 @@ use-package handles automatically installing and loading packages as they're ref
 (eval-when-compile
   (require 'use-package))
 #+END_SRC
-*** use-package should always try to install missing packages
+** use-package should always try to install missing packages
 It makes the first load really slow, but it removes the need to think about anything.
 #+BEGIN_SRC emacs-lisp
   (setq use-package-always-ensure t)
