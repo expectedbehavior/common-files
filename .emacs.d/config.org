@@ -169,6 +169,13 @@ List of themes to install
   (load-theme 'monokai-alt t)
 #+END_SRC
 
+** Fonts
+# TODO - get a better default font - inconsolata, maybe?
+Set default font
+#+BEGIN_SRC emacs-lisp
+  (set-default-font "Monospace-16")
+#+END_SRC
+
 
 * TODOs
 ** smooth scrolling could be smoother; looks like it still jumps quite a bit
