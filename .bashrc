@@ -38,9 +38,9 @@ alias cuwip="cucumber ./features -t @wip"
 alias cufail="cucumber ./features -t @shouldfail"
 alias cuke="cucumber ./features"
 
-alias sc='script/console'
+alias sc='script/rails console'
 alias sct='RAILS_ENV="test" sc'
-alias ss='script/server'
+alias ss='script/rails server'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
