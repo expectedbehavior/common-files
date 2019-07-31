@@ -1,0 +1,156 @@
+#+TITLE: Expected Behavior Emacs Configuration
+#+AUTHOR: Matthew Gordon
+#+EMAIL: matt@expectedbehavior.com
+#+OPTIONS: num:nil 
+
+* Expected Behavior Emacs Configuration
+** Emacs Package Management Setup
+*** Add Melpa as a package repo
+Melpa is the big package repo that nearly /everything/ can be
+found. It's a must for emacs configs.
+
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+#+END_SRC
+
+*** Make sure use-package is installed
+use-package handles automatically installing and loading packages as they're referenced
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+#+END_SRC
+*** use-package should always try to install missing packages
+It makes the first load really slow, but it removes the need to think about anything.
+#+BEGIN_SRC emacs-lisp
+  (setq use-package-always-ensure t)
+#+END_SRC
+
+
+* Core Setup
+** Basic Stuff
+*** Better Defaults Package
+Contains many near-universal config improvements. NOTE: It does override some keybindings that we'll want to re-bind later.
+https://github.com/technomancy/better-defaults
+#+BEGIN_SRC emacs-lisp
+  (use-package better-defaults
+    :ensure t)
+#+END_SRC
+*** Scratch Buffer Instead Splash Screen
+Remove splash screen and use *scratch* instead as the home buffer
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
+#+END_SRC
+
+*** Emacs Backup Files Go In Tmp
+Funnel all the auto backup files to one location.
+Despite years of reading that Emacs tmp files will save my bacon one day, it has yet to happen. They can all hang out in tmp.
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist '(("." . "/tmp")))
+#+END_SRC
+
+*** Line numbers should always be on
+Switch line numbers on by default in all buffers
+#+BEGIN_SRC emacs-lisp
+(global-linum-mode 1)
+#+END_SRC
+
+*** Disable Menu Bar
+Switch the Menubar off by default. I have never used it.
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+#+END_SRC
+
+*** Disable Scroll Bar
+Remove Scroll Bars
+#+BEGIN_SRC emacs-lisp
+  (scroll-bar-mode -1)
+#+END_SRC
+
+*** Disable Tool Bar
+Remove Tool Bars
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)
+#+END_SRC
+
+*** Show tool tips in echo area
+#+BEGIN_SRC emacs-lisp
+(tooltip-mode -1)
+(setq tooltip-use-echo-area t)
+#+END_SRC
+
+*** Smooth Scrolling
+Smooth Scrolling 
+#TODO this is not as smooth as I would have hoped.
+#+BEGIN_SRC emacs-lisp
+(use-package smooth-scroll
+    :ensure t)
+#+END_SRC
+*** Command is Meta Key on OSX
+#+BEGIN_SRC  emacs-lisp
+  (setq mac-option-key-is-meta nil)
+  (setq mac-command-key-is-meta t)
+  (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier nil)
+#+END_SRC
+
+** Themes
+*** Load manual install theme dir
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+#+END_SRC
+*** Install Themes from Repos
+List of themes to install
+#+BEGIN_SRC emacs-lisp
+  (use-package monokai-alt-theme
+    :ensure t
+    :defer t)
+  (use-package gruvbox-theme
+    :ensure t
+    :defer t)
+  (use-package darkokai-theme
+    :ensure t
+    :defer t)
+  (use-package darktooth-theme
+    :ensure t
+    :defer t)
+  (use-package creamsody-theme
+    :ensure t
+    :defer t)
+  (use-package github-theme
+    :ensure t
+    :defer t)
+  (use-package melancholy-theme
+    :ensure t
+    :defer t)
+  (use-package darkburn-theme
+    :ensure t
+    :defer t)
+  (use-package kaolin-themes
+    :ensure t
+    :defer t)
+  (use-package dracula-theme
+    :ensure t
+    :defer t)
+  (use-package darkokai-theme
+    :ensure t
+    :defer t)
+(use-package monokai-alt-theme
+    :ensure t
+    :defer t)
+#+END_SRC
+
+*** Load Current default theme
+#+BEGIN_SRC emacs-lisp
+  (load-theme 'monokai-alt t)
+#+END_SRC
+
+
+* TODOs
+** smooth scrolling could be smoother; looks like it still jumps quite a bit
