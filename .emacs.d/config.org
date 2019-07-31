@@ -41,7 +41,7 @@ https://github.com/technomancy/better-defaults
   (use-package better-defaults
     :ensure t)
 #+END_SRC
-*** Scratch Buffer Instead Splash Screen
+*** Default screen should be scratch buffer
 Remove splash screen and use *scratch* instead as the home buffer
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t
@@ -79,6 +79,14 @@ Remove Tool Bars
   (tool-bar-mode -1)
 #+END_SRC
 
+*** Disable visual bell
+# TODO - this doesn't seem to disable the bell anymore
+The visual bell shows up on your screen as a yellow triangle with an exclamation mark in it.
+I don't need to see it. I already know I'm mashing ctrl-g more than necessary.
+#+BEGIN_SRC 
+  (setq visible-bell nil)
+  (setq ring-bell-function 'ignore)
+#+END_SRC
 *** Show tool tips in echo area
 #+BEGIN_SRC emacs-lisp
 (tooltip-mode -1)
@@ -100,6 +108,16 @@ Smooth Scrolling
   (setq mac-option-modifier nil)
 #+END_SRC
 
+*** Enable deleting selected text
+By default, text under the region won't be deleted if you type or paste. I find this infuriating.
+#+BEGIN_SRC emacs-lisp
+  (delete-selection-mode 1)
+#+END_SRC
+*** Start Emacs server
+I use this to make sure git commits are written in my main emacs instance instead of starting another.
+#+BEGIN_SRC emacs-lisp
+  (server-start)
+#+END_SRC
 ** Themes
 *** Load manual install theme dir
 #+BEGIN_SRC emacs-lisp
@@ -154,3 +172,14 @@ List of themes to install
 
 * TODOs
 ** smooth scrolling could be smoother; looks like it still jumps quite a bit
+
+
+# javasceript
+# (setq js-indent-level 2)
+
+# whitespace
+# ;;(setq tab-width 4)
+
+# ;; Death To Autofill
+# (auto-fill-mode -1)
+# (remove-hook 'text-mode-hook 'turn-on-auto-fill)
