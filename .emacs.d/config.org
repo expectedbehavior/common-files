@@ -117,6 +117,10 @@ I use this to make sure git commits are written in my main emacs instance instea
 #+BEGIN_SRC emacs-lisp
   (server-start)
 #+END_SRC
+*** Quickly go to a line
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "M-g") 'goto-line)
+#+END_SRC
 ** Themes
 *** Load manual install theme dir
 #+BEGIN_SRC emacs-lisp
