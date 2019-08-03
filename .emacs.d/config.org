@@ -173,10 +173,9 @@ List of themes to install
 #+END_SRC
 
 ** Fonts
-# TODO - get a better default font - inconsolata, maybe?
 Set default font
 #+BEGIN_SRC emacs-lisp
-  (set-default-font "Monospace-16")
+  (set-default-font "PT Mono-15")
 #+END_SRC
 
 
