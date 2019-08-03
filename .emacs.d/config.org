@@ -178,9 +178,31 @@ Set default font
   (set-default-font "PT Mono-15")
 #+END_SRC
 
+** Window Management
+*** Switch-Window
+#+BEGIN_SRC emacs-lisp
+  (use-package switch-window
+    :ensure t)
+#+END_SRC
+*** Key Binding
+TODO - these bindings should be on the use-package to prevent binding problems if the package doesn't load
+#+BEGIN_SRC emacs-lisp
+  ;; Previous Window shortcut
+  (global-set-key (kbd "M-o")
+                  (lambda() (interactive) (other-window -1)))
+  (global-set-key (kbd "C-x O")
+                  (lambda() (interactive) (switch-window)))
+  (global-set-key (kbd "M-p")
+                  (lambda() (interactive) (other-window 1)))
+  ;; TODO: does this work? do I want to easily get to other frames?
+  ;; (global-set-key (kbd "C-x \)")
+  ;;                 (lambda() (interactive) (other-frame 1)))
 
-* TODOs
-** smooth scrolling could be smoother; looks like it still jumps quite a bit
+  ;; TODO: what is this?
+  ;; (global-set-key (kbd "C-c z") 'zoom-window)
+#+END_SRC
+
+
 
 
 # javasceript
