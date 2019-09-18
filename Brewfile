@@ -10,6 +10,9 @@ brew 'postgresql', restart_service: true
 cask 'java'
 mas 'Xcode', id: 497799835
 
+# Dependecies for packages below
+cask 'osxfuse'  # sshfs
+
 # Things I use
 brew 'stow'
 brew 'emacs'  # command line, macOS app is below
