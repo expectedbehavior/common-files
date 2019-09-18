@@ -2,13 +2,25 @@
 set -e
 cd "$(dirname "$0")/.."
 
-stow_cmd="stow --dir . --target $HOME --restow common-files"
+stow_base_cmd="stow --dir . --target $HOME"
+
+stow_packages="common-files"
 
 personal_dir="common-files-`whoami`"
 if test -d "$personal_dir"; then
-  stow_cmd="$stow_cmd $personal_dir"
+  stow_packages="$stow_packages $personal_dir"
 fi
 
+# In case you've setup the common-files the old way we'll copy your files into
+# the repo, then symlink those. Then you'll be able to review those changes and
+# commit them if you want.
+stow_cmd="$stow_base_cmd --adopt --stow $stow_packages"
 $stow_cmd
+
+# Restow the packages in case any files have been removed, to clean up those
+# symlinks.
+stow_cmd="$stow_base_cmd --restow $stow_packages"
+$stow_cmd
+
 
 git config --global commit.template "~/.gitmessage"
