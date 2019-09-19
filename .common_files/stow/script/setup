@@ -2,7 +2,11 @@
 set -e
 cd "$(dirname "$0")/.."
 
-stow_base_cmd="stow --dir . --target $HOME"
+# --no-folding is necessary because we're using separate stow commands for each
+# package below and we don't want a later package to cause a previous package's
+# files to get excluded due to tree folding. This would happen because of
+# --override, which is necessary so the personal package wins.
+stow_base_cmd="stow --verbose=3 --dir . --target $HOME --no-folding --override=.*"
 
 stow_packages="common-files"
 
@@ -11,16 +15,20 @@ if test -d "$personal_dir"; then
   stow_packages="$stow_packages $personal_dir"
 fi
 
-# In case you've setup the common-files the old way we'll copy your files into
-# the repo, then symlink those. Then you'll be able to review those changes and
-# commit them if you want.
-stow_cmd="$stow_base_cmd --adopt --stow $stow_packages"
-$stow_cmd
+for package in $stow_packages; do
+  # In case you've setup the common-files the old way we'll copy your files into
+  # the repo, then symlink those. Then you'll be able to review those changes
+  # and commit them if you want.
+  stow_cmd="$stow_base_cmd --adopt --stow $package"
+  $stow_cmd
+done
 
-# Restow the packages in case any files have been removed, to clean up those
-# symlinks.
-stow_cmd="$stow_base_cmd --restow $stow_packages"
-$stow_cmd
+for package in $stow_packages; do
+  # Restow the packages in case any files have been removed, to clean up those
+  # symlinks.
+  stow_cmd="$stow_base_cmd --restow $package"
+  $stow_cmd
+done
 
 
 git config --global commit.template "~/.gitmessage"
