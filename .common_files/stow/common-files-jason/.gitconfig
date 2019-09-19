@@ -31,8 +31,6 @@
 	autosetupmerge = true
 [rebase]
 	autosquash = true
-[user]
-	name = Jason Gladish
 [push]
 	default = simple
 [color "diff-highlight"]
@@ -45,6 +43,8 @@
 	show = diff-so-fancy | less --tabs=4 -RFX
 [commit]
 	verbose = true
-	template = /Users/jason/.git_commit_msg.txt
+	template = ~/.gitmessage
 [rerere]
 	enabled = true
+[include]
+	path = .gitconfig.user_specific.inc
