@@ -30,5 +30,12 @@ for package in $stow_packages; do
   $stow_cmd
 done
 
+echo
+echo "If you weren't using stow with the common files previously then stow may"
+echo "have just moved some files into the common-files repo directory. If these"
+echo "changes would be good for other people, commit them! If they're just for"
+echo "you, make a user specific directory (like Jason) and commit your files"
+echo "there."
+echo
 
 git config --global commit.template "~/.gitmessage"
