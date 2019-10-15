@@ -189,3 +189,4 @@ Set default font
 # ;; Death To Autofill
 # (auto-fill-mode -1)
 # (remove-hook 'text-mode-hook 'turn-on-auto-fill)
+** add a place to quickly install new syntax languages/highlighterse
