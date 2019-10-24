@@ -237,6 +237,7 @@ TODO - these bindings should be on the use-package to prevent binding problems i
     :bind
     (("C-c p f" . helm-projectile-find-file)
      ("C-c p p" . helm-projectile-switch-project)
+     ("C-x p"   . projectile-find-file) ;; switch projects quickly
      ("C-c p s" . projectile-save-project-buffers))
     :config
     (projectile-mode +1)
