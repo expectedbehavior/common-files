@@ -4,41 +4,6 @@
 #This file is sourced by bash when you log in interactively.
 [ -f ~/.bashrc ] && . ~/.bashrc
 
-# Setup a process to automatically kill password prompts when an ssh key is
-# loaded in a different terminal.
-if my_lock /tmp/keychain_check.lock; then
-  # lock succeeded
-  echo "Starting keychain monitor process"
-
-  ((
-    sleep 10 # wait for keychain processes to start
-    while ps aux | grep keychai[n] &> /dev/null; do
-      sleep 1
-      for loaded_key in `ssh-add -l | awk '{print $3}'`; do
-        # If a key has already been loaded into the SSH agent then look for
-        # other processes trying to load that key. They can be killed since the
-        # key is already loaded.
-
-        # pids=$(pstree $PPID | grep -oE '([0-9]+.*)' | grep ssh-add | grep "$loaded_key" | grep -v grep | awk '{print $1}')
-        pids=$(ps aux | grep ssh-add | grep "$loaded_key" | grep -v grep | awk '{print $2}')
-        for pid in $pids; do
-          if [[ "$pid" != "" ]]; then
-
-            # Let other terminals know that keychain is being aborted so they
-            # can display a nice message.
-            other_bash_pid=$(pstree -p $pid | grep -oE '([1-9][0-9]*.*)' | grep bash | grep -v grep | head -n 1 | awk '{print $1}')
-            file="/tmp/keychain_check_killed.`basename $loaded_key`.$other_bash_pid"
-            touch "$file"
-
-            kill "$pid"
-          fi
-        done
-      done
-    done
-  ) & ) # 2> /dev/null
-
-fi
-
 is_key_encrypted() {
   grep ENCRYPTED "$1" &> /dev/null
 }
@@ -103,11 +68,15 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
   source /usr/local/opt/asdf/asdf.sh
+  export JAVA_HOME=`asdf where java`
+  export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
-  source ~/.asdf/plugins/java/bin/asdf-java-wrapper
-fi
+# this is busted: https://github.com/skotchpine/asdf-java/issues/46
+# That is why the JAVA_HOME export is above.
+# if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
+#   source ~/.asdf/plugins/java/bin/asdf-java-wrapper
+# fi
 
 if which nodenv &>/dev/null; then
   eval "$(nodenv init -)"

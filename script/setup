@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+cd "$(dirname "$0")/.."
+
+setup_echo() {
+  echo "[script/setup] $1"
+}
+
+setup_error() {
+  echo "[script/setup][ERROR] $1"
+}
+
+# TODO: remove this block from Instrumental script/setup when CF is fully required
+if ! which brew > /dev/null 2>&1; then
+  setup_echo "Installing homebrew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+
+brew_install() {
+  setup_echo "Installing $1"
+  brew list $1 > /dev/null || brew install $1
+}
+
+brew_cask_install() {
+  setup_echo "Installing $1"
+  brew cask list $1 > /dev/null || brew cask install $1
+}
+
+
+brew_cask_install dropbox
+setup_echo "If your code is in dropbox, now's the time to start syncing. After this, the script will start installing the default software and you'll be handsoff for a while. Hit enter when ready."
+read post_dropbox_install
+
+
+brew_install mas
+#apple_id_email_address=$(dscl . readpl /Users/`whoami` dsAttrTypeNative:LinkedIdentity appleid.apple.com:linked\ identities:0:full\ name | awk -F ':' '{print $5}')
+# mas signin --dialog $apple_id_email_address
+setup_echo "There's current no way to automatically sign you into the Apple Store. You'll need to open it and manually sign in. Hit enter when you've done that."
+read apple_store_signedin
+
+brew tap Homebrew/bundle
+sudo xcodebuild -license accept
+brew bundle --verbose

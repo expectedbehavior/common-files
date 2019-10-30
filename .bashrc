@@ -17,6 +17,7 @@ export DYLD_FALLBACK_LIBRARY_PATH=/usr/local/mysql/lib
 # remove the ':' from wordbreaks so we don't have to escape it on teh command line
 COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
 
+alias timerake='cat ~/.timerake; echo; time bundle exec rake'
 alias ls='ls --color=auto -F -b -T 0'
 alias ll='ls -lh --color=auto -F -b -T 0'
 alias lobster="lobster.telaranrhiod.com"
@@ -38,9 +39,9 @@ alias cuwip="cucumber ./features -t @wip"
 alias cufail="cucumber ./features -t @shouldfail"
 alias cuke="cucumber ./features"
 
-alias sc='script/console'
+alias sc='script/rails console'
 alias sct='RAILS_ENV="test" sc'
-alias ss='script/server'
+alias ss='script/rails server'
 
 alias ackp='ack --pager="less -r"'
 alias acki='ack -i'
@@ -48,17 +49,6 @@ alias a='acki'
 
 alias hn='hcl note'
 alias be='bundle exec'
-
-my_lock() {
-  # my_lock <name of lockfile>
-  lockfile="$1"
-  if ( set -o noclobber; echo "locked" > "$lockfile") 2> /dev/null; then
-  # if mkdir /tmp/keychain_check.lock &> /dev/null; then
-    return 0
-  else
-    return 1
-  fi
-}
 
 export CF_TARBALL_BACKUP="true"
 export CF_BACKUP_COUNT=5
