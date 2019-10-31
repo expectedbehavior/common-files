@@ -12,7 +12,7 @@ mas 'Xcode', id: 497799835
 
 # Things I use
 brew 'stow'
-brew 'emacs', args: ['with-cocoa', 'with-gnutls']
+brew 'emacs'  # command line, macOS app is below
 brew 'mtr'
 brew 'keychain'
 brew 'pinentry-mac'
@@ -33,6 +33,8 @@ brew 'gnupg2'
 brew 'geeknote', args: ['HEAD']
 brew 'diff-so-fancy'
 brew 'tor'
+brew 'sshfs'
+cask 'emacs'  # macOS app, command line is above
 cask 'steam'
 cask 'battle-net'
 cask 'rescuetime'
@@ -52,12 +54,10 @@ cask 'istat-menus'
 cask 'divvy'
 cask 'evernote'
 cask 'atom'
-cask 'utorrent'
 cask 'transmission'
 cask 'cyberduck'
 cask 'disk-inventory-x'
-cask 'google-drive'
-cask 'google-photos-backup'
+cask 'google-backup-and-sync'
 cask 'grandperspective'
 cask 'microsoft-office'
 cask 'sequel-pro'
@@ -67,6 +67,15 @@ cask 'tunnelblick'
 cask 'sqlpro-for-postgres'
 cask 'anki'
 cask 'box-sync'
+cask 'vagrant'
+cask 'virtualbox'
+cask 'virtualbox-extension-pack'
+cask 'zoomus'
+cask 'plex-media-server'
+cask 'ngrok'
+cask 'teamviewer'
+cask 'ivpn'
+cask 'adobe-acrobat-reader'
 mas '1Password', id: 443987910
 mas 'Growl', id: 467939042
 
