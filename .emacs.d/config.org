@@ -264,3 +264,18 @@ Set default font
 # (auto-fill-mode -1)
 # (remove-hook 'text-mode-hook 'turn-on-auto-fill)
 ** add a place to quickly install new syntax languages/highlighterse
+
+* Load Personal Configuration
+This file just contains the Expected Behavior defaults.  If you want
+something that's not good for the gander, put it in a file named
+`username.config.org` and that will be loaded here.
+
+#+BEGIN_SRC emacs-lisp
+(message "Loading personal emacs config")
+(if (file-exists-p (format "~/.emacs.d/%s.config.org" (user-login-name)))
+  (org-babel-load-file (format "~/.emacs.d/%s.config.org" (user-login-name)))
+  (display-message-or-buffer "No personal configuration found")
+)
+#+END_SRC
+
+
