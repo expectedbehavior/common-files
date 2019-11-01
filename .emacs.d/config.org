@@ -184,20 +184,12 @@ Set default font
   (use-package switch-window
     :ensure t
     :bind
-    (("M-o"   . (lambda() (interactive) (other-window -1)))
-     ("C-x O" . (lambda() (interactive) (switch-window)))
-     ("M-p"   . (lambda() (interactive) (other-window 1))))
+    (("M-o"    . (lambda() (interactive) (other-window -1)))
+     ("C-x O"  . (lambda() (interactive) (switch-window)))
+     ("M-p"    . (lambda() (interactive) (other-window 1)))
+     ("C-x \\" . (lambda() (interactive) (other-frame 1)))
+    )
   )
-#+END_SRC
-*** Key Binding
-TODO - these bindings should be on the use-package to prevent binding problems if the package doesn't load
-#+BEGIN_SRC emacs-lisp
-  ;; TODO: does this work? do I want to easily get to other frames?
-  ;; (global-set-key (kbd "C-x \)")
-  ;;                 (lambda() (interactive) (other-frame 1)))
-
-  ;; TODO: what is this?
-  ;; (global-set-key (kbd "C-c z") 'zoom-window)
 #+END_SRC
 
 
