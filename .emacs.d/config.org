@@ -182,18 +182,16 @@ Set default font
 *** Switch-Window
 #+BEGIN_SRC emacs-lisp
   (use-package switch-window
-    :ensure t)
+    :ensure t
+    :bind
+    (("M-o"   . (lambda() (interactive) (other-window -1)))
+     ("C-x O" . (lambda() (interactive) (switch-window)))
+     ("M-p"   . (lambda() (interactive) (other-window 1))))
+  )
 #+END_SRC
 *** Key Binding
 TODO - these bindings should be on the use-package to prevent binding problems if the package doesn't load
 #+BEGIN_SRC emacs-lisp
-  ;; Previous Window shortcut
-  (global-set-key (kbd "M-o")
-                  (lambda() (interactive) (other-window -1)))
-  (global-set-key (kbd "C-x O")
-                  (lambda() (interactive) (switch-window)))
-  (global-set-key (kbd "M-p")
-                  (lambda() (interactive) (other-window 1)))
   ;; TODO: does this work? do I want to easily get to other frames?
   ;; (global-set-key (kbd "C-x \)")
   ;;                 (lambda() (interactive) (other-frame 1)))
