@@ -44,7 +44,10 @@ https://github.com/technomancy/better-defaults
 Remove splash screen and use *scratch* instead as the home buffer
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t
-      inhibit-startup-echo-area-message t)
+      inhibit-startup-echo-area-message t
+      initial-scratch-message nil
+      initial-major-mode 'ruby-mode
+)
 #+END_SRC
 
 *** Emacs Backup Files Go In Tmp
