@@ -1,3 +1,4 @@
+[ -f /etc/bash.bashrc ] && source /etc/bash.bashrc
 
 export INPUTRC="$HOME/.common_files_remote_jason/.inputrc"
 export SCREENRC="$HOME/.common_files_remote_jason/.screenrc"
@@ -92,5 +93,8 @@ psg() {
     ps aux | grep "$*" | grep -v "grep .*$*"
 }
 
+[ -f ~/.bashrc ] && source ~/.bashrc
+[ -f ~/.profile ] && source ~/.profile
+[ -f ~/.bash_profile ] && source ~/.bash_profile
 
 [ -f /etc/motd ] && cat /etc/motd
