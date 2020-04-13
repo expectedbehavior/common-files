@@ -1,0 +1,31 @@
+#!/bin/bash
+cd "$(dirname "$0")/"
+
+# Install Brewfile packages in a more convenient way than normal.
+# Some packages prompt for sudo access, which stalls the process. There's no
+# telling which packages do, so this script installs most packages in a way
+# where sudo will fail, then run everything that failed so you can enter your
+# password once.
+
+# Get setsid which allows us to run things without a tty, breaking sudo
+brew list util-linux > /dev/null || brew install util-linux
+
+# Get brew bundle
+brew tap Homebrew/bundle
+
+# Try regular brew formulas
+for i in $(brew bundle list --brews --file=~/Brewfile); do
+  brew list $i > /dev/null || /usr/local/opt/util-linux/bin/setsid -w brew install $i
+done
+
+# Try casks (this is where most of the sudo uses are)
+for i in $(brew bundle list --casks --file=~/Brewfile); do
+  brew cask list $i > /dev/null || /usr/local/opt/util-linux/bin/setsid -w brew cask install $i
+done
+
+echo "Getting sudo password before attempting brew packages that require sudo"
+sudo echo "Got it!"
+
+# Try to make sure everything is installed. Already installed things will be
+# faster, so it's mostly about hitting the things that broke previously.
+brew bundle --verbose --file=~/Brewfile
