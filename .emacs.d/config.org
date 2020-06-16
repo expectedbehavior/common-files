@@ -30,7 +30,6 @@ It makes the first load really slow, but it removes the need to think about anyt
   (setq use-package-always-ensure t)
 #+END_SRC
 
-
 * Core Setup
 ** Basic Stuff
 *** Better Defaults Package
@@ -40,7 +39,7 @@ https://github.com/technomancy/better-defaults
   (use-package better-defaults
     :ensure t)
 #+END_SRC
-*** Default screen should be scratch buffer
+*** Default screen should be Ruby scratch buffer
 Remove splash screen and use *scratch* instead as the home buffer
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t
