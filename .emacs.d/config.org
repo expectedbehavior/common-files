@@ -134,7 +134,6 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
 (global-set-key (kbd "C-c t") (lambda() (interactive)(find-file "~/Dropbox/tmp.txt")))
 #+END_SRC
 
-
 ** Themes
 *** Load manual install theme dir
 #+BEGIN_SRC emacs-lisp
@@ -209,8 +208,7 @@ Set default font
 
 
 
-
-* Helm
+** Helm
 #+BEGIN_SRC emacs-lisp
   (use-package helm
     :ensure t
@@ -234,7 +232,7 @@ Set default font
     )
 #+END_SRC
 
-* Projectile
+** Projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile
     :ensure t
@@ -254,8 +252,16 @@ Set default font
     (helm-projectile-on))
 #+END_SRC
 
-
-
+** Dash
+#+BEGIN_SRC emacs-lisp
+  (use-package dash-at-point
+    :ensure t
+    :bind
+    (("C-c d" . dash-at-point)
+     )
+  )
+#+END_SRC
+* Ideas For Later
 # javasceript
 # (setq js-indent-level 2)
 
