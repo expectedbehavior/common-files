@@ -123,16 +123,20 @@ I use this to make sure git commits are written in my main emacs instance instea
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "M-g") 'goto-line)
 #+END_SRC
-*** Quick access to files
+*** Quick access to files and projects
 These are files I want access to almost all the time, regardless of what project I'm working on.
 It might be better to use registers, but I haven't read about how those work yet
 See
 https://stackoverflow.com/questions/12558019/shortcut-to-open-a-specific-file-in-emacs
 https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
+TODO: Project navigation should depend on a function that determines where your code lives
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c e") (lambda() (interactive)(find-file "~/.emacs.d/config.org")))
 (global-set-key (kbd "C-c t") (lambda() (interactive)(find-file "~/Dropbox/tmp.txt")))
+(global-set-key (kbd "C-c p i w") (lambda() (interactive)(find-file "~/code/instrumental/web/README.md")))
+(global-set-key (kbd "C-c p d w") (lambda() (interactive)(find-file "~/code/docraptor/web/README.md")))
 #+END_SRC
+
 
 ** Themes
 *** Load manual install theme dir
