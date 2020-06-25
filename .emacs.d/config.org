@@ -137,6 +137,18 @@ TODO: Project navigation should depend on a function that determines where your 
 (global-set-key (kbd "C-c p d w") (lambda() (interactive)(find-file "~/code/docraptor/web/README.md")))
 #+END_SRC
 
+*** Quickly Switch Buffers
+I often find myself switching back and forth between a few
+buffers. Let's set some shortcut keys to make that better.
+TODO: Org mode overides M-} so you'll get stuck if you hit an org file like this one
+#+BEGIN_SRC emacs-lisp
+(global-unset-key (kbd "M-{"))
+(global-unset-key (kbd "M-}"))
+(global-set-key (kbd "M-{") 'switch-to-prev-buffer)
+(global-set-key (kbd "M-}") 'switch-to-next-buffer)
+  ;; (global-set-key (kbd "C-{") (lambda() (interactive)(find-file "~/.emacs.d/config.org")))
+  ;; (global-set-key (kbd "C-}") (lambda() (interactive)(find-file "~/Dropbox/tmp.txt")))
+#+END_SRC
 
 ** Themes
 *** Load manual install theme dir
