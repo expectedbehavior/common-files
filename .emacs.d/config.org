@@ -24,6 +24,19 @@ Make startup faster by reducing the frequency of garbage collection and then use
 #+end_src
 
 * Emacs Package Management
+** Force TLS 1.3
+If emacs is compiled with GnuTLS, you can fail to install packages. 
+You can avoid the issue by advising it to use TLS 1.3
+More info 
+https://debbugs.gnu.org/cgi/bugreport.cgi?bug=34341
+https://github.com/syl20bnr/spacemacs/issues/12535
+
+#+BEGIN_SRC emacs-lisp
+
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
+#+END_SRC
+
 ** Add Melpa as a package repo
 Melpa is the big package repo that nearly /everything/ can be
 found. It's a must for emacs configs.
