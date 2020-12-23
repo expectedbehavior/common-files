@@ -448,7 +448,31 @@ brew cask install font-fira-mono
   :init (doom-modeline-mode 1))
 #+END_SRC
 
+* Per-Mode
 
+This section should contain changes that apply to just one mode or a
+few whitelisted modes. If you find yourself writing code that just
+blacklists a few modes, it belongs in Global.
+
+** Rust
+*** Rust Mode
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package rust-mode
+    :ensure t)
+
+#+END_SRC
+
+** Cucumber
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package pickle
+    :ensure t
+    :init (pickle-config))
+  
+#+END_SRC
 * Ideas For Later
 # javasceript
 # (setq js-indent-level 2)
