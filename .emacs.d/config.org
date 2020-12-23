@@ -346,14 +346,34 @@ List of themes to install
 #+END_SRC
 
 ** Fonts
-Set default font
+Set the default font. You can install the font with
+brew cask install font-fira-code
+brew cask install font-fira-mono
 #+BEGIN_SRC emacs-lisp
-  (set-default-font "PT Mono-15")
+    (use-package font-utils)
+
+    ;; Alternative fonts, here for consideration. Should be moved to
+    ;; a suggested customization file.
+    ;; (if (font-utils-exists-p "Fira Mono")
+    ;;   (set-face-attribute 'default nil :font "Fira Mono" :height 150)
+    ;; )
+    ;;
+    ;; This one should be updated to the conditional syntax before
+    ;; being used
+    ;; (set-face-attribute 'default nil :font "PT Mono-15" :height 170)
+    ;; (set-default-font "PT Mono-15")
+
+    (if (font-utils-exists-p "Fira Code")
+      (set-face-attribute 'default nil :font "Fira Code" :height 150 :family "Retina")
+    )
+
 #+END_SRC
 
 ** Window Management
 *** Switch-Window
+
 #+BEGIN_SRC emacs-lisp
+
   (use-package switch-window
     :ensure t
     :bind
