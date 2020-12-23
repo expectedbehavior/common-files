@@ -70,20 +70,19 @@ found. It's a must for emacs configs.
 
 #+END_SRC
 
-** Make sure use-package is installed
+** Install use-package
 use-package handles automatically installing and loading packages as they're referenced
+
 #+BEGIN_SRC emacs-lisp
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
 (eval-when-compile
   (require 'use-package))
-#+END_SRC
-** use-package should always try to install missing packages
-It makes the first load really slow, but it removes the need to think about anything.
-#+BEGIN_SRC emacs-lisp
-  (setq use-package-always-ensure t)
+
+(setq use-package-always-ensure t) ; always try to install missing packages
 #+END_SRC
 
 * Core Setup
