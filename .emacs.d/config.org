@@ -455,15 +455,6 @@ This section should contain changes that apply to just one mode or a
 few whitelisted modes. If you find yourself writing code that just
 blacklists a few modes, it belongs in Global.
 
-** Rust
-
-#+BEGIN_SRC emacs-lisp
-
-  (use-package rust-mode
-    :ensure t)
-
-#+END_SRC
-
 ** Cucumber
 
 #+BEGIN_SRC emacs-lisp
@@ -472,6 +463,23 @@ blacklists a few modes, it belongs in Global.
     :ensure t
     :init (pickle-config))
   
+#+END_SRC
+
+** Javascript
+
+#+BEGIN_SRC emacs-lisp
+
+  (setq js-indent-level 2)
+
+#+END_SRC
+
+** Rust
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package rust-mode
+    :ensure t)
+
 #+END_SRC
 
 
@@ -494,9 +502,6 @@ people are doing with their editor.
 
 
 * Ideas For Later
-# javasceript
-# (setq js-indent-level 2)
-
 # whitespace
 # ;;(setq tab-width 4)
 
