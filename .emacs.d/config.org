@@ -66,7 +66,8 @@ found. It's a must for emacs configs.
 #+BEGIN_SRC emacs-lisp
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
+(unless package--initialized (package-initialize t))
+
 #+END_SRC
 
 ** Make sure use-package is installed
