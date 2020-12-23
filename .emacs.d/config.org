@@ -3,7 +3,13 @@
 #+EMAIL: matt@expectedbehavior.com
 #+OPTIONS: num:nil
 
-* Startup Performance
+* Global
+
+This section should contain changes that apply to all modes or all but
+a few blacklisted modes. If you find yourself writing code for just
+one mode or whitelists a few modes, it belongs in Per-Mode.
+
+** Startup Performance
 
 Make startup faster by reducing the frequency of garbage collection and then use a hook to measure Emacs startup time.
 
@@ -22,8 +28,7 @@ Make startup faster by reducing the frequency of garbage collection and then use
                      gcs-done)))
 
 #+end_src
-
-* Keep .emacs.d Clean
+** Keep .emacs.d Clean
 
 I don't want a bunch of transient files showing up as untracked in the Git repo so I move them all to another location.
 
@@ -45,7 +50,7 @@ I don't want a bunch of transient files showing up as untracked in the Git repo 
 
 #+end_src
 
-* Emacs Package Management
+** Emacs Package Management
 ** Force TLS 1.3
 If emacs is compiled with GnuTLS, you can fail to install packages. 
 You can avoid the issue by advising it to use TLS 1.3
@@ -85,8 +90,7 @@ use-package handles automatically installing and loading packages as they're ref
 (setq use-package-always-ensure t) ; always try to install missing packages
 #+END_SRC
 
-
-* Start Emacs Server
+** Start Emacs Server
 
 Start the Emacs server from this instance so that all =emacsclient=
 calls are routed here. I use this to make sure git commits are written
@@ -98,8 +102,7 @@ in my main emacs instance instead of starting another.
 
 #+end_src
 
-
-* Core Setup
+** Core Setup
 ** Basic UI Improvements
 *** Clean up Emacs' user interface, make it more minimal.
 
@@ -445,6 +448,7 @@ brew cask install font-fira-mono
   :init (doom-modeline-mode 1))
 #+END_SRC
 
+
 * Per-Mode
 
 This section should contain changes that apply to just one mode or a
@@ -469,7 +473,9 @@ blacklists a few modes, it belongs in Global.
     :init (pickle-config))
   
 #+END_SRC
-* Load Personal Configuration (always at the bottom!)
+
+
+* Your Personal Configuration (always at the bottom!)
 The above configuration represents good defaults.  If you want
 something that's not good default for most Behaviornauts, put it in a
 file named `username.config.org` and that will be loaded here. If you
@@ -484,6 +490,7 @@ people are doing with their editor.
   (display-message-or-buffer "No personal configuration found")
 )
 #+END_SRC
+
 
 
 * Ideas For Later
