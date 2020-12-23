@@ -441,6 +441,14 @@ brew cask install font-fira-mono
      )
   )
 #+END_SRC
+** Doom Mode Line
+#+BEGIN_SRC emacs-lisp
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+#+END_SRC
+
+
 * Ideas For Later
 # javasceript
 # (setq js-indent-level 2)
