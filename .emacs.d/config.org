@@ -469,18 +469,6 @@ blacklists a few modes, it belongs in Global.
     :init (pickle-config))
   
 #+END_SRC
-* Ideas For Later
-# javasceript
-# (setq js-indent-level 2)
-
-# whitespace
-# ;;(setq tab-width 4)
-
-# ;; Death To Autofill
-# (auto-fill-mode -1)
-# (remove-hook 'text-mode-hook 'turn-on-auto-fill)
-** add a place to quickly install new syntax languages/highlighterse
-
 * Load Personal Configuration (always at the bottom!)
 The above configuration represents good defaults.  If you want
 something that's not good default for most Behaviornauts, put it in a
@@ -498,3 +486,14 @@ people are doing with their editor.
 #+END_SRC
 
 
+* Ideas For Later
+# javasceript
+# (setq js-indent-level 2)
+
+# whitespace
+# ;;(setq tab-width 4)
+
+# ;; Death To Autofill
+# (auto-fill-mode -1)
+# (remove-hook 'text-mode-hook 'turn-on-auto-fill)
+** add a place to quickly install new syntax languages/highlighterse
