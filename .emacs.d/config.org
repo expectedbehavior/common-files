@@ -498,14 +498,3 @@ people are doing with their editor.
   (display-message-or-buffer "No personal configuration found")
 )
 #+END_SRC
-
-
-
-* Ideas For Later
-# whitespace
-# ;;(setq tab-width 4)
-
-# ;; Death To Autofill
-# (auto-fill-mode -1)
-# (remove-hook 'text-mode-hook 'turn-on-auto-fill)
-** add a place to quickly install new syntax languages/highlighterse
