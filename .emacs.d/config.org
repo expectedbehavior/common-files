@@ -481,10 +481,13 @@ blacklists a few modes, it belongs in Global.
 # (remove-hook 'text-mode-hook 'turn-on-auto-fill)
 ** add a place to quickly install new syntax languages/highlighterse
 
-* Load Personal Configuration
-This file just contains the Expected Behavior defaults.  If you want
-something that's not good for the gander, put it in a file named
-`username.config.org` and that will be loaded here.
+* Load Personal Configuration (always at the bottom!)
+The above configuration represents good defaults.  If you want
+something that's not good default for most Behaviornauts, put it in a
+file named `username.config.org` and that will be loaded here. If you
+work for Expected Behavior (or have write access to this repo), please
+check your personal customizations in! It's good to see what other
+people are doing with their editor.
 
 #+BEGIN_SRC emacs-lisp
 (message "Loading personal emacs config")
