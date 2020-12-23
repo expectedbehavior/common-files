@@ -366,7 +366,6 @@ brew cask install font-fira-mono
     (if (font-utils-exists-p "Fira Code")
       (set-face-attribute 'default nil :font "Fira Code" :height 150 :family "Retina")
     )
-
 #+END_SRC
 
 ** Window Management
@@ -383,10 +382,8 @@ brew cask install font-fira-mono
      ("C-x \\" . (lambda() (interactive) (other-frame 1)))
     )
   )
+
 #+END_SRC
-
-
-
 
 ** Helm
 #+BEGIN_SRC emacs-lisp
@@ -455,7 +452,6 @@ few whitelisted modes. If you find yourself writing code that just
 blacklists a few modes, it belongs in Global.
 
 ** Rust
-*** Rust Mode
 
 #+BEGIN_SRC emacs-lisp
 
