@@ -2,6 +2,8 @@
 set -e
 cd "$(dirname "$0")/.."
 
+brew list stow > /dev/null || brew install stow
+
 # --no-folding is necessary because we're using separate stow commands for each
 # package below and we don't want a later package to cause a previous package's
 # files to get excluded due to tree folding. This would happen because of
