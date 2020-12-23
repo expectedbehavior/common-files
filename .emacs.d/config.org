@@ -85,6 +85,20 @@ use-package handles automatically installing and loading packages as they're ref
 (setq use-package-always-ensure t) ; always try to install missing packages
 #+END_SRC
 
+
+* Start Emacs Server
+
+Start the Emacs server from this instance so that all =emacsclient=
+calls are routed here. I use this to make sure git commits are written
+in my main emacs instance instead of starting another.
+
+#+begin_src emacs-lisp
+
+(server-start)
+
+#+end_src
+
+
 * Core Setup
 ** Basic Stuff
 *** Better Defaults Package
