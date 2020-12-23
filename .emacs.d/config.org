@@ -100,6 +100,92 @@ in my main emacs instance instead of starting another.
 
 
 * Core Setup
+** Basic UI Improvements
+*** Clean up Emacs' user interface, make it more minimal.
+
+#+begin_src emacs-lisp
+
+  ;; Thanks, but no thanks
+  (setq inhibit-startup-message t)
+
+    (scroll-bar-mode -1)        ; Disable visible scrollbar
+    (tool-bar-mode -1)          ; Disable the toolbar
+    (tooltip-mode -1)           ; Disable tooltips
+    (set-fringe-mode 10)       ; Give some breathing room
+
+  (menu-bar-mode -1)            ; Disable the menu bar
+
+  ;; Set up the visible bell
+  (setq visible-bell t)
+
+#+end_src
+
+*** Improve scrolling.
+
+#+begin_src emacs-lisp
+
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  (setq scroll-step 1) ;; keyboard scroll one line at a timesetq use-dialog-box nil) ; Disable dialog boxes since they weren't working in Mac OSX
+
+#+end_src
+
+*** Maximize windows by default
+
+#+begin_src emacs-lisp
+
+    (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+    (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+#+end_src
+
+*** Enable line numbers and customize their format.
+
+#+begin_src emacs-lisp
+
+  (column-number-mode)
+  (global-display-line-numbers-mode t)
+
+  ;; Disable line numbers for some modes
+  (dolist (mode '(org-mode-hook
+                  erc-mode-hook
+                  term-mode-hook
+                  eshell-mode-hook
+                  vterm-mode-hook
+                  neotree-mode-hook
+                  telega-chat-mode-hook
+                  telega-root-mode-hook
+                  telega-webpage-mode-hook
+                  dashboard-mode-hook))
+    (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+#+end_src
+
+*** Don't warn for large files (shows up when launching videos)
+
+#+begin_src emacs-lisp
+
+  (setq large-file-warning-threshold nil)
+
+#+end_src
+
+*** Don't warn for following symlinked files
+
+#+begin_src emacs-lisp
+
+  (setq vc-follow-symlinks t)
+
+#+end_src
+
+*** Don't warn when advice is added for functions
+
+#+begin_src emacs-lisp
+
+  (setq ad-redefinition-action 'accept)
+
+#+end_src
+
 ** Basic Stuff
 *** Better Defaults Package
 Contains many near-universal config improvements. NOTE: It does override some keybindings that we'll want to re-bind later.
@@ -123,12 +209,6 @@ Funnel all the auto backup files to one location.
 Despite years of reading that Emacs tmp files will save my bacon one day, it has yet to happen. They can all hang out in tmp.
 #+BEGIN_SRC emacs-lisp
 (setq backup-directory-alist '(("." . "/tmp")))
-#+END_SRC
-
-*** Line numbers should always be on
-Switch line numbers on by default in all buffers
-#+BEGIN_SRC emacs-lisp
-(global-linum-mode 1)
 #+END_SRC
 
 *** Disable Menu Bar
@@ -182,11 +262,6 @@ Smooth Scrolling
 By default, text under the region won't be deleted if you type or paste. I find this infuriating.
 #+BEGIN_SRC emacs-lisp
   (delete-selection-mode 1)
-#+END_SRC
-*** Start Emacs server
-I use this to make sure git commits are written in my main emacs instance instead of starting another.
-#+BEGIN_SRC emacs-lisp
-  (server-start)
 #+END_SRC
 *** Quickly go to a line
 #+BEGIN_SRC emacs-lisp
