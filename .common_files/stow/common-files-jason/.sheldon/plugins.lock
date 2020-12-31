@@ -1,0 +1,21 @@
+version = "0.6.0"
+home = "/Users/jason"
+config_dir = "/Users/jason/.sheldon"
+data_dir = "/Users/jason/.sheldon"
+config_file = "/Users/jason/.sheldon/plugins.toml"
+lock_file = "/Users/jason/.sheldon/plugins.lock"
+clone_dir = "/Users/jason/.sheldon/repos"
+download_dir = "/Users/jason/.sheldon/downloads"
+
+[[plugins]]
+name = "git_push_set_upstream_origin_head"
+source_dir = "/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head"
+files = ["/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head/git_push_set_upstream_origin_head.plugin.sh"]
+apply = ["source"]
+[templates.PATH]
+value = "export PATH=\"{{ dir }}:$PATH\""
+each = false
+
+[templates.source]
+value = "source \"{{ file }}\""
+each = true
