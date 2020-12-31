@@ -5,7 +5,7 @@ lc() {
   status="$?"
   # The -n makes it so clicking the toast doesn't make every lc continue processing
   ((
-      growlnotify -n "lc${RANDOM}" -swm "command finished (exited $status, run in ${lc_local_dir}): $*"
+      growlnotify -n "lc${RANDOM}" -swm "$(date) command finished (exited $status, run in ${lc_local_dir}): $*"
 
       ## These dont work on mavericks becase growlnotify -w times out
       # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
