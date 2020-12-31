@@ -21,6 +21,7 @@ brew 'bat'
 brew 'sheldon'
 brew 'fzf'
 brew 'ripgrep'
+brew 'overmind'
 brew 'emacs'  # command line, macOS app is below
 brew 'mtr'
 brew 'keychain'
