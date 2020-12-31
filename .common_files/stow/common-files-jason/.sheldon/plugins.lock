@@ -30,6 +30,12 @@ name = "atom_foreground_fix"
 source_dir = "/Users/jason/.common_files/plugins/atom_foreground_fix"
 files = ["/Users/jason/.common_files/plugins/atom_foreground_fix/atom_foreground_fix.plugin.sh"]
 apply = ["source"]
+
+[[plugins]]
+name = "terraform"
+source_dir = "/Users/jason/.common_files/plugins/terraform"
+files = ["/Users/jason/.common_files/plugins/terraform/terraform.plugin.bash"]
+apply = ["source"]
 [templates.PATH]
 value = "export PATH=\"{{ dir }}:$PATH\""
 each = false

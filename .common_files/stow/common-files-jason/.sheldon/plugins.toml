@@ -26,6 +26,9 @@ local = '/Users/jason/.common_files/plugins/bat/'
 [plugins.atom_foreground_fix]
 local = '/Users/jason/.common_files/plugins/atom_foreground_fix'
 
+[plugins.terraform]
+local = '/Users/jason/.common_files/plugins/terraform'
+
 # For example:
 #
 # [plugins.base16]
