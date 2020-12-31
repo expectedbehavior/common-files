@@ -18,6 +18,12 @@ name = "fzf"
 source_dir = "/Users/jason/.common_files/plugins/fzf"
 files = ["/Users/jason/.common_files/plugins/fzf/fzf.plugin.bash"]
 apply = ["source"]
+
+[[plugins]]
+name = "bat"
+source_dir = "/Users/jason/.common_files/plugins/bat/"
+files = ["/Users/jason/.common_files/plugins/bat/bat.plugin.sh"]
+apply = ["source"]
 [templates.PATH]
 value = "export PATH=\"{{ dir }}:$PATH\""
 each = false

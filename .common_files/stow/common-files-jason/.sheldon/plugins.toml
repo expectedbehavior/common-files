@@ -20,6 +20,9 @@ local = '/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head'
 [plugins.fzf]
 local = '/Users/jason/.common_files/plugins/fzf'
 
+[plugins.bat]
+local = '/Users/jason/.common_files/plugins/bat/'
+
 # For example:
 #
 # [plugins.base16]
