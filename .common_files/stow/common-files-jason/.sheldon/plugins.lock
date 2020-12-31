@@ -12,6 +12,12 @@ name = "git_push_set_upstream_origin_head"
 source_dir = "/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head"
 files = ["/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head/git_push_set_upstream_origin_head.plugin.sh"]
 apply = ["source"]
+
+[[plugins]]
+name = "fzf"
+source_dir = "/Users/jason/.common_files/plugins/fzf"
+files = ["/Users/jason/.common_files/plugins/fzf/fzf.plugin.bash"]
+apply = ["source"]
 [templates.PATH]
 value = "export PATH=\"{{ dir }}:$PATH\""
 each = false

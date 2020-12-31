@@ -17,6 +17,9 @@ shell = "bash"
 [plugins.git_push_set_upstream_origin_head]
 local = '/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head'
 
+[plugins.fzf]
+local = '/Users/jason/.common_files/plugins/fzf'
+
 # For example:
 #
 # [plugins.base16]

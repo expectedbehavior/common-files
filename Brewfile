@@ -19,6 +19,7 @@ brew 'git-delta'
 brew 'less'
 brew 'bat'
 brew 'sheldon'
+brew 'fzf'
 brew 'emacs'  # command line, macOS app is below
 brew 'mtr'
 brew 'keychain'
