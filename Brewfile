@@ -15,6 +15,9 @@ cask 'osxfuse'  # sshfs
 
 # Things I use
 brew 'stow'
+brew 'git-delta'
+brew 'less'
+brew 'bat'
 brew 'emacs'  # command line, macOS app is below
 brew 'mtr'
 brew 'keychain'
