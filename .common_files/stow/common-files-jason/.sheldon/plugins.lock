@@ -24,6 +24,12 @@ name = "bat"
 source_dir = "/Users/jason/.common_files/plugins/bat/"
 files = ["/Users/jason/.common_files/plugins/bat/bat.plugin.sh"]
 apply = ["source"]
+
+[[plugins]]
+name = "atom_foreground_fix"
+source_dir = "/Users/jason/.common_files/plugins/atom_foreground_fix"
+files = ["/Users/jason/.common_files/plugins/atom_foreground_fix/atom_foreground_fix.plugin.sh"]
+apply = ["source"]
 [templates.PATH]
 value = "export PATH=\"{{ dir }}:$PATH\""
 each = false
