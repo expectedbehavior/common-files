@@ -20,7 +20,7 @@ done
 
 # Try casks (this is where most of the sudo uses are)
 for i in $(brew bundle list --casks --file=~/Brewfile); do
-  brew cask list $i > /dev/null || /usr/local/opt/util-linux/bin/setsid -w brew cask install $i
+  brew list --cask $i > /dev/null || /usr/local/opt/util-linux/bin/setsid -w brew install --cask $i
 done
 
 echo "Getting sudo password before attempting brew packages that require sudo"
