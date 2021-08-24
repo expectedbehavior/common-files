@@ -23,6 +23,9 @@ local = '/Users/jason/.common_files/plugins/fzf'
 [plugins.bat]
 local = '/Users/jason/.common_files/plugins/bat/'
 
+[plugins.rg]
+local = '/Users/jason/.common_files/plugins/rg/'
+
 [plugins.atom_foreground_fix]
 local = '/Users/jason/.common_files/plugins/atom_foreground_fix'
 
