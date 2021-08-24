@@ -10,6 +10,7 @@ brew 'rbenv'
 cask 'osxfuse'  # sshfs
 
 # Things I use
+brew 'terminal-notifier'
 brew 'stow'
 brew 'git-delta'
 brew 'less'
