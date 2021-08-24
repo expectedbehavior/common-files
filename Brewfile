@@ -5,10 +5,6 @@ tap 'jeffkowalski/geeknote', 'git://github.com/jeffkowalski/geeknote'
 # project requirements
 brew 'coreutils' # gseq, gtimeout
 brew 'rbenv'
-brew 'mysql', restart_service: true
-brew 'postgresql', restart_service: true
-cask 'java'
-mas 'Xcode', id: 497799835
 
 # Dependecies for packages below
 cask 'osxfuse'  # sshfs
