@@ -12,6 +12,7 @@ cask 'osxfuse'  # sshfs
 # Things I use
 brew 'terminal-notifier'
 brew 'stow'
+brew 'rclone'
 brew 'git-delta'
 brew 'less'
 brew 'bat'
@@ -19,6 +20,7 @@ brew 'sheldon'
 brew 'fzf'
 brew 'ripgrep'
 brew 'overmind'
+brew 'tmux'
 brew 'emacs'  # command line, macOS app is below
 brew 'mtr'
 brew 'keychain'
@@ -41,6 +43,7 @@ brew 'geeknote', args: ['HEAD']
 brew 'diff-so-fancy'
 brew 'tor'
 brew 'sshfs'
+cask 'bartender'
 cask 'emacs'  # macOS app, command line is above
 cask 'steam'
 cask 'battle-net'
