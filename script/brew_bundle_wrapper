@@ -7,6 +7,12 @@ cd "$(dirname "$0")/"
 # where sudo will fail, then run everything that failed so you can enter your
 # password once.
 
+echo "Getting sudo password before attempting brew packages that require sudo"
+sudo -v
+
+# Keep-alive: update existing sudo time stamp if set, otherwise do nothing.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # Get setsid which allows us to run things without a tty, breaking sudo
 brew list util-linux > /dev/null || brew install util-linux
 
