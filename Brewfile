@@ -44,6 +44,7 @@ brew 'diff-so-fancy'
 brew 'tor'
 brew 'sshfs'
 cask 'bartender'
+cask 'caffeine'
 cask 'emacs'  # macOS app, command line is above
 cask 'steam'
 cask 'battle-net'
