@@ -2,14 +2,8 @@ cask_args appdir: '/Applications'
 tap 'caskroom/cask'
 tap 'jeffkowalski/geeknote', 'git://github.com/jeffkowalski/geeknote'
 
-# project requirements
-brew 'coreutils' # gseq, gtimeout
-brew 'rbenv'
-
-# Dependecies for packages below
-cask 'osxfuse'  # sshfs
-
-# Things I use
+# Basic stuff that helps with machine setup, dotfiles dependencies, first so
+# things are usable more quickly
 brew 'terminal-notifier'
 brew 'stow'
 brew 'rclone'
@@ -19,18 +13,36 @@ brew 'bat'
 brew 'sheldon'
 brew 'fzf'
 brew 'ripgrep'
+brew 'emacs'  # command line, macOS app is below
+brew 'the_silver_searcher'
+brew 'watch'
+brew 'wget'
+brew 'gnupg2'
+brew 'diff-so-fancy'
+cask 'iterm2'
+cask 'google-chrome'
+cask 'atom'
+cask 'flowdock'
+cask 'firefox'
+cask 'launchbar'
+cask 'divvy'
+
+# project requirements
+brew 'coreutils' # gseq, gtimeout
+brew 'rbenv'
+
+# Dependecies for packages below
+cask 'osxfuse'  # sshfs
+
+# Things I use
 brew 'overmind'
 brew 'tmux'
-brew 'emacs'  # command line, macOS app is below
 brew 'mtr'
 brew 'keychain'
 brew 'pinentry-mac'
-brew 'the_silver_searcher'
-brew 'watch'
 brew 'ssh-copy-id'
 brew 'pstree'
 brew 'tree'
-brew 'wget'
 brew 'aide'
 brew 'pv'
 brew 'parallel'
@@ -38,9 +50,7 @@ brew 'nmap'
 brew 'md5deep'
 brew 'imagemagick'
 brew 'hub'
-brew 'gnupg2'
 brew 'geeknote', args: ['HEAD']
-brew 'diff-so-fancy'
 brew 'tor'
 brew 'sshfs'
 cask 'bartender'
@@ -51,20 +61,13 @@ cask 'battle-net'
 cask 'rescuetime'
 cask 'growlnotify'
 cask 'vlc'
-cask 'flowdock'
 cask 'skitch'
 cask 'spotify'
 cask 'airfoil'
-cask 'google-chrome'
-cask 'firefox'
 cask 'arq'
-cask 'iterm2'
 cask 'dropbox'
-cask 'launchbar'
 cask 'istat-menus'
-cask 'divvy'
 cask 'evernote'
-cask 'atom'
 cask 'transmission'
 cask 'cyberduck'
 cask 'disk-inventory-x'
