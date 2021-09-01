@@ -1,3 +1,14 @@
+
+# Consider moving this to ruby in a sheldon plugin if it gets more complicated.
+# Add test cases for anything that fails.
+
+# Test cases
+
+# lc echo "foo       bar"
+#   => foo       bar
+# not
+#   => foo bar
+
 function displaytime {
   local T=$1
   local D=$((T/60/60/24))
@@ -10,11 +21,18 @@ function displaytime {
   # (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
   printf '%ds\n' $S
 }
+function token_quote {
+  local quoted=()
+  for token; do
+    quoted+=( "$(printf '%q' "$token")" )
+  done
+  printf '%s\n' "${quoted[*]}"
+}
 lc() {
   # echo $SECONDS
   lc_local_dir="$(basename "$PWD")"
   lc_start_time=$SECONDS
-  eval "$@"
+  eval "$(token_quote "$@")"
   status="$?"
   lc_time=$(displaytime $(($SECONDS - $lc_start_time)))
   # The -n makes it so clicking the toast doesn't make every lc continue processing
