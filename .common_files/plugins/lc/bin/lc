@@ -10,15 +10,28 @@
 # not
 #   => foo bar
 
+this_notification_group="lc-${SECONDS}-${RANDOM}"
+
 if [[ "$1" == "--clear" ]]; then
-  groups_to_clear() {
-    /usr/local/bin/terminal-notifier -list ALL | grep '^lc-' | awk '{print $1}'
-  }
+  PATH="${PATH}:/usr/local/bin"
+
+  # Get the groups to clear immediately because it might take a second to clear
+  # and we don't want to clear new notifications that pop up during that time.
+  groups_to_clear="$(terminal-notifier -list ALL | grep '^lc-' | awk '{print $1}')"
+  groups_to_clear="$groups_to_clear $this_notification_group"
+
+  # Notify that we're clearing notifications so I know which (old) notifications
+  # will be cleared.
+  message="Clearing notifications"
+  terminal-notifier -group "$this_notification_group" -execute "sleep 0" -message "$message"
 
   # For some reason it takes multiple tries, so repeat until done
   # https://github.com/julienXX/terminal-notifier/issues/238
   # Full paths so iCanHazShortcut can run it with bash without need `-l`
-  while [[ "$(groups_to_clear | xargs -n 1 /usr/local/bin/terminal-notifier -remove)" != "" ]]; do
+  clear_notifications() {
+    echo "$groups_to_clear" | xargs -n 1 terminal-notifier -remove
+  }
+  while [[ "$(clear_notifications)" != "" ]]; do
     true
   done
 
@@ -57,10 +70,12 @@ function token_quote {
   ( (
       # growlnotify -n "lc${RANDOM}" -swm "$(date) command finished (exited $status, run in ${lc_local_dir}): $*"
 
+      message="$(date) command finished (exited $status, run in ${lc_local_dir}, time $lc_time): $*"
+
       # Since Growl isn't a thing anymore.
       # -execute allow us to click anywhere on the notification to dismiss, not just the buttons.
       # -group to allow me to clear them later with Ctrl-Opt-Cmd-C
-      terminal-notifier -group "lc-${SECONDS}-${RANDOM}" -execute "sleep 0" -message "$(date) command finished (exited $status, run in ${lc_local_dir}, time $lc_time): $*"
+      terminal-notifier -group "$this_notification_group" -execute "sleep 0" -message "$message"
 
       ## These dont work on mavericks becase growlnotify -w times out
       # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
