@@ -32,6 +32,12 @@ files = ["/Users/jason/.common_files/plugins/rg/rg.plugin.bash"]
 apply = ["source"]
 
 [[plugins]]
+name = "lc"
+source_dir = "/Users/jason/.common_files/plugins/lc/"
+files = ["/Users/jason/.common_files/plugins/lc/lc.plugin.bash"]
+apply = ["source"]
+
+[[plugins]]
 name = "atom_foreground_fix"
 source_dir = "/Users/jason/.common_files/plugins/atom_foreground_fix"
 files = ["/Users/jason/.common_files/plugins/atom_foreground_fix/atom_foreground_fix.plugin.sh"]

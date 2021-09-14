@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Consider moving this to ruby in a sheldon plugin if it gets more complicated.
 # Add test cases for anything that fails.
@@ -8,6 +9,22 @@
 #   => foo       bar
 # not
 #   => foo bar
+
+if [[ "$1" == "--clear" ]]; then
+  groups_to_clear() {
+    /usr/local/bin/terminal-notifier -list ALL | grep '^lc-' | awk '{print $1}'
+  }
+
+  # For some reason it takes multiple tries, so repeat until done
+  # https://github.com/julienXX/terminal-notifier/issues/238
+  # Full paths so iCanHazShortcut can run it with bash without need `-l`
+  while [[ "$(groups_to_clear | xargs -n 1 /usr/local/bin/terminal-notifier -remove)" != "" ]]; do
+    true
+  done
+
+  exit 0
+fi
+
 
 function displaytime {
   local T=$1
@@ -28,7 +45,8 @@ function token_quote {
   done
   printf '%s\n' "${quoted[*]}"
 }
-lc() {
+
+# lc() {
   # echo $SECONDS
   lc_local_dir="$(basename "$PWD")"
   lc_start_time=$SECONDS
@@ -41,7 +59,8 @@ lc() {
 
       # Since Growl isn't a thing anymore.
       # -execute allow us to click anywhere on the notification to dismiss, not just the buttons.
-      terminal-notifier -execute "sleep 0" -message "$(date) command finished (exited $status, run in ${lc_local_dir}, time $lc_time): $*"
+      # -group to allow me to clear them later with Ctrl-Opt-Cmd-C
+      terminal-notifier -group "lc-${SECONDS}-${RANDOM}" -execute "sleep 0" -message "$(date) command finished (exited $status, run in ${lc_local_dir}, time $lc_time): $*"
 
       ## These dont work on mavericks becase growlnotify -w times out
       # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
@@ -51,6 +70,7 @@ lc() {
       ) &> /dev/null &
       ) # subshell so it doesn't stick around in the jobs list and hold up other "wait" commands
   # echo $SECONDS
-  return $status
-}
-complete -o default -A command lc
+  # return $status
+  exit $status
+# }
+# complete -o default -A command lc
