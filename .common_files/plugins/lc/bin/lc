@@ -17,7 +17,7 @@ if [[ "$1" == "--clear" ]]; then
 
   # Get the groups to clear immediately because it might take a second to clear
   # and we don't want to clear new notifications that pop up during that time.
-  groups_to_clear="$(terminal-notifier -list ALL | grep '^lc-' | awk '{print $1}')"
+  groups_to_clear="$(terminal-notifier -list ALL | egrep '^(lc|growlnotify)-' | awk '{print $1}')"
   groups_to_clear="$groups_to_clear $this_notification_group"
 
   # Notify that we're clearing notifications so I know which (old) notifications
