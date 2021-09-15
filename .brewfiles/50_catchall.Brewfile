@@ -1,5 +1,5 @@
 # Dependecies for packages below
-cask 'osxfuse'  # sshfs
+cask 'macfuse'  # sshfs
 
 # Things I use
 brew 'overmind'
@@ -17,9 +17,8 @@ brew 'nmap'
 brew 'md5deep'
 brew 'imagemagick'
 brew 'hub'
-brew 'geeknote', args: ['HEAD']
 brew 'tor'
-brew 'sshfs'
+brew 'gromgit/fuse/sshfs-mac'
 cask 'bartender'
 cask 'caffeine'
 cask 'emacs'

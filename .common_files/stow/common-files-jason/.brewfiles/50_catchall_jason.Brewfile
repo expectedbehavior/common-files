@@ -1,8 +1,8 @@
-tap 'jeffkowalski/geeknote', 'git://github.com/jeffkowalski/geeknote'
+# tap 'jeffkowalski/geeknote', 'git://github.com/jeffkowalski/geeknote'
 
 
 # Things I use
-brew 'geeknote', args: ['HEAD']
+# brew 'geeknote', args: ['HEAD']
 brew 'tor'
 cask 'steam'
 cask 'battle-net'

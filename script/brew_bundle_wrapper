@@ -34,4 +34,4 @@ sudo echo "Got it!"
 
 # Try to make sure everything is installed. Already installed things will be
 # faster, so it's mostly about hitting the things that broke previously.
-brew bundle --verbose --file=~/Brewfile
+brew bundle --verbose --no-upgrade --file=~/Brewfile
