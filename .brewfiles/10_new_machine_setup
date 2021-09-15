@@ -9,7 +9,6 @@ brew 'bat'
 brew 'sheldon'
 brew 'fzf'
 brew 'ripgrep'
-brew 'emacs'  # command line, macOS app is below
 brew 'the_silver_searcher'
 brew 'watch'
 brew 'wget'
