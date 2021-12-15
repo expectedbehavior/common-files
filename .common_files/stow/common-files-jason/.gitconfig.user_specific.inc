@@ -17,3 +17,5 @@
 [pager]
 	diff = delta
 	show = delta
+[diff]
+  algorithm = minimal
