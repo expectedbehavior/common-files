@@ -66,8 +66,8 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
-  source /usr/local/opt/asdf/asdf.sh
+if [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then
+  source /opt/homebrew/opt/asdf/libexec/asdf.sh
   export JAVA_HOME=`asdf where java`
   export PATH="$JAVA_HOME/bin:$PATH"
 fi
