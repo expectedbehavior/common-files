@@ -393,13 +393,13 @@ if ! shopt -q login_shell; then
 fi
 
 
+# load any OS specific changes we've made
+[ -f ~/.common_files/cf.`uname -s`.conf ] && . ~/.common_files/cf.`uname -s`.conf
+
 # load any cf libs
 for i in ~/.common_files/lib/*; do
   [ -e "$i" ] && . $i
 done
-
-# load any OS specific changes we've made
-[ -f ~/.common_files/cf.`uname -s`.conf ] && . ~/.common_files/cf.`uname -s`.conf
 
 # Load user specific configuration that is checked into the repo.
 [ -f ~/.common_files/cf.`whoami`.conf ] && . ~/.common_files/cf.`whoami`.conf
