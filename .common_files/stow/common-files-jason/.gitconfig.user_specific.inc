@@ -19,3 +19,5 @@
 	show = delta
 [diff]
   algorithm = minimal
+[include]
+	path = .gitconfig.email.inc
