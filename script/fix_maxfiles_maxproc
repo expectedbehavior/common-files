@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# Based on
+# https://gist.github.com/rockkoca/d3e402e7e23be503547699f33cf1a821
+
+maxfiles_path="/Library/LaunchDaemons/limit.maxfiles.plist"
+maxproc_path="/Library/LaunchDaemons/limit.maxproc.plist"
+
+cat << EOF | sudo sh -c "cat > ${maxfiles_path}"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+      <string>limit.maxfiles</string>
+    <key>ProgramArguments</key>
+      <array>
+        <string>launchctl</string>
+        <string>limit</string>
+        <string>maxfiles</string>
+        <string>2524288</string>
+        <string>2524288</string>
+      </array>
+    <key>RunAtLoad</key>
+      <true/>
+    <key>ServiceIPC</key>
+      <false/>
+  </dict>
+</plist>
+EOF
+
+cat << EOF | sudo sh -c "cat > ${maxproc_path}"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+      <string>limit.maxproc</string>
+    <key>ProgramArguments</key>
+      <array>
+        <string>launchctl</string>
+        <string>limit</string>
+        <string>maxproc</string>
+        <string>2048</string>
+        <string>2048</string>
+      </array>
+    <key>RunAtLoad</key>
+      <true/>
+    <key>ServiceIPC</key>
+      <false/>
+  </dict>
+</plist>
+EOF
+
+sudo chmod 644 "${maxfiles_path}"
+sudo chmod 644 "${maxproc_path}"
+
+sudo chown root:wheel "${maxfiles_path}"
+sudo chown root:wheel "${maxproc_path}"
+
+# unload old plists
+echo "Don't worry if you see 'Could not find specified service', that just means this is the first run"
+sudo launchctl unload -w "${maxfiles_path}"
+sudo launchctl unload -w "${maxproc_path}"
+
+sudo launchctl load -w "${maxfiles_path}"
+sudo launchctl load -w "${maxproc_path}"
+
+echo "Restart your computer to pick up the new settings."
