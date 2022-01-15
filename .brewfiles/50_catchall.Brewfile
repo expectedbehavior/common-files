@@ -54,7 +54,6 @@ cask 'ngrok'
 cask 'teamviewer'
 cask 'ivpn'
 cask 'adobe-acrobat-reader'
-mas '1Password', id: 443987910
 mas 'Kindle', id: 405399194
 mas 'Numbers', id: 409203825
 
@@ -62,4 +61,14 @@ mas 'Numbers', id: 409203825
 if `whoami`.strip != "jason"
   mas 'IA Writer', id: 775737590
   mas 'Movist', id: 461788075
+end
+
+# Install all AgileBits 1Password related stuff, which is probably 1Password and
+# the Safari extension.
+`mas search 1Password | grep 1Password`.each_line do |mas_result|
+  id, *name_and_version = mas_result.split
+  name = name_and_version[0..-2].join(" ")
+  if `mas info #{id}` =~ /By: AgileBits Inc\./
+    mas name, id: id.to_i
+  end
 end
