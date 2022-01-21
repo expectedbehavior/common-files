@@ -1,5 +1,2 @@
-(require 'cask "/usr/local/Cellar/cask/0.8.4/cask.el")
-(cask-initialize)
-(require 'pallet)
-
-(mapc 'load (directory-files "~/.emacs.d/customizations" t "^[0-9]+.*\.el$"))
+(package-initialize)
+(org-babel-load-file "~/.emacs.d/config.org")

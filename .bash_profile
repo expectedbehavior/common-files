@@ -83,3 +83,5 @@ if which nodenv &>/dev/null; then
 fi
 
 export PATH="/usr/local/opt/sbt@0.13/bin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
