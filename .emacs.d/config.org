@@ -11,7 +11,8 @@ one mode or whitelists a few modes, it belongs in Per-Mode.
 
 ** Startup Performance
 
-Make startup faster by reducing the frequency of garbage collection and then use a hook to measure Emacs startup time.
+Make startup faster by reducing the frequency of garbage collection
+and then use a hook to measure Emacs startup time. 
 
 #+begin_src emacs-lisp
 
@@ -30,7 +31,11 @@ Make startup faster by reducing the frequency of garbage collection and then use
 #+end_src
 ** Keep .emacs.d Clean
 
-I don't want a bunch of transient files showing up as untracked in the Git repo so I move them all to another location.
+Emacs has many backup systems to prevent you from losing the things
+you're working on. I very rarely need them and they tend to clutter up
+the emacs directory, so let's put them some place out of the
+way. They'll still be there in the rare case we need them, but we
+won't have to look at them.
 
 #+begin_src emacs-lisp
 
@@ -51,7 +56,7 @@ I don't want a bunch of transient files showing up as untracked in the Git repo 
 #+end_src
 
 ** Emacs Package Management
-** Force TLS 1.3
+*** Force TLS 1.3
 If emacs is compiled with GnuTLS, you can fail to install packages. 
 You can avoid the issue by advising it to use TLS 1.3
 More info 
@@ -64,9 +69,9 @@ https://github.com/syl20bnr/spacemacs/issues/12535
 
 #+END_SRC
 
-** Add Melpa as a package repo
+*** Add Melpa as a package repo
 Melpa is the big package repo that nearly /everything/ can be
-found. It's a must for emacs configs.
+found. 
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -75,8 +80,10 @@ found. It's a must for emacs configs.
 
 #+END_SRC
 
-** Install use-package
-use-package handles automatically installing and loading packages as they're referenced
+*** Install use-package
+The use-package package handles automatically installing and loading
+packages as they're referenced. It's a key part of the Automatic Setup
+goal. 
 
 #+BEGIN_SRC emacs-lisp
 
@@ -87,14 +94,16 @@ use-package handles automatically installing and loading packages as they're ref
 (eval-when-compile
   (require 'use-package))
 
-(setq use-package-always-ensure t) ; always try to install missing packages
+; always try to install missing packages
+(setq use-package-always-ensure t) 
 #+END_SRC
 
 ** Start Emacs Server
 
 Start the Emacs server from this instance so that all =emacsclient=
-calls are routed here. I use this to make sure git commits are written
-in my main emacs instance instead of starting another.
+calls are routed here. This ensures you can write your git commits
+without having to start a new Emacs instance each time, amongst other
+uses.
 
 #+begin_src emacs-lisp
 
@@ -103,24 +112,49 @@ in my main emacs instance instead of starting another.
 #+end_src
 
 ** Core Setup
-** Basic UI Improvements
-*** Clean up Emacs' user interface, make it more minimal.
+** Emacs UI
+*** Disable Startup Message
+By default, Emacs provides a welcome message intended to help new
+users get started. This config isn't intended for brand new users that
+are looking for a place to start and there are more valuable things we
+can see on startup, so we're going to suppress it.
+https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html
+#+begin_src emacs-lisp
+  (setq inhibit-startup-message t)
+#+end_src
+
+*** Enable Visual Bell
+By default, Emacs will beep at you when there's an error
+(e.g. attempting to autocomplete something with no valid
+completions). It's very irritating, so this switches to a simple flash
+when an error occurs.
 
 #+begin_src emacs-lisp
-
-  ;; Thanks, but no thanks
-  (setq inhibit-startup-message t)
-
-    (scroll-bar-mode -1)        ; Disable visible scrollbar
-    (tool-bar-mode -1)          ; Disable the toolbar
-    (tooltip-mode -1)           ; Disable tooltips
-    (set-fringe-mode 10)       ; Give some breathing room
-
-  (menu-bar-mode -1)            ; Disable the menu bar
 
   ;; Set up the visible bell
   (setq visible-bell t)
 
+#+end_src
+
+*** Remove menu, scroll, toolbar, toolips
+Some people like using these to interact with Emacs, but we prefer to
+use the keyboard. These elements are all for the mouse, so we disable
+them and clean up the interface a bit.
+#+begin_src emacs-lisp
+  (scroll-bar-mode -1)        ; Disable visible scrollbar
+  (tool-bar-mode -1)          ; Disable the toolbar
+  (tooltip-mode -1)           ; Disable tooltips
+  (menu-bar-mode -1)          ; Disable the menu bar
+#+end_src
+
+*** Increase fringe size
+The fringe is the small parts to the left and right of the buffer
+where information appears. The most common one is a line continuation,
+but many modes make use of it. The default is 8px, but we like it just
+a little larger to give some more room around the symbols.
+https://emacsredux.com/blog/2015/01/18/customizing-the-fringes/
+#+begin_src emacs-lisp
+  (set-fringe-mode 10)
 #+end_src
 
 *** Improve scrolling.
