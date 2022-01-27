@@ -484,6 +484,16 @@ This section should contain changes that apply to just one mode or a
 few whitelisted modes. If you find yourself writing code that just
 blacklists a few modes, it belongs in Global.
 
+** Coffee
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package coffee-mode
+    :ensure t
+    :custom (coffee-tab-width 2))
+  
+#+END_SRC
+
 ** Cucumber
 
 #+BEGIN_SRC emacs-lisp
