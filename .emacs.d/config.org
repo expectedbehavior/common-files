@@ -3,11 +3,41 @@
 #+EMAIL: matt@expectedbehavior.com
 #+OPTIONS: num:nil
 
+* About
+This is the Expected Behavior Emacs configuation. It's intended to be
+used by the Emacsers of EB, but it should be a good starting place for
+anyone. The goals for this config are
+
+1. Automatic Setup
+There should be no need to install any external library or file to use
+this config. As long as you're using a version of Emacs that's
+compatible with this library, everything you need should be installed
+automatically on startup.
+
+2. Well Documented
+Each configuration should be explained. Anyone reading the config
+should understand what is being configured, why it is being
+configured, and (where necessary) why it is in that particular place
+in the config file.
+
+3. Easy To Update
+If there's something you need this file doesn't provide, it should be
+easy to add it immediately.
+
+4. Thorough
+We support many languages at EB.  This file should cover the common
+use cases for all common languages and editing paradigms.
+
+5. Personalizable
+If your desired behavior is not a good default, it should be easy to
+add customizations that apply only to you while continuing to use the
+rest of this file.
+
 * Global
 
 This section should contain changes that apply to all modes or all but
 a few blacklisted modes. If you find yourself writing code for just
-one mode or whitelists a few modes, it belongs in Per-Mode.
+one mode or a whitelist of modes, it belongs in Per-Mode.
 
 ** Startup Performance
 
@@ -448,7 +478,6 @@ brew cask install font-fira-mono
   :init (doom-modeline-mode 1))
 #+END_SRC
 
-
 * Per-Mode
 
 This section should contain changes that apply to just one mode or a
@@ -493,7 +522,7 @@ blacklists a few modes, it belongs in Global.
 
 * Your Personal Configuration (always at the bottom!)
 The above configuration represents good defaults.  If you want
-something that's not good default for most Behaviornauts, put it in a
+something that's not a good default for most Behaviornauts, put it in a
 file named `username.config.org` and that will be loaded here. If you
 work for Expected Behavior (or have write access to this repo), please
 check your personal customizations in! It's good to see what other
