@@ -43,7 +43,6 @@ fi
 
 cf_date_check_notify
 cf_check_for_updates
-ssh-add -kq
 
 # homebrew binaries
 if [[ -d "/opt/homebrew/bin/" ]] ; then
