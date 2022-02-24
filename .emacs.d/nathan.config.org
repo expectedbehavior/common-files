@@ -1,0 +1,21 @@
+* Assume I am not wearing my glasses
+
+#+BEGIN_SRC emacs-lisp
+
+  (set-face-attribute 'default nil :height 140)
+
+#+END_SRC
+
+* Declare war on trailing whitespace
+
+  This might be too aggressive; ws-trim is smarter but also less aggressive, and I like aggressive.
+
+#+BEGIN_SRC emacs-lisp
+
+  (add-hook 'before-save-hook 'my-prog-nuke-trailing-whitespace)
+
+  (defun my-prog-nuke-trailing-whitespace ()
+    (when (derived-mode-p 'prog-mode)
+      (delete-trailing-whitespace)))    
+
+ #+END_SRC
