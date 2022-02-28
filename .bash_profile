@@ -89,8 +89,6 @@ fi
 #   source ~/.asdf/plugins/java/bin/asdf-java-wrapper
 # fi
 
-ssh-add -kq
-
 if which nodenv &>/dev/null; then
   eval "$(nodenv init -)"
 fi
@@ -101,4 +99,3 @@ export PATH="$(brew --prefix)/Cellar/sbt@0.13/0.13.18_1/bin:$PATH"
 if [[ -f "$(brew --prefix)/bin/terraform" ]]; then
     complete -C $(brew --prefix)/bin/terraform terraform
 fi
-
