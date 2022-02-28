@@ -44,14 +44,12 @@ fi
 cf_date_check_notify
 cf_check_for_updates
 
-# homebrew binaries
+# homebrew binaries. After this, brew is in PATH, so use brew --prefix
 if [[ -d "/opt/homebrew/bin/" ]] ; then
     PATH=/opt/homebrew/bin/:$PATH
 else
     PATH=/usr/local/bin/:$PATH
 fi
-
-
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 if [[ -d "$HOME/.rbenv" ]] && which rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
