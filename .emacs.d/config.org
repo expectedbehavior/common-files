@@ -534,8 +534,7 @@ blacklists a few modes, it belongs in Global.
 
 #+BEGIN_SRC emacs-lisp
 
-  (use-package terraform-mode
-    :ensure t)
+  (use-package terraform-mode)
 
 #+END_SRC
 
