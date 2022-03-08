@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# growlnotify -n "lc${RANDOM}" -swm "$(date) command finished (exited $status, run in ${lc_local_dir}): $*"
+
+require 'optparse'
+require 'shellwords'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "read #{__FILE__}"
+
+  opts.on("-n[NAME]", "group name?") do |x|
+  end
+  opts.on("-s", "sticky?") do |x|
+  end
+  opts.on("-w", "wait?") do |x|
+  end
+  opts.on("-mMESSAGE", "--message=MESSAGE", "message") do |m|
+  options[:message] = m
+  end
+end.parse!
+
+# p options
+# p ARGV
+
+exec("terminal-notifier", "-group", "growlnotify-#{Time.now.to_f}", "-execute", "sleep 0", "-message", options[:message])

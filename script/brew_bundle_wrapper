@@ -1,0 +1,24 @@
+#!/bin/bash
+cd "$(dirname "$0")/"
+
+# Install Brewfile packages in a more convenient way than normal.
+# Some packages prompt for sudo access, which stalls the process. There's no
+# telling which packages do, so this script installs most packages in a way
+# where sudo will fail, then run everything that failed so you can enter your
+# password once.
+
+echo "Getting sudo password before attempting brew packages that require sudo"
+sudo -v
+
+# Keep-alive: update existing sudo time stamp if set, otherwise do nothing.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# Get brew bundle
+brew tap Homebrew/bundle
+
+echo "Getting sudo password before attempting brew packages that require sudo"
+sudo echo "Got it!"
+
+# Try to make sure everything is installed. Already installed things will be
+# faster, so it's mostly about hitting the things that broke previously.
+brew bundle --verbose --no-upgrade --file=~/Brewfile
