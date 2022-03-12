@@ -3,6 +3,7 @@
 #+EMAIL: matt@expectedbehavior.com
 #+OPTIONS: num:nil
 
+
 * About
 This is the Expected Behavior Emacs configuation. It's intended to be
 used by the Emacsers of EB, but it should be a good starting place for
@@ -309,7 +310,7 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
 TODO: Project navigation should depend on a function that determines where your code lives
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c e") (lambda() (interactive)(find-file "~/.emacs.d/config.org")))
-(global-set-key (kbd "C-c t") (lambda() (interactive)(find-file "~/Dropbox/tmp.txt")))
+(global-set-key (kbd "C-c t") (lambda() (interactive)(find-file "~/Dropbox/tmp.org")))
 (global-set-key (kbd "C-c p i w") (lambda() (interactive)(find-file "~/code/instrumental/web/README.md")))
 (global-set-key (kbd "C-c p d w") (lambda() (interactive)(find-file "~/code/docraptor/web/README.md")))
 #+END_SRC
@@ -478,6 +479,21 @@ brew cask install font-fira-mono
   :init (doom-modeline-mode 1))
 #+END_SRC
 
+** Ensure Emacs Environment Variables Match User Shell
+Depending on how you start Emacs, it may or may not have the same
+environment variables as your normal shell environment. Some packages
+depend on having access to shell commands or other environment
+variables and it can be a very non-obvious kind of failure.
+
+In specific, this was installed in response to the
+[[https://www.reddit.com/r/emacs/comments/sjstjx/how_can_i_get_orgroam_unlinked_references_working/][problem I was having with org-roam not displaying unlinked references.]]
+#+BEGIN_SRC emacs-lisp
+  (use-package exec-path-from-shell
+    :init (exec-path-from-shell-initialize))
+#+END_SRC
+
+#+RESULTS:
+
 * Per-Mode
 
 This section should contain changes that apply to just one mode or a
@@ -511,6 +527,96 @@ blacklists a few modes, it belongs in Global.
   (setq js-indent-level 2)
 
 #+END_SRC
+
+** Org
+
+#+BEGIN_SRC emacs-lisp
+
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+
+  (let ((current-prefix-arg '(4)))
+      (setq org-startup-with-inline-images t))
+
+#+END_SRC
+
+** Org Roam
+Org Roam is a text based information management system using the
+Zettelkasten Method. If you don't know what that is, the simplest way
+to describe it is a personal wiki with tags that tracks and graphs
+links between nodes.
+
+If you'd like to learn more, [[https://www.youtube.com/watch?v=AyhPmypHDEw&list=PLEoMzSkcN8oN3x3XaZQ-AXFKv52LZzjqD][System Crafters did a YouTube series]] that
+starts with the absolute basics and builds from there. You could
+always read the [[https://www.orgroam.com/manual.html][Org Roam Manual]], but it's a bit more of a technical
+review and less of a user guide.
+
+#+BEGIN_SRC emacs-lisp
+  ;; -*- lexical-binding: t -*-  
+
+
+  ;; If you're going to make files, they're going to need a directory.
+  ;; I chose a Dropbox folder as the default because it means your
+  ;; files will be backed up as soon as you start working on it.
+  ;; TODO: Dry up the directory. It's in three places, which is bad.
+  (if (file-exists-p (file-truename "~/Dropbox/OrgRoam"))
+    (display-message-or-buffer "Org Roam directory already exists")
+    (make-directory "~/Dropbox/OrgRoam")
+  )
+
+  (use-package org-roam
+    :custom
+    (org-roam-directory (file-truename "~/Dropbox/OrgRoam"))
+    (org-roam-completion-everywhere t)
+    (org-roam-mode-section-functions
+     (list #'org-roam-backlinks-section
+           #'org-roam-reflinks-section
+           #'org-roam-unlinked-references-section
+           ))
+    :bind (
+           ("C-c n f" . org-roam-node-find)
+           ("C-c n i" . org-roam-node-insert)
+           ("C-c n I" . org-roam-node-insert-immediate)
+           ("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n s" . org-roam-db-sync) ;; in case you delete a file outside emacs
+           ("C-c n t" . org-roam-tag-add) ;; in case you delete a file outside emacs
+           :map org-mode-map
+           ("C-M-i" . completion-at-point)
+           )
+    :config
+    (org-roam-setup)
+    (org-roam-db-autosync-mode)
+    )
+
+
+  (defun org-roam-node-insert-immediate (arg &rest args)
+    (interactive "P")
+    (let ((args (cons arg args))
+          (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                    '(:immediate-finish t)))))
+      (apply #'org-roam-node-insert args)))  
+
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; https://github.com/org-roam/org-roam-ui
+  ;; localhost:35901
+  ;; 
+  (use-package org-roam-ui
+    :after org-roam ;; or :after org
+    ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+    ;;         a hookable mode anymore, you're advised to pick something yourself
+    ;;         if you don't care about startup time, use
+    :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
+#+END_SRC
+
 
 ** Rust
 
