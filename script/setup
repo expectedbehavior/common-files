@@ -64,7 +64,7 @@ brew_install() {
 
 brew_cask_install() {
   setup_echo "Installing $1"
-  brew cask list $1 > /dev/null || brew cask install $1
+  brew list --cask $1 > /dev/null || brew install --cask $1
 }
 
 
