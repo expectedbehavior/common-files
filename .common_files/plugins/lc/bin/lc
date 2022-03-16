@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Consider moving this to ruby in a sheldon plugin if it gets more complicated.
+# Add test cases for anything that fails.
+
+# Test cases
+
+# lc echo "foo       bar"
+#   => foo       bar
+# not
+#   => foo bar
+
+this_notification_group="lc-${SECONDS}-${RANDOM}"
+
+if [[ "$1" == "--clear" ]]; then
+  PATH="${PATH}:/usr/local/bin"
+
+  # Get the groups to clear immediately because it might take a second to clear
+  # and we don't want to clear new notifications that pop up during that time.
+  groups_to_clear="$(terminal-notifier -list ALL | egrep '^(lc|growlnotify)-' | awk '{print $1}')"
+  groups_to_clear="$groups_to_clear $this_notification_group"
+
+  # Notify that we're clearing notifications so I know which (old) notifications
+  # will be cleared.
+  message="Clearing notifications"
+  terminal-notifier -group "$this_notification_group" -execute "sleep 0" -message "$message"
+
+  # For some reason it takes multiple tries, so repeat until done
+  # https://github.com/julienXX/terminal-notifier/issues/238
+  # Full paths so iCanHazShortcut can run it with bash without need `-l`
+  clear_notifications() {
+    echo "$groups_to_clear" | xargs -n 1 terminal-notifier -remove
+  }
+  while [[ "$(clear_notifications)" != "" ]]; do
+    true
+  done
+
+  exit 0
+fi
+
+
+function displaytime {
+  local T=$1
+  local D=$((T/60/60/24))
+  local H=$((T/60/60%24))
+  local M=$((T/60%60))
+  local S=$((T%60))
+  (( $D > 0 )) && printf '%dd' $D
+  (( $H > 0 )) && printf '%dh' $H
+  (( $M > 0 )) && printf '%dm' $M
+  # (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
+  printf '%ds\n' $S
+}
+function token_quote {
+  local quoted=()
+  for token; do
+    quoted+=( "$(printf '%q' "$token")" )
+  done
+  printf '%s\n' "${quoted[*]}"
+}
+
+# lc() {
+  # echo $SECONDS
+  lc_local_dir="$(basename "$PWD")"
+  lc_start_time=$SECONDS
+  eval "$(token_quote "$@")"
+  status="$?"
+  lc_time=$(displaytime $(($SECONDS - $lc_start_time)))
+  # The -n makes it so clicking the toast doesn't make every lc continue processing
+  ( (
+      # growlnotify -n "lc${RANDOM}" -swm "$(date) command finished (exited $status, run in ${lc_local_dir}): $*"
+
+      message="$(date) command finished (exited $status, run in ${lc_local_dir}, time $lc_time): $*"
+
+      # Since Growl isn't a thing anymore.
+      # -execute allow us to click anywhere on the notification to dismiss, not just the buttons.
+      # -group to allow me to clear them later with Ctrl-Opt-Cmd-C
+      terminal-notifier -group "$this_notification_group" -execute "sleep 0" -message "$message"
+
+      ## These dont work on mavericks becase growlnotify -w times out
+      # term_app=`pstree -p $PPID | grep -o -m 1 '/Applications/.*\.app'`
+      # open "$term_app"
+
+      # &> /dev/null otherwise commands like "lc time sleep 1 | tee /tmp/foo.log" hang
+      ) &> /dev/null &
+      ) # subshell so it doesn't stick around in the jobs list and hold up other "wait" commands
+  # echo $SECONDS
+  # return $status
+  exit $status
+# }
+# complete -o default -A command lc

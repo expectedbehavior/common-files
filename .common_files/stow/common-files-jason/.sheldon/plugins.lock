@@ -1,0 +1,57 @@
+version = "0.6.5"
+home = "/Users/jason"
+config_dir = "/Users/jason/.sheldon"
+data_dir = "/Users/jason/.sheldon"
+config_file = "/Users/jason/.sheldon/plugins.toml"
+lock_file = "/Users/jason/.sheldon/plugins.lock"
+clone_dir = "/Users/jason/.sheldon/repos"
+download_dir = "/Users/jason/.sheldon/downloads"
+
+[[plugins]]
+name = "git_push_set_upstream_origin_head"
+source_dir = "/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head"
+files = ["/Users/jason/.common_files/plugins/git_push_set_upstream_origin_head/git_push_set_upstream_origin_head.plugin.sh"]
+apply = ["source"]
+
+[[plugins]]
+name = "fzf"
+source_dir = "/Users/jason/.common_files/plugins/fzf"
+files = ["/Users/jason/.common_files/plugins/fzf/fzf.plugin.bash"]
+apply = ["source"]
+
+[[plugins]]
+name = "bat"
+source_dir = "/Users/jason/.common_files/plugins/bat/"
+files = ["/Users/jason/.common_files/plugins/bat/bat.plugin.sh"]
+apply = ["source"]
+
+[[plugins]]
+name = "rg"
+source_dir = "/Users/jason/.common_files/plugins/rg/"
+files = ["/Users/jason/.common_files/plugins/rg/rg.plugin.bash"]
+apply = ["source"]
+
+[[plugins]]
+name = "lc"
+source_dir = "/Users/jason/.common_files/plugins/lc/"
+files = ["/Users/jason/.common_files/plugins/lc/lc.plugin.bash"]
+apply = ["source"]
+
+[[plugins]]
+name = "atom_foreground_fix"
+source_dir = "/Users/jason/.common_files/plugins/atom_foreground_fix"
+files = ["/Users/jason/.common_files/plugins/atom_foreground_fix/atom_foreground_fix.plugin.sh"]
+apply = ["source"]
+
+[[plugins]]
+name = "terraform"
+source_dir = "/Users/jason/.common_files/plugins/terraform"
+files = ["/Users/jason/.common_files/plugins/terraform/terraform.plugin.bash"]
+apply = ["source"]
+[templates.PATH]
+value = "export PATH=\"{{ dir }}:$PATH\""
+each = false
+
+[templates.source]
+value = "source \"{{ file }}\""
+each = true

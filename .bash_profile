@@ -8,6 +8,9 @@ is_key_encrypted() {
   grep ENCRYPTED "$1" &> /dev/null
 }
 
+# Silence zsh warning
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 if [[ "$SKIP_KEYCHAIN" != "true" ]]; then
   # Only one process needs to load the unencrypted keys, the first to take the
   # lock is it.
@@ -39,8 +42,14 @@ if [[ "$SKIP_KEYCHAIN" != "true" ]]; then
 fi
 
 cf_date_check_notify
-
 cf_check_for_updates
+
+# homebrew binaries. After this, brew is in PATH, so use brew --prefix
+if [[ -d "/opt/homebrew/bin/" ]] ; then
+    PATH=/opt/homebrew/bin/:$PATH
+else
+    PATH=/usr/local/bin/:$PATH
+fi
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]  ; then source "$HOME/.rvm/scripts/rvm" ; fi
 if [[ -d "$HOME/.rbenv" ]] && which rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
@@ -66,8 +75,8 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
-  source /usr/local/opt/asdf/asdf.sh
+if [[ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]]; then
+  source $(brew --prefix)/opt/asdf/libexec/asdf.sh
   export JAVA_HOME=`asdf where java`
   export PATH="$JAVA_HOME/bin:$PATH"
 fi
@@ -82,6 +91,9 @@ if which nodenv &>/dev/null; then
   eval "$(nodenv init -)"
 fi
 
-export PATH="/usr/local/opt/sbt@0.13/bin:$PATH"
-
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$(brew --prefix)/Cellar/sbt@0.13/0.13.18_1/bin:$PATH"
+
+if [[ -f "$(brew --prefix)/bin/terraform" ]]; then
+    complete -C $(brew --prefix)/bin/terraform terraform
+fi
