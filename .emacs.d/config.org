@@ -541,9 +541,9 @@ blacklists a few modes, it belongs in Global.
 
 ** Org Roam
 Org Roam is a text based information management system using the
-Zettelkasten Method. If you don't know what that is, the simplest way
-to describe it is a personal wiki with tags that tracks and graphs
-links between nodes.
+Zettelkasten Method. If you haven't heard of it, think of it as a
+personal wiki with tags that tracks and graphs links between
+nodes. That's really underselling it.
 
 If you'd like to learn more, [[https://www.youtube.com/watch?v=AyhPmypHDEw&list=PLEoMzSkcN8oN3x3XaZQ-AXFKv52LZzjqD][System Crafters did a YouTube series]] that
 starts with the absolute basics and builds from there. You could
@@ -575,7 +575,6 @@ review and less of a user guide.
     :bind (
            ("C-c n f" . org-roam-node-find)
            ("C-c n i" . org-roam-node-insert)
-           ("C-c n I" . org-roam-node-insert-immediate)
            ("C-c n l" . org-roam-buffer-toggle)
            ("C-c n s" . org-roam-db-sync) ;; in case you delete a file outside emacs
            ("C-c n t" . org-roam-tag-add) ;; in case you delete a file outside emacs
@@ -587,13 +586,6 @@ review and less of a user guide.
     (org-roam-db-autosync-mode)
     )
 
-
-  (defun org-roam-node-insert-immediate (arg &rest args)
-    (interactive "P")
-    (let ((args (cons arg args))
-          (org-roam-capture-templates (list (append (car org-roam-capture-templates)
-                                                    '(:immediate-finish t)))))
-      (apply #'org-roam-node-insert args)))  
 
 #+END_SRC
 
