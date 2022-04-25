@@ -224,8 +224,7 @@ in my main emacs instance instead of starting another.
 Contains many near-universal config improvements. NOTE: It does override some keybindings that we'll want to re-bind later.
 https://github.com/technomancy/better-defaults
 #+BEGIN_SRC emacs-lisp
-  (use-package better-defaults
-    :ensure t)
+  (use-package better-defaults)
 #+END_SRC
 *** Default screen should be Ruby scratch buffer
 Remove splash screen and use *scratch* instead as the home buffer
@@ -280,8 +279,7 @@ I don't need to see it. I already know I'm mashing ctrl-g more than necessary.
 Smooth Scrolling 
 #TODO this is not as smooth as I would have hoped.
 #+BEGIN_SRC emacs-lisp
-(use-package smooth-scroll
-    :ensure t)
+(use-package smooth-scroll)
 #+END_SRC
 *** Command is Meta Key on OSX
 #+BEGIN_SRC  emacs-lisp
@@ -336,40 +334,28 @@ TODO: Org mode overides M-} so you'll get stuck if you hit an org file like this
 List of themes to install
 #+BEGIN_SRC emacs-lisp
   (use-package monokai-alt-theme
-    :ensure t
     :defer t)
   (use-package gruvbox-theme
-    :ensure t
     :defer t)
   (use-package darkokai-theme
-    :ensure t
     :defer t)
   (use-package darktooth-theme
-    :ensure t
     :defer t)
   (use-package creamsody-theme
-    :ensure t
     :defer t)
   (use-package github-theme
-    :ensure t
     :defer t)
   (use-package melancholy-theme
-    :ensure t
     :defer t)
   (use-package darkburn-theme
-    :ensure t
     :defer t)
   (use-package kaolin-themes
-    :ensure t
     :defer t)
   (use-package dracula-theme
-    :ensure t
     :defer t)
   (use-package darkokai-theme
-    :ensure t
     :defer t)
 (use-package monokai-alt-theme
-    :ensure t
     :defer t)
 #+END_SRC
 
@@ -407,7 +393,6 @@ brew cask install font-fira-mono
 #+BEGIN_SRC emacs-lisp
 
   (use-package switch-window
-    :ensure t
     :bind
     (("M-o"    . (lambda() (interactive) (other-window -1)))
      ("C-x O"  . (lambda() (interactive) (switch-window)))
@@ -421,7 +406,6 @@ brew cask install font-fira-mono
 ** Helm
 #+BEGIN_SRC emacs-lisp
   (use-package helm
-    :ensure t
     :defer 2
     :bind
     ("M-x" . helm-M-x)
@@ -445,7 +429,6 @@ brew cask install font-fira-mono
 ** Projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile
-    :ensure t
     :diminish projectile-mode
     :bind
     (("C-c p f" . helm-projectile-find-file)
@@ -457,7 +440,6 @@ brew cask install font-fira-mono
   )
 
   (use-package helm-projectile
-    :ensure t
     :config
     (helm-projectile-on))
 #+END_SRC
@@ -465,7 +447,6 @@ brew cask install font-fira-mono
 ** Dash
 #+BEGIN_SRC emacs-lisp
   (use-package dash-at-point
-    :ensure t
     :bind
     (("C-c d" . dash-at-point)
      )
@@ -474,7 +455,6 @@ brew cask install font-fira-mono
 ** Doom Mode Line
 #+BEGIN_SRC emacs-lisp
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1))
 #+END_SRC
 
@@ -489,7 +469,6 @@ blacklists a few modes, it belongs in Global.
 #+BEGIN_SRC emacs-lisp
 
   (use-package coffee-mode
-    :ensure t
     :custom (coffee-tab-width 2))
   
 #+END_SRC
@@ -499,7 +478,6 @@ blacklists a few modes, it belongs in Global.
 #+BEGIN_SRC emacs-lisp
 
   (use-package pickle
-    :ensure t
     :init (pickle-config))
   
 #+END_SRC
@@ -516,8 +494,7 @@ blacklists a few modes, it belongs in Global.
 
 #+BEGIN_SRC emacs-lisp
 
-  (use-package rust-mode
-    :ensure t)
+  (use-package rust-mode)
 
 #+END_SRC
 
@@ -525,8 +502,16 @@ blacklists a few modes, it belongs in Global.
 
 #+BEGIN_SRC emacs-lisp
 
-  (use-package scala-mode
-    :ensure t)
+  (use-package scala-mode)
+
+
+#+END_SRC
+
+** Terraform
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package terraform-mode)
 
 #+END_SRC
 
