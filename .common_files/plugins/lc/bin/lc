@@ -10,11 +10,15 @@
 # not
 #   => foo bar
 
+# Fix path so this works in karabiner-elements.
+# Needs to be at the end, otherwise things like nodenv don't work because `lc`
+# commands will then find brew node instead of nodenv node.
+export PATH="${PATH}:$(/opt/homebrew/bin/brew --prefix)/bin"
+
+
 this_notification_group="lc-${SECONDS}-${RANDOM}"
 
 if [[ "$1" == "--clear" ]]; then
-  PATH="${PATH}:/usr/local/bin"
-
   # Get the groups to clear immediately because it might take a second to clear
   # and we don't want to clear new notifications that pop up during that time.
   groups_to_clear="$(terminal-notifier -list ALL | egrep '^(lc|growlnotify)-' | awk '{print $1}')"
@@ -31,9 +35,8 @@ if [[ "$1" == "--clear" ]]; then
   clear_notifications() {
     echo "$groups_to_clear" | xargs -n 1 terminal-notifier -remove
   }
-  while [[ "$(clear_notifications)" != "" ]]; do
-    true
-  done
+  clear_notifications &> /dev/null
+  clear_notifications &> /dev/null
 
   exit 0
 fi
