@@ -10,6 +10,12 @@
 # not
 #   => foo bar
 
+# Fix path so this works in iCanHazShortcut.
+# Needs to be at the end, otherwise things like nodenv don't work because `lc`
+# commands will then find brew node instead of nodenv node.
+export PATH="${PATH}:$(brew --prefix)/bin"
+
+
 this_notification_group="lc-${SECONDS}-${RANDOM}"
 
 if [[ "$1" == "--clear" ]]; then
