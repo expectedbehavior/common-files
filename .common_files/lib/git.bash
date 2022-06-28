@@ -16,7 +16,11 @@ alias gst='git status'
 alias gco="git checkout"
 alias gu="git reset HEAD"
 alias ghr="git log -n1 --pretty=format:'%C(bold red)%h%Creset'"
-alias gpp="git pull && git push"
+# https://stackoverflow.com/questions/17847213/how-to-configure-git-push-to-automatically-set-upstream-without-u
+alias gpu='[[ -z $(git config "branch.$(git symbolic-ref --short HEAD).merge") ]] &&
+           git push -u origin $(git symbolic-ref --short HEAD) ||
+           git push'
+alias gpp="git pull && gpu"
 complete -o default -o nospace -F _git_checkout gco
 alias gpul="git pull"
 complete -o default -o nospace -F _git_pull gpull
