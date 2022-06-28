@@ -443,6 +443,11 @@ brew cask install font-fira-mono
     )
 #+END_SRC
 
+** Ag - The Silver Searcher
+If you want to use Projectile's search functions with ag
+
+(use-package ag)
+
 ** Projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile
