@@ -15,7 +15,7 @@ if [[ "$SKIP_KEYCHAIN" != "true" ]]; then
   # Only one process needs to load the unencrypted keys, the first to take the
   # lock is it.
   should_load_unencrypted_keys=$(my_lock /tmp/keychain_load_unencrypted_keys && echo true)
-  for k in /usr/bin/keychain /opt/local/bin/keychain /usr/local/bin/keychain /opt/boxen/homebrew/bin/keychain; do
+  for k in /opt/homebrew/bin/keychain /usr/bin/keychain /opt/local/bin/keychain /usr/local/bin/keychain /opt/boxen/homebrew/bin/keychain; do
       if [ -f $k ]; then
           for i in ~/.ssh/*; do
               if [ -f $i ] && [ -f $i.pub ]; then
