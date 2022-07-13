@@ -114,7 +114,7 @@ found.
 *** Install use-package
 The use-package package handles automatically installing and loading
 packages as they're referenced. It's a key part of the Automatic Setup
-goal. 
+goal. Consider [[https://ianyepan.github.io/posts/setting-up-use-package/][this brief tutorial]].
 
 #+BEGIN_SRC emacs-lisp
 
