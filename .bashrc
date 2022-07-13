@@ -174,6 +174,15 @@ vncvia() {
     fi
 }
 
+repeat() {
+    local i n
+    n=$1
+    shift
+    for ((i=1; i<=n; i++))
+        do "$@"
+    done
+}
+
 alias cd='pushd -n $PWD &> /dev/null; cd'
 # cf_cd() {
 #     pushd -n "$PWD" &> /dev/null
