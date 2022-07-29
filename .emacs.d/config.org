@@ -601,6 +601,10 @@ review and less of a user guide.
     (org-roam-db-autosync-mode)
   )
 
+  ;; Change the target Org Roam directory and re-sync the database.
+  ;; This exists because Matt uses Org Roam to develop content and take
+  ;; notes for his DnD campaigns and he doesn't want the notes from
+  ;; different campaigns co-mingling.
   (defun eb/org-roam-change-directory (directory)
     (interactive (list 1))
     (setq org-roam-directory directory)
