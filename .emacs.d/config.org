@@ -592,7 +592,7 @@ review and less of a user guide.
            ("C-c n i" . org-roam-node-insert)
            ("C-c n l" . org-roam-buffer-toggle)
            ("C-c n s" . org-roam-db-sync) ;; in case you delete a file outside emacs
-           ("C-c n t" . org-roam-tag-add) ;; in case you delete a file outside emacs
+           ("C-c n t" . org-roam-tag-add)
            :map org-mode-map
            ("C-M-i" . completion-at-point)
            )
