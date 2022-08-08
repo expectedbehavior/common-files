@@ -596,7 +596,15 @@ review and less of a user guide.
            :map org-mode-map
            ("C-M-i" . completion-at-point)
            )
+    :bind-keymap
+    ("C-c n d" . org-roam-dailies-map)
     :config
+    (require 'org-roam-dailies)
+    (setq org-roam-dailies-capture-templates
+          '(("d" "default" entry
+             "* %?"
+             :target (file+head "%<%Y-%m-%d>.org" ;; 2022-08-07 format for easy terminal usage
+                                "#+title: %<%B %d, %Y>\n")))) ;; August 7, 2022 in the title so it's easier for humans to read
     (org-roam-setup)
     (org-roam-db-autosync-mode)
   )
