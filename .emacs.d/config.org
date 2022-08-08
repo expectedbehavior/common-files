@@ -596,7 +596,10 @@ review and less of a user guide.
            :map org-mode-map
            ("C-M-i" . completion-at-point)
            )
+    :bind-keymap
+    ("C-c n d" . org-roam-dailies-map)
     :config
+    (require 'org-roam-dailies)
     (org-roam-setup)
     (org-roam-db-autosync-mode)
   )
