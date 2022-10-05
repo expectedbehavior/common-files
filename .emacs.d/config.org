@@ -656,7 +656,10 @@ review and less of a user guide.
 
   (use-package scala-mode)
 
+** sh-mode
 
+#+BEGIN_SRC emacs-lisp
+  (setq sh-basic-offset 2)
 #+END_SRC
 
 ** Terraform
