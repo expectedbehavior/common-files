@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+
+INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+source "$INSTALL_SCRIPTS_PATH/helper_functions"
+
+install_homebrew () {
+  # TODO: remove this block from Instrumental script/setup when CF is fully required
+  setup_echo "Homebrew :: Installing"
+
+  if ! which brew > /dev/null 2>&1; then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  setup_echo "Homebrew :: Installed"
+}
+
+brew_install() {
+  setup_echo "Installing $1"
+  brew list $1 > /dev/null || brew install $1
+}
+
+brew_cask_install() {
+  setup_echo "Installing $1"
+  brew list --cask $1 > /dev/null || brew install --cask $1
+}
+
+
+############################################
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_homebrew
+fi

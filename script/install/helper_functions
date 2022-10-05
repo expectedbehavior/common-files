@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+INSTALL_HELPER_FUNCTIONS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+
+setup_echo() {
+  echo "[script/setup] $1"
+}
+
+setup_error() {
+  echo "[script/setup][ERROR] $1"
+}
+
+dotfiles_root_path() {
+ echo "$(cd "$( dirname "$INSTALL_HELPER_FUNCTIONS_PATH/../../.." )" && pwd -P)"
+}
+

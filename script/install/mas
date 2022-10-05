@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+source "$INSTALL_SCRIPTS_PATH/helper_functions"
+source "$INSTALL_SCRIPTS_PATH/homebrew"
+
+install_mas() {
+  brew_install mas
+  #apple_id_email_address=$(dscl . readpl /Users/`whoami` dsAttrTypeNative:LinkedIdentity appleid.apple.com:linked\ identities:0:full\ name | awk -F ':' '{print $5}')
+  # mas signin --dialog $apple_id_email_address
+  # TODO
+  setup_echo "There's current no way to automatically sign you into the Apple Store. You'll need to open it and manually sign in. Hit enter when you've done that."
+  read apple_store_signedin
+
+  brew tap Homebrew/bundle
+}
+
+############################################
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_mas
+fi

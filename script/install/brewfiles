@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+source "$INSTALL_SCRIPTS_PATH/helper_functions"
+
+install_brewfiles() {
+  if ! brew bundle --verbose; then
+    setup_echo "Some homebrew apps have failed to install. Trying again may solve the issue, in which case hit Ctrl-C and run this again. Otherwise hit enter to continue."
+    read homebrew_continue
+  fi
+}
+
+############################################
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_brewfiles
+fi

@@ -1,168 +1,24 @@
 #!/bin/bash
 set -e
-cd "$(dirname "$0")/.."
+# cd "$(dirname "$0")/.."
+SETUP_SCRIPT_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 
-setup_echo() {
-  echo "[script/setup] $1"
-}
+source "$SETUP_SCRIPT_PATH/install/homebrew"
+source "$SETUP_SCRIPT_PATH/install/dotfiles"
+source "$SETUP_SCRIPT_PATH/install/dropbox"
+source "$SETUP_SCRIPT_PATH/install/system_preferences"
+source "$SETUP_SCRIPT_PATH/install/mas"
+source "$SETUP_SCRIPT_PATH/install/xcode"
+source "$SETUP_SCRIPT_PATH/install/brewfiles"
+source "$SETUP_SCRIPT_PATH/install/ruby"
+source "$SETUP_SCRIPT_PATH/install/app_configurations"
 
-setup_error() {
-  echo "[script/setup][ERROR] $1"
-}
-
-
-setup_echo "SYSTEM PREFERENCES"
-setup_echo "Some suggested system preference changes"
-setup_echo
-setup_echo "Trackpad > Tap to click"
-setup_echo "Keyboard > Keyboard > Repeat to fast"
-setup_echo "Keyboard > Keyboard > Delay to short"
-setup_echo "Keyboard > Modifier Keys > Set Caps Lock to Control"
-setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Mission control (conflicts with atom emacs navigation)"
-setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Application windows (conflicts with atom emacs navigation)"
-setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Move left a space (conflicts with atom emacs navigation)"
-setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Move right a space (conflicts with atom emacs navigation)"
-setup_echo "Security & Privacy > General > Require password >5 seconds< after sleep..."
-setup_echo "Energy Saver > Battery > Turn display off after: 1 hour"
-setup_echo "Energy Saver > Battery > Uncheck 'put hard disks to sleep when possible'"
-setup_echo "Energy Saver > Battery > Uncheck 'slightly dim the display while on battery power'"
-setup_echo "Energy Saver > Power Adapter > Turn display off after: never # so installs don't get cut off"
-setup_echo "Sharing > Click Edit, Change hostname"
-setup_echo "Sharing > Check 'Remote Login' checkbox on left"
-setup_echo "Sharing > Check 'Screen Sharing' checkbox on left"
-setup_echo "Sharing > Sharing > Computer Settings > Check 'Anyone may request permission to contol screen'"
-setup_echo "Dock > Automatically hide and show the Dock"
-setup_echo "Date & Time > Clock > Time options > Display the time with seconds"
-setup_echo "Date & Time > Clock > Date options > Show date"
-setup_echo "Users & Groups > Guest User > Uncheck Allow guests to log into this computer so that I don't get prompted on every computer restart."
-setup_echo "General > Uncheck Close windows when quitting an app (so iTerm restores previous windows)"
-setup_echo "General > Check 'Automatically hide and show the menu bar'"
-setup_echo "Desktop & Screen Saver > Screen Saver > Start after: never"
-setup_echo "Desktop & Screen Saver > Screen Saver > Hot Corners: bottom right => Put Display to Sleep"
-setup_echo "Sound > Check Show volume in menu bar"
-setup_echo "Touch ID > Add additional fingerprints (in case you're holding something)"
-setup_echo "iCloud > iCloud Drive Options > Uncheck 'Optimize Mac Storage'"
-setup_echo "Finder > View > Show Path Bar"
-setup_echo "Finder > Preference > Sidebar > Locations > Check <hostname>"
-setup_echo "Finder > Preference > Sidebar > Locations > Check 'Hard disks' (change from a dash to a checkmark)"
-setup_echo ""
-setup_echo
-setup_echo "When you're done changing your system preferences, hit enter"
-read system_preferences_finished
-
-# TODO: remove this block from Instrumental script/setup when CF is fully required
-if ! which brew > /dev/null 2>&1; then
-  setup_echo "Installing homebrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-
-brew_install() {
-  setup_echo "Installing $1"
-  brew list $1 > /dev/null || brew install $1
-}
-
-brew_cask_install() {
-  setup_echo "Installing $1"
-  brew list --cask $1 > /dev/null || brew install --cask $1
-}
-
-
-brew_cask_install dropbox
-setup_echo "If your code is in dropbox, now's the time to start syncing. After this, the script will start installing the default software and you'll be handsoff for a while. Hit enter when ready."
-read post_dropbox_install
-
-
-brew_install mas
-#apple_id_email_address=$(dscl . readpl /Users/`whoami` dsAttrTypeNative:LinkedIdentity appleid.apple.com:linked\ identities:0:full\ name | awk -F ':' '{print $5}')
-# mas signin --dialog $apple_id_email_address
-setup_echo "There's current no way to automatically sign you into the Apple Store. You'll need to open it and manually sign in. Hit enter when you've done that."
-read apple_store_signedin
-
-brew tap Homebrew/bundle
-
-# Install xcode so we can set the command line tools location, which is
-# necessary for `brew bundle`.
-mas install 497799835
-
-setup_echo "Open Xcode, go to Preferences > Locations, and choose the latest option for Command Line Tools. Hit enter when done."
-read command_line_tool_setup
-
-sudo xcodebuild -license accept
-
-if ! brew bundle --verbose; then
-  setup_echo "Some homebrew apps have failed to install. Trying again may solve the issue, in which case hit Ctrl-C and run this again. Otherwise hit enter to continue."
-  read homebrew_continue
-fi
-
-
-
-# System Preferences > Desktop & Screen Saver > Start after: Never
-defaults -currentHost write com.apple.screensaver idleTime -int 0
-
-# System Preferences > Dock > Automatically hide and show the Dock:
-defaults write com.apple.dock autohide -bool true
-
-# System Preferences > Keyboard >
-defaults write NSGlobalDomain KeyRepeat -int 2
-
-# System Preferences > Keyboard >
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-
-# System Preferences > Trackpad > Tap to click
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-
-# Finder > View > Show Path Bar
-defaults write com.apple.finder ShowPathbar -bool true
-
-# Finder > View > As List
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-
-# Disable holding a key to bring up the Character Accent Menu
-defaults write -g ApplePressAndHoldEnabled -bool false
-
-# Kill affected apps
-for app in "Dock" "Finder"; do
-  killall "${app}" > /dev/null 2>&1
-done
-
-setup_echo "Install a recent ruby and make it the default instead of system ruby"
-eval "$(rbenv init -)"
-rbenv install 2.6.3
-eval "$(rbenv global 2.6.3)"
-#rbenv global 2.6.3 #TODO: this doesn't work because of environment bullshit
-
-
-#TODO prompt for app setup
-setup_echo "SET UP YER APPS"
-read set_up_apps
-#flowdock
-
-#launchbar
-
-#divvy
-# maximize window
-
-# Setup chrome work and chrome personal
-# transfer tabs using history - "tabs from other devices"
-# verify 1password works
-
-# anki
-# word
-# excel
-
-# setup AWS credentials
-
-#TODO run script/setup for
-# instrumental
-# docraptor
-# automation
-# eb
-
-
-setup_echo "Install EB dotfiles"
-.common_files/stow/script/setup
-
-
-# Make new spaces
-# uncheck "Automatically rearrange Spaces based on most recent use"
+install_homebrew
+install_dotfiles
+install_dropbox
+install_system_preferences
+install_mas
+install_xcode
+install_brewfiles
+install_ruby
+install_app_configurations
