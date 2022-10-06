@@ -653,8 +653,8 @@ review and less of a user guide.
 ** Scala
 
 #+BEGIN_SRC emacs-lisp
-
   (use-package scala-mode)
+#+END_SRC
 
 ** sh-mode
 
