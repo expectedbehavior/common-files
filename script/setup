@@ -20,5 +20,5 @@ install_system_preferences
 install_mas
 install_xcode
 install_brewfiles
-install_ruby
+install_global_ruby
 install_app_configurations
