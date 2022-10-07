@@ -550,7 +550,9 @@ blacklists a few modes, it belongs in Global.
   (add-hook 'org-mode-hook 'auto-fill-mode)
 
   (let ((current-prefix-arg '(4)))
-      (setq org-startup-with-inline-images t))
+      (setq org-startup-with-inline-images t)
+      (setq org-adapt-indentation nil)
+      )
 
 #+END_SRC
 
