@@ -1,5 +1,5 @@
 # What is this?
-The Common Files is a set of computer configuration files. It includes dotfiles along with configuration and tooling for many common things we do at Expected Behavior. It has a complete computer setup process to minimize setting up your computer in a sane way. It's designed to be
+The Common Files is a set of computer configuration files. It includes dotfiles along with configuration and tooling for many common things we do at Expected Behavior. It has a complete computer setup process to minimize the time and effort of getting a new computer into an enjoyable state. It's designed to be
 
 - collaborative  - many people are expected to use these configurations
 - non-destuctive - you can try these configurations without deleting or destroying anything you've already got
