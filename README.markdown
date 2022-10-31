@@ -31,7 +31,7 @@ How do you know if the change you want to make is for everyone or just for you? 
 Contributions are made through the PR process common throughout the land. If you don't know what that means, make an issue and we'll get it sorted.
 
 # Personalizing
-This section is about making changes only for yourself. Please consider contributing before personalizing the common files. If you've looked at the contribution guidelines and you're still not sure, Some good indicators it should be personal are
+This section is about making changes only for yourself. Please consider contributing before personalizing the common files. If you've looked at the contribution guidelines and you're still not sure, some good indicators it should be personal are
 
 - It costs money or requires a subscription to something the company doesn't pay for.
 - You've talked to other people about it and nobody has shown any interest.
