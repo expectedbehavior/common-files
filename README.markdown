@@ -19,7 +19,9 @@ If you'd like to run only one part of the setup process, you can invoke that scr
     script/install/dotfiles
 
 # Contributing
-This section is about making changes that will improve life for everyone that uses the common files. If you'd like to make your visual bell neon green, please see the personalization section below. How do you know if the change you want to make is for everyone or just for you? Here are some rules of thumb
+This section is about making changes that will improve life for everyone that uses the common files. If you'd like to make your visual bell neon green, please see the personalization section below.
+
+How do you know if the change you want to make is for everyone or just for you? Here are some rules of thumb
 
 - Is it popular? If many people that use the common files are already using it or interested in it, it's probably worth contributing.
 - Is it strictly better? Strictly better means it has all the benefits of the current implementation, along with some improvements.
