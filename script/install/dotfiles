@@ -16,7 +16,7 @@ install_dotfiles () {
   setup_echo "Dotfiles :: Installing"
   cd $(dotfiles_root_path)
   # TODO
-  # .common_files/stow/script/setup
+  .common_files/stow/script/setup
   setup_echo "Dotfiles :: TOOOOOODOOOOOOOOOOOOOO"
   setup_echo "Dotfiles :: Installed"
 }
