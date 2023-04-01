@@ -7,8 +7,8 @@ source "$INSTALL_SCRIPTS_PATH/helper_functions"
 install_global_ruby() {
   setup_echo "Install a recent ruby and make it the default instead of system ruby"
   eval "$(rbenv init -)"
-  rbenv install 2.6.3
-  eval "$(rbenv global 2.6.3)"
+  rbenv install 3.1.0
+  eval "$(rbenv global 3.1.0)"
   #rbenv global 2.6.3 #TODO: this doesn't work because of environment bullshit
 }
 
