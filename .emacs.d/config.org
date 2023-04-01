@@ -380,8 +380,6 @@ List of themes to install
     :defer t)
   (use-package github-theme
     :defer t)
-  (use-package darkburn-theme
-    :defer t)
   (use-package kaolin-themes
     :defer t)
   (use-package dracula-theme
