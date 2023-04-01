@@ -397,8 +397,8 @@ List of themes to install
 
 ** Fonts
 Set the default font. You can install the font with
-brew cask install font-fira-code
-brew cask install font-fira-mono
+brew install homebrew/cask-fonts/font-fira-code
+brew install homebrew/cask-fonts/font-fira-mono
 #+BEGIN_SRC emacs-lisp
     (use-package font-utils)
 
