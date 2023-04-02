@@ -34,4 +34,25 @@ function ask_chatgpt {
   fi
 }
 
+function img_gpt {
+  local prompt="$1"
+  local api_key="$(get_chatgpt_api_key)"
+  
+  local create_img=$(curl https://api.openai.com/v1/images/generations -s \
+                    -H "Content-Type: application/json" \
+                    -H "Authorization: Bearer $api_key" \
+                    -d '{
+            "prompt": "'"$prompt"'",
+            "n": 1,
+            "size": "1024x1024"
+        }')
+
+  echo "$create_img" | jq
+
+  url=$(echo "$create_img" | jq -r '.data[0].url')
+  rand_num=$((1 + RANDOM % 1000000))
+  curl -s "$url" -o "img-$rand_num.png"
+}
+
+alias hi="img_gpt"
 alias h="ask_chatgpt"
