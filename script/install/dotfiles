@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+source "$INSTALL_SCRIPTS_PATH/helper_functions"
+
+# common_files_script_location() {
+#   $(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)
+# }
+
+install_dotfiles () {
+  # cd common_files_script_location
+  # cd ..
+  # git clone git@github.com:expectedbehavior/common-files.git
+
+  setup_echo "Dotfiles :: Installing"
+  cd $(dotfiles_root_path)
+  # TODO
+  .common_files/stow/script/setup
+  setup_echo "Dotfiles :: TOOOOOODOOOOOOOOOOOOOO"
+  setup_echo "Dotfiles :: Installed"
+}
+
+############################################
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_dotfiles
+fi

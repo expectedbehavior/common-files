@@ -380,8 +380,6 @@ List of themes to install
     :defer t)
   (use-package github-theme
     :defer t)
-  (use-package darkburn-theme
-    :defer t)
   (use-package kaolin-themes
     :defer t)
   (use-package dracula-theme
@@ -399,8 +397,8 @@ List of themes to install
 
 ** Fonts
 Set the default font. You can install the font with
-brew cask install font-fira-code
-brew cask install font-fira-mono
+brew install homebrew/cask-fonts/font-fira-code
+brew install homebrew/cask-fonts/font-fira-mono
 #+BEGIN_SRC emacs-lisp
     (use-package font-utils)
 
@@ -655,10 +653,13 @@ review and less of a user guide.
 ** Scala
 
 #+BEGIN_SRC emacs-lisp
-
   (use-package scala-mode)
+#+END_SRC
 
+** sh-mode
 
+#+BEGIN_SRC emacs-lisp
+  (setq sh-basic-offset 2)
 #+END_SRC
 
 ** Terraform

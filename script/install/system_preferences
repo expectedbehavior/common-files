@@ -1,0 +1,84 @@
+#!/bin/bash
+set -e
+
+INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+source "$INSTALL_SCRIPTS_PATH/helper_functions"
+
+install_system_preferences () {
+  # System Preferences > Desktop & Screen Saver > Start after: Never
+  defaults -currentHost write com.apple.screensaver idleTime -int 0
+
+  # System Preferences > Dock > Automatically hide and show the Dock:
+  defaults write com.apple.dock autohide -bool true
+
+  # System Preferences > Keyboard >
+  defaults write NSGlobalDomain KeyRepeat -int 2
+
+  # System Preferences > Keyboard >
+  defaults write NSGlobalDomain InitialKeyRepeat -int 15
+
+  # System Preferences > Trackpad > Tap to click
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+
+  # Finder > View > Show Path Bar
+  defaults write com.apple.finder ShowPathbar -bool true
+
+  # Finder > View > As List
+  defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+  # Disable holding a key to bring up the Character Accent Menu
+  defaults write -g ApplePressAndHoldEnabled -bool false
+
+  # Kill affected apps
+  for app in "Dock" "Finder"; do
+    killall "${app}" > /dev/null 2>&1
+  done
+  
+  setup_echo "SYSTEM PREFERENCES"
+  setup_echo "Some suggested system preference changes"
+  setup_echo
+  setup_echo "Trackpad > Tap to click"
+  setup_echo "Keyboard > Keyboard > Repeat to fast"
+  setup_echo "Keyboard > Keyboard > Delay to short"
+  setup_echo "Keyboard > Modifier Keys > Set Caps Lock to Control"
+  setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Mission control (conflicts with atom emacs navigation)"
+  setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Application windows (conflicts with atom emacs navigation)"
+  setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Move left a space (conflicts with atom emacs navigation)"
+  setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Move right a space (conflicts with atom emacs navigation)"
+  setup_echo "Security & Privacy > General > Require password >5 seconds< after sleep..."
+  setup_echo "Energy Saver > Battery > Turn display off after: 1 hour"
+  setup_echo "Energy Saver > Battery > Uncheck 'put hard disks to sleep when possible'"
+  setup_echo "Energy Saver > Battery > Uncheck 'slightly dim the display while on battery power'"
+  setup_echo "Energy Saver > Power Adapter > Turn display off after: never # so installs don't get cut off"
+  setup_echo "Sharing > Click Edit, Change hostname"
+  setup_echo "Sharing > Check 'Remote Login' checkbox on left"
+  setup_echo "Sharing > Check 'Screen Sharing' checkbox on left"
+  setup_echo "Sharing > Sharing > Computer Settings > Check 'Anyone may request permission to contol screen'"
+  setup_echo "Dock > Automatically hide and show the Dock"
+  setup_echo "Date & Time > Clock > Time options > Display the time with seconds"
+  setup_echo "Date & Time > Clock > Date options > Show date"
+  setup_echo "Users & Groups > Guest User > Uncheck Allow guests to log into this computer so that I don't get prompted on every computer restart."
+  setup_echo "General > Uncheck Close windows when quitting an app (so iTerm restores previous windows)"
+  setup_echo "General > Check 'Automatically hide and show the menu bar'"
+  setup_echo "Desktop & Screen Saver > Screen Saver > Start after: never"
+  setup_echo "Desktop & Screen Saver > Screen Saver > Hot Corners: bottom right => Put Display to Sleep"
+  setup_echo "Sound > Check Show volume in menu bar"
+  setup_echo "Touch ID > Add additional fingerprints (in case you're holding something)"
+  setup_echo "iCloud > iCloud Drive Options > Uncheck 'Optimize Mac Storage'"
+  setup_echo "Finder > View > Show Path Bar"
+  setup_echo "Finder > Preference > Sidebar > Locations > Check <hostname>"
+  setup_echo "Finder > Preference > Sidebar > Locations > Check 'Hard disks' (change from a dash to a checkmark)"
+  setup_echo ""
+  setup_echo
+  setup_echo "When you're done changing your system preferences, hit enter"
+  read system_preferences_finished
+
+  # TODO
+  # Make new spaces
+  # uncheck "Automatically rearrange Spaces based on most recent use"
+}
+
+############################################
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_system_preferences
+fi

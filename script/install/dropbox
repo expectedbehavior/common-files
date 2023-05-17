@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+source "$INSTALL_SCRIPTS_PATH/helper_functions"
+source "$INSTALL_SCRIPTS_PATH/homebrew"
+
+install_dropbox() {
+  brew_cask_install dropbox
+  setup_echo "Now is the time to start syncing. After this, the script will start installing the default software and you'll be handsoff for a while. Hit enter when ready."
+  read post_dropbox_install
+}
+
+############################################
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_dropbox
+fi
