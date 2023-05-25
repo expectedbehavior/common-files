@@ -85,9 +85,14 @@ fi
 
 # this is busted: https://github.com/skotchpine/asdf-java/issues/46
 # That is why the JAVA_HOME export is above.
-# if [[ -f "/usr/local/opt/asdf/asdf.sh" ]]; then
+# if [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then
 #   source ~/.asdf/plugins/java/bin/asdf-java-wrapper
 # fi
+
+# Do both so both work, but do m1 last so it takes precedence.
+# Above nodenv so it can find it.
+# eval "$(/usr/local/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if which nodenv &>/dev/null; then
   eval "$(nodenv init -)"

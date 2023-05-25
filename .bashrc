@@ -405,6 +405,18 @@ fi
 # load any OS specific changes we've made
 [ -f ~/.common_files/cf.`uname -s`.conf ] && . ~/.common_files/cf.`uname -s`.conf
 
+# Do both so both work, but do m1 last so it takes precedence.
+# Above nodenv so it can find it.
+# Also before cf lib so sheldon works for me, otherwise sheldon finds the x86 brew.
+# eval "$(/usr/local/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# # This after brew to get the nodenv shims. This is in profile as well, which isn't great.
+# # Without this DR script/setup fails because it checks for nodenv using the brew node insteaad of the nodenv node.
+# if which nodenv &>/dev/null; then
+#   eval "$(nodenv init -)"
+# fi
+
 # load any cf libs
 for i in ~/.common_files/lib/*; do
   [ -e "$i" ] && . $i
