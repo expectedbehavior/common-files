@@ -68,6 +68,10 @@ function token_quote {
 # lc() {
   # echo $SECONDS
   lc_local_dir="$(basename "$PWD")"
+  lc_local_branch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+  if [[ "$lc_local_branch" != "" ]]; then
+    lc_local_branch=" [$lc_local_branch]"
+  fi
   lc_start_time=$SECONDS
   eval "$(token_quote "$@")"
   status="$?"
@@ -76,7 +80,7 @@ function token_quote {
   ( (
       # growlnotify -n "lc${RANDOM}" -swm "$(date) command finished (exited $status, run in ${lc_local_dir}): $*"
 
-      message="$(date) command finished (exited $status, run in ${lc_local_dir}, time $lc_time): $*"
+      message="$(date) command finished (exited $status, run in ${lc_local_dir}${lc_local_branch}, time $lc_time): $*"
 
       # Since Growl isn't a thing anymore.
       # -execute allow us to click anywhere on the notification to dismiss, not just the buttons.
