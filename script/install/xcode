@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+source "$INSTALL_SCRIPTS_PATH/helper_functions"
+
+install_xcode() {
+  # Install xcode so we can set the command line tools location, which is
+  # necessary for `brew bundle`.
+  # TODO: mas installer should be an idempotent function
+  mas install 497799835
+
+  setup_echo "Open Xcode, go to Preferences > Locations, and choose the latest option for Command Line Tools. Hit enter when done."
+  read command_line_tool_setup
+
+  sudo xcodebuild -license accept  
+}
+
+############################################
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  install_xcode
+fi

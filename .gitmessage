@@ -1,21 +1,35 @@
 # If applied, this commit will...
 
+
 Why is this change needed?
 --------------------------
+
 
 How does it address the issue?
 ------------------------------
 
-Any links to any relevant tickets, articles or other resources?
+
+Any links to any relevant tickets, articles, or other resources?
 ---------------------------------------------------------------
+
+
+Any screenshots?
+----------------
+
+
+Did you complete all of the following?
+--------------------------------------
+- Run test suite?
+- Add new tests?
+- Consider security implications and practices?
+
 
 # Was this co-authored?  Uncomment the correct following line(s), and make sure you use their official github email address
 # Co-authored-by: Tony Dewan <tony@expectedbehavior.com>
-# Co-authored-by: Joel Meador <joel@expectedbehavior.com>
 # Co-authored-by: James Paden <james@expectedbehavior.com>
 # Co-authored-by: Jason Gladish <jason@expectedbehavior.com>
 # Co-authored-by: Nathan Acuff <nathan@expectedbehavior.com>
 # Co-authored-by: Matthew Gordon <matt@expectedbehavior.com>
 # Co-authored-by: Jonathon Fruchte <jonathon@expectedbehavior.com>
-# Co-authored-by: David Ronk <david@expectedbehavior.com>
-# Co-authored-by: Alex Overbeck <alex@expectedbehavior.com>
+# Co-authored-by: Zach Hunt <zach@expectedbehavior.com>
+# Co-authored-by: Chloe Lin <chloe@expectedbehavior.com>

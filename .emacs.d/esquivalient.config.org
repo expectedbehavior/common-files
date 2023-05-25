@@ -1,0 +1,18 @@
+* Switch Org Roam Directories
+#+begin_src emacs-lisp
+  (defun esquivalient/org-roam-directory-default ()
+    (interactive)
+    (eb/org-roam-change-directory "~/Dropbox/OrgRoam")
+  )
+
+  (defun esquivalient/org-roam-directory-pennal-cinco-de-mayo-campaign ()
+    (interactive)
+    (eb/org-roam-change-directory "~/Dropbox/DnD/pennal_campaign/notes")
+  )
+
+  (defun esquivalient/org-roam-directory-dice-hard-campaign ()
+    (interactive)
+    (eb/org-roam-change-directory "~/Dropbox/DnD/Dice Hard/notes")
+  )
+#+END_SRC
+ 

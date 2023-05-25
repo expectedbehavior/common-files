@@ -3,6 +3,7 @@
 #+EMAIL: matt@expectedbehavior.com
 #+OPTIONS: num:nil
 
+
 * About
 This is the Expected Behavior Emacs configuation. It's intended to be
 used by the Emacsers of EB, but it should be a good starting place for
@@ -41,7 +42,8 @@ one mode or a whitelist of modes, it belongs in Per-Mode.
 
 ** Startup Performance
 
-Make startup faster by reducing the frequency of garbage collection and then use a hook to measure Emacs startup time.
+Make startup faster by reducing the frequency of garbage collection
+and then use a hook to measure Emacs startup time. 
 
 #+begin_src emacs-lisp
 
@@ -60,7 +62,11 @@ Make startup faster by reducing the frequency of garbage collection and then use
 #+end_src
 ** Keep .emacs.d Clean
 
-I don't want a bunch of transient files showing up as untracked in the Git repo so I move them all to another location.
+Emacs has many backup systems to prevent you from losing the things
+you're working on. I very rarely need them and they tend to clutter up
+the emacs directory, so let's put them some place out of the
+way. They'll still be there in the rare case we need them, but we
+won't have to look at them.
 
 #+begin_src emacs-lisp
 
@@ -81,7 +87,7 @@ I don't want a bunch of transient files showing up as untracked in the Git repo 
 #+end_src
 
 ** Emacs Package Management
-** Force TLS 1.3
+*** Force TLS 1.3
 If emacs is compiled with GnuTLS, you can fail to install packages. 
 You can avoid the issue by advising it to use TLS 1.3
 More info 
@@ -94,9 +100,9 @@ https://github.com/syl20bnr/spacemacs/issues/12535
 
 #+END_SRC
 
-** Add Melpa as a package repo
+*** Add Melpa as a package repo
 Melpa is the big package repo that nearly /everything/ can be
-found. It's a must for emacs configs.
+found. 
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -105,8 +111,10 @@ found. It's a must for emacs configs.
 
 #+END_SRC
 
-** Install use-package
-use-package handles automatically installing and loading packages as they're referenced
+*** Install use-package
+The use-package package handles automatically installing and loading
+packages as they're referenced. It's a key part of the Automatic Setup
+goal. Consider [[https://ianyepan.github.io/posts/setting-up-use-package/][this brief tutorial]].
 
 #+BEGIN_SRC emacs-lisp
 
@@ -117,14 +125,16 @@ use-package handles automatically installing and loading packages as they're ref
 (eval-when-compile
   (require 'use-package))
 
-(setq use-package-always-ensure t) ; always try to install missing packages
+; always try to install missing packages
+(setq use-package-always-ensure t) 
 #+END_SRC
 
 ** Start Emacs Server
 
 Start the Emacs server from this instance so that all =emacsclient=
-calls are routed here. I use this to make sure git commits are written
-in my main emacs instance instead of starting another.
+calls are routed here. This ensures you can write your git commits
+without having to start a new Emacs instance each time, amongst other
+uses.
 
 #+begin_src emacs-lisp
 
@@ -133,24 +143,49 @@ in my main emacs instance instead of starting another.
 #+end_src
 
 ** Core Setup
-** Basic UI Improvements
-*** Clean up Emacs' user interface, make it more minimal.
+** Emacs UI
+*** Disable Startup Message
+By default, Emacs provides a welcome message intended to help new
+users get started. This config isn't intended for brand new users that
+are looking for a place to start and there are more valuable things we
+can see on startup, so we're going to suppress it.
+https://www.gnu.org/software/emacs/manual/html_node/elisp/Startup-Summary.html
+#+begin_src emacs-lisp
+  (setq inhibit-startup-message t)
+#+end_src
+
+*** Enable Visual Bell
+By default, Emacs will beep at you when there's an error
+(e.g. attempting to autocomplete something with no valid
+completions). It's very irritating, so this switches to a simple flash
+when an error occurs.
 
 #+begin_src emacs-lisp
-
-  ;; Thanks, but no thanks
-  (setq inhibit-startup-message t)
-
-    (scroll-bar-mode -1)        ; Disable visible scrollbar
-    (tool-bar-mode -1)          ; Disable the toolbar
-    (tooltip-mode -1)           ; Disable tooltips
-    (set-fringe-mode 10)       ; Give some breathing room
-
-  (menu-bar-mode -1)            ; Disable the menu bar
 
   ;; Set up the visible bell
   (setq visible-bell t)
 
+#+end_src
+
+*** Remove menu, scroll, toolbar, toolips
+Some people like using these to interact with Emacs, but we prefer to
+use the keyboard. These elements are all for the mouse, so we disable
+them and clean up the interface a bit.
+#+begin_src emacs-lisp
+  (scroll-bar-mode -1)        ; Disable visible scrollbar
+  (tool-bar-mode -1)          ; Disable the toolbar
+  (tooltip-mode -1)           ; Disable tooltips
+  (menu-bar-mode -1)          ; Disable the menu bar
+#+end_src
+
+*** Increase fringe size
+The fringe is the small parts to the left and right of the buffer
+where information appears. The most common one is a line continuation,
+but many modes make use of it. The default is 8px, but we like it just
+a little larger to give some more room around the symbols.
+https://emacsredux.com/blog/2015/01/18/customizing-the-fringes/
+#+begin_src emacs-lisp
+  (set-fringe-mode 10)
 #+end_src
 
 *** Improve scrolling.
@@ -307,7 +342,7 @@ https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html
 TODO: Project navigation should depend on a function that determines where your code lives
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c e") (lambda() (interactive)(find-file "~/.emacs.d/config.org")))
-(global-set-key (kbd "C-c t") (lambda() (interactive)(find-file "~/Dropbox/tmp.txt")))
+(global-set-key (kbd "C-c t") (lambda() (interactive)(find-file "~/Dropbox/tmp.org")))
 (global-set-key (kbd "C-c p i w") (lambda() (interactive)(find-file "~/code/instrumental/web/README.md")))
 (global-set-key (kbd "C-c p d w") (lambda() (interactive)(find-file "~/code/docraptor/web/README.md")))
 #+END_SRC
@@ -345,10 +380,6 @@ List of themes to install
     :defer t)
   (use-package github-theme
     :defer t)
-  (use-package melancholy-theme
-    :defer t)
-  (use-package darkburn-theme
-    :defer t)
   (use-package kaolin-themes
     :defer t)
   (use-package dracula-theme
@@ -366,8 +397,8 @@ List of themes to install
 
 ** Fonts
 Set the default font. You can install the font with
-brew cask install font-fira-code
-brew cask install font-fira-mono
+brew install homebrew/cask-fonts/font-fira-code
+brew install homebrew/cask-fonts/font-fira-mono
 #+BEGIN_SRC emacs-lisp
     (use-package font-utils)
 
@@ -426,6 +457,11 @@ brew cask install font-fira-mono
     )
 #+END_SRC
 
+** Ag - The Silver Searcher
+If you want to use Projectile's search functions with ag
+
+(use-package ag)
+
 ** Projectile
 #+BEGIN_SRC emacs-lisp
   (use-package projectile
@@ -457,6 +493,21 @@ brew cask install font-fira-mono
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
 #+END_SRC
+
+** Ensure Emacs Environment Variables Match User Shell
+Depending on how you start Emacs, it may or may not have the same
+environment variables as your normal shell environment. Some packages
+depend on having access to shell commands or other environment
+variables and it can be a very non-obvious kind of failure.
+
+In specific, this was installed in response to the
+[[https://www.reddit.com/r/emacs/comments/sjstjx/how_can_i_get_orgroam_unlinked_references_working/][problem I was having with org-roam not displaying unlinked references.]]
+#+BEGIN_SRC emacs-lisp
+  (use-package exec-path-from-shell
+    :init (exec-path-from-shell-initialize))
+#+END_SRC
+
+#+RESULTS:
 
 * Per-Mode
 
@@ -490,6 +541,107 @@ blacklists a few modes, it belongs in Global.
 
 #+END_SRC
 
+** Org
+
+#+BEGIN_SRC emacs-lisp
+
+  (add-hook 'org-mode-hook 'auto-fill-mode)
+
+  (let ((current-prefix-arg '(4)))
+      (setq org-startup-with-inline-images t)
+      (setq org-adapt-indentation nil)
+      )
+
+#+END_SRC
+
+** Org Roam
+Org Roam is a text based information management system using the
+Zettelkasten Method. If you haven't heard of it, think of it as a
+personal wiki with tags that tracks and graphs links between
+nodes. That's really underselling it.
+
+If you'd like to learn more, [[https://www.youtube.com/watch?v=AyhPmypHDEw&list=PLEoMzSkcN8oN3x3XaZQ-AXFKv52LZzjqD][System Crafters did a YouTube series]] that
+starts with the absolute basics and builds from there. You could
+always read the [[https://www.orgroam.com/manual.html][Org Roam Manual]], but it's a bit more of a technical
+review and less of a user guide.
+
+#+BEGIN_SRC emacs-lisp
+  ;; -*- lexical-binding: t -*-  
+
+
+  ;; If you're going to make files, they're going to need a directory.
+  ;; I chose a Dropbox folder as the default because it means your
+  ;; files will be backed up as soon as you start working on it.
+  ;; TODO: Dry up the directory. It's in three places, which is bad.
+  (if (file-exists-p (file-truename "~/Dropbox/OrgRoam"))
+    (display-message-or-buffer "Org Roam directory already exists")
+    (make-directory "~/Dropbox/OrgRoam")
+  )
+
+  (use-package org-roam
+    :custom
+    (org-roam-directory (file-truename "~/Dropbox/OrgRoam"))
+    (org-roam-completion-everywhere t)
+    (org-roam-mode-section-functions
+     (list #'org-roam-backlinks-section
+           #'org-roam-reflinks-section
+           #'org-roam-unlinked-references-section
+           ))
+    :bind (
+           ("C-c n f" . org-roam-node-find)
+           ("C-c n i" . org-roam-node-insert)
+           ("C-c n l" . org-roam-buffer-toggle)
+           ("C-c n s" . org-roam-db-sync) ;; in case you delete a file outside emacs
+           ("C-c n t" . org-roam-tag-add)
+           :map org-mode-map
+           ("C-M-i" . completion-at-point)
+           )
+    :bind-keymap
+    ("C-c n d" . org-roam-dailies-map)
+    :config
+    (require 'org-roam-dailies)
+    (setq org-roam-dailies-capture-templates
+          '(("d" "default" entry
+             "* %?"
+             :target (file+head "%<%Y-%m-%d>.org" ;; 2022-08-07 format for easy terminal usage
+                                "#+title: %<%B %d, %Y>\n")))) ;; August 7, 2022 in the title so it's easier for humans to read
+    (org-roam-setup)
+    (org-roam-db-autosync-mode)
+  )
+
+  ;; Change the target Org Roam directory and re-sync the database.
+  ;; This exists because Matt uses Org Roam to develop content and take
+  ;; notes for his DnD campaigns and he doesn't want the notes from
+  ;; different campaigns co-mingling.
+  (defun eb/org-roam-change-directory (directory)
+    (interactive (list 1))
+    (setq org-roam-directory directory)
+    (org-roam-db-sync)
+  )
+
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+
+  ;; https://github.com/org-roam/org-roam-ui
+  ;; localhost:35901
+  ;; 
+  (use-package org-roam-ui
+    :after org-roam ;; or :after org
+    ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+    ;;         a hookable mode anymore, you're advised to pick something yourself
+    ;;         if you don't care about startup time, use
+    :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
+
+#+END_SRC
+
+
 ** Rust
 
 #+BEGIN_SRC emacs-lisp
@@ -501,10 +653,13 @@ blacklists a few modes, it belongs in Global.
 ** Scala
 
 #+BEGIN_SRC emacs-lisp
-
   (use-package scala-mode)
+#+END_SRC
 
+** sh-mode
 
+#+BEGIN_SRC emacs-lisp
+  (setq sh-basic-offset 2)
 #+END_SRC
 
 ** Terraform
