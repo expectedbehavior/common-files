@@ -17,6 +17,14 @@ if test -d "$personal_dir"; then
   stow_packages="$stow_packages $personal_dir"
 fi
 
+secrets_dir="secrets"
+# Check if the symlink points to a directory
+if test -L "$secrets_dir" && test -d "$secrets_dir"; then
+  # If it does, then we'll assume that the user has setup the secrets
+  # directory and we'll use it.
+  stow_packages="$stow_packages $secrets_dir"
+fi
+
 for package in $stow_packages; do
   # In case you've setup the common-files the old way we'll copy your files into
   # the repo, then symlink those. Then you'll be able to review those changes
