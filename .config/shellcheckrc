@@ -1,0 +1,14 @@
+# https://github.com/koalaman/shellcheck/wiki/SC2002
+#
+# Here's an example of what I like to do:
+#
+# cat file |
+#   grep thing |
+#   grep other_thing |
+#   cat > output_file
+#
+# This is just an example, often it's other commands besides greps. This is nice
+# because it's easy to add or remove greps as conditions arise. This is
+# technically less efficient than replacing `cat file` with `< file`, but it's
+# more readable to more people, so I think it's worth it.
+disable=SC2002
