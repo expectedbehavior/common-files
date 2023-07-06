@@ -77,8 +77,10 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 if [[ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]]; then
   source $(brew --prefix)/opt/asdf/libexec/asdf.sh
-  export JAVA_HOME=`asdf where java`
-  export PATH="$JAVA_HOME/bin:$PATH"
+  if asdf where java &> /dev/null; then
+    export JAVA_HOME=`asdf where java`
+    export PATH="$JAVA_HOME/bin:$PATH"
+  fi
 fi
 
 # this is busted: https://github.com/skotchpine/asdf-java/issues/46
