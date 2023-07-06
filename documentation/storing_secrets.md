@@ -1,5 +1,7 @@
 If you'd like to store your personal, command-line secrets in a way that makes it easy to set up a new computer, consider storing them in an encrypted volume in Dropbox and mounting them on startup.
 
+Consider giving `script/setup_secrets` a shot, which should help with steps 1-9 below.
+
 1. Open Disk Utility
 2. Make a 'new image'. It's probably in the File menu.
 3. Make a blank image named "secrets" and place it in the root of your Dropbox. I went with APFS, case-insensitive, 100mb, single GUID partition map. This image will immediately take up 100mb. Normally I'd recommend making something like this sparse so it only takes up the needed space, but I don't want anyone to be able to tell how much of the space is used until they've got access to it.
