@@ -99,3 +99,5 @@ export PATH="$(brew --prefix)/Cellar/sbt@0.13/0.13.18_1/bin:$PATH"
 if [[ -f "$(brew --prefix)/bin/terraform" ]]; then
     complete -C $(brew --prefix)/bin/terraform terraform
 fi
+
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
