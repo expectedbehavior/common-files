@@ -175,13 +175,20 @@ vncvia() {
 }
 
 repeat() {
-    local i n
-    n=$1
-    shift
-    for ((i=1; i<=n; i++))
+        local i n f
+        n=$1
+        fails=0
+        shift
+        for ((i=1; i<=n; i++))
         do "$@"
-    done
-}
+           echo "Executing run $i of $n, $fails failures so far"
+           if [ $? -ne 0 ]; then
+             ((fails++))
+           fi
+        done
+        echo "Finished running $@"
+        echo "$fails failures occurred"
+      }
 
 alias cd='pushd -n $PWD &> /dev/null; cd'
 # cf_cd() {
