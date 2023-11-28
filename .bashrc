@@ -175,18 +175,19 @@ vncvia() {
 }
 
 repeat() {
-        local i n f
-        n=$1
+        local i loops fails
+        loops=$1
         fails=0
         shift
-        for ((i=1; i<=n; i++))
+        for ((i=1; i<=loops; i++))
         do "$@"
-           echo "Executing run $i of $n, $fails failures so far"
-           if [ $? -ne 0 ]; then
+           retVal=$?
+           if [ $retVal -ne 0 ]; then
              ((fails++))
            fi
+           echo "Executed run $i of $loops, $fails failures so far"
         done
-        echo "Finished running $@"
+        echo "Finished $loops executions of $@"
         echo "$fails failures occurred"
       }
 
