@@ -175,13 +175,22 @@ vncvia() {
 }
 
 repeat() {
-    local i n
-    n=$1
-    shift
-    for ((i=1; i<=n; i++))
+        local i loops fails
+        loops=$1
+        fails=0
+        shift
+        for ((i=1; i<=loops; i++))
         do "$@"
-    done
-}
+           retVal=$?
+           if [ $retVal -ne 0 ]; then
+             ((fails++))
+           fi
+           echo "Executed run $i of $loops, $fails failures so far"
+        done
+        echo "Finished $loops executions of $@"
+        echo "$fails failures occurred"
+        osascript -e "display notification \"Repeated Command $@ Finished $loops runs with $fails failures\" with title \"Repeated Command Finished\" sound name \"Frog\""
+      }
 
 alias cd='pushd -n $PWD &> /dev/null; cd'
 # cf_cd() {
