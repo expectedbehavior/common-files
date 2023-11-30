@@ -189,6 +189,7 @@ repeat() {
         done
         echo "Finished $loops executions of $@"
         echo "$fails failures occurred"
+        osascript -e "display notification \"Repeated Command $@ Finished $loops runs with $fails failures\" with title \"Repeated Command Finished\" sound name \"Frog\""
       }
 
 alias cd='pushd -n $PWD &> /dev/null; cd'
