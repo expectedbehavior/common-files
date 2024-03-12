@@ -5,6 +5,7 @@
 # brew 'geeknote', args: ['HEAD']
 brew 'tor'
 brew 'fswatch'
+cask 'visual-studio-code'
 cask 'steam'
 cask 'battle-net'
 cask 'anki'
