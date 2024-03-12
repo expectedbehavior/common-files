@@ -75,6 +75,12 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+# Load homebrew before asdf, so that asdf ends up first in the path. We want
+# asdf tools to be used for projects if they are specified.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Load asdf after homebrew, so that asdf ends up first in the path. We want
+# asdf tools to be used for projects if they are specified.
 if [[ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]]; then
   source $(brew --prefix)/opt/asdf/libexec/asdf.sh
   if asdf where java &> /dev/null; then
@@ -88,15 +94,6 @@ fi
 # if [[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ]]; then
 #   source ~/.asdf/plugins/java/bin/asdf-java-wrapper
 # fi
-
-# Do both so both work, but do m1 last so it takes precedence.
-# Above nodenv so it can find it.
-# eval "$(/usr/local/homebrew/bin/brew shellenv)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-if which nodenv &>/dev/null; then
-  eval "$(nodenv init -)"
-fi
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$(brew --prefix)/Cellar/sbt@0.13/0.13.18_1/bin:$PATH"
