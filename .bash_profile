@@ -77,7 +77,7 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 
 # Load homebrew before asdf, so that asdf ends up first in the path. We want
 # asdf tools to be used for projects if they are specified.
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(brew shellenv)"
 
 # Load asdf after homebrew, so that asdf ends up first in the path. We want
 # asdf tools to be used for projects if they are specified.
