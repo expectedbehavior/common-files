@@ -1,5 +1,4 @@
 cask_args appdir: '/Applications'
-tap 'homebrew/cask'
 
 brewfile_root_dir = File.expand_path(File.dirname(__FILE__))
 brewfile_dir      = File.join(brewfile_root_dir, ".brewfiles")
