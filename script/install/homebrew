@@ -12,6 +12,11 @@ install_homebrew () {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
+  # On first run brew won't be loaded yet
+  if [[ "$HOMEBREW_PREFIX" == "" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+
   setup_echo "Homebrew :: Installed"
 }
 
