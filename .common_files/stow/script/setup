@@ -2,19 +2,31 @@
 set -e
 cd "$(dirname "$0")/.."
 
+# On first run brew won't be loaded yet
+if [[ "$HOMEBREW_PREFIX" == "" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 brew list stow > /dev/null || brew install stow
+brew list coreutils > /dev/null || brew install coreutils
 
-# --no-folding is necessary because we're using separate stow commands for each
-# package below and we don't want a later package to cause a previous package's
-# files to get excluded due to tree folding. This would happen because of
-# --override, which is necessary so the personal package wins.
-stow_base_cmd="stow --verbose=3 --dir . --target $HOME --no-folding --override=.*"
+stow_base_cmd="stow --verbose=3 --dir . --target $HOME"
 
-stow_packages="common-files"
+stow_base_dir="common-files"
 
-personal_dir="common-files-`whoami`"
+stow_packages="$stow_base_dir"
+
+personal_dir="$stow_base_dir-`whoami`"
 if test -d "$personal_dir"; then
-  stow_packages="$stow_packages $personal_dir"
+  stow_packages="$personal_dir $stow_packages"
+
+  # Setup the $stow_base_dir/.stow-local-ignore file to ignore all files in the
+  # personal directory. This allows us to layer the personal directory on top
+  # of the common files directory.
+  (
+    cat .stow-base-ignore
+    cd "$personal_dir" && find . -mindepth 1 ! -type d | sed 's/^\.//'
+  ) > "$stow_base_dir/.stow-local-ignore"
 fi
 
 secrets_dir="secrets"
@@ -22,23 +34,51 @@ secrets_dir="secrets"
 if test -L "$secrets_dir" && test -d "$secrets_dir"; then
   # If it does, then we'll assume that the user has setup the secrets
   # directory and we'll use it.
-  stow_packages="$stow_packages $secrets_dir"
+  stow_packages="$secrets_dir $stow_packages"
+
+  # Add to $stow_base_dir/.stow-local-ignore and setup
+  # $personal_dir/.stow-local-ignore to ignore all files in the secrets
+  # directory. This allows us to layer the secrets directory on top of the
+  # common files and personal directories.
+  (
+    cat .stow-base-ignore
+    cd "$secrets_dir" && find . -mindepth 1 ! -type d | sed 's/^\.//'
+  ) | tee -a "$stow_base_dir/.stow-local-ignore" > "$personal_dir/.stow-local-ignore"
 fi
 
 for package in $stow_packages; do
-  # In case you've setup the common-files the old way we'll copy your files into
-  # the repo, then symlink those. Then you'll be able to review those changes
-  # and commit them if you want.
-  stow_cmd="$stow_base_cmd --adopt --stow $package"
+  # Unstow everything in order to migrate to the new ignore-file based approach.
+  # Previously we used the --override options, but that required unfolding all
+  # the stow directories which meant no directories were symlinked, only files.
+  # This new approach will allow us to symlink directories when possible, which
+  # means that if programs create new files in those directories they'll be more
+  # likely to show up in the correct place.
+  stow_cmd="$stow_base_cmd --delete $package"
   $stow_cmd
 done
 
+# Find all directories in each stow package, check if the matching dir in the
+# home dir is empty, and if so remove it, so stow will symlink the dir instead
+# of individual files. This means new files in those dirs will show up as
+# regular files in the tmp dir, so we can recognize that they should be added to
+# the common files repo.
 for package in $stow_packages; do
-  # Restow the packages in case any files have been removed, to clean up those
-  # symlinks.
-  stow_cmd="$stow_base_cmd --restow $package"
-  $stow_cmd
+  (
+    cd "$package"
+    find . -mindepth 1 -type d -empty -exec rmdir -v "$HOME/{}" \;
+  )
 done
+
+# For testing, allow unlinking the common files from the home directory.
+if [[ "$1" == "--unstow" ]]; then
+  $stow_base_cmd --delete $stow_packages
+  exit 0
+else
+  # Restow the packages in case any files have been removed, to clean up those
+  # symlinks. Adopt will move existing files into the stow package directory, so
+  # the file can then be committed to the common files repo.
+  $stow_base_cmd --restow --adopt $stow_packages
+fi
 
 echo
 echo "If you weren't using stow with the common files previously then stow may"
@@ -47,5 +87,78 @@ echo "changes would be good for other people, commit them! If they're just for"
 echo "you, make a user specific directory (like Jason) and commit your files"
 echo "there."
 echo
+
+ignore_file="$HOME/.common_files/.stow-cf-ignore"
+echo "Searching for files you may want to move into the common files repo, your"
+echo "secrets volume, or ignore."
+echo
+echo
+
+# Find regular files that are in the home directory, but under directories that
+# are stow packages. These are good candidates to move into the common files.
+for package in $stow_packages; do
+  (
+    # Find the top level directories in each package
+    cd "$package"
+    find . -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' dir; do
+      # Remove the leading ./ from the dir
+      dir="${dir#./}"
+      # Show all non-dir non-symlink files in the home dir
+      if ! [ -e "$ignore_file" ] || ! grep -q "^$dir" "$ignore_file"; then
+        (
+          cd "$HOME"
+          find "$dir" ! -type d -print0 | while IFS= read -r -d '' file; do
+            if ! [ -e "$ignore_file" ] || ! grep -q "^$file" "$ignore_file"; then
+              # If it's not a symlink, or the link target doesn't contain .dotfiles
+              if ! [ -L "$file" ] || ( ! greadlink -f "$file" | grep -q "\.dotfiles" && ! greadlink -f "$file" | grep -q "secrets" ); then
+                echo "$file"
+              fi
+            fi
+          done
+        )
+      fi
+    done
+  )
+done | tee /tmp/stow-cf-output
+
+# Find all dotfiles in the home directory that aren't symlinks and aren't in the
+# stow packages. These are good candidates to move into the common files.
+find "$HOME" -mindepth 1 -maxdepth 1 -name '.*' ! -type l -print0 | while IFS= read -r -d '' file; do
+  # Remove the leading $HOME so we can check if it's ignored.
+  file="${file#$HOME/}"
+  if ! [ -e "$ignore_file" ] || ! grep -q "^$file" "$ignore_file"; then
+    # If the file is already in a stow package we can skip it.
+    for package in $stow_packages; do
+      if [ -e "$package/$file" ]; then
+        continue 2
+      fi
+    done
+    echo "$file"
+  fi
+done | tee -a /tmp/stow-cf-output
+
+
+echo
+if [ -s /tmp/stow-cf-output ]; then
+  echo "Consider moving the above files into your secrets or the common files,"
+  echo "or ignoring them from this output by adding the path to"
+  echo "$ignore_file"
+  echo
+  echo "You can move these into a destination using the following rsync"
+  echo "command. Remember to remove the --dry-run flag to actually move the"
+  echo "files."
+  echo
+  echo "rsync --dry-run -avc --remove-source-files --files-from=/tmp/stow-cf-output "$HOME" /path/to/destination"
+  echo
+  echo "After running the above you'll want to remove the leftover empty"
+  echo "directories. This will allow stow to symlink the directories instead of"
+  echo "individual files on the next run. You can do that with the following"
+  echo "command:"
+  echo
+  echo "find /path/to/source -type d -empty -delete"
+else
+  echo "No files found to move into your secrets or the common files, or"
+  echo "ignore."
+fi
 
 git config --global commit.template "~/.gitmessage"
