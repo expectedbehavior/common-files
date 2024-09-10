@@ -65,7 +65,9 @@ done
 for package in $stow_packages; do
   (
     cd "$package"
-    find . -mindepth 1 -type d -empty -exec rmdir -v "$HOME/{}" \;
+    find . -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' dir; do
+      (cd "$HOME" && test -d "$dir" && find "$dir" -type d -empty -delete; true)
+    done
   )
 done
 
