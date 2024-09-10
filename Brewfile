@@ -1,6 +1,6 @@
 cask_args appdir: '/Applications'
 
-brewfile_root_dir = File.expand_path(File.dirname(__FILE__))
+brewfile_root_dir = Dir.home
 brewfile_dir      = File.join(brewfile_root_dir, ".brewfiles")
 current_username  = `whoami`.chomp
 personal_brewfile = File.join(brewfile_dir, "personal.Brewfile.#{current_username}")
