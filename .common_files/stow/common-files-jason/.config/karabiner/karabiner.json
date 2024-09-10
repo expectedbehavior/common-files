@@ -1,0 +1,34 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Clean lc notifications",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": {
+                                        "mandatory": ["control", "option", "command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "shell_command": "/Users/jason/.common_files/plugins/lc/bin/lc --clear" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "left_control" }]
+                }
+            ]
+        }
+    ]
+}
