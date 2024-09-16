@@ -13,3 +13,9 @@
 .config/iterm2/sockets/secrets
 .stow-local-ignore
 .fseventsd
+.yarnrc
+.iterm2_shell_integration.bash
+.bundle
+.asdf
+.iterm2
+.webdrivers
