@@ -4,5 +4,6 @@ cask "1password"
 cask "karabiner-elements"
 cask "rectangle"
 cask "visual-studio-code"
+cask "witch"
 mas  "Toggl Track: Hours & Time Log", id: 1291898086
 
