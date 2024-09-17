@@ -25,7 +25,10 @@ if test -d "$personal_dir"; then
   # of the common files directory.
   (
     cat .stow-base-ignore
-    cd "$personal_dir" && find . -mindepth 1 ! -type d | sed 's/^\.//'
+    cd "$personal_dir" &&
+      find . -mindepth 1 ! -type d |
+      sed 's/^\.//' |
+      sed 's/[][(){}.^$*+?|\\]/\\&/g'
   ) > "$stow_base_dir/.stow-local-ignore"
 fi
 
@@ -42,7 +45,10 @@ if test -L "$secrets_dir" && test -d "$secrets_dir"; then
   # common files and personal directories.
   (
     cat .stow-base-ignore
-    cd "$secrets_dir" && find . -mindepth 1 ! -type d | sed 's/^\.//'
+    cd "$secrets_dir" &&
+      find . -mindepth 1 ! -type d |
+      sed 's/^\.//' |
+      sed 's/[][(){}.^$*+?|\\]/\\&/g'
   ) | tee -a "$stow_base_dir/.stow-local-ignore" > "$personal_dir/.stow-local-ignore"
 fi
 
