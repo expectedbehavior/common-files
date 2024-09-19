@@ -8,7 +8,11 @@ source "$INSTALL_SCRIPTS_PATH/homebrew"
 install_dropbox() {
   brew_cask_install dropbox
   open /Applications/Dropbox.app
-  setup_echo "Now is the time to start syncing. After this, the script will start installing the default software and you'll be handsoff for a while. Hit enter when ready."
+  echo
+  setup_echo "Now is the time to start syncing. After this, the script will"
+  setup_echo "start installing the default software and you'll be handsoff for "
+  setup_echo "a while. Consider leaving your machine plugged in and open "
+  setup_echo "overnight until Dropbox finishes syncing. Hit enter when ready."
   read post_dropbox_install
 }
 
