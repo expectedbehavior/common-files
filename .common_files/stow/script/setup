@@ -16,22 +16,8 @@ stow_base_dir="common-files"
 
 stow_packages="$stow_base_dir"
 
-personal_dir="$stow_base_dir-`whoami`"
-if test -d "$personal_dir"; then
-  stow_packages="$personal_dir $stow_packages"
-
-  # Setup the $stow_base_dir/.stow-local-ignore file to ignore all files in the
-  # personal directory. This allows us to layer the personal directory on top
-  # of the common files directory.
-  (
-    cat .stow-base-ignore
-    cd "$personal_dir" &&
-      find . -mindepth 1 ! -type d |
-      sed 's/^\.//' |
-      sed 's/[][(){}.^$*+?|\\]/\\&/g'
-  ) > "$stow_base_dir/.stow-local-ignore"
-fi
-
+> /tmp/stow-files-in-secrets
+> /tmp/stow-files-in-secrets-and-personal-dir
 secrets_dir="secrets"
 # Check if the symlink points to a directory
 if test -L "$secrets_dir" && test -d "$secrets_dir"; then
@@ -39,18 +25,83 @@ if test -L "$secrets_dir" && test -d "$secrets_dir"; then
   # directory and we'll use it.
   stow_packages="$secrets_dir $stow_packages"
 
-  # Add to $stow_base_dir/.stow-local-ignore and setup
-  # $personal_dir/.stow-local-ignore to ignore all files in the secrets
-  # directory. This allows us to layer the secrets directory on top of the
-  # common files and personal directories.
+  (
+    cd "$secrets_dir" &&
+      find . -mindepth 1 ! -type d
+  ) | sort | tee /tmp/stow-files-in-secrets > /tmp/stow-files-in-secrets-and-personal-dir
+fi
+
+> /tmp/stow-files-in-personal-dir
+> /tmp/stow-files-in-personal-dir-only
+> /tmp/stow-dirs-in-personal-dir-with-all-files-ignored
+personal_dir="$stow_base_dir-`whoami`"
+if test -d "$personal_dir"; then
+  stow_packages="$personal_dir $stow_packages"
+
+  (
+    cd "$personal_dir" &&
+      find . -mindepth 1 ! -type d
+  ) | sort | tee /tmp/stow-files-in-personal-dir >> /tmp/stow-files-in-secrets-and-personal-dir
+
+  # Compare the files in the secrets directory and the personal directory to find
+  # files that are only in the personal directory and not in the secrets directory.
+  comm -23 /tmp/stow-files-in-personal-dir /tmp/stow-files-in-secrets > /tmp/stow-files-in-personal-dir-only
+
+  # Find all the directories in the personal directory that don't have any files
+  # in /tmp/stow-files-in-personal-dir-only. Print these directories.
+  (
+    cd "$personal_dir" &&
+      find . -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' dir; do
+        if ! grep -q "^$dir/" /tmp/stow-files-in-personal-dir-only; then
+          echo "$dir"
+        fi
+      done
+  ) > /tmp/stow-dirs-in-personal-dir-with-all-files-ignored
+
   (
     cat .stow-base-ignore
-    cd "$secrets_dir" &&
-      find . -mindepth 1 ! -type d |
+    (
+      cat /tmp/stow-files-in-secrets
+      cat /tmp/stow-dirs-in-personal-dir-with-all-files-ignored
+    ) |
       sed 's/^\.//' |
       sed 's/[][(){}.^$*+?|\\]/\\&/g'
-  ) | tee -a "$stow_base_dir/.stow-local-ignore" > "$personal_dir/.stow-local-ignore"
+  ) > "$personal_dir/.stow-local-ignore"
 fi
+
+> /tmp/stow-dirs-in-base-dir-only
+> /tmp/stow-dirs-in-base-dir-with-all-files-ignored
+
+(
+  cd "$stow_base_dir" &&
+    find . -mindepth 1 ! -type d
+) | sort > /tmp/stow-files-in-base-dir
+
+# Compare the files in the base directory with the files in the secrets and
+# personal directories to find files that are only in the base directory.
+comm -23 /tmp/stow-files-in-base-dir /tmp/stow-files-in-secrets-and-personal-dir > /tmp/stow-files-in-base-dir-only
+
+# Find all the directories in the base directory that don't have any files in
+# /tmp/stow-files-in-base-dir-only. Print these directories.
+(
+  cd "$stow_base_dir" &&
+    find . -mindepth 1 -maxdepth 1 -type d -print0 | while IFS= read -r -d '' dir; do
+      if ! grep -q "^$dir/" /tmp/stow-files-in-base-dir-only; then
+        echo "$dir"
+      fi
+    done
+) > /tmp/stow-dirs-in-base-dir-with-all-files-ignored
+
+(
+  cat .stow-base-ignore
+  (
+    cat /tmp/stow-files-in-secrets-and-personal-dir
+    cat /tmp/stow-dirs-in-base-dir-with-all-files-ignored
+  ) |
+    sed 's/^\.//' |
+    sed 's/[][(){}.^$*+?|\\]/\\&/g'
+) > "$stow_base_dir/.stow-local-ignore"
+
 
 for package in $stow_packages; do
   # Unstow everything in order to migrate to the new ignore-file based approach.
