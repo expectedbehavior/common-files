@@ -4,6 +4,7 @@
 # Things I use
 # brew 'geeknote', args: ['HEAD']
 brew 'tor'
+cask 'descript'
 cask 'steam'
 cask 'battle-net'
 cask 'anki'
