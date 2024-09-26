@@ -18,7 +18,6 @@ install_dotfiles
 install_dropbox
 install_system_preferences
 install_mas
-install_xcode
 install_brewfiles
 install_global_ruby
 install_app_configurations
