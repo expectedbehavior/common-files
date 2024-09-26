@@ -5,7 +5,7 @@ INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 source "$INSTALL_SCRIPTS_PATH/helper_functions"
 
 install_app_configurations() {
-  setup_echo "SET UP YER APPS"
+  setup_echo "SET UP YER APPS (hit enter when done)"
   read set_up_apps
   #flowdock
 
