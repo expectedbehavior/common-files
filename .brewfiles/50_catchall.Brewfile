@@ -2,6 +2,7 @@
 cask 'macfuse'  # sshfs
 
 # Things I use
+brew 'gh'
 brew 'overmind'
 brew 'tmux'
 brew 'mtr'
