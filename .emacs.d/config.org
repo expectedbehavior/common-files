@@ -544,6 +544,10 @@ blacklists a few modes, it belongs in Global.
 ** Org
 
 #+BEGIN_SRC emacs-lisp
+  ;; Add modern styling to lots of different elements in Org mode.
+  ;; https://github.com/minad/org-modern
+  (use-package org-modern
+    :init (global-org-modern-mode))
 
   (add-hook 'org-mode-hook 'auto-fill-mode)
 
