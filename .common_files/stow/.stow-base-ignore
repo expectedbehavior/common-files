@@ -25,3 +25,4 @@ _darcs
 # The above defaults aren't used if this file exists, so we need them.
 
 /.common_files/stow
+/.config/iterm2/AppSupport
