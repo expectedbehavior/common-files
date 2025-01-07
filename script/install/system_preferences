@@ -4,6 +4,49 @@ set -e
 INSTALL_SCRIPTS_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
 source "$INSTALL_SCRIPTS_PATH/helper_functions"
 
+# https://gist.github.com/benjifs/054e00deee252b5bb1b88e7afe590794
+setup_caps_lock_as_left_control () {
+  #!/usr/bin/env bash
+
+  # Map Caps Lock key to Left Control key
+  # https://developer.apple.com/library/content/technotes/tn2450/_index.html
+  # This doesnt work. Reverts on restart
+  # hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x7000000E0}]}'
+  # References:
+  # https://github.com/mathiasbynens/dotfiles/issues/310
+  # https://gist.github.com/scottstanfield/0f8ce63271bebfb5cf2bb91e72c71f91
+  # The last link didnt work for me on Sierra or High Sierra. I could not find IOHIDKeyboard but
+  # IOHIDInterface had the values I was looking for
+
+  VENDOR_ID=$(ioreg -n IOHIDInterface -r | awk '$2 == "\"VendorID\"" { print $4 }')
+  PRODUCT_ID=$(ioreg -n IOHIDInterface -r | awk '$2 == "\"ProductID\"" { print $4 }')
+
+  n1=$(echo -n "$VENDOR_ID" | grep -c "^")
+  n2=$(echo -n "$PRODUCT_ID" | grep -c "^")
+
+  if [ $n1 -eq $n2 ]; then
+    KBS=""
+    # Handling multiple VendorID and ProductID combos
+    while read -r VID && read -r PID <&3; do
+      if [ -n "$KBS" ]; then
+        KBS+=" "
+      fi
+      KBS+="$VID-$PID-0"
+      done <<< "$VENDOR_ID" 3<<< "$PRODUCT_ID"
+
+      KBS=$(echo $KBS | xargs -n1 | sort -u)
+      while read -r KB; do
+        defaults -currentHost write -g com.apple.keyboard.modifiermapping.$KB -array \
+  '<dict>
+  <key>HIDKeyboardModifierMappingDst</key>
+  <integer>30064771296</integer>
+  <key>HIDKeyboardModifierMappingSrc</key>
+  <integer>30064771129</integer>
+  </dict>'
+      done <<< "$KBS"
+  fi
+}
+
 install_system_preferences () {
   # System Preferences > Desktop & Screen Saver > Start after: Never
   defaults -currentHost write com.apple.screensaver idleTime -int 0
@@ -14,11 +57,15 @@ install_system_preferences () {
   # System Preferences > Keyboard >
   defaults write NSGlobalDomain KeyRepeat -int 2
 
+  # System Preferences > Keyboard > Modifier Keys > Set Caps Lock to Control
+  setup_caps_lock_as_left_control
+
   # System Preferences > Keyboard >
   defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
   # System Preferences > Trackpad > Tap to click
   defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+  defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
   # Finder > View > Show Path Bar
   defaults write com.apple.finder ShowPathbar -bool true
@@ -33,9 +80,10 @@ install_system_preferences () {
   for app in "Dock" "Finder"; do
     killall "${app}" > /dev/null 2>&1
   done
+  /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   
   setup_echo "SYSTEM PREFERENCES"
-  setup_echo "Some suggested system preference changes"
+  setup_echo "Some suggested system preference changes. Some of these may have been updated automatically."
   setup_echo
   setup_echo "Trackpad > Tap to click"
   setup_echo "Keyboard > Keyboard > Repeat to fast"
@@ -45,27 +93,26 @@ install_system_preferences () {
   setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Application windows (conflicts with atom emacs navigation)"
   setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Move left a space (conflicts with atom emacs navigation)"
   setup_echo "Keyboard > Shortcuts > Mission Control > Uncheck Move right a space (conflicts with atom emacs navigation)"
-  setup_echo "Security & Privacy > General > Require password >5 seconds< after sleep..."
-  setup_echo "Energy Saver > Battery > Turn display off after: 1 hour"
-  setup_echo "Energy Saver > Battery > Uncheck 'put hard disks to sleep when possible'"
-  setup_echo "Energy Saver > Battery > Uncheck 'slightly dim the display while on battery power'"
-  setup_echo "Energy Saver > Power Adapter > Turn display off after: never # so installs don't get cut off"
-  setup_echo "Sharing > Click Edit, Change hostname"
-  setup_echo "Sharing > Check 'Remote Login' checkbox on left"
-  setup_echo "Sharing > Check 'Screen Sharing' checkbox on left"
-  setup_echo "Sharing > Sharing > Computer Settings > Check 'Anyone may request permission to contol screen'"
+  setup_echo "Lock Screen > Turn display off on battery when inactive > For 1 hour"
+  setup_echo "Lock Screen > Turn display off on power adapter when inactive > Never # so installs don't get cut off"
+  setup_echo "Lock Screen > Require password after screen saver begins or display is turned off > After 5 seconds"
+  setup_echo "General > Sharing > Check 'Screen Sharing' toggle"
+  setup_echo "General > Sharing > Click 'Screen Sharing' info icon > Computer Settings > Check Anyone may request permission to control screen"
+  setup_echo "General > Sharing > Check 'Remote Login' toggle"
+  setup_echo "General > Sharing > Hostname > Click Edit, Change hostname"
   setup_echo "Dock > Automatically hide and show the Dock"
-  setup_echo "Date & Time > Clock > Time options > Display the time with seconds"
-  setup_echo "Date & Time > Clock > Date options > Show date"
+  setup_echo "Control Center > Menu Bar Only > Clock > Clock Options > Show date > Always"
+  setup_echo "Control Center > Menu Bar Only > Clock > Clock Options > Show the day of the week"
+  setup_echo "Control Center > Menu Bar Only > Clock > Clock Options > Display the time with seconds"
   setup_echo "Users & Groups > Guest User > Uncheck Allow guests to log into this computer so that I don't get prompted on every computer restart."
-  setup_echo "General > Uncheck Close windows when quitting an app (so iTerm restores previous windows)"
+  setup_echo "Desktop & Dock > Uncheck Close windows when quitting an application (so iTerm restores previous windows)"
   setup_echo "General > Check 'Automatically hide and show the menu bar'"
   setup_echo "Desktop & Screen Saver > Screen Saver > Start after: never"
-  setup_echo "Desktop & Screen Saver > Screen Saver > Hot Corners: bottom right => Put Display to Sleep"
-  setup_echo "Sound > Check Show volume in menu bar"
+  setup_echo "Desktop & Dock > Hot Corners > Bottom Right => Lock Screen"
+  setup_echo "Control Center > Sound > Always show in Menu Bar"
   setup_echo "Touch ID > Add additional fingerprints (in case you're holding something)"
   setup_echo "iCloud > iCloud Drive Options > Uncheck 'Optimize Mac Storage'"
-  setup_echo "Finder > View > Show Path Bar"
+  setup_echo "Finder > View > Show Status Bar"
   setup_echo "Finder > Preference > Sidebar > Locations > Check <hostname>"
   setup_echo "Finder > Preference > Sidebar > Locations > Check 'Hard disks' (change from a dash to a checkmark)"
   setup_echo ""
