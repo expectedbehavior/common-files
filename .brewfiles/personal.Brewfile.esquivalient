@@ -1,1 +1,9 @@
-cask 'soulver'
+cask "soulver"
+cask "steam"
+cask "battle-net"
+mas "IA Writer", id: 775737590
+mas "Movist", id: 461788075
+mas "Fantastical", id: 975937182
+mas "Yoink", id: 457622435
+mas "Microsoft To Do", id: 1274495053
+mas "Perplexity", id: 6714467650

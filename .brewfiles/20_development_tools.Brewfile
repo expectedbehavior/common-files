@@ -1,0 +1,40 @@
+# Development Tools We Use In Most/All Of Our Projects
+#
+# If we use it in most/all of our projects, we install it via the
+# common files to avoid duplicating the setup work.
+
+brew "coreutils" # gseq, gtimeout
+cask "cyberduck"
+cask "firefox"
+cask "emacs"
+brew "fzf"
+brew "gnupg"
+cask "google-chrome"
+brew "htop"
+brew "hub"
+cask "iterm2"
+cask "istat-menus"
+brew "imagemagick"
+cask "launchbar"
+brew "md5deep"
+brew "mtr"
+cask "ngrok"
+brew "nmap"
+brew "overmind"
+brew "pstree"
+brew "pv"
+brew "parallel"
+cask "sequel-ace"
+brew "shellcheck"
+cask "sqlpro-for-postgres"
+brew "rbenv"
+brew "rbenv-default-gems"
+brew "ripgrep"
+brew "rsync"
+brew "sheldon"
+brew "the_silver_searcher"
+brew "tmux"
+brew "tree"
+cask "visual-studio-code"
+brew "watch"
+
