@@ -4,6 +4,10 @@
 
 [[ -f /etc/bash_completion ]] && source /etc/bash_completion
 
+for file in ~/Dropbox/code/common-files/bash_functions/*.sh; do
+  source "$file"
+done
+
 export INPUTRC="$HOME/.inputrc"
 export EDITOR="emacsclient --alternate-editor=emacs"
 export GLOBIGNORE='.:..'
