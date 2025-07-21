@@ -101,3 +101,7 @@ if [[ -f "$(brew --prefix)/bin/terraform" ]]; then
 fi
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+if [ -d "/Applications/Firefox.app/Contents/MacOS" ]; then
+    export PATH="/Applications/Firefox.app/Contents/MacOS:$PATH"
+fi
