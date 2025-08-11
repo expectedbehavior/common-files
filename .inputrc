@@ -27,9 +27,13 @@ $if mode=emacs
 #Page Down
 "\e[6~": history-search-forward
 
-
+# ctrl+left/right
 "\e[1;5D": backward-word
 "\e[1;5C": forward-word
+
+# alt+left/right
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
 
 # for rxvt
 "\e[8~": end-of-line
