@@ -1,0 +1,1 @@
+alias pgrep='pgrep -if'

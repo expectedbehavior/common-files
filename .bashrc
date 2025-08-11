@@ -31,7 +31,6 @@ alias sls='screen -ls'
 alias sw='screen -wipe'
 #alias cfup='((svn info &> /dev/null && svn up) || (echo; echo -n "svn repository not detected, use tbz2? [Y,n]: "; read y; [ "$y" == "" -o "$y" == "y" -o "$y" == "Y" ] && (wget -O - http://cf.telaranrhiod.com/files/common/common_files.tbz2 | tar -xjov --no-same-permissions ./))); exec bash'
 alias bgup='(wget -O - http://cf.telaranrhiod.com/files/common/backgrounds.tbz2 | tar -xjov --no-same-permissions -C ~/.fluxbox/backgrounds/)'
-alias pgrep='pgrep -iL'
 which md5 &> /dev/null || alias md5='md5sum'
 
 alias cuwork="cucumber ./features -t @shouldwork"
