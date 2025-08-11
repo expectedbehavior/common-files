@@ -101,3 +101,5 @@ if [[ -f "$(brew --prefix)/bin/terraform" ]]; then
 fi
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+complete -C /opt/homebrew/Cellar/tfenv/3.0.0/versions/1.4.2/terraform terraform
