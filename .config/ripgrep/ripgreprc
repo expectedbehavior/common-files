@@ -1,0 +1,6 @@
+# Generally search .dotfiles
+--hidden
+
+# Really ignore the .git dir
+--glob
+!.git/*
