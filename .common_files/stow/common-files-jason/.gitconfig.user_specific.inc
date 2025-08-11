@@ -8,6 +8,9 @@
 	syntax-theme = Monokai Extended
 	features = line-numbers decorations
 	whitespace-error-style = 22 reverse
+	hunk-header-style = file line-number syntax
+	hunk-header-file-style = brightmagenta
+	hunk-header-line-number-style = brightmagenta
 [delta "decorations"]
 	commit-decoration-style = bold yellow box ul
 	file-style = bold yellow ul
